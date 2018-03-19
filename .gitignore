@@ -11,3 +11,5 @@ analysis/span_contour_processing/
 
 *~
 .DS_Store
+.RData
+.Rhistory
