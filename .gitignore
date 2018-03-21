@@ -4,6 +4,8 @@ analysis/segmentation_results/
 analysis/span_articulatory_strategies/
 analysis/span_contour_processing/
 
+tv_key.csv
+
 *.mat
 *.pdf
 *.png

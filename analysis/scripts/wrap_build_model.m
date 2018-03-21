@@ -82,6 +82,7 @@ for i=1:length(subject_list)
                 copyfile(init_contour_data_file_name,dest_contour_data_file_name);
             end
             get_Ugfa(config_struct,variant_switch,q)
+            get_strategies(config_struct,q)
         end
         for k=1:n_lip_fac
             q = struct('jaw',jaw_fac(j),'tng',4,'lip',lip_fac(k),'vel',1,'lar',2);
@@ -90,6 +91,7 @@ for i=1:length(subject_list)
                 copyfile(init_contour_data_file_name,dest_contour_data_file_name);
             end
             get_Ugfa(config_struct,variant_switch,q)
+            get_strategies(config_struct,q)
         end
     end
 end
