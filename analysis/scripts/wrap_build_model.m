@@ -70,6 +70,16 @@ for i=1:length(subject_list)
     end
     load(fullfile(config_struct.manual_annotations_path,'phar_idx.mat'),'phar_idx')
     
+    
+    tv_key_path_name = strrep(master_manual_annotations_path,'%s',subject_list{i});
+    if ~exist(tv_key_path_name,'dir')
+        mkdir(tv_key_path_name)
+    end
+    writetable(table({'aia','aia','apa','ata','aka'}',...
+        {'palatal','pharyngeal','bilabial','alveolar','velar'}',...
+        'VariableNames',{'file_name','task_variable'}),...
+        fullfile(tv_key_path_name,'tv_key'))
+    
     % measure task variables
     get_tv(config_struct,false,q_init,phar_idx)
     
