@@ -3,6 +3,7 @@ analysis/mat/
 analysis/segmentation_results/
 analysis/span_articulatory_strategies/
 analysis/span_contour_processing/
+analysis/manual_annotations
 
 tv_key.csv
 

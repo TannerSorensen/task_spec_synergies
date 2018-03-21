@@ -33,7 +33,7 @@ function configStruct = build_model_config
 % paths
 out_path = fullfile('..','mat','%s');
 track_path = fullfile('..','segmentation_results','%s','track_files');
-manual_annotations_path = fullfile('manual_annotations','%s');
+manual_annotations_path = fullfile('..','manual_annotations','%s');
 
 % spatial parameters
 fov = 200;  % 200 mm^2 field of view 
