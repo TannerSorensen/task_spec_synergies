@@ -11,7 +11,7 @@
 addpath(genpath(fullfile('..','span_contour_processing','functions')))
 
 % set the constant parameters of the analysis
-config_struct = config_build_model;
+config_struct = config;
 
 % obtain a cell array subject_list whose entries are the string subject
 % identifiers.
