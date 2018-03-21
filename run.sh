@@ -12,6 +12,12 @@ rm segmentation_results.zip
 # build model
 cd scripts
 #matlab -nodisplay -nodesktop -r "run wrap_build_model.m; exit"
+cd ..
+
+# generate MRI, segmentation, and constriction graphics
+cd ../graphics
+#make_graphics.sh
+cd ..
 
 # run R scripts (see the .Rout files for text output, graphics subfolder for images)
 #Rscript test_retest.R

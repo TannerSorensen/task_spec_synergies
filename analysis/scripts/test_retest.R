@@ -108,7 +108,7 @@ getICC <- function(tab){
   # University of Southern California
   # Apr. 14, 2017
   
-  m0 <- rpt(lambda ~ 1 + (1|participant), grname = "participant", data=tab, datatype="Gaussian", nboot=0)
+  m0 <- rpt(bm ~ 1 + (1|participant), grname = "participant", data=tab, datatype="Gaussian", nboot=0)
   ICC <- as.double(m0$R)
   return(ICC)
 }
@@ -116,26 +116,21 @@ getICC <- function(tab){
 # READ IN DATA-SETS
 ###################
 
-tab <- read.csv(file.path("..","mat","strategies.csv"))
-subject_key <- read.csv(file.path("..","mat","artstrat_subjects.csv"))
-repeatability_subject_ids <- with(subject_key,subject_id[repeatability_dataset==TRUE & subject_name!="f3"]) # exclude f3 because of poor image quality in scan 2
-tab <- subset(tab,participant%in%repeatability_subject_ids) 
+tab <- read.csv(file.path("..","mat","bm_tab.csv"))
+tab <- subset(tab,!is.nan(repetition))
 
 # SET GRAPHICS PATH
 ###################
 
-graphics_path <- file.path("..","graphics")
-
-# BIOMARKER VALUES
-##################
-tab$lambda <- with(tab,ifelse(tv==1,jaw/(jaw+lip),jaw/(jaw+tng)))
+graphics_path <- file.path("..","..","graphics","icc")
+dir.create(graphics_path, showWarnings = FALSE)
 
 # CONSTANTS
 ###########
 jaw_fac <- c(1,2,3)
 tng_fac <- c(4,6,8)
 lip_fac <- c(2,3)
-tv_loc <- c("bilabial place","alveolar place","palatal place","velar place","pharyngeal place","velopharyngeal port")
+tv_loc <- c("bilabial place","alveolar place","palatal place","velar place","pharyngeal place")
 font_scale <- 3
 cols<-brewer.pal(n=3,name="Set1")
 
@@ -192,8 +187,8 @@ subtab <- subset(tab,n_jaw==1 & n_tng==6 & n_lip==2)
 ############################
 
 pdf(file.path(graphics_path,"scattergram_biomarker.pdf"))
-mean_all <- aggregate(lambda ~ participant + tv + repetition, subtab, mean)
-sd_all <- aggregate(lambda ~ participant + tv + repetition, subtab, sd)
+mean_all <- aggregate(bm ~ participant + tv + repetition, subtab, mean)
+sd_all <- aggregate(bm ~ participant + tv + repetition, subtab, sd)
 scattergram(mean_all,sd_all)
 dev.off()
 

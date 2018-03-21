@@ -4,6 +4,13 @@ analysis/segmentation_results/
 analysis/span_articulatory_strategies/
 analysis/span_contour_processing/
 analysis/manual_annotations
+graphics/constrictions
+graphics/mri
+graphics/segmentation
+graphics/templates
+graphics/icc
+graphics/histograms
+graphics/data
 
 tv_key.csv
 
@@ -11,6 +18,7 @@ tv_key.csv
 *.pdf
 *.png
 *.jpg
+*.avi
 
 *~
 .DS_Store

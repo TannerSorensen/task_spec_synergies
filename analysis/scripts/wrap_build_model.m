@@ -105,3 +105,7 @@ for i=1:length(subject_list)
         end
     end
 end
+
+bm_tab = get_biomarker_table(config_struct,subject_list);
+writetable(bm_tab,fullfile(strrep(config_struct.out_path,'/%s',''),'bm_tab.csv'))
+
