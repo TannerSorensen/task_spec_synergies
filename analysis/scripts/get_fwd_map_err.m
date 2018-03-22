@@ -1,7 +1,4 @@
 function get_fwd_map_err(config_struct)
-    % set regularization parameter for robust estimation of the forward
-    % kinematic map
-    g = 1e-10;
     
     % set the number of folds
     n_fold = 10;
@@ -70,8 +67,7 @@ function get_fwd_map_err(config_struct)
             w(d./h > 1) = 0;
 
             % get error for the ellth observation
-            G = (Wtrain'*diag(w(train_idx))*Wtrain + g) ...
-                \ Wtrain'*diag(w(train_idx))*Ztrain;
+            G = lscov(Wtrain, Ztrain, w(train_idx));
 
             Zhat = [1 Wtest(ell,:)]*G;
             err(inner_idx,:) = Ztest(ell,:) - Zhat;
@@ -85,7 +81,9 @@ function get_fwd_map_err(config_struct)
         end
     end
     
-    contour_data.err_tab = array2table([fold err err_d],'VariableNames',{'fold','bilabial','alveolar','palatal','velar','pharyngeal','velopharyngeal','bilabial_d','alveolar_d','palatal_d','velar_d','pharyngeal_d','velopharyngeal_d'});
+    contour_data.err_tab = array2table([fold err err_d],'VariableNames',...
+        {'fold','bilabial','alveolar','palatal','velar','pharyngeal','velopharyngeal',...
+        'bilabial_d','alveolar_d','palatal_d','velar_d','pharyngeal_d','velopharyngeal_d'});
     contour_data.stds = std(Z);
     contour_data.stds_d = std(dZ);
     

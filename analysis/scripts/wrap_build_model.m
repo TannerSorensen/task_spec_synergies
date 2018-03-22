@@ -42,7 +42,7 @@ q_init = struct('jaw',jaw_fac(1),'tng',tng_fac(1),'lip',2,'vel',1,'lar',2);
 variant_switch = 'sorensen2018';
 
 % set the f values to test
-f = 0.05:0.05:0.95;
+f = 0.15:0.05:0.90;
 
 for i=1:length(subject_list)
     disp(subject_list{i})
