@@ -1,5 +1,5 @@
-function configStruct = build_model_config
-% BUILD_MODEL_CONFIG - set constants and parameters of the analysis
+function configStruct = config
+% CONFIG - set constants and parameters of the analysis
 % 
 % INPUT:
 %  none
@@ -47,6 +47,7 @@ frames_per_sec = 1/(tr_per_image*tr);
 
 % free parameters
 f = 0.75;
+q = struct('jaw',1,'tng',4,'lip',2,'vel',1,'lar',2);
 
 verbose = false;
 
@@ -56,6 +57,6 @@ configStruct = struct('out_path',out_path,...
     'manual_annotations_path',manual_annotations_path,...
     'fov',fov,'n_pix',n_pix,...
     'frames_per_sec',frames_per_sec,...
-    'f',f,'verbose',verbose);
+    'f',f,'q',q,'verbose',verbose);
 
 end

@@ -52,32 +52,32 @@ morphology_dataset <- FALSE
 
 input_path <- file.path("..","mat")
 
-subject_key <- read.csv(file.path(input_path,"err_subjects.csv"))
+tab <- read.csv(file.path(input_path,"err_tab.csv"))
+stds <- read.csv(file.path(input_path,"stds_tab.csv"))
+
 if(morphology_dataset==TRUE){
-  subject_ids <- with(subject_key,subject_id[repeatability_dataset==FALSE])
+  tab <- subset(tab,isnan(repetition))
+  stds <- subset(stds,isnan(repetition))
 }else{
-  subject_ids <- with(subject_key,subject_id[repeatability_dataset==TRUE])
+  tab <- subset(tab,repetition==1)
+  stds <- subset(stds,repetition==1)
 }
-
-tab <- read.csv(file.path(input_path,"err.csv"))
-tab <- subset(tab,participant%in%subject_ids)
-
-stds <- read.csv(file.path(input_path,"stds.csv"))
-stds <- subset(stds,participant%in%subject_ids)
 
 #####################
 # CONVERT TO MM UNITS
 #####################
 
 spat_res <- 2.4
-stds[,2:ncol(stds)] <- spat_res*stds[,2:ncol(stds)]
-tab[,4:ncol(tab)] <- spat_res*tab[,4:ncol(tab)]
+num_cols <- c("bilabial","alveolar","palatal","velar","pharyngeal","bilabial_d","alveolar_d","palatal_d","velar_d","pharyngeal_d")
+stds[,num_cols] <- spat_res*stds[,num_cols]
+tab[,num_cols] <- spat_res*tab[,num_cols]
 
 ###################
 # SET GRAPHICS PATH
 ###################
 
-graphics_path <- file.path("..","graphics")
+graphics_path <- file.path("..","..","graphics","err")
+dir.create(graphics_path, showWarnings = FALSE)
 
 ############
 # LEGEND
@@ -97,11 +97,11 @@ dev.off()
 col_idx <- 1
 
 # direct kinematics error plots
-plt_tab <- aggregate(bilabial ~ participant + f_param, tab, function(x){median(abs(x))})
+plt_tab <- aggregate(bilabial ~ participant + f, tab, function(x){median(abs(x))})
 plot_means(plt_tab,stds[,c("participant","bilabial")],col_idx,TRUE,"bilabial place",graphics_path)
 
 # differential kinematics error plots
-plt_tab <- aggregate(bilabial_d ~ participant + f_param, tab, function(x){median(abs(x))})
+plt_tab <- aggregate(bilabial_d ~ participant + f, tab, function(x){median(abs(x))})
 plot_means(plt_tab,stds[,c("participant","bilabial_d")],col_idx,TRUE,"bilabial place",graphics_path)
 
 ############
@@ -110,11 +110,11 @@ plot_means(plt_tab,stds[,c("participant","bilabial_d")],col_idx,TRUE,"bilabial p
 col_idx <- 2
 
 # direct kinematics error plots
-plt_tab <- aggregate(alveolar ~ participant + f_param, tab, function(x){median(abs(x))})
+plt_tab <- aggregate(alveolar ~ participant + f, tab, function(x){median(abs(x))})
 plot_means(plt_tab,stds[,c("participant","alveolar")],col_idx,FALSE,"alveolar place",graphics_path)
 
 # differential kinematics error plots
-plt_tab <- aggregate(alveolar_d ~ participant + f_param, tab, function(x){median(abs(x))})
+plt_tab <- aggregate(alveolar_d ~ participant + f, tab, function(x){median(abs(x))})
 plot_means(plt_tab,stds[,c("participant","alveolar_d")],col_idx,FALSE,"alveolar place",graphics_path)
 
 ############
@@ -123,11 +123,11 @@ plot_means(plt_tab,stds[,c("participant","alveolar_d")],col_idx,FALSE,"alveolar 
 col_idx <- 3
 
 # direct kinematics error plots
-plt_tab <- aggregate(palatal ~ participant + f_param, tab, function(x){median(abs(x))})
+plt_tab <- aggregate(palatal ~ participant + f, tab, function(x){median(abs(x))})
 plot_means(plt_tab,stds[,c("participant","palatal")],col_idx,FALSE,"palatal place",graphics_path)
 
 # differential kinematics error plots
-plt_tab <- aggregate(palatal_d ~ participant + f_param, tab, function(x){median(abs(x))})
+plt_tab <- aggregate(palatal_d ~ participant + f, tab, function(x){median(abs(x))})
 plot_means(plt_tab,stds[,c("participant","palatal_d")],col_idx,FALSE,"palatal place",graphics_path)
 
 
@@ -137,11 +137,11 @@ plot_means(plt_tab,stds[,c("participant","palatal_d")],col_idx,FALSE,"palatal pl
 col_idx <- 4
 
 # direct kinematics error plots
-plt_tab <- aggregate(velar ~ participant + f_param, tab, function(x){median(abs(x))})
+plt_tab <- aggregate(velar ~ participant + f, tab, function(x){median(abs(x))})
 plot_means(plt_tab,stds[,c("participant","velar")],col_idx,FALSE,"velar place",graphics_path)
 
 # differential kinematics error plots
-plt_tab <- aggregate(velar_d ~ participant + f_param, tab, function(x){median(abs(x))})
+plt_tab <- aggregate(velar_d ~ participant + f, tab, function(x){median(abs(x))})
 plot_means(plt_tab,stds[,c("participant","velar_d")],col_idx,FALSE,"velar place",graphics_path)
 
 
@@ -151,10 +151,10 @@ plot_means(plt_tab,stds[,c("participant","velar_d")],col_idx,FALSE,"velar place"
 col_idx <- 6
 
 # direct kinematics error plots
-plt_tab <- aggregate(pharyngeal ~ participant + f_param, tab, function(x){median(abs(x))})
+plt_tab <- aggregate(pharyngeal ~ participant + f, tab, function(x){median(abs(x))})
 plot_means(plt_tab,stds[,c("participant","pharyngeal")],col_idx,FALSE,"pharyngeal place",graphics_path)
 
 # differential kinematics error plots
-plt_tab <- aggregate(pharyngeal_d ~ participant + f_param, tab, function(x){median(abs(x))})
+plt_tab <- aggregate(pharyngeal_d ~ participant + f, tab, function(x){median(abs(x))})
 plot_means(plt_tab,stds[,c("participant","pharyngeal_d")],col_idx,FALSE,"pharyngeal place",graphics_path)
 

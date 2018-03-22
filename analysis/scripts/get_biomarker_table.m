@@ -33,7 +33,7 @@ for i=1:length(subject_list)
     for j=1:n_jaw_fac
         for k=1:n_tng_fac
             q = struct('jaw',jaw_fac(j),'tng',tng_fac(k),'lip',2,'vel',1,'lar',2);
-            load(fullfile(config_struct.out_path,sprintf('contour_data_jaw%d_tng%d_lip%d_vel1_lar2',q.jaw,q.tng,q.lip)),'contour_data');
+            load(fullfile(config_struct.out_path,sprintf('contour_data_jaw%d_tng%d_lip%d_vel1_lar2_f%d',q.jaw,q.tng,q.lip,round(100*config_struct.f))),'contour_data');
             tmp_bm_tab = contour_data.strategies.biomarker;
             tmp_bm_tab.participant = repmat(participant_list(i),size(tmp_bm_tab,1),1);
             tmp_bm_tab.repetition = repmat(repetition_list(i),size(tmp_bm_tab,1),1);
@@ -44,7 +44,7 @@ for i=1:length(subject_list)
         end
         for k=1:n_lip_fac
             q = struct('jaw',jaw_fac(j),'tng',4,'lip',lip_fac(k),'vel',1,'lar',2);
-            load(fullfile(config_struct.out_path,sprintf('contour_data_jaw%d_tng%d_lip%d_vel1_lar2',q.jaw,q.tng,q.lip)),'contour_data');
+            load(fullfile(config_struct.out_path,sprintf('contour_data_jaw%d_tng%d_lip%d_vel1_lar2_f%d',q.jaw,q.tng,q.lip,round(100*config_struct.f))),'contour_data');
             tmp_bm_tab = contour_data.strategies.biomarker;
             tmp_bm_tab.participant = repmat(participant_list(i),size(tmp_bm_tab,1),1);
             tmp_bm_tab.repetition = repmat(repetition_list(i),size(tmp_bm_tab,1),1);
