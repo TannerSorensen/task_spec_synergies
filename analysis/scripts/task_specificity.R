@@ -1,7 +1,6 @@
-require(lme4)
-require(RColorBrewer)
-require(multcomp)
-require(rptR)
+# REQUIRE A SET OF LIBRARIES
+############################
+source("require_libraries.R")
 
 # SET GRAPHICS PATH
 ###################
