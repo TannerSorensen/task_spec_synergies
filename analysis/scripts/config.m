@@ -46,7 +46,7 @@ tr = 0.006004;
 frames_per_sec = 1/(tr_per_image*tr);
 
 % free parameters
-f = 0.75;
+f = 0.7;
 q = struct('jaw',1,'tng',4,'lip',2,'vel',1,'lar',2);
 
 verbose = false;

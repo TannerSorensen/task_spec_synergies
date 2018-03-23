@@ -1,0 +1,31 @@
+\documentclass[varwidth=7in]{standalone}
+
+\usepackage{stackengine}
+
+\usepackage{graphicx}
+\graphicspath{{cv_errors/}}
+
+% for white font in subfigure captions
+\usepackage{xcolor}
+
+\standaloneconfig{crop=true}
+
+\begin{document}
+
+\raggedright
+
+{\bf (a)} direct kinematics
+\includegraphics[height=0.2\textwidth]{err_bilabial.pdf}%
+\includegraphics[height=0.2\textwidth]{err_alveolar.pdf}%
+\includegraphics[height=0.2\textwidth]{err_palatal.pdf}%
+\includegraphics[height=0.2\textwidth]{err_velar.pdf}%
+\includegraphics[height=0.2\textwidth]{err_pharyngeal.pdf}
+
+{\bf (b)} differential kinematics
+\includegraphics[height=0.2\textwidth]{err_bilabial_d.pdf}%
+\includegraphics[height=0.2\textwidth]{err_alveolar_d.pdf}%
+\includegraphics[height=0.2\textwidth]{err_palatal_d.pdf}%
+\includegraphics[height=0.2\textwidth]{err_velar_d.pdf}%
+\includegraphics[height=0.2\textwidth]{err_pharyngeal_d.pdf}
+
+\end{document}

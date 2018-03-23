@@ -57,3 +57,19 @@ getICC <- function(tab){
   ICC <- as.double(m0$R)
   return(ICC)
 }
+
+
+getICCrating <- function(ICC){
+  if(ICC <= 0.3){
+    ICCrating <- "poor"
+  }else if(ICC <= 0.5){
+    ICCrating <- "weak"
+  }else if(ICC <= 0.7){
+    ICCrating <- "moderate"
+  }else if(ICC <= 0.9){
+    ICCrating <- "strong"
+  }else if(ICC <= 1){
+    ICCrating <- "very strong"
+  }
+  return(ICCrating)
+}

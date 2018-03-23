@@ -1,0 +1,66 @@
+\documentclass[varwidth=7in]{standalone}
+
+\usepackage{siunitx}
+
+\usepackage{stackengine}
+
+\usepackage{graphicx}
+\graphicspath{{realtimeMRI/}}
+
+% table formatting
+\usepackage{multirow,array}
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\usepackage{stackengine}
+
+% for white font in subfigure captions
+\usepackage{xcolor}
+
+\standaloneconfig{crop=true}
+
+\begin{document}
+
+\begin{tabular}{C{0.14\linewidth} C{0.14\linewidth} C{0.14\linewidth} C{0.14\linewidth} C{0.14\linewidth} C{0.14\linewidth}}
+\SI{0}{\milli\second} & \SI{36}{\milli\second} & \SI{60}{\milli\second} & \SI{96}{\milli\second} & \SI{120}{\milli\second} & \SI{156}{\milli\second}
+\end{tabular}
+\vspace{0.1ex}
+
+\stackinset{l}{0pt}{b}{0.01\linewidth}{\color{white} \bf (a)}{%
+\includegraphics[width=0.166\linewidth]{a1_cd.png}%
+\includegraphics[width=0.166\linewidth]{a2_cd.png}%
+\includegraphics[width=0.166\linewidth]{a3_cd.png}%
+\includegraphics[width=0.166\linewidth]{a4_cd.png}%
+\includegraphics[width=0.166\linewidth]{a5_cd.png}%
+\includegraphics[width=0.166\linewidth]{a6_cd.png}}
+
+\stackinset{l}{0pt}{b}{0.01\linewidth}{\color{white} \bf (b) jaw}{%
+\includegraphics[width=0.166\linewidth]{a1_j}%
+\includegraphics[width=0.166\linewidth]{a2_j}%
+\includegraphics[width=0.166\linewidth]{a3_j}%
+\includegraphics[width=0.166\linewidth]{a4_j}%
+\includegraphics[width=0.166\linewidth]{a5_j}%
+\includegraphics[width=0.166\linewidth]{a6_j}}
+
+\stackinset{l}{0pt}{b}{0.01\linewidth}{\color{white} \bf (c) tongue}{%
+\includegraphics[width=0.166\linewidth]{a1_t}%
+\includegraphics[width=0.166\linewidth]{a2_t}%
+\includegraphics[width=0.166\linewidth]{a3_t}%
+\includegraphics[width=0.166\linewidth]{a4_t}%
+\includegraphics[width=0.166\linewidth]{a5_t}%
+\includegraphics[width=0.166\linewidth]{a6_t}}
+
+\stackinset{l}{0pt}{b}{0.01\linewidth}{\color{white} \bf (d) jaw + tongue}{%
+\includegraphics[width=0.166\linewidth]{a1_z}%
+\includegraphics[width=0.166\linewidth]{a2_z}%
+\includegraphics[width=0.166\linewidth]{a3_z}%
+\includegraphics[width=0.166\linewidth]{a4_z}%
+\includegraphics[width=0.166\linewidth]{a5_z}%
+\includegraphics[width=0.166\linewidth]{a6_z}}
+
+\stackinset{l}{0pt}{b}{0.01\linewidth}{\bf (e)}{%
+\includegraphics[width=\linewidth]{strategy.png}	}
+
+\end{document}

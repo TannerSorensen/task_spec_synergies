@@ -42,7 +42,7 @@ q_init = struct('jaw',jaw_fac(1),'tng',tng_fac(1),'lip',2,'vel',1,'lar',2);
 variant_switch = 'sorensen2018';
 
 % set the f values to test
-f = 0.15:0.05:0.90;
+f = 0.2:0.1:0.9;
 
 for i=1:length(subject_list)
     disp(subject_list{i})
@@ -128,8 +128,8 @@ for i=1:length(subject_list)
         get_fwd_map_err(config_struct);
     end
     
-    % reset the f value to 0.75
-    config_struct.f = 0.75;
+    % reset the f value to 0.7
+    config_struct.f = 0.7;
     
     % substitute the participant string identifier into the path. 
     config_struct.track_path = strrep(master_track_path,subject_list{i},'%s');

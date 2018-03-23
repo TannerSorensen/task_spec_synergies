@@ -52,13 +52,4 @@ for(i in seq(1,5)){
   dev.off()
 }
 
-# PERFORM STATISTICAL TEST
-##########################
 
-tab$tv <- factor(tab$tv)
-contrasts(tab$tv) <- contr.treatment(5, base = 4)
-tab$participant <- factor(tab$participant)
-m0 <- lmer(bm ~ 1 + tv + (1+tv|participant), tab, REML=TRUE)
-fixef(m0)
-summary(m0)
-(summary(glht(m0,linfct=c("tv1 = 0","tv2 = 0","tv3 = 0","tv5=0"))))

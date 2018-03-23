@@ -12,7 +12,7 @@ repetition_list = cellfun(@(x) str2double(x(end)), subject_list);
 master_out_path = config_struct.out_path;
 
 % set the f parameter values
-f = 0.05:0.05:0.95;
+f = 0.2:0.1:0.9;
 
 % set constant number of factors
 q = struct('jaw',1,'tng',4,'lip',2,'vel',1,'lar',2);

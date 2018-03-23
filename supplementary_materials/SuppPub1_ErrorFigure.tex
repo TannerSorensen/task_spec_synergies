@@ -1,0 +1,28 @@
+\documentclass[varwidth=7in]{standalone}
+
+%\usepackage[percent]{overpic}
+
+\usepackage{graphicx}
+\graphicspath{{graphics/cverror/}{graphics/histograms/}}
+
+\standaloneconfig{crop=true}
+
+\begin{document}
+
+\raggedright
+
+{\bf (a)} direct kinematics\\
+\includegraphics[height=1.5in]{err_bilabial.pdf}%
+\includegraphics[height=1.5in]{err_alveolar.pdf}%
+\includegraphics[height=1.5in]{err_palatal.pdf}%
+\includegraphics[height=1.5in]{err_velar.pdf}%
+\includegraphics[height=1.5in]{err_pharyngeal.pdf}
+
+{\bf (b)} differential kinematics\\
+\includegraphics[height=1.5in]{err_bilabial_d.pdf}%
+\includegraphics[height=1.5in]{err_alveolar_d.pdf}%
+\includegraphics[height=1.5in]{err_palatal_d.pdf}%
+\includegraphics[height=1.5in]{err_velar_d.pdf}%
+\includegraphics[height=1.5in]{err_pharyngeal_d.pdf}
+
+\end{document}

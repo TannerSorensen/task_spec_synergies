@@ -1,0 +1,160 @@
+\documentclass[reprint]{JASAnew}
+
+\graphicspath{{graphics/cverror/}{graphics/histograms/}}
+
+\usepackage{longtable}
+\usepackage{stackengine}
+
+% multiple row cells
+\usepackage{multirow,array}
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% IPA
+\usepackage{tipa}
+
+% SI units
+\usepackage{siunitx}
+\DeclareSIUnit\frame{frames}
+
+\begin{document}
+
+\section{Introduction}
+
+This document reports the results of a partial replication of the study ``Task dependence of articulator synergies''. This is a replication of the error analysis of the direct and differential kinematics of the vocal tract and of the finding that articulator synergies are task dependent. The precision is not replicated because the USC Speech and Vocal Tract Morphology MRI Database was not acquired in a test-retest experiment. Section~\ref{sec:database} describes the USC Speech and Vocal Tract Morphology MRI Database. Section~\ref{sec:crossvalidation} replicates the direct and differential kinematics of the vocal tract. Section~\ref{sec:taskdependence} replicates the finding that articulator synergies are task dependent. 
+
+\section{USC Speech and Vocal Tract Morphology MRI Database}
+\label{sec:database}
+
+
+The volunteers in the USC Speech and Vocal Tract Morphology MRI Database~\citep{sorensen2017database} were healthy male and female speakers of American English.
+%
+The database included seventeen (8 male, 9 female) speakers of American English. The parents of each participant were native speakers of American English. None of the participants reported abnormal hearing or speech pathology. See Table~\ref{tab:subj1} for participant age, gender, and state of origin. 
+
+\begin{longtable}{l l l l}
+\hline
+ID & age & gender & state of origin \Tstrut \Bstrut \\
+\hline
+F1	& 25 & F & California  \Tstrut \\ %San Clemente, CA 
+F2	& 25 & F & New York \\ %Commack, NY
+F3	& 26 & F & 	California \\ %Brawley, CA
+F4	& 25 & F & 	Washington, D.C. \\ %Washington, DC
+F5	& 28 & F & 	South Carolina \\ %West Columbia, SC
+F6	& 31 & F & Hawaii \\ %Honolulu, HI
+F7	& 64 & F & Minnesota \\ %St. Paul, MN
+F8	& 26 & F & 	Texas \\ %Houston, TX
+F9	& 22 & F & Rhode Island \\ %Providence, RI
+M1 	& 33 & M & Wisconsin \\%Eau Claire, WI \Tstrut \\
+M2	& 27 & M & Virginia \\ %Richmond, VA\\
+M3	& 28 & M & Wisconsin \\ %Madison, WI\\
+M4	& 20 & M & California \\ %West Covina, CA\\
+M5	& 38 & M & Washington, D.C. \\ %Washington, DC\\	
+M6	& 24 & M &	New Jersey \\ %Newark, NJ\\
+M7	& 33 & M & Texas \\ %San Antonio,TX\\
+M8 	& 26 & M & Iowa \Bstrut \\ %Iowa City, IA\\
+\hline
+& \shortstack[l]{\Tstrut median: 25 \\ range: 20--64} 
+& \shortstack[l]{\Tstrut 8 male \\ 9 female}
+& \Tstrut \Bstrut \\
+\hline 
+\caption{Participant characteristics of the USC Speech and Vocal Tract Morphology MRI Database}
+\label{tab:subj1}
+\end{longtable}
+
+
+
+Each speaker participated in one session. The study personnel explained the nature of the experiment and the protocol to the participant before each scan. The participant lay on the scanner table in a supine position. The head was fixed in place by foam pads inserted between the temple and the receiver coil on the left and right sides of the head. The participant read visual stimuli from a back-projection screen from inside the scanner bore without moving the head. The speech corpus included real-time MRI videos of the isolated vowel-consonant-vowel utterances \textipa{[apa], [ata], [aka], [aja]}. The participant produced each vowel-consonant-vowel utterance three times. After completing the session, the speaker was paid for their participation in the study. The USC Institutional Review Board approved the data collection procedures. The MRI data-set is available at \url{http://sail.usc.edu/span/morphdb/} for free use by the research community.
+
+
+Data were acquired on a Signa Excite HD \SI{1.5}{\tesla} scanner (General Electric Healthcare, Waukesha WI) with gradients capable of \SI[per-mode=symbol]{40}{\milli\tesla\per\meter} amplitude and \SI[per-mode=repeated-symbol]{150}{\milli\tesla\per\meter\per\milli\second} slew rate. 
+%
+A body coil was used for radio frequency (RF) signal transmission. A custom upper airway receiver coil array was used for RF signal reception. This 4-channel array included two coil elements anterior to the head and neck and two coil elements posterior to the head and neck. Only the two anterior coils were used for data acquisition because the posterior coils were shown to result in aliasing artifacts. 
+%
+The real-time MRI pulse sequence parameters were the following: 
+%
+\SI{200 x 200}{\milli\meter} field of view, 
+\SI{2.9 x 2.9}{\milli\meter} reconstructed in-plane spatial resolution, 
+\SI{5}{\milli\meter} slice thickness,
+\SI{6.164}{\milli\second} TR,%
+\SI{3.6}{\milli\second} TE,
+\SI{15}{\degree} flip angle,%
+\num{13} spiral interleaves for full sampling.
+%
+The scan plane was manually aligned to the head. 
+%
+In reconstruction, a sliding window technique was used to allow for view sharing and thus to increase frame rate~\citep{kim2011flexible,narayanan2004approach}. The TR-increment for view sharing was \num{7}, which resulted in the generation of an MRI video with frame rate $1/(7 \times \text{TR}) = 1/(7 \times \text{\SI{6.164}{\milli\second}}) = \text{\SI[per-mode=symbol]{23.18}{\frame\per\second}}$. 
+Localization of the midsagittal scan plane was performed using RTHawk (HeartVista, Inc., Los Altos, CA), a custom real-time imaging platform~\citep{santos2004flexible}. 
+
+
+
+
+
+
+
+\section{Cross-validation of the direct and differential kinematics}
+\label{sec:crossvalidation}
+
+The root mean squared error (RMSE) of the forward kinematic map was smaller than the \SI{2.8}{\milli\meter} in-plane spatial resolution of the real-time MRI pulse sequence when \SIrange{5}{95}{\percent} of training data-points were in the neighborhood (i.e., for all $f\in \left[ 0.05, 0.95\right]$; see Fig.~\ref{fig:cverrors}). With the exception of the pharyngeal place of articulation, the RMSE was smaller than one-third the standard deviation of the observed constriction degrees for all participants and for all neighborhood sizes.
+
+The RMSE of the jacobian matrix was smaller than the \SI{2.8}{\milli\meter} in-plane spatial resolution of the real-time MRI pulse sequence when \SIrange{5}{95}{\percent} of training data-points were in the neighborhood (i.e., for all $f\in \left[ 0.05, 0.95\right]$; see Fig.~\ref{fig:cverrors}).
+%
+The RMSE of the jacobian matrix is larger for neighborhood sizes smaller than \SI{25}{\percent} of the training data-points (i.e., for $f<0.25$) than for neighborhood sizes larger than \SI{25}{\percent} of the training data-points (i.e., for $f>0.25$). 
+%
+With the exception of the pharyngeal place of articulation, the RMSE was smaller than the standard deviations of observed frame-to-frame finite differences in constriction degree for all participants and for all neighborhood sizes greater than \SI{25}{\percent} of training data-points. 
+
+\begin{figure*}
+\raggedright
+
+\includegraphics{SuppPub1_ErrorFigure.pdf}
+
+\caption{
+{\bf (a)} Root mean squared error (RMSE) of the forward kinematic map estimator of constriction degrees and {\bf (b)} RMSE of the jacobian matrix estimator of frame-to-frame finite differences in constriction degrees. 
+Data-points are the median RMSE computed over all 10 folds of cross-validation.
+Lines connect the RMSE values of a single participant at different neighborhood sizes ($X$-axis).
+Neighborhood size is given as percentage of training data-points.
+The standard deviations of observed (frame-to-frame finite differences in) constriction degrees are indicated as tick marks on the right $Y$-axis for each participant whenever the standard deviations are small enough to fit within the $Y$-axis limits.}
+\label{fig:cverrors}
+\end{figure*}
+
+
+
+
+
+
+
+
+
+
+
+\section{Testing the task-specificity of articulator synergies}
+\label{sec:taskdependence}
+
+On average, the percent jaw contribution was 
+\SI{43}{\percent} less at the velar place compared to the bilabial place
+($z=-6.06$, $p<0.001$),
+\SI{46}{\percent} less at the velar place compared to the alveolar place
+($z=-6.44$, $p<0.001$), and
+\SI{24}{\percent} less at the velar place compared to the palatal place
+($z=-4.18$, $p<0.001$). 
+
+
+\begin{figure*}
+
+\includegraphics[width=\textwidth]{SuppPub1_HistogramFigure.pdf}
+
+\caption{\label{fig:histograms}
+Distribution of the jaw contributions to constrictions at the bilabial, alveolar, palatal, velar, and pharyngeal places of articulation. The quantity plotted is the percent of a constriction that was produced by the jaw.
+A value of \SI{0}{\percent} indicates that lip or tongue motion produced the entire constriction, whereas a value of \SI{100}{\percent} indicates that jaw motion produced the entire constriction. 
+Distribution by participant shown with a different color for each participant.}
+
+\end{figure*}
+
+
+
+
+\bibliography{mybib.bib}
+
+\end{document}
