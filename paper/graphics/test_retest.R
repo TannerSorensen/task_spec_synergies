@@ -10,7 +10,7 @@ source("declare_user_defined_functions.R")
 # READ IN DATA-SETS
 ###################
 
-input_path <- file.path("..","analysis","mat")
+input_path <- file.path("..","..","analysis","mat")
 
 tab <- read.csv(file.path(input_path,"bm_tab.csv"))
 
@@ -23,7 +23,7 @@ tab <- subset(tab,!is.nan(repetition))
 # SET GRAPHICS PATH
 ###################
 
-graphics_path <- file.path("..","..","graphics","icc")
+graphics_path <- file.path("icc")
 dir.create(graphics_path, showWarnings = FALSE)
 
 # CONSTANTS
