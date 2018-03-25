@@ -13,6 +13,8 @@ graphics/data
 
 paper/cache
 
+submission/
+
 tv_key.csv
 
 *.mat
