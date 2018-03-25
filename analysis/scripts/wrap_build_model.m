@@ -84,7 +84,7 @@ for i=1:length(subject_list)
     if ~exist(tv_key_path_name,'dir')
         mkdir(tv_key_path_name)
     end
-    writetable(tv_key_tab,fullfile(tv_key_path_name,'tv_key'))
+    writetable(tv_key_tab,fullfile(tv_key_path_name,'tv_key.csv'))
     
     % measure task variables
     get_tv(config_struct,false,phar_idx)
