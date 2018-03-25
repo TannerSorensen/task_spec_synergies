@@ -3,9 +3,10 @@ wget -O data.zip http://span.usc.edu/owncloud/index.php/s/k4QR6LFumRgplZO/downlo
 unzip data.zip
 rm data.zip
 mv sorensen_2018_graphics_data data
+mv data/realtimeMRI realtimeMRI
 
 # make MATLAB graphics
-matlab -nodesktop -r "run graphs_segmentation.m; exit"
+matlab -nodesktop -r "run graphs_segmentation.m; run graphs_factors.m; exit"
 
 # make R graphics
 Rscript histograms.R
@@ -13,7 +14,7 @@ Rscript err.R
 Rscript test_retest.R
 
 # declare a list of subfolders that contain images
-declare -a subfolders=("cv_errors" "mri" "segmentation" "constrictions" "histograms" "icc" "templates")
+declare -a subfolders=("cv_errors" "mri" "gfa" "segmentation" "constrictions" "histograms" "icc" "templates")
 
 for subfolder in "${subfolders[@]}"
 do
