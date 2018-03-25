@@ -9,6 +9,11 @@ wget -O segmentation_results.zip http://span.usc.edu/owncloud/index.php/s/TR4oAX
 unzip segmentation_results.zip
 rm segmentation_results.zip
 
+# download manual annotations
+wget -O manual_annotations.zip http://span.usc.edu/owncloud/index.php/s/a3IK867EhTXfFBE/download
+unzip manual_annotations.zip
+rm manual_annotations.zip
+
 # build model
 cd scripts
 matlab -nodisplay -nodesktop -r "run wrap_build_model.m; exit"
