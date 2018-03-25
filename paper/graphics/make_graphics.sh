@@ -24,3 +24,12 @@ do
 	done
 	cd ..
 done
+
+# use LaTeX to combine panels into whole figures
+pdflatex ConstrictionsFigure.tex
+pdflatex ErrorFigure.tex
+pdflatex FactorsFigure.tex
+pdflatex HistogramsFigure.tex
+pdflatex ICCFigure.tex
+pdflatex RealtimeMRIFigure.tex
+pdflatex SegTempFigure.tex

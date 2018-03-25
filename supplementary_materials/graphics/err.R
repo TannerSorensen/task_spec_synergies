@@ -12,20 +12,20 @@ source("declare_user_defined_functions.R")
 # CHOOSE DATA-SET
 #################
 
-morphology_dataset <- FALSE
+morphology_dataset <- TRUE
 
 ###################
 # READ IN DATA-SETS
 ###################
 
-input_path <- file.path("..","analysis","mat")
+input_path <- file.path("..","..","analysis","mat")
 
 tab <- read.csv(file.path(input_path,"err_tab.csv"))
 stds <- read.csv(file.path(input_path,"stds_tab.csv"))
 
 if(morphology_dataset==TRUE){
-  tab <- subset(tab,isnan(repetition))
-  stds <- subset(stds,isnan(repetition))
+  tab <- subset(tab,is.nan(repetition))
+  stds <- subset(stds,is.nan(repetition))
   spat_res <- 2.8
 }else{
   tab <- subset(tab,repetition==1)
@@ -45,7 +45,7 @@ tab[,numeric_cols] <- spat_res*tab[,numeric_cols]
 # SET GRAPHICS PATH
 ###################
 
-graphics_path <- file.path(".","err")
+graphics_path <- file.path(".","cv_errors")
 dir.create(graphics_path, showWarnings = FALSE)
 
 ############
