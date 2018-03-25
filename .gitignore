@@ -12,6 +12,8 @@ graphics/icc
 graphics/histograms
 graphics/data
 
+paper/cache
+
 tv_key.csv
 
 *.mat
