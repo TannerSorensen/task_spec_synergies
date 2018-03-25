@@ -50,7 +50,7 @@
 
 \usepackage{alltt}
 
-\graphicspath{{../graphics/}}
+\graphicspath{{./graphics/}}
 
 % symbols
 \usepackage[utf8]{inputenc}
@@ -992,7 +992,7 @@ Sample distribution by participant shown with a different color for each partici
 \section{Testing the task-specificity of articulator synergies}
 \label{sec:taskspec}
 
-The present study tested the hypothesis that the jaw contributed to anterior constrictions at the bilabial, alveolar, and palatal places but not to posterior constrictions at the velar place using a linear mixed effects model fitted with the package lme4~\citep{bates2015fitting} in R~\citep{r2017language}. 
+The present study tested the hypothesis that the jaw contributed to anterior constrictions at the bilabial, alveolar, and palatal places but not to posterior constrictions at the velar and pharyngeal places using a linear mixed effects model fitted with the package lme4~\citep{bates2015fitting} in R~\citep{r2017language}. 
 
 
 Consider the sample of $n=320$ articulator synergy biomarker values (\num{8} participants $\times$ \num{4} places of articulation $\times$ \num{10} repeated measurements of the articulator synergy biomarker from scan \num{1}). Let $y_{i,j,k}$ be the biomarker value for place of articulation $i$, participant $j$, and replicate measurement $k$ from scan $\ell$ (i.e., Scan~\num{1} or Scan~\num{2}). The linear mixed effects model of $y_{i,j,k,\ell}$ was 
@@ -1019,14 +1019,14 @@ $p=0.19$),
 \SI{40}{\percent} 
 less at the velar place compared to the alveolar place
 ($z=7$, 
-$p=\ensuremath{8.2\times 10^{-12}}$), and
+$p=\ensuremath{8.1\times 10^{-12}}$), and
 %
 % velar vs. palatal
 %
 \SI{19}{\percent} 
 less at the velar place compared to the palatal place
 ($z=2.4$, 
-$p=0.061$).
+$p=0.06$).
 
 
 
@@ -1047,7 +1047,7 @@ $p=0.96$),
 \SI{28}{\percent} 
 less at the pharyngeal place compared to the alveolar place
 ($z=4$, 
-$p=\ensuremath{1.8\times 10^{-4}}$), and
+$p=\ensuremath{3.3\times 10^{-4}}$), and
 %
 % pharyngeal vs. palatal
 %

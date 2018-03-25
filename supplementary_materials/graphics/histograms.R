@@ -21,7 +21,7 @@ tab <- read.csv(file.path(input_path,"bm_tab.csv"))
 morphology_dataset <- TRUE
 
 if(morphology_dataset==TRUE){
-  tab <- subset(tab,isnan(repetition) & n_jaw==1 & n_tng==6 & n_lip==2)
+  tab <- subset(tab,is.nan(repetition) & n_jaw==1 & n_tng==6 & n_lip==2)
 }else{
   tab <- subset(tab,repetition==1 & n_jaw==1 & n_tng==6 & n_lip==2)
 }

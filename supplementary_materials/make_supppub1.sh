@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
-pdflatex graphics/SuppPub1_ErrorFigure.tex
-pdflatex graphics/SuppPub1_HistogramFigure.tex
+cd graphics
+Rscript err.R
+Rscript histograms.R
+pdflatex SuppPub1_ErrorFigure.tex
+pdflatex SuppPub1_HistogramFigure.tex
+cd ..
+
+Rscript -e "library(knitr); knit('SuppPub1.Rns')"
 pdflatex SuppPub1.tex
 bibtex SuppPub1.aux
 pdflatex SuppPub1.tex
