@@ -126,11 +126,9 @@ The research goals of the present study are
 %
 (iii) to use the articulator synergy biomarker to test the task-dependence of articulator synergies by determining whether the jaw contributes more for anterior constrictions at the bilabial, alveolar, and palatal places of articulation than for posterior constrictions at the velar and pharyngeal places of articulation. 
 %
-The study demonstrated low error in the estimator of the direct and differential kinematics at the bilabial, alveolar, palatal, and velar places of articulation. 
+The study demonstrated low error in the estimator of the direct and differential kinematics and consistent estimation of the articulator synergy biomarker in a test-retest repeatability experiment.
 %
-This yielded moderate to strong repeatability of the articulator synergy biomarker for the bilabial, palatal, and velar places of articulation.
-%
-A comparison of the parameters of a mixed effects model fitted to the biomarker values demonstrated that speakers use the jaw more to produce constrictions at the alveolar place of articulation than to produce constrictions at the velar and pharyngeal place of articulation. 
+A comparison of the parameters of a mixed effects model fitted to the biomarker values demonstrated that speakers use the jaw more to produce constrictions at the alveolar place of articulation than to produce constrictions at the velar and pharyngeal places of articulation. 
 %
 The pattern of jaw, tongue, and lip usage was heterogeneous for the bilabial and palatal places of articulation.
 %
@@ -702,7 +700,7 @@ The RMSE of the jacobian matrix was smaller than the 2.4 in-plane spatial resolu
 %
 The RMSE was smaller than the standard deviations of observed frame-to-frame finite differences in constriction degree for all participants and for all neighborhood sizes. 
 %
-However, for many participants, the RMSE approached the standard deviation of the frame-to-frame finite differences in constriction degree.
+However, for many participants, the RMSE approached the standard deviation of the frame-to-frame finite differences in constriction degree, especially for the velar and pharyngeal places of articulation.
 %
 The reason for this is that RMSE for the jacobian matrix was small, but the frame-to-frame differences in constriction degrees varied over a small range to begin with. 
 % 
@@ -933,8 +931,8 @@ paste(getICCrating(minICCs[bilabial_idx]),
 getICCrating(maxICCs[bilabial_idx])))
 }
 repeatability
-(range: \numrange{\Sexpr{minICCs[bilabial_idx]}}{\Sexpr{maxICCs[bilabial_idx]}},
-median: \num{\Sexpr{medICCs[bilabial_idx]}}). 
+(range: \numrange{\Sexpr{signif(minICCs[bilabial_idx],2)}}{\Sexpr{signif(maxICCs[bilabial_idx],2)}},
+median: \num{\Sexpr{signif(medICCs[bilabial_idx],2)}}). 
 %
 % alveolar place
 % 
@@ -947,8 +945,8 @@ paste(getICCrating(minICCs[alveolar_idx]),
 getICCrating(maxICCs[alveolar_idx])))
 }
 repeatability
-(range: \numrange{\Sexpr{minICCs[alveolar_idx]}}{\Sexpr{maxICCs[alveolar_idx]}},
-median: \num{\Sexpr{medICCs[alveolar_idx]}}). 
+(range: \numrange{\Sexpr{signif(minICCs[alveolar_idx],2)}}{\Sexpr{signif(maxICCs[alveolar_idx],2)}},
+median: \num{\Sexpr{signif(medICCs[alveolar_idx],2)}}). 
 %
 % palatal place
 %
@@ -961,8 +959,8 @@ paste(getICCrating(minICCs[palatal_idx]),
 getICCrating(maxICCs[palatal_idx])))
 }
 repeatability
-(range: \numrange{\Sexpr{minICCs[palatal_idx]}}{\Sexpr{maxICCs[palatal_idx]}},
-median: \num{\Sexpr{medICCs[palatal_idx]}}). 
+(range: \numrange{\Sexpr{signif(minICCs[palatal_idx],2)}}{\Sexpr{signif(maxICCs[palatal_idx],2)}},
+median: \num{\Sexpr{signif(medICCs[palatal_idx],2)}}). 
 %
 % velar place
 %
@@ -975,8 +973,8 @@ paste(getICCrating(minICCs[velar_idx]),
 getICCrating(maxICCs[velar_idx])))
 }
 repeatability
-(range: \numrange{\Sexpr{minICCs[velar_idx]}}{\Sexpr{maxICCs[velar_idx]}},
-median: \num{\Sexpr{medICCs[velar_idx]}}). 
+(range: \numrange{\Sexpr{signif(minICCs[velar_idx],2)}}{\Sexpr{signif(maxICCs[velar_idx],2)}},
+median: \num{\Sexpr{signif(medICCs[velar_idx],2)}}). 
 %
 % pharyngeal place
 %
@@ -989,8 +987,8 @@ paste(getICCrating(minICCs[pharyngeal_idx]),
 getICCrating(maxICCs[pharyngeal_idx])))
 }
 repeatability
-(range: \numrange{\Sexpr{minICCs[pharyngeal_idx]}}{\Sexpr{maxICCs[pharyngeal_idx]}},
-median: \num{\Sexpr{medICCs[pharyngeal_idx]}}). 
+(range: \numrange{\Sexpr{signif(minICCs[pharyngeal_idx],2)}}{\Sexpr{signif(maxICCs[pharyngeal_idx],2)}},
+median: \num{\Sexpr{signif(medICCs[pharyngeal_idx],2)}}). 
 
 
 \begin{figure*}
@@ -1196,23 +1194,21 @@ The research goals of the present study were (i) to estimate and evaluate the di
 %
 (iii) to use the articulator synergy biomarker to test the task-dependence of articulator synergies by determining whether the jaw contributes more for anterior constrictions at the bilabial, alveolar, and palatal places of articulation than for posterior constrictions at the velar and pharyngeal places of articulation.
 %
-The study demonstrated low error in the estimator of the direct and differential kinematics at the bilabial, alveolar, palatal, and velar places of articulation. 
+The study demonstrated low error in the estimator of the direct and differential kinematics and consistent estimation of the articulator synergy biomarker in a test-retest repeatability experiment.
 %
-This yielded moderate to strong repeatability of the articulator synergy biomarker for the bilabial, palatal, and velar places of articulation.
-%
-A comparison of the parameters of a mixed effects model fitted to the biomarker values demonstrated that speakers use the jaw more to produce constrictions at the alveolar place of articulation than to produce constrictions at the velar and pharyngeal place of articulation. 
+A comparison of the parameters of a mixed effects model fitted to the biomarker values demonstrated that speakers use the jaw more to produce constrictions at the alveolar place of articulation than to produce constrictions at the velar and pharyngeal places of articulation. 
 %
 The pattern of jaw, tongue, and lip usage was heterogeneous for the bilabial and palatal places of articulation.
 %
 The implication of the results is that the articulator synergy biomarker has adequate precision to characterize healthy variability in articulator synergies, and that these synergies vary by speaker and by place of articulation. 
 %
 The present study supports the idea that different articulator synergies have different patterns of inter-articulator coordination. 
-If synergies organize the articulators on a temporary basis for achieving motor goals such as vocal tract constrictions, as proposed in theories of motor control~\citep{turvey1977preliminaries, saltzman1987skilled} and in theories of phonological organization~\citep{browman1986towards, browman1989articulatory}, then the pattern of inter-articulator coordination varies over time, as the vocal tract deploys different synergies. 
+If synergies organize the articulators on a temporary basis for achieving motor goals such as vocal tract constrictions, as proposed in theories of motor control~\citep{turvey1977preliminaries, saltzman1987skilled} and in theories of phonological organization~\citep{browman1986towards, browman1989articulatory}, then the pattern of inter-articulator coordination varies over time as the vocal tract deploys different synergies. 
 The articulator synergy biomarker provides the means to characterize this time-varying pattern of inter-articulator coordination on the basis of a computational model of the direct and differential kinematics of the vocal tract. 
 
 The algorithm for computing the articulator synergy biomarker involves a computational model of the forward kinematic map~\citep{lammert2013statistical}, based on the Task Dynamics model of speech production~\citep{saltzman1989dynamical}. In contrast to articulator synergy biomarkers that use a priori physiological models to compute biomarker values~\citep[e.g., articulator synergy biomarkers of kinetic parameters from dynamic contrast-enhanced MRI,][]{aerts2008system},  the articulator synergy biomarker algorithm fits the forward kinematic map to the real-time MRI data and uses the fitted model, not an a priori model, to compute the articulator synergy biomarker. Thus, the proposed algorithm took into account by-participant variability in the forward kinematic map by estimating the forward kinematic map for each participant. 
 
-The proliferation of vocal tract imaging databases~\citep{narayanan2014real,sorensen2017database} and the increasingly complex computational methods for studying the morphological~\citep{lammert2013morphological} and functional~\citep{dawson2016methods} complexities captured therein underscore the importance of evaluating the technical performance of quantitative imaging biomarkers of speech. The model-based approach to computing articulator synergy biomarkers allowed the present study to not only evaluate biomarker performance, but to attribute error to specific components of the model, such as the estimator of the jacobian matrix. This provided an understanding of where error is introduced. This approach revealed that poor articulator synergy biomarker performance for the pharyngeal place of articulation was due to large error in the estimator of the corresponding row of the jacobian matrix of the forward kinematic map. The error was greater in magnitude than the standard deviation of the constriction degrees observed at the pharyngeal place of articulation. Although a strength of MRI over competing imaging modalities such as ultrasound is that MRI allows visualization of the pharynx, this region has a complicated geometry which makes reliably processing images of this region difficult. Specifically, the shape and position of the epiglottis depends on the anterior-posterior position of the tongue, as well as subject-specific anatomical and physiological properties. With the tongue root advanced, air may intervene between the tongue root and epiglottis, whereas no such air-tissue interface exists with the tongue root retracted. This leads to drastic differences in the image depending on the state of the tongue. The present study demonstrated a need for reliable quantification of hypopharyngeal structures such as the epiglottis. Developing reliable segmentation of the hypopharynx may improve the technical performance of the the pharyngeal synergy biomarkers.
+The proliferation of vocal tract imaging databases~\citep{narayanan2014real,sorensen2017database} and the increasingly complex computational methods for studying the morphological~\citep{lammert2013morphological} and functional~\citep{dawson2016methods} complexities captured therein underscore the importance of evaluating the technical performance of quantitative imaging biomarkers of speech. The model-based approach to computing articulator synergy biomarkers allowed the present study to not only evaluate biomarker performance, but to attribute error to specific components of the model, such as the estimator of the jacobian matrix. This provided an understanding of where error is introduced. This approach revealed that poor articulator synergy biomarker performance for the pharyngeal place of articulation was due to error in the estimator of the corresponding row of the jacobian matrix of the forward kinematic map. The error approached the magnitude of the standard deviation of the frame-to-frame finite differences in constriction degrees observed at the pharyngeal place of articulation. Although a strength of MRI over competing imaging modalities such as ultrasound is that MRI allows visualization of the pharynx, this region has a complicated geometry which makes reliably processing images of this region difficult. Specifically, the shape and position of the epiglottis depends on the anterior-posterior position of the tongue, as well as subject-specific anatomical and physiological properties. With the tongue root advanced, air may intervene between the tongue root and epiglottis, whereas no such air-tissue interface exists with the tongue root retracted. This leads to drastic differences in the image depending on the state of the tongue. The present study demonstrated a need for reliable quantification of hypopharyngeal structures such as the epiglottis. Developing reliable segmentation of the hypopharynx may improve the technical performance of the the pharyngeal synergy biomarkers.
 
 Our previous study showed that real-time MRI could be used to obtain articulator synergy biomarkers of the range of motion at the phonetic places of articulation, but showed poor precision for articulator synergy biomarkers of articulator velocities~\citep{toger2017test}. Despite the importance of velocity information for obtaining articulator synergy biomarkers, the technical performance of the articulator synergy biomarker nevertheless represents an improvement over articulator synergy biomarkers of articulator velocities. This improvement is likely due to the algorithm not using raw articulator velocities, but rather transforming and integrating multiple articulator velocities over time. 
 
