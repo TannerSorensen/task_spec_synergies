@@ -2,8 +2,8 @@
 wget -O data.zip http://span.usc.edu/owncloud/index.php/s/k4QR6LFumRgplZO/download
 unzip data.zip
 rm data.zip
-mv sorensen_2018_graphics_data data
-mv data/realtimeMRI realtimeMRI
+mv -f sorensen_2018_graphics_data data
+mv -f data/realtimeMRI realtimeMRI
 
 # make MATLAB graphics
 matlab -nodesktop -r "run graphs_segmentation.m; run graphs_factors.m; exit"
