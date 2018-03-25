@@ -5,18 +5,21 @@ source("require_libraries.R")
 # SET GRAPHICS PATH
 ###################
 
-graphics_path <- file.path("..","..","graphics","histograms")
+graphics_path <- file.path(".","histograms")
 dir.create(graphics_path, showWarnings = FALSE)
+
+# READ IN DATA-SET
+##################
+
+input_path <- file.path("..","mat")
+
+tab <- read.csv(file.path(input_path,"bm_tab.csv"))
 
 # CHOOSE DATA-SET
 #################
 
 morphology_dataset <- FALSE
 
-# READ IN DATA-SET
-##################
-
-tab <- read.csv(file.path("..","mat","bm_tab.csv"))
 if(morphology_dataset==TRUE){
   tab <- subset(tab,isnan(repetition) & n_jaw==1 & n_tng==6 & n_lip==2)
 }else{

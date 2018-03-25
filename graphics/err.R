@@ -18,7 +18,7 @@ morphology_dataset <- FALSE
 # READ IN DATA-SETS
 ###################
 
-input_path <- file.path("..","mat")
+input_path <- file.path("..","analysis","mat")
 
 tab <- read.csv(file.path(input_path,"err_tab.csv"))
 stds <- read.csv(file.path(input_path,"stds_tab.csv"))
@@ -45,7 +45,7 @@ tab[,numeric_cols] <- spat_res*tab[,numeric_cols]
 # SET GRAPHICS PATH
 ###################
 
-graphics_path <- file.path("..","..","graphics","err")
+graphics_path <- file.path(".","err")
 dir.create(graphics_path, showWarnings = FALSE)
 
 ############

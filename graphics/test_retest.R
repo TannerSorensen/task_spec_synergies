@@ -10,7 +10,14 @@ source("declare_user_defined_functions.R")
 # READ IN DATA-SETS
 ###################
 
-tab <- read.csv(file.path("..","mat","bm_tab.csv"))
+input_path <- file.path("..","analysis","mat")
+
+tab <- read.csv(file.path(input_path,"bm_tab.csv"))
+
+# CHOOSE REPEATABILITY DATASET
+# (NOT MORPHOLOGY DATASET)
+##############################
+
 tab <- subset(tab,!is.nan(repetition))
 
 # SET GRAPHICS PATH
