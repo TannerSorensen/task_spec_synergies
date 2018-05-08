@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# install R dependencies
+Rscript install_dep.R
+
 # clone repositories
 cd analysis
 git clone https://github.com/usc-sail/span_contour_processing.git
