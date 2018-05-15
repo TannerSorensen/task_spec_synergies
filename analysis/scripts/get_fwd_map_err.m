@@ -1,4 +1,6 @@
 function get_fwd_map_err(config_struct)
+
+    disp('Quantifying error of direct and differential kinematics')
     
     % set the number of folds
     n_fold = 10;
@@ -34,7 +36,7 @@ function get_fwd_map_err(config_struct)
     end
 
     % generate cross validation splits
-    idx = crossvalind('Kfold', size(X,1), n_fold);
+    cv_idx = crossvalind('Kfold', size(X,1), n_fold);
 
     % initialize container for prediction errors
     err = zeros(size(X,1),size(Z,2));
@@ -44,8 +46,8 @@ function get_fwd_map_err(config_struct)
     inner_idx = 1;
     for k=1:n_fold
         % get the kth train-test split
-        train_idx = find(idx ~= k);
-        test_idx = find(idx == k);
+        train_idx = find(cv_idx ~= k);
+        test_idx = find(cv_idx == k);
         
         % split the factor scores W, constriction degrees Z, and
         % time-derivatives dW and dZ according to the train-test split
@@ -55,19 +57,27 @@ function get_fwd_map_err(config_struct)
         Ztest = Z(test_idx,:);
         dWtest = dW(test_idx,:);
         dZtest = dZ(test_idx,:);
+        
+        % Get q nearest neighbors of each articulator parameter value.
+        fn = round(config_struct.f*size(X,1));
+        [knn_idx, dist] = knnsearch(Wtrain(:,2:end),Wtest,'dist','euclidean','K',fn);
 
         for ell=1:length(test_idx)
             % get distances from test point W(ell,:) to each data-point
-            d = pdist2(W,Wtest(ell,:));
-            dsort = sort(d);
+            %d = pdist2(W,Wtest(ell,:));
+            %dsort = sort(d);
 
             % get weights
-            h = dsort(round(config_struct.f*size(X,1)));
-            w = (1-(d./h).^3).^3;
-            w(d./h > 1) = 0;
+            %h = dsort(round(config_struct.f*size(X,1)));
+            %w = (1-(d./h).^3).^3;
+            %w(d./h > 1) = 0;
 
             % get error for the ellth observation
-            G = lscov(Wtrain, Ztrain, w(train_idx));
+            %G = lscov(Wtrain, Ztrain, w(train_idx));
+            
+            w = zeros(size(Wtrain,1),1);
+            w(knn_idx(ell,:)) = arrayfun(@(u) weight_fun(u), dist(ell,:)./dist(ell,end));
+            G = lscov(Wtrain, Ztrain, w);
 
             Zhat = [1 Wtest(ell,:)]*G;
             err(inner_idx,:) = Ztest(ell,:) - Zhat;
