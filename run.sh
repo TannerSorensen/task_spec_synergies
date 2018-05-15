@@ -4,6 +4,9 @@
 cd analysis
 git clone https://github.com/usc-sail/span_contour_processing.git
 
+# install R dependencies
+RScript -e "install.packages(c('lme4','multcomp','RColorBrewer','rptR'), dependencies=TRUE, repos = "http://cran.us.r-project.org")"
+
 # download segmentation results
 wget -O segmentation_results.zip http://span.usc.edu/owncloud/index.php/s/TR4oAXNrAfARsYT/download
 unzip segmentation_results.zip

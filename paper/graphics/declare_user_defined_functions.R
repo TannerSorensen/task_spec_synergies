@@ -25,7 +25,7 @@ plot_means <- function(plt_tab,stds,col_idx,xlab_flag,titl,graphics_path){
            ylab = ylbl,
            main = titl)
     }else{
-      lines(plt_tab[row_idx,x_val_idx],plt_tab[row_idx,y_val_idx]/stds[stds$participant==i,2],type="o",col=cols[col_idx],pch=19)
+      lines(plt_tab[row_idx,x_val_idx],plt_tab[row_idx,y_val_idx],type="o",col=cols[col_idx],pch=19)
     }
   }
   axis(1, at=seq(0,1,0.2), labels=paste(seq(0,100,20),"%",sep=""), cex.axis=1)
