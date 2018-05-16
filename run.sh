@@ -19,7 +19,7 @@ rm manual_annotations.zip
 
 # build model
 cd scripts
-matlab -nodisplay -nodesktop -r "run wrap_build_model.m; exit"
+./run_wrap_build_model.sh
 cd ../..
 
 # make paper

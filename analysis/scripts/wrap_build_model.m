@@ -42,6 +42,9 @@ variant_switch = 'sorensen2018';
 % set the f values to test
 f = 0.2:0.1:0.9;
 
+cluster=get_SLURM_cluster('--time=23:59:59');
+parpool(8)
+
 parfor i=1:length(subject_list)
     fprintf(1,'subject %s (%d/%d)\n', subject_list{i},i,length(subject_list))
     
