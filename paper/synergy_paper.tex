@@ -61,13 +61,7 @@
 % URLs
 \usepackage{url}
 
-% table formatting
-\usepackage{multirow,array}
-\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
-\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
-\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% figure panels
 \usepackage{stackengine}
 
 % overbrace on matrices
@@ -200,9 +194,17 @@ Section~\ref{sec:taskspec} uses the articulator synergy biomarker to test the ta
 \section{Magnetic resonance imaging}
 \label{sec:mri}
 
-\subsection{Experiment protocol}
+\subsection{Experiment}
 
-Each participant took part in one session. The study personnel explained the nature of the experiment and the protocol to the participant before each scan. The participant lay on the scanner table in a supine position. The head was fixed in place by foam pads inserted between the temple and the receiver coil on the left and right sides of the head. The participant read visually presented text from a paper card taped to the scanner bore in front of the face. The speech corpus included real-time MRI videos of the isolated vowel-consonant-vowel utterances \textipa{[apa]}, \textipa{[ata]}, \textipa{[aka]}, \textipa{[aja]}. The participant produced each vowel-consonant-vowel utterance ten times. The study personnel removed the participant from the scanner for a short break, and then repeated the experiment. After completing the session, the speaker was paid for their participation in the study. The USC Institutional Review Board approved the data collection procedures. 
+The data-set included eight (4 male, 4 female) speakers of American English. Five participants were native speakers of American English. None of the participants reported speech pathology or abnormal hearing.\footnote{Supplementary material available at [URL will be inserted by AIP] provides participant characteristics.} Each participant took part in one session. The study personnel explained the nature of the experiment and the protocol to the participant before each scan. The participant lay on the scanner table in a supine position. The head was fixed in place by foam pads inserted between the temple and the receiver coil on the left and right sides of the head. The participant read visually presented text from a paper card taped to the scanner bore in front of the face. The speech corpus included real-time MRI videos of the isolated vowel-consonant-vowel utterances \textipa{[apa]}, \textipa{[ata]}, \textipa{[aka]}, \textipa{[aja]}. The participant produced each vowel-consonant-vowel utterance ten times. The study personnel removed the participant from the scanner for a short break, and then repeated the experiment. After completing the session, the speaker was paid for their participation in the study. The USC Institutional Review Board approved the data collection procedures. 
+
+Vocal tract constrictions were manually identified in the real-time MRI videos. 
+%
+The video frames were inspected on a computer monitor. 
+%
+Guided by graphical presentation of real-time MRI video frames and auditory presentation of a denoised speech audio signal recorded in the scanner bore, the study personnel manually identified the intervals of time during which the vocal tract produced oral constrictions for the consonants of the vowel-consonant-vowel sequences \textipa{[apa]}, \textipa{[ata]}, \textipa{[aka]}, \textipa{[aja]}. 
+%
+Study personnel annotated the frame number of the first and last frames in which there was visible movement of the lips (for \textipa{[apa]}) or tongue (for \textipa{[ata]}, \textipa{[aka]}, and \textipa{[aja]}). 
 
 
 
@@ -234,54 +236,6 @@ Reconstruction was performed using the Berkeley Advanced Reconstruction Toolbox~
 
 
 
-\subsection{Participant characteristics}
-
-The data-set included eight (4 male, 4 female) speakers of American English. Five participants were native speakers of American English. None of the participants reported speech pathology or abnormal hearing. Table~\ref{tab:subj2} lists age, gender, state of origin, and native language. 
-
-\begin{table}
-\centering
-\begin{tabular}{l l l L{0.2\linewidth} l}
-\hline
-ID & age & gender & state of origin & native language \Tstrut \Bstrut \\
-\hline
-F1 & 25 & F & Rhode Island & American English \Tstrut \\
-F2 & 28 & F & Texas & American English \\
-F3 & 24 & F & Nebraska & American English \\
-F4 & 29 & F & Korea & Korean \\
-M1 & 29 & M & Iowa & American English \\
-M2 & 27 & M & United Arab Emirates & American English \\
-M3 & 26 & M & Germany & German \\
-M4 & 39 & M & Greece & Greek \\
-\hline
-& \shortstack[l]{\Tstrut median: 28 \\ range: 24--39}
-& \shortstack[l]{\Tstrut 4 male \\ 4 female}
-& 
-& \shortstack[l]{5 American English \\ 3 other}\Tstrut \Bstrut \\
-\hline 
-\end{tabular}
-\caption{Participant characteristics of the test-retest data-set}
-\label{tab:subj2}
-\end{table}
-
-
-
-
-
-
-\subsection{Time-point annotation}
-\label{subsec:timepointannotation}
-
-Vocal tract constrictions were manually identified in the real-time MRI videos. 
-%
-The video frames were inspected on a computer monitor. 
-%
-Guided by graphical presentation of real-time MRI video frames and auditory presentation of a denoised speech audio signal recorded in the scanner bore, the study personnel manually identified the intervals of time during which the vocal tract produced oral constrictions for the consonants of the vowel-consonant-vowel sequences \textipa{[apa]}, \textipa{[ata]}, \textipa{[aka]}, \textipa{[aja]}. 
-%
-Study personnel annotated the frame number of the first and last frames in which there was visible movement of the lips (for \textipa{[apa]}) or tongue (for \textipa{[ata]}, \textipa{[aka]}, and \textipa{[aja]}). 
-
-
-
-
 
 \section{Constriction degree measurement}
 \label{sec:cd}
@@ -297,7 +251,7 @@ See Fig.~\ref{fig:segtemp} for example segmentation results.
 \includegraphics[width=\linewidth]{SegTempFigure.pdf}
 
 \caption{(color online) {\bf a.} Study personnel manually created subject-specific templates for \textipa{[a]}, \textipa{[i]}, \textipa{[p]}, \textipa{[t]}, \textipa{[k]}, which were then automatically deformed to fit the articulator contours in the real-time magnetic resonance images. The different articulator contours are in different colors.
-{\bf b.} Articulator contour segmentation of a sequence of real-time magnetic resonance images acquired in the transition from vowel \textipa{[a]} to glide \textipa{[j]} in \textipa{[aja]}. Reconstructed frame rate was downsampled for presentation.}
+{\bf b.} Articulator contour segmentation of a sequence of real-time magnetic resonance images acquired in the transition from vowel \textipa{[a]} to glide \textipa{[j]} in \textipa{[aja]}. Frame rate downsampled for presentation.}
 \label{fig:segtemp}
 \end{figure}
 
@@ -326,7 +280,7 @@ Fig.~\ref{fig:constrictions} illustrates the constriction degree measurements at
 
 \includegraphics[width=\linewidth]{ConstrictionsFigure.pdf}
 
-\caption{(color online) Constriction degrees at the phonetic places of articulation in the transition from vowel \textipa{[a]} to glide \textipa{[j]} in the sequence \textipa{[aja]}. The phonetic places of articulation (blue lines) are bilabial place, alveolar place, palatal place, velar place, velopharyngeal port, and pharyngeal place. Reconstructed frame rate was downsampled for presentation.}
+\caption{(color online) Constriction degrees at the phonetic places of articulation in the transition from vowel \textipa{[a]} to glide \textipa{[j]} in the sequence \textipa{[aja]}. The phonetic places of articulation (blue lines) are bilabial place, alveolar place, palatal place, velar place, velopharyngeal port, and pharyngeal place. Frame rate downsampled for presentation.}
 \label{fig:constrictions}
 \end{figure}
 
@@ -739,7 +693,7 @@ For a given $f$-value and phonetic place of articulation, the 10-fold cross-vali
 %
 The reported $\mathrm{RMSE}_{\mathbf{G},k}$ and $\mathrm{RMSE}_{\mathbf{J},k}$ values are the medians of these \num{10} values.
 %
-The results reported in this section were obtained with one jaw factor, four tongue factors, and two lip factors. Results obtained with other numbers of factors are available as supplementary material.\footnote{Supplementary material repeating the evaluation of the forward kinematic map with different numbers of factors is available at [URL will be inserted by AIP].}
+The results reported in this section were obtained with one jaw factor, four tongue factors, and two lip factors. Results obtained with other numbers of factors are available as supplementary material.\footnote{Supplementary material available at [URL will be inserted by AIP] performs the evaluation of the forward kinematic map with different numbers of factors.}
 
 
 
@@ -855,9 +809,9 @@ Vertical length of the bars indicates the total elapsed change in constriction d
 %
 The breakdown into dark and light parts indicates the contribution of the jaw and tongue to the constriction, respectively.
 %
-From the time of constriction onset to the time of maximum constriction, the jaw and tongue produce a narrowing at the palatal place. 
+From the time of constriction onset to the time of maximum constriction, the jaw and tongue produce a narrowing at the palatal place, and constriction degree decreases to a minimum. 
 %
-After achieving maximum constriction, the jaw and tongue widen the constriction degree at the palatal place.}
+After achieving maximum constriction, the jaw and tongue widen the constriction degree at the palatal place, and constriction degree increases.}
 \label{fig:biomarkerFigure}%
 \end{figure}
 
@@ -879,6 +833,15 @@ Image analysis variability included variability in the manual step of time-point
 Short-term physiological variability included same-day scan-to-scan variability in speech motor control. 
 %
 Precision is an important parameter, as it establishes a limit on effect size and group differences that the method can resolve.
+
+\begin{figure*}[t]
+\raggedright
+\includegraphics[width=\linewidth]{ICCFigure.pdf}
+
+\caption{(color online) Comparison of intraclass correlation coefficients (ICC) for different numbers of jaw factors (color) and for different numbers of tongue and lip factors ($x$-axis) at the bilabial, alveolar, palatal, velar, and pharyngeal places of articulation.}
+\label{fig:icc_all}
+
+\end{figure*}
 
 Agreement between Scan~\num{1} and Scan~\num{2} was quantified using the intraclass correlation coefficient (ICC). The ICC is a quantitative measure of test-retest repeatability for articulator synergy biomarkers. 
 The ICC is the ratio of inter-participant variability to total variability. The greater the inter-participant variability compared to total variability, the greater the reliability, because random error is smaller relative to the variance of the articulator synergy biomarker between experiment participants. 
@@ -916,7 +879,7 @@ Nevertheless, repeatability will depend on imaging parameters, and if different 
 
 Fig.~\ref{fig:icc_all} shows the repeatability of the articulator synergy biomarker for different numbers of jaw, tongue, and lip factors. 
 %
-Regardless of the neighborhood size used for the forward kinematic map estimator, the error of the estimator was well in the subvoxel range (cf. Section~\ref{subsec:crossval}). For this reason, neighborhood size was fixed at \SI{70}{\percent} of training data-points. Supplementary material demonstrates similar variability for other neighborhood sizes.\footnote{The supplementary material reporting repeatability for different neighborhood sizes is available at [URL will be inserted by AIP].}
+Regardless of the neighborhood size used for the forward kinematic map estimator, the error of the estimator was well in the subvoxel range (cf. Section~\ref{subsec:crossval}). For this reason, neighborhood size was fixed at \SI{70}{\percent} of training data-points. Supplementary material reports similar ICC for other neighborhood sizes.\footnote{Supplementary material available at [URL will be inserted by AIP] reports ICC for different neighborhood sizes.}
 %
 The images of participant F3 were excluded from the repeatability analysis due to poor image quality in the second scan. 
 
@@ -965,15 +928,6 @@ repeatability
 median: \num{0.36}). 
 
 
-\begin{figure*}
-\raggedright
-
-\includegraphics[width=\linewidth]{ICCFigure.pdf}
-
-\caption{(color online) Comparison of intraclass correlation coefficients (ICC) for different numbers of jaw factors (color) and for different numbers of tongue and lip factors ($x$-axis) at the bilabial, alveolar, palatal, velar, and pharyngeal places of articulation.}
-\label{fig:icc_all}
-\end{figure*}
-
 
 
 
@@ -994,7 +948,7 @@ suggesting that intra-participant variance is substantial (see the histograms in
 Although constrictions at the velar and pharyngeal places may not involve a very great contribution of the jaw, the number of jaw factors nevertheless affects ICC (see panels ``velar place'' and ``pharyngeal place'' of Figure~\ref{fig:icc_all}). This is due to the fact that using more jaw factors increases the variance of the tongue that is explained by jaw factors, and some of this variance may reflect the performance of velar and pharyngeal constrictions. 
 
 
-\begin{figure*}
+\begin{figure*}[t]
 
 \includegraphics[width=\linewidth]{HistogramsFigure.pdf}
 
@@ -1038,7 +992,7 @@ $p=0.19$),
 \SI{40}{\percent} 
 less at the velar place compared to the alveolar place
 ($z=7$, 
-$p=\ensuremath{1.1\times 10^{-11}}$), and
+$p=\ensuremath{9.7\times 10^{-12}}$), and
 %
 % velar vs. palatal
 %
@@ -1066,7 +1020,7 @@ $p=0.96$),
 \SI{28}{\percent} 
 less at the pharyngeal place compared to the alveolar place
 ($z=4$, 
-$p=\ensuremath{2.5\times 10^{-4}}$), and
+$p=\ensuremath{5.1\times 10^{-4}}$), and
 %
 % pharyngeal vs. palatal
 %
@@ -1117,7 +1071,7 @@ suggests that participants exhibited substantial heterogeneity in biomarker valu
 
 
 
-In order to determine whether the results reported above depended on the choice of a particular number of jaw, tongue, and lip factors or on the choice of a particular neighborhood size for the forward kinematic map estimator, we repeated the statistical analysis with different parameter values (number of jaw factors: 1, 2, 3; number of tongue factors: 4, 6, 8; number of lip factors: 2, 3; neighborhood size: \SIrange{20}{90}{\percent} in \SI{10}{\percent} steps).\footnote{Results are visualized in supplementary material available at [URL will be inserted by AIP].}
+In order to determine whether the results reported above depended on the choice of a particular number of jaw, tongue, and lip factors or on the choice of a particular neighborhood size for the forward kinematic map estimator, we repeated the statistical analysis with different parameter values (number of jaw factors: 1, 2, 3; number of tongue factors: 4, 6, 8; number of lip factors: 2, 3; neighborhood size: \SIrange{20}{90}{\percent} in \SI{10}{\percent} steps).\footnote{Supplementary material available at [URL will be inserted by AIP] graphs the results of the sensativity analysis.}
 %
 The finding that the articulator synergy biomarker was greater at the alveolar place than at the velar place was reproduced with 93 of 96 parameterizations (\SI{97}{\percent} of cases).
 %
@@ -1127,7 +1081,7 @@ We observed that this sensitivity to parameterization was largely due to a lack 
 %
 When using only 1 or 2 jaw factors, this number increases to 53 of 64 parameterizations (\SI{83}{\percent} of cases).
 %
-Overall, this pattern of results supports our inference that the jaw contributed significantly more to constrictions at the alveolar place compared to constrictions at the velar and pharyngeal places.
+Overall, these results support the inference that the jaw contributed significantly more to constrictions at the alveolar place than to constrictions at the velar and pharyngeal places.
 
 
 
@@ -1193,7 +1147,7 @@ The scripts required to reproduce the present study are available as supplementa
 %
 The MRI data-set is available at \url{http://sail.usc.edu/span/test-retest/} for free use by the research community~\citep[see][]{toger2017test}.
 %
-A replication of the present study was performed using the USC Speech and Vocal Tract Morphology MRI Database~\citep{sorensen2017database}.\footnote{The results of the replication study are available at [URL will be inserted by AIP].}
+A replication of the present study was performed using the USC Speech and Vocal Tract Morphology MRI Database~\citep{sorensen2017database} and is available as supplementary material.\footnote{The results of the replication study are available at [URL will be inserted by AIP].}
 
 \section{Acknowledgments} 
 
@@ -1241,7 +1195,7 @@ The authors acknowledge funding through NIH grant R01DC007124, NIH grant T32DC00
 \bibinfo{author}{Browman, C.~P.},  and \bibinfo{author}{Goldstein, L.}
   (\textbf{\bibinfo{year}{1989}}). \enquote{\bibinfo{title}{Articulatory
   gestures as phonological units}} \bibinfo{journal}{Phonology} \textbf{6}(2),
-  \bibinfo{pages}{201?251}, \dodoi{10.1017/S0952675700001019}.
+  \bibinfo{pages}{201--251}, \dodoi{10.1017/S0952675700001019}.
 
 \bibitem[{Browman and Goldstein(1986)}]{browman1986towards}
 \bibinfo{author}{Browman, C.~P.},  and \bibinfo{author}{Goldstein, L.~M.}
@@ -1252,10 +1206,10 @@ The authors acknowledge funding through NIH grant R01DC007124, NIH grant T32DC00
 \bibitem[{Dawson \emph{et~al.}(2016)Dawson, Tiede, and
   Whalen}]{dawson2016methods}
 \bibinfo{author}{Dawson, K.~M.}, \bibinfo{author}{Tiede, M.~K.},  and
-  \bibinfo{author}{Whalen, D.} (\textbf{\bibinfo{year}{2016}}).
+  \bibinfo{author}{Whalen, D.~H.} (\textbf{\bibinfo{year}{2016}}).
   \enquote{\bibinfo{title}{Methods for quantifying tongue shape and complexity
   using ultrasound imaging}} \bibinfo{journal}{Clinical Linguistics \&
-  Phonetics} \textbf{30}(3-5), \bibinfo{pages}{328--344},
+  Phonetics} \textbf{30}(3--5), \bibinfo{pages}{328--344},
   \dodoi{10.3109/02699206.2015.1099164}.
 
 \bibitem[{Herbort \emph{et~al.}(2010)Herbort, Butz, and
@@ -1276,7 +1230,7 @@ The authors acknowledge funding through NIH grant R01DC007124, NIH grant T32DC00
 \bibinfo{author}{Hothorn, T.}, \bibinfo{author}{Bretz, F.},  and
   \bibinfo{author}{Westfall, P.} (\textbf{\bibinfo{year}{2008}}).
   \enquote{\bibinfo{title}{Simultaneous inference in general parametric
-  models}} \bibinfo{journal}{Biometrical journal} \textbf{50}(3),
+  models}} \bibinfo{journal}{Biometrical Journal} \textbf{50}(3),
   \bibinfo{pages}{346--363}, \dodoi{10.1002/bimj.200810425}.
 
 \bibitem[{Kelso \emph{et~al.}(1984)Kelso, Tuller, Vatikiotis-Bateson, and
@@ -1285,20 +1239,21 @@ The authors acknowledge funding through NIH grant R01DC007124, NIH grant T32DC00
   \bibinfo{author}{Vatikiotis-Bateson, E.},  and \bibinfo{author}{Fowler,
   C.~A.} (\textbf{\bibinfo{year}{1984}}). \enquote{\bibinfo{title}{Functionally
   specific articulatory cooperation following jaw perturbations during speech:
-  Evidence for coordinative structures.}} \bibinfo{journal}{Journal of
+  Evidence for coordinative structures}} \bibinfo{journal}{Journal of
   Experimental Psychology: Human Perception and Performance} \textbf{10}(6),
   \bibinfo{pages}{812--832}, \dodoi{10.1037/0096-1523.10.6.812}.
 
 \bibitem[{Kessler \emph{et~al.}(2015)Kessler, Barnhart, Buckler, Choudhury,
-  Kondratovich, Toledano, Guimaraes, Filice, Zhang, Sullivan
-  \emph{et~al.}}]{kessler2015emerging}
+  Kondratovich, Toledano, Guimaraes, Filice, Zhang, Sullivan, and {QIBA
+  Terminology Working Group}}]{kessler2015emerging}
 \bibinfo{author}{Kessler, L.~G.}, \bibinfo{author}{Barnhart, H.~X.},
   \bibinfo{author}{Buckler, A.~J.}, \bibinfo{author}{Choudhury, K.~R.},
   \bibinfo{author}{Kondratovich, M.~V.}, \bibinfo{author}{Toledano, A.},
   \bibinfo{author}{Guimaraes, A.~R.}, \bibinfo{author}{Filice, R.},
-  \bibinfo{author}{Zhang, Z.}, \bibinfo{author}{Sullivan, D.~C.} \emph{et~al.}
+  \bibinfo{author}{Zhang, Z.}, \bibinfo{author}{Sullivan, D.~C.},  and
+  \bibinfo{author}{{QIBA Terminology Working Group}}
   (\textbf{\bibinfo{year}{2015}}). \enquote{\bibinfo{title}{The emerging
-  science of quantitative imaging biomarkers terminology and definitions for
+  science of quantitative imaging biomarkers: Terminology and definitions for
   scientific studies and regulatory submissions}} \bibinfo{journal}{Statistical
   Methods in Medical Research} \textbf{24}(1), \bibinfo{pages}{9--26},
   \dodoi{10.1177\%2F0962280214537333}.
@@ -1316,7 +1271,7 @@ The authors acknowledge funding through NIH grant R01DC007124, NIH grant T32DC00
 \bibitem[{Lammert \emph{et~al.}(2013{\natexlab{b}})Lammert, Proctor, and
   Narayanan}]{lammert2013morphological}
 \bibinfo{author}{Lammert, A.}, \bibinfo{author}{Proctor, M.},  and
-  \bibinfo{author}{Narayanan, S.}
+  \bibinfo{author}{Narayanan, S.~S.}
   (\textbf{\bibinfo{year}{2013}}{\natexlab{b}}).
   \enquote{\bibinfo{title}{Morphological variation in the adult hard palate and
   posterior pharyngeal wall}} \bibinfo{journal}{Journal of Speech, Language,
@@ -1335,43 +1290,46 @@ The authors acknowledge funding through NIH grant R01DC007124, NIH grant T32DC00
   \bibinfo{journal}{Organizational Research Methods} \textbf{11}(4),
   \bibinfo{pages}{816--852}, \dodoi{10.1177\%2F1094428106296642}.
 
-\bibitem[{Lingala \emph{et~al.}(2016)Lingala, Toutios, Toger, Lim, Zhu, Kim,
-  Vaz, Narayanan, and Nayak}]{lingala2016state}
+\bibitem[{Lingala \emph{et~al.}(2016)Lingala, Toutios, T{\"o}ger, Lim, Zhu,
+  Kim, Vaz, Narayanan, and Nayak}]{lingala2016state}
 \bibinfo{author}{Lingala, S.~G.}, \bibinfo{author}{Toutios, A.},
-  \bibinfo{author}{Toger, J.}, \bibinfo{author}{Lim, Y.}, \bibinfo{author}{Zhu,
-  Y.}, \bibinfo{author}{Kim, Y.-C.}, \bibinfo{author}{Vaz, C.},
-  \bibinfo{author}{Narayanan, S.},  and \bibinfo{author}{Nayak, K.}
-  (\textbf{\bibinfo{year}{2016}}). \enquote{\bibinfo{title}{State-of-the-art
-  {MRI} protocol for comprehensive assessment of vocal tract structure and
-  function}} in \emph{\bibinfo{booktitle}{Interspeech 2016}}, pp.
-  \bibinfo{pages}{475--479}, \dodoi{10.21437/Interspeech.2016-559}.
+  \bibinfo{author}{T{\"o}ger, J.}, \bibinfo{author}{Lim, Y.},
+  \bibinfo{author}{Zhu, Y.}, \bibinfo{author}{Kim, Y.-C.},
+  \bibinfo{author}{Vaz, C.}, \bibinfo{author}{Narayanan, S.},  and
+  \bibinfo{author}{Nayak, K.} (\textbf{\bibinfo{year}{2016}}).
+  \enquote{\bibinfo{title}{State-of-the-art {MRI} protocol for comprehensive
+  assessment of vocal tract structure and function}} in
+  \emph{\bibinfo{booktitle}{Interspeech 2016}}, pp. \bibinfo{pages}{475--479},
+  \dodoi{10.21437/Interspeech.2016-559}.
 
 \bibitem[{Narayanan \emph{et~al.}(2014)Narayanan, Toutios, Ramanarayanan,
-  Lammert, Kim, Lee, Nayak, Kim, Zhu, Goldstein
-  \emph{et~al.}}]{narayanan2014real}
+  Lammert, Kim, Lee, Nayak, Kim, Zhu, Goldstein, Byrd, Bresch, Ghosh,
+  Katsamanis, and Proctor}]{narayanan2014real}
 \bibinfo{author}{Narayanan, S.}, \bibinfo{author}{Toutios, A.},
   \bibinfo{author}{Ramanarayanan, V.}, \bibinfo{author}{Lammert, A.},
   \bibinfo{author}{Kim, J.}, \bibinfo{author}{Lee, S.}, \bibinfo{author}{Nayak,
   K.}, \bibinfo{author}{Kim, Y.-C.}, \bibinfo{author}{Zhu, Y.},
-  \bibinfo{author}{Goldstein, L.} \emph{et~al.}
+  \bibinfo{author}{Goldstein, L.}, \bibinfo{author}{Byrd, D.},
+  \bibinfo{author}{Bresch, E.}, \bibinfo{author}{Ghosh, P.},
+  \bibinfo{author}{Katsamanis, A.},  and \bibinfo{author}{Proctor, M.}
   (\textbf{\bibinfo{year}{2014}}). \enquote{\bibinfo{title}{Real-time magnetic
   resonance imaging and electromagnetic articulography database for speech
-  production research (tc)}} \bibinfo{journal}{The Journal of the Acoustical
+  production research {(TC)}}} \bibinfo{journal}{The Journal of the Acoustical
   Society of America} \textbf{136}(3), \bibinfo{pages}{1307--1311},
   \dodoi{10.1121/1.4890284}.
 
 \bibitem[{{R Development Core Team}(2008)}]{r2017language}
 \bibinfo{author}{{R Development Core Team}} (\textbf{\bibinfo{year}{2008}}).
-  \emph{\bibinfo{title}{R: A Language and Environment for Statistical
-  Computing}}, \bibinfo{organization}{R Foundation for Statistical Computing},
+  \emph{\bibinfo{title}{R: A language and environment for statistical
+  computing}}, \bibinfo{organization}{R Foundation for Statistical Computing},
   \bibinfo{address}{Vienna, Austria}, \dourl{http://www.R-project.org},
   \bibinfo{note}{{ISBN} 3-900051-07-0}.
 
 \bibitem[{Saltzman and Kelso(1987)}]{saltzman1987skilled}
-\bibinfo{author}{Saltzman, E.},  and \bibinfo{author}{Kelso, J.}
-  (\textbf{\bibinfo{year}{1987}}). \enquote{\bibinfo{title}{Skilled actions: a
-  task-dynamic approach.}} \bibinfo{journal}{Psychological review}
-  \textbf{94}(1), \bibinfo{pages}{84}, \dodoi{10.1037/0033-295X.94.1.84}.
+\bibinfo{author}{Saltzman, E.},  and \bibinfo{author}{Kelso, J. A.~S.}
+  (\textbf{\bibinfo{year}{1987}}). \enquote{\bibinfo{title}{Skilled actions: A
+  task-dynamic approach}} \bibinfo{journal}{Psychological Review}
+  \textbf{94}(1), \bibinfo{pages}{84--106}, \dodoi{10.1037/0033-295X.94.1.84}.
 
 \bibitem[{Saltzman and Munhall(1989)}]{saltzman1989dynamical}
 \bibinfo{author}{Saltzman, E.~L.},  and \bibinfo{author}{Munhall, K.~G.}
@@ -1392,8 +1350,8 @@ The authors acknowledge funding through NIH grant R01DC007124, NIH grant T32DC00
 \bibitem[{Simko and Cummins(2010)}]{simko2010embodied}
 \bibinfo{author}{Simko, J.},  and \bibinfo{author}{Cummins, F.}
   (\textbf{\bibinfo{year}{2010}}). \enquote{\bibinfo{title}{Embodied task
-  dynamics.}} \bibinfo{journal}{Psychological review} \textbf{117}(4),
-  \bibinfo{pages}{1229}, \dodoi{10.1037/a0020490}.
+  dynamics}} \bibinfo{journal}{Psychological Review} \textbf{117}(4),
+  \bibinfo{pages}{1229--1246}, \dodoi{10.1037/a0020490}.
 
 \bibitem[{Sorensen \emph{et~al.}(2017)Sorensen, Skordilis, Toutios, Kim, Zhu,
   Kim, Lammert, Ramanarayanan, Goldstein, Byrd, Nayak, and
@@ -1419,17 +1377,18 @@ The authors acknowledge funding through NIH grant R01DC007124, NIH grant T32DC00
   \dodoi{10.21437/Interspeech.2016-583}.
 
 \bibitem[{Sullivan \emph{et~al.}(2015)Sullivan, Obuchowski, Kessler, Raunig,
-  Gatsonis, Huang, Kondratovich, McShane, Reeves, Barboriak
-  \emph{et~al.}}]{sullivan2015metrology}
+  Gatsonis, Huang, Kondratovich, McShane, Reeves, Barboriak, Guimaraes, and
+  Wahl}]{sullivan2015metrology}
 \bibinfo{author}{Sullivan, D.~C.}, \bibinfo{author}{Obuchowski, N.~A.},
   \bibinfo{author}{Kessler, L.~G.}, \bibinfo{author}{Raunig, D.~L.},
   \bibinfo{author}{Gatsonis, C.}, \bibinfo{author}{Huang, E.~P.},
   \bibinfo{author}{Kondratovich, M.}, \bibinfo{author}{McShane, L.~M.},
-  \bibinfo{author}{Reeves, A.~P.}, \bibinfo{author}{Barboriak, D.~P.}
-  \emph{et~al.} (\textbf{\bibinfo{year}{2015}}).
-  \enquote{\bibinfo{title}{Metrology standards for quantitative imaging
-  biomarkers}} \bibinfo{journal}{Radiology} \textbf{277}(3),
-  \bibinfo{pages}{813--825}, \dodoi{10.1148/radiol.2015142202}.
+  \bibinfo{author}{Reeves, A.~P.}, \bibinfo{author}{Barboriak, D.~P.},
+  \bibinfo{author}{Guimaraes, A.~R.},  and \bibinfo{author}{Wahl, R.~L.}
+  (\textbf{\bibinfo{year}{2015}}). \enquote{\bibinfo{title}{Metrology standards
+  for quantitative imaging biomarkers}} \bibinfo{journal}{Radiology}
+  \textbf{277}(3), \bibinfo{pages}{813--825}, \dodoi{10.1148/radiol.2015142202}
+  \bibinfo{note}{for the RSNA-QIBA Metrology Working Group}.
 
 \bibitem[{T{\"o}ger \emph{et~al.}(2017)T{\"o}ger, Sorensen, Somandepalli,
   Toutios, Lingala, Narayanan, and Nayak}]{toger2017test}
@@ -1447,7 +1406,7 @@ The authors acknowledge funding through NIH grant R01DC007124, NIH grant T32DC00
   (\textbf{\bibinfo{year}{2015}}). \enquote{\bibinfo{title}{Factor analysis of
   vocal tract outlines derived from real-time magnetic resonance imaging data}}
   in \emph{\bibinfo{booktitle}{International Congress of Phonetic Sciences
-  (ICPhS), Glasgow, UK}},
+  (ICPhS)}},
   \dourl{https://www.internationalphoneticassociation.org/icphs-proceedings/ICPhS2015/Papers/ICPHS0514.pdf}.
 
 \bibitem[{Toutios and Narayanan(2016)}]{toutios2016advances}

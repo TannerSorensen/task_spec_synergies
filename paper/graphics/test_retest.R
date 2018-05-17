@@ -49,7 +49,7 @@ op <- par(mar = c(5,9,4,2) + 0.1)
 matplot(lip_fac,icc, 
         col=cols, type="b", pch=1, lty=1, lwd=2, axes=FALSE, las=1, cex=4,
         ylim=c(0,1), ylab="ICC", xlim=(range(lip_fac)+c(-0.5,0.5)), xlab="lip factors", cex.lab=font_scale)
-axis(side=1, at=lip_fac, labels=c("2","3"), col.ticks=1, col=NA, cex.axis=font_scale)
+axis(side=1, at=lip_fac, labels=c("2","3"), col.ticks=0, col=NA, cex.axis=font_scale)
 axis(side=2, at=seq(0,1,by=0.25), labels=c("0","0.25","0.5","0.75","1"), col.ticks=1, las=1, cex.axis=font_scale, cex.lab=font_scale, line=-3)
 title(tv_loc[tv_loc_idx], cex.main=font_scale)
 dev.off()
@@ -70,7 +70,7 @@ for(tv_loc_idx in seq(2,5)){
           col=cols, type="b", pch=1, lty=1, lwd=2, axes=FALSE, las=1, cex=4,
           ylim=c(0,1), ylab="", xlim=(range(tng_fac)+c(-0.5,0.5)), xlab="tongue factors", cex.lab=font_scale)
   axis(side=1, at=tng_fac, labels=c("4","6","8"), 
-       col.ticks=1, col=NA, cex.axis=font_scale)
+       col.ticks=0, col=NA, cex.axis=font_scale)
   axis(side=2, at=seq(0,1,by=0.25), labels=c("0","0.25","0.5","0.75","1"), 
        col.ticks=1, las=1, cex.axis=font_scale, cex.lab=font_scale)
   title(titl,cex.main=font_scale)

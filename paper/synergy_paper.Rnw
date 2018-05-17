@@ -11,13 +11,7 @@
 % URLs
 \usepackage{url}
 
-% table formatting
-\usepackage{multirow,array}
-\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
-\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
-\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% figure panels
 \usepackage{stackengine}
 
 % overbrace on matrices
@@ -152,9 +146,17 @@ Section~\ref{sec:taskspec} uses the articulator synergy biomarker to test the ta
 \section{Magnetic resonance imaging}
 \label{sec:mri}
 
-\subsection{Experiment protocol}
+\subsection{Experiment}
 
-Each participant took part in one session. The study personnel explained the nature of the experiment and the protocol to the participant before each scan. The participant lay on the scanner table in a supine position. The head was fixed in place by foam pads inserted between the temple and the receiver coil on the left and right sides of the head. The participant read visually presented text from a paper card taped to the scanner bore in front of the face. The speech corpus included real-time MRI videos of the isolated vowel-consonant-vowel utterances \textipa{[apa]}, \textipa{[ata]}, \textipa{[aka]}, \textipa{[aja]}. The participant produced each vowel-consonant-vowel utterance ten times. The study personnel removed the participant from the scanner for a short break, and then repeated the experiment. After completing the session, the speaker was paid for their participation in the study. The USC Institutional Review Board approved the data collection procedures. 
+The data-set included eight (4 male, 4 female) speakers of American English. Five participants were native speakers of American English. None of the participants reported speech pathology or abnormal hearing.\footnote{Supplementary material available at [URL will be inserted by AIP] provides participant characteristics.} Each participant took part in one session. The study personnel explained the nature of the experiment and the protocol to the participant before each scan. The participant lay on the scanner table in a supine position. The head was fixed in place by foam pads inserted between the temple and the receiver coil on the left and right sides of the head. The participant read visually presented text from a paper card taped to the scanner bore in front of the face. The speech corpus included real-time MRI videos of the isolated vowel-consonant-vowel utterances \textipa{[apa]}, \textipa{[ata]}, \textipa{[aka]}, \textipa{[aja]}. The participant produced each vowel-consonant-vowel utterance ten times. The study personnel removed the participant from the scanner for a short break, and then repeated the experiment. After completing the session, the speaker was paid for their participation in the study. The USC Institutional Review Board approved the data collection procedures. 
+
+Vocal tract constrictions were manually identified in the real-time MRI videos. 
+%
+The video frames were inspected on a computer monitor. 
+%
+Guided by graphical presentation of real-time MRI video frames and auditory presentation of a denoised speech audio signal recorded in the scanner bore, the study personnel manually identified the intervals of time during which the vocal tract produced oral constrictions for the consonants of the vowel-consonant-vowel sequences \textipa{[apa]}, \textipa{[ata]}, \textipa{[aka]}, \textipa{[aja]}. 
+%
+Study personnel annotated the frame number of the first and last frames in which there was visible movement of the lips (for \textipa{[apa]}) or tongue (for \textipa{[ata]}, \textipa{[aka]}, and \textipa{[aja]}). 
 
 
 
@@ -186,54 +188,6 @@ Reconstruction was performed using the Berkeley Advanced Reconstruction Toolbox~
 
 
 
-\subsection{Participant characteristics}
-
-The data-set included eight (4 male, 4 female) speakers of American English. Five participants were native speakers of American English. None of the participants reported speech pathology or abnormal hearing. Table~\ref{tab:subj2} lists age, gender, state of origin, and native language. 
-
-\begin{table}
-\centering
-\begin{tabular}{l l l L{0.2\linewidth} l}
-\hline
-ID & age & gender & state of origin & native language \Tstrut \Bstrut \\
-\hline
-F1 & 25 & F & Rhode Island & American English \Tstrut \\
-F2 & 28 & F & Texas & American English \\
-F3 & 24 & F & Nebraska & American English \\
-F4 & 29 & F & Korea & Korean \\
-M1 & 29 & M & Iowa & American English \\
-M2 & 27 & M & United Arab Emirates & American English \\
-M3 & 26 & M & Germany & German \\
-M4 & 39 & M & Greece & Greek \\
-\hline
-& \shortstack[l]{\Tstrut median: 28 \\ range: 24--39}
-& \shortstack[l]{\Tstrut 4 male \\ 4 female}
-& 
-& \shortstack[l]{5 American English \\ 3 other}\Tstrut \Bstrut \\
-\hline 
-\end{tabular}
-\caption{Participant characteristics of the test-retest data-set}
-\label{tab:subj2}
-\end{table}
-
-
-
-
-
-
-\subsection{Time-point annotation}
-\label{subsec:timepointannotation}
-
-Vocal tract constrictions were manually identified in the real-time MRI videos. 
-%
-The video frames were inspected on a computer monitor. 
-%
-Guided by graphical presentation of real-time MRI video frames and auditory presentation of a denoised speech audio signal recorded in the scanner bore, the study personnel manually identified the intervals of time during which the vocal tract produced oral constrictions for the consonants of the vowel-consonant-vowel sequences \textipa{[apa]}, \textipa{[ata]}, \textipa{[aka]}, \textipa{[aja]}. 
-%
-Study personnel annotated the frame number of the first and last frames in which there was visible movement of the lips (for \textipa{[apa]}) or tongue (for \textipa{[ata]}, \textipa{[aka]}, and \textipa{[aja]}). 
-
-
-
-
 
 \section{Constriction degree measurement}
 \label{sec:cd}
@@ -249,7 +203,7 @@ See Fig.~\ref{fig:segtemp} for example segmentation results.
 \includegraphics[width=\linewidth]{SegTempFigure.pdf}
 
 \caption{(color online) {\bf a.} Study personnel manually created subject-specific templates for \textipa{[a]}, \textipa{[i]}, \textipa{[p]}, \textipa{[t]}, \textipa{[k]}, which were then automatically deformed to fit the articulator contours in the real-time magnetic resonance images. The different articulator contours are in different colors.
-{\bf b.} Articulator contour segmentation of a sequence of real-time magnetic resonance images acquired in the transition from vowel \textipa{[a]} to glide \textipa{[j]} in \textipa{[aja]}. Reconstructed frame rate was downsampled for presentation.}
+{\bf b.} Articulator contour segmentation of a sequence of real-time magnetic resonance images acquired in the transition from vowel \textipa{[a]} to glide \textipa{[j]} in \textipa{[aja]}. Frame rate downsampled for presentation.}
 \label{fig:segtemp}
 \end{figure}
 
@@ -278,7 +232,7 @@ Fig.~\ref{fig:constrictions} illustrates the constriction degree measurements at
 
 \includegraphics[width=\linewidth]{ConstrictionsFigure.pdf}
 
-\caption{(color online) Constriction degrees at the phonetic places of articulation in the transition from vowel \textipa{[a]} to glide \textipa{[j]} in the sequence \textipa{[aja]}. The phonetic places of articulation (blue lines) are bilabial place, alveolar place, palatal place, velar place, velopharyngeal port, and pharyngeal place. Reconstructed frame rate was downsampled for presentation.}
+\caption{(color online) Constriction degrees at the phonetic places of articulation in the transition from vowel \textipa{[a]} to glide \textipa{[j]} in the sequence \textipa{[aja]}. The phonetic places of articulation (blue lines) are bilabial place, alveolar place, palatal place, velar place, velopharyngeal port, and pharyngeal place. Frame rate downsampled for presentation.}
 \label{fig:constrictions}
 \end{figure}
 
@@ -691,7 +645,7 @@ For a given $f$-value and phonetic place of articulation, the 10-fold cross-vali
 %
 The reported $\mathrm{RMSE}_{\mathbf{G},k}$ and $\mathrm{RMSE}_{\mathbf{J},k}$ values are the medians of these \num{10} values.
 %
-The results reported in this section were obtained with one jaw factor, four tongue factors, and two lip factors. Results obtained with other numbers of factors are available as supplementary material.\footnote{Supplementary material repeating the evaluation of the forward kinematic map with different numbers of factors is available at [URL will be inserted by AIP].}
+The results reported in this section were obtained with one jaw factor, four tongue factors, and two lip factors. Results obtained with other numbers of factors are available as supplementary material.\footnote{Supplementary material available at [URL will be inserted by AIP] performs the evaluation of the forward kinematic map with different numbers of factors.}
 
 
 
@@ -807,9 +761,9 @@ Vertical length of the bars indicates the total elapsed change in constriction d
 %
 The breakdown into dark and light parts indicates the contribution of the jaw and tongue to the constriction, respectively.
 %
-From the time of constriction onset to the time of maximum constriction, the jaw and tongue produce a narrowing at the palatal place. 
+From the time of constriction onset to the time of maximum constriction, the jaw and tongue produce a narrowing at the palatal place, and constriction degree decreases to a minimum. 
 %
-After achieving maximum constriction, the jaw and tongue widen the constriction degree at the palatal place.}
+After achieving maximum constriction, the jaw and tongue widen the constriction degree at the palatal place, and constriction degree increases.}
 \label{fig:biomarkerFigure}%
 \end{figure}
 
@@ -831,6 +785,15 @@ Image analysis variability included variability in the manual step of time-point
 Short-term physiological variability included same-day scan-to-scan variability in speech motor control. 
 %
 Precision is an important parameter, as it establishes a limit on effect size and group differences that the method can resolve.
+
+\begin{figure*}[t]
+\raggedright
+\includegraphics[width=\linewidth]{ICCFigure.pdf}
+
+\caption{(color online) Comparison of intraclass correlation coefficients (ICC) for different numbers of jaw factors (color) and for different numbers of tongue and lip factors ($x$-axis) at the bilabial, alveolar, palatal, velar, and pharyngeal places of articulation.}
+\label{fig:icc_all}
+
+\end{figure*}
 
 Agreement between Scan~\num{1} and Scan~\num{2} was quantified using the intraclass correlation coefficient (ICC). The ICC is a quantitative measure of test-retest repeatability for articulator synergy biomarkers. 
 The ICC is the ratio of inter-participant variability to total variability. The greater the inter-participant variability compared to total variability, the greater the reliability, because random error is smaller relative to the variance of the articulator synergy biomarker between experiment participants. 
@@ -868,7 +831,7 @@ Nevertheless, repeatability will depend on imaging parameters, and if different 
 
 Fig.~\ref{fig:icc_all} shows the repeatability of the articulator synergy biomarker for different numbers of jaw, tongue, and lip factors. 
 %
-Regardless of the neighborhood size used for the forward kinematic map estimator, the error of the estimator was well in the subvoxel range (cf. Section~\ref{subsec:crossval}). For this reason, neighborhood size was fixed at \SI{70}{\percent} of training data-points. Supplementary material demonstrates similar variability for other neighborhood sizes.\footnote{The supplementary material reporting repeatability for different neighborhood sizes is available at [URL will be inserted by AIP].}
+Regardless of the neighborhood size used for the forward kinematic map estimator, the error of the estimator was well in the subvoxel range (cf. Section~\ref{subsec:crossval}). For this reason, neighborhood size was fixed at \SI{70}{\percent} of training data-points. Supplementary material reports similar ICC for other neighborhood sizes.\footnote{Supplementary material available at [URL will be inserted by AIP] reports ICC for different neighborhood sizes.}
 %
 The images of participant F3 were excluded from the repeatability analysis due to poor image quality in the second scan. 
 
@@ -1010,15 +973,6 @@ repeatability
 median: \num{\Sexpr{signif(medICCs[pharyngeal_idx],2)}}). 
 
 
-\begin{figure*}
-\raggedright
-
-\includegraphics[width=\linewidth]{ICCFigure.pdf}
-
-\caption{(color online) Comparison of intraclass correlation coefficients (ICC) for different numbers of jaw factors (color) and for different numbers of tongue and lip factors ($x$-axis) at the bilabial, alveolar, palatal, velar, and pharyngeal places of articulation.}
-\label{fig:icc_all}
-\end{figure*}
-
 <<task_specificity,echo=FALSE,results='hide',message=FALSE,warning=FALSE>>=
 
 setwd(file.path(".","graphics"))
@@ -1077,7 +1031,7 @@ suggesting that intra-participant variance is substantial (see the histograms in
 Although constrictions at the velar and pharyngeal places may not involve a very great contribution of the jaw, the number of jaw factors nevertheless affects ICC (see panels ``velar place'' and ``pharyngeal place'' of Figure~\ref{fig:icc_all}). This is due to the fact that using more jaw factors increases the variance of the tongue that is explained by jaw factors, and some of this variance may reflect the performance of velar and pharyngeal constrictions. 
 
 
-\begin{figure*}
+\begin{figure*}[t]
 
 \includegraphics[width=\linewidth]{HistogramsFigure.pdf}
 
@@ -1257,7 +1211,7 @@ for(f_val in seq(from = 20, to = 90, by = 10)){
 }
 @
 
-In order to determine whether the results reported above depended on the choice of a particular number of jaw, tongue, and lip factors or on the choice of a particular neighborhood size for the forward kinematic map estimator, we repeated the statistical analysis with different parameter values (number of jaw factors: 1, 2, 3; number of tongue factors: 4, 6, 8; number of lip factors: 2, 3; neighborhood size: \SIrange{20}{90}{\percent} in \SI{10}{\percent} steps).\footnote{Results are visualized in supplementary material available at [URL will be inserted by AIP].}
+In order to determine whether the results reported above depended on the choice of a particular number of jaw, tongue, and lip factors or on the choice of a particular neighborhood size for the forward kinematic map estimator, we repeated the statistical analysis with different parameter values (number of jaw factors: 1, 2, 3; number of tongue factors: 4, 6, 8; number of lip factors: 2, 3; neighborhood size: \SIrange{20}{90}{\percent} in \SI{10}{\percent} steps).\footnote{Supplementary material available at [URL will be inserted by AIP] graphs the results of the sensativity analysis.}
 %
 The finding that the articulator synergy biomarker was greater at the alveolar place than at the velar place was reproduced with \Sexpr{sum(p[,2] < 0.05)} of \Sexpr{nrow(p)} parameterizations (\SI{\Sexpr{signif(100*sum(p[,2] < 0.05)/nrow(p),2)}}{\percent} of cases).
 %
@@ -1267,7 +1221,7 @@ We observed that this sensitivity to parameterization was largely due to a lack 
 %
 When using only 1 or 2 jaw factors, this number increases to \Sexpr{sum(p[jaw<3,5] < 0.05)} of \Sexpr{nrow(p[jaw<3,])} parameterizations (\SI{\Sexpr{signif(100*sum(p[jaw<3,5] < 0.05)/nrow(p[jaw<3,]),2)}}{\percent} of cases).
 %
-Overall, this pattern of results supports our inference that the jaw contributed significantly more to constrictions at the alveolar place compared to constrictions at the velar and pharyngeal places.
+Overall, these results support the inference that the jaw contributed significantly more to constrictions at the alveolar place than to constrictions at the velar and pharyngeal places.
 
 
 
@@ -1333,7 +1287,7 @@ The scripts required to reproduce the present study are available as supplementa
 %
 The MRI data-set is available at \url{http://sail.usc.edu/span/test-retest/} for free use by the research community~\citep[see][]{toger2017test}.
 %
-A replication of the present study was performed using the USC Speech and Vocal Tract Morphology MRI Database~\citep{sorensen2017database}.\footnote{The results of the replication study are available at [URL will be inserted by AIP].}
+A replication of the present study was performed using the USC Speech and Vocal Tract Morphology MRI Database~\citep{sorensen2017database} and is available as supplementary material.\footnote{The results of the replication study are available at [URL will be inserted by AIP].}
 
 \section{Acknowledgments} 
 

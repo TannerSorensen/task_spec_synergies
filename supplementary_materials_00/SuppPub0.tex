@@ -1,0 +1,38 @@
+\documentclass[varwidth=7.5in]{standalone}
+
+\usepackage{multirow,array}
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\begin{document}
+
+\begin{table}
+\centering
+\begin{tabular}{l l l L{0.2\linewidth} l}
+\hline
+ID & age & gender & state of origin & native language \Tstrut \Bstrut \\
+\hline
+F1 & 25 & F & Rhode Island & American English \Tstrut \\
+F2 & 28 & F & Texas & American English \\
+F3 & 24 & F & Nebraska & American English \\
+F4 & 29 & F & Korea & Korean \\
+M1 & 29 & M & Iowa & American English \\
+M2 & 27 & M & United Arab Emirates & American English \\
+M3 & 26 & M & Germany & German \\
+M4 & 39 & M & Greece & Greek \\
+\hline
+& \shortstack[l]{\Tstrut median: 28 \\ range: 24--39}
+& \shortstack[l]{\Tstrut 4 male \\ 4 female}
+& 
+& \shortstack[l]{5 American English \\ 3 other}\Tstrut \Bstrut \\
+\hline 
+\end{tabular}
+\caption{Participant characteristics of the test-retest data-set}
+\label{tab:subj2}
+\end{table}
+
+
+\end{document}
