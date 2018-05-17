@@ -14,8 +14,8 @@ master_out_path = config_struct.out_path;
 % set the f parameter values
 f = 0.2:0.1:0.9;
 
-% set constant number of factors
-q = struct('jaw',1,'tng',4,'lip',2,'vel',1,'lar',2);
+% set the parameters of the factor analysis
+q = config_struct.q;
 
 % initialize output tables
 err_tab = table;
@@ -27,8 +27,8 @@ for i=1:length(subject_list)
     % substitute participant name into path
     config_struct.out_path = strrep(master_out_path,'%s',subject_list{i});
     
-    % load contour_data and concetenate the biomarkers onto the table, for
-    % each factor analysis specification
+    % load contour_data and concatenate the biomarkers onto the table, for
+    % each factor analysis specification and for each f-value
     for j=1:length(f)
         load(fullfile(config_struct.out_path,sprintf('contour_data_jaw%d_tng%d_lip%d_vel1_lar2_f%d',q.jaw,q.tng,q.lip,round(100*f(j)))),'contour_data');
         tmp_err_tab = contour_data.err_tab;

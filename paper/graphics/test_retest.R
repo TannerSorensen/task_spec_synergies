@@ -12,7 +12,7 @@ source("declare_user_defined_functions.R")
 
 input_path <- file.path("..","..","analysis","mat")
 
-tab <- read.csv(file.path(input_path,"bm_tab.csv"))
+tab <- read.csv(file.path(input_path,"bm_tab_f70.csv"))
 
 # CHOOSE REPEATABILITY DATASET
 # (NOT MORPHOLOGY DATASET)

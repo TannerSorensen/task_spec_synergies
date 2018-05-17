@@ -17,6 +17,8 @@ submission/
 
 tv_key.csv
 
+*.zip
+
 *.mat
 *.pdf
 *.png
@@ -41,6 +43,7 @@ tv_key.csv
 *.cb
 *.cb2
 .*.lb
+*.gz
 
 ## Intermediate documents:
 *.dvi

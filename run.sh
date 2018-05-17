@@ -2,24 +2,24 @@
 
 # clone repositories
 cd analysis
-git clone https://github.com/usc-sail/span_contour_processing.git
+#git clone https://github.com/usc-sail/span_contour_processing.git
 
 # install R dependencies
-RScript -e "install.packages(c('lme4','multcomp','RColorBrewer','rptR'), dependencies=TRUE, repos = "http://cran.us.r-project.org")"
+#RScript -e "install.packages(c('lme4','multcomp','RColorBrewer','rptR'), dependencies=TRUE, repos = "http://cran.us.r-project.org")"
 
 # download segmentation results
-wget -O segmentation_results.zip http://span.usc.edu/owncloud/index.php/s/TR4oAXNrAfARsYT/download
-unzip segmentation_results.zip
-rm segmentation_results.zip
+#wget -O segmentation_results.zip http://span.usc.edu/owncloud/index.php/s/TR4oAXNrAfARsYT/download
+#unzip segmentation_results.zip
+#rm segmentation_results.zip
 
 # download manual annotations
-wget -O manual_annotations.zip http://span.usc.edu/owncloud/index.php/s/a3IK867EhTXfFBE/download
-unzip manual_annotations.zip
-rm manual_annotations.zip
+#wget -O manual_annotations.zip http://span.usc.edu/owncloud/index.php/s/a3IK867EhTXfFBE/download
+#unzip manual_annotations.zip
+#rm manual_annotations.zip
 
 # build model
 cd scripts
-./run_wrap_build_model.sh
+#./run_wrap_build_model.sh
 cd ../..
 
 # make paper
@@ -28,6 +28,13 @@ cd paper
 cd ..
 
 # make supplementary materials
-cd supplementary_materials
+cd supplementary_materials_01
 ./make_supppub1.sh
+cd ../supplementary_materials_02
+,/make_supppub2.sh
+cd ../supplementary_materials_03
+./make_supppub3.sh
+cd ../supplementary_materials_04
+./make_supppub4.sh
 cd ..
+

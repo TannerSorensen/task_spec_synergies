@@ -73,3 +73,38 @@ getICCrating <- function(ICC){
   }
   return(ICCrating)
 }
+
+
+get_stats <- function(n_jaw,n_tng,n_lip,f_val,morphology_dataset){
+  # READ IN DATA-SET
+  ##################
+  
+  tab <- read.csv(file.path("..","..","analysis","mat",paste("bm_tab_f",f_val,".csv",sep="")))
+  if(morphology_dataset==TRUE){
+    tab <- subset(tab,is.nan(repetition) & n_jaw==jaw_fac & n_tng==tng_fac & n_lip==lip_fac)
+  }else{
+    tab <- subset(tab,repetition==1 & n_jaw==jaw_fac & n_tng==tng_fac & n_lip==lip_fac)
+  }
+  
+  # PERFORM STATISTICAL TEST
+  ##########################
+  
+  tab$tv <- factor(tab$tv)
+  tab$participant <- factor(tab$participant)
+  
+  # velar as baseline
+  contrasts(tab$tv) <- contr.treatment(5, base = 4)
+  m_velar <- lmer(bm ~ 1 + tv + (1 + tv | participant), tab, REML=TRUE)
+  stat_test <- summary(glht(m_velar,linfct=c("tv1 = 0",
+                                             "tv2 = 0",
+                                             "tv3 = 0",
+                                             "tv1 - tv5 = 0",
+                                             "tv2 - tv5 = 0",
+                                             "tv3 - tv5 = 0")))
+  
+  b <- signif(100*stat_test$test$coefficients,2)
+  z <- signif(stat_test$test$tstat,2)
+  p <- signif(as.numeric(stat_test$test$pvalues),2)
+  
+  return(list(b,z,p))
+}

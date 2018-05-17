@@ -118,25 +118,69 @@ parfor i=1:length(subject_list)
             end
         end
     end
-    
-%     % substitute the participant string identifier into the path. 
-%     config_struct.track_path = strrep(master_track_path,subject_list{i},'%s');
-%     config_struct.out_path = strrep(master_out_path,subject_list{i},'%s');
-%     config_struct.manual_annotations_path = strrep(master_manual_annotations_path,subject_list{i},'%s');
 end
-
-% set the constant parameters of the analysis
-config_struct = config;
 
 % write table for biomarker values with different factor analysis
 % parameters
-bm_tab = get_biomarker_table(config_struct,subject_list);
-writetable(bm_tab,fullfile(strrep(config_struct.out_path,'/%s',''),'bm_tab.csv'))
+config_struct = config;
+for i=1:length(f)
+    fprintf(1,'%d',round(100*f(i)));
+    config_struct.f = f(i);
+    bm_tab = get_biomarker_table(config_struct,subject_list);
+    writetable(bm_tab,fullfile(strrep(config_struct.out_path,'/%s',''),...
+        sprintf('bm_tab_f%d.csv',round(100*config_struct.f))))
+end
 
 % write table for residual values with different f parameter values
-[err_tab,stds_tab] = get_error_table(config_struct,subject_list);
-writetable(err_tab,fullfile(strrep(config_struct.out_path,'/%s',''),'err_tab.csv'))
-writetable(stds_tab,fullfile(strrep(config_struct.out_path,'/%s',''),'stds_tab.csv'))
+config_struct = config;
+for i=1:length(jaw_fac)
+    for j=1:length(tng_fac)
+        config_struct.q = struct('jaw',jaw_fac(i),'tng',tng_fac(j),'lip',2,'vel',1,'lar',2);
+        %write_tabs(config_struct,subject_list)
+    end
+    for j=1:length(lip_fac)
+        config_struct.q = struct('jaw',jaw_fac(i),'tng',4,'lip',lip_fac(j),'vel',1,'lar',2);
+        write_tabs(config_struct,subject_list)
+    end
+end
+
+function write_tabs(config_struct,subject_list)
+% WRITE_TABS
+%
+% INPUT:
+%  Variable name: config_struct
+%  Size: 1x1
+%  Class: struct
+%  Description: Fields correspond to constants and hyperparameters. 
+%  Fields: 
+%  - out_path: (string) path for saving MATLAB output
+%  - track_path: (string) path to segmentation results
+%  - manual_annotations_path: (string) path to manual annotations
+%  - fov: (double) size of field of view in mm^2
+%  - n_pix: (double) number of pixels per row/column in the imaging plane
+%  - frames_per_sec: (double) frame rate of reconstructed real-time
+%      magnetic resonance imaging videos in frames per second
+%  - verbose: (logical) if true, plot graphics; otherwise, do not plot.
+%
+% FUNCTION OUTPUT:
+%  none
+%
+% SAVED OUTPUT:
+%  todo
+%
+% Tanner Sorensen
+% Signal Analysis and Interpretation Laboratory
+% University of Southern California
+% 05/15/2018
+
+    [err_tab,stds_tab] = get_error_table(config_struct,subject_list);
+    writetable(err_tab,fullfile(strrep(config_struct.out_path,'/%s',''),...
+        sprintf('err_tab_jaw%d_tng%d_lip%d_vel1_lar2.csv',...
+        config_struct.q.jaw,config_struct.q.tng,config_struct.q.lip)))
+    writetable(stds_tab,fullfile(strrep(config_struct.out_path,'/%s',''),...
+        sprintf('stds_tab_jaw%d_tng%d_lip%d_vel1_lar2.csv',...
+        config_struct.q.jaw,config_struct.q.tng,config_struct.q.lip)))
+end
 
 function build_model(config_struct,init_contour_data_file_name,variant_switch)
 % BUILD_MODEL

@@ -23,8 +23,6 @@ n_lip_fac = length(lip_fac);
 bm_tab = table;
 
 for i=1:length(subject_list)
-    fprintf('Participant %d of %d\n',i,length(subject_list))
-    
     % substitute participant name into path
     config_struct.out_path = strrep(master_out_path,'%s',subject_list{i});
     

@@ -13,7 +13,7 @@ dir.create(graphics_path, showWarnings = FALSE)
 
 input_path <- file.path("..","..","analysis","mat")
 
-tab <- read.csv(file.path(input_path,"bm_tab.csv"))
+tab <- read.csv(file.path(input_path,"bm_tab_f70.csv"))
 
 # CHOOSE DATA-SET
 #################

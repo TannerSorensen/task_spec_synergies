@@ -1,5 +1,5 @@
 data_path = '/Users/tannersorensen/task_spec_synergies/analysis/mat/m5_rep1';
-file_name = 'contour_data_jaw1_tng4_lip2_vel1_lar2_f20.mat';
+file_name = 'contour_data_jaw1_tng4_lip2_vel1_lar2_f70.mat';
 graphics_path = fullfile(pwd,'biomarker');
 if ~exist(graphics_path,'dir')
     mkdir(graphics_path)

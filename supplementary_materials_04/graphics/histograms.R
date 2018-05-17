@@ -1,6 +1,6 @@
 # REQUIRE A SET OF LIBRARIES
 ############################
-source("require_libraries.R")
+source(file.path("..","..","paper","graphics","require_libraries.R"))
 
 # SET GRAPHICS PATH
 ###################
@@ -13,7 +13,7 @@ dir.create(graphics_path, showWarnings = FALSE)
 
 input_path <- file.path("..","..","analysis","mat")
 
-tab <- read.csv(file.path(input_path,"bm_tab.csv"))
+tab <- read.csv(file.path(input_path,"bm_tab_f70.csv"))
 
 # CHOOSE DATA-SET
 #################

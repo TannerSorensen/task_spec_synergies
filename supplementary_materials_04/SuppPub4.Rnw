@@ -107,7 +107,7 @@ With the exception of the pharyngeal place of articulation, the RMSE was smaller
 
 \begin{figure*}
 \raggedright
-\includegraphics[width=\linewidth]{SuppPub1_ErrorFigure.pdf}
+\includegraphics[width=\linewidth]{SuppPub4_ErrorFigure.pdf}
 \caption{
 {\bf (a)} Root mean squared error (RMSE) of the forward kinematic map estimator of constriction degrees and {\bf (b)} RMSE of the jacobian matrix estimator of frame-to-frame finite differences in constriction degrees. 
 Data-points are the median RMSE computed over all 10 folds of cross-validation.
@@ -122,9 +122,9 @@ The standard deviations of observed (frame-to-frame finite differences in) const
 
 \begin{figure*}
 
-\includegraphics[width=\textwidth]{SuppPub1_HistogramFigure.pdf}
+\includegraphics[width=\textwidth]{SuppPub4_HistogramFigure.pdf}
 
-\caption{\label{fig:histograms}(color online) 
+\caption{\label{fig:histograms}
 Sample distribution of the jaw contributions to constrictions at the bilabial, alveolar, palatal, velar, and pharyngeal places of articulation. The quantity plotted is the percent of a constriction that was produced by the jaw.
 A value of \SI{0}{\percent} indicates that lip or tongue motion produced the entire constriction, whereas a value of \SI{100}{\percent} indicates that jaw motion produced the entire constriction. 
 Sample distribution by participant shown with a different color for each participant.}
@@ -140,7 +140,7 @@ setwd(file.path(".","graphics"))
 
 # REQUIRE A SET OF LIBRARIES
 ############################
-source("require_libraries.R")
+source(file.path("..","..","paper","graphics","require_libraries.R"))
 
 # CHOOSE DATA-SET
 #################
@@ -150,7 +150,7 @@ morphology_dataset <- TRUE
 # READ IN DATA-SET
 ##################
 
-tab <- read.csv(file.path("..","..","analysis","mat","bm_tab.csv"))
+tab <- read.csv(file.path("..","..","analysis","mat","bm_tab_f70.csv"))
 if(morphology_dataset==TRUE){
   tab <- subset(tab,is.nan(repetition) & n_jaw==1 & n_tng==6 & n_lip==2)
 }else{

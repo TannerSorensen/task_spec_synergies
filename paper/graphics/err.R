@@ -20,8 +20,8 @@ morphology_dataset <- FALSE
 
 input_path <- file.path("..","..","analysis","mat")
 
-tab <- read.csv(file.path(input_path,"err_tab.csv"))
-stds <- read.csv(file.path(input_path,"stds_tab.csv"))
+tab <- read.csv(file.path(input_path,"err_tab_jaw1_tng4_lip2_vel1_lar2.csv"))
+stds <- read.csv(file.path(input_path,"stds_tab_jaw1_tng4_lip2_vel1_lar2.csv"))
 
 if(morphology_dataset==TRUE){
   tab <- subset(tab,is.nan(repetition))
