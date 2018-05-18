@@ -42,12 +42,9 @@ variant_switch = 'sorensen2018';
 % set the f values to test
 f = 0.2:0.1:0.9;
 
-% check only if on USC HPC Cluster with Parallel MATLAB setup 
-usc_hpcc_flag = false;
-if usc_hpcc_flag
-    cluster=get_SLURM_cluster('--time=23:59:59');
-    ncor = 16;
-elseif sum(cellfun(@(x) strcmpi(x,'Parallel Computing Toolbox'), {ver_out.Name}))>0
+% check Parallel MATLAB setup
+ver_out = ver;
+if sum(cellfun(@(x) strcmpi(x,'Parallel Computing Toolbox'), {ver_out.Name}))>0
     ncor = feature('numcores');
 else
     ncor = 0;
