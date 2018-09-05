@@ -94,7 +94,7 @@ end
 
 disp('Performing guided factor analysis')
 
-load(fullfile(config_struct.out_path,sprintf('contour_data_jaw%d_tng%d_lip%d_vel1_lar2_f%d.mat',config_struct.q.jaw,config_struct.q.tng,config_struct.q.lip,100*config_struct.f)),'contour_data')
+load(fullfile(config_struct.out_path,sprintf('contour_data_jaw%d_tng%d_lip%d_vel1_lar2_f%d.mat',config_struct.q.jaw,config_struct.q.tng,config_struct.q.lip,round(100*config_struct.f))),'contour_data')
 
 d = size(contour_data.X,2);
     
@@ -134,7 +134,7 @@ contour_data.U_gfa = U_gfa;
 contour_data.weights = weights;
 
 if config_struct.verbose
-    figure; plot_components(config_struct, contour_data, variant_switch, q);
+    figure; plot_components(config_struct, contour_data, variant_switch, config_struct.q);
 end
 
 if sim_switch == true
@@ -153,6 +153,6 @@ if sim_switch == true
         / sum(var([contour_data.X(:,idx),contour_data.Y(:,idx)]));
 end
 
-save(fullfile(config_struct.out_path,sprintf('contour_data_jaw%d_tng%d_lip%d_vel1_lar2_f%d.mat',config_struct.q.jaw,config_struct.q.tng,config_struct.q.lip,100*config_struct.f)),'contour_data')
+save(fullfile(config_struct.out_path,sprintf('contour_data_jaw%d_tng%d_lip%d_vel1_lar2_f%d.mat',config_struct.q.jaw,config_struct.q.tng,config_struct.q.lip,round(100*config_struct.f))),'contour_data')
 
 end

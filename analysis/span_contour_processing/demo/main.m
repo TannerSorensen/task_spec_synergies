@@ -29,7 +29,7 @@ master_out_path = config_struct.out_path;
 master_manual_annotations_path = config_struct.manual_annotations_path;
 
 % set the parameters of the factor analysis
-q = struct('jaw',1,'tng',4,'lip',2,'vel',1,'lar',2);
+config_struct.q = struct('jaw',1,'tng',4,'lip',2,'vel',1,'lar',2);
 variant_switch = 'sorensen2018';
 
 for i=1:length(subject_list)
@@ -55,20 +55,20 @@ for i=1:length(subject_list)
     
     % the call to make_contour_data below generates the file 
     % 'contourdata.mat' in the directory configu_struct.out_path
-    make_contour_data(config_struct,q)
+    make_contour_data(config_struct)
 
     % obtain manual annotations for pharynx location
     if exist(fullfile(config_struct.manual_annotations_path,'phar_idx.mat'),'file') == 0
-        make_manual_annotations(config_struct,sprintf('contour_data_jaw%d_tng%d_lip%d_vel1_lar2.mat',q.jaw,q.tng,q.lip));
+        make_manual_annotations(config_struct,sprintf('contour_data_jaw%d_tng%d_lip%d_vel1_lar2_f%d.mat',config_struct.q.jaw,config_struct.q.tng,config_struct.q.lip,uint8(round(100*config_struct.f))));
     end
     load(fullfile(config_struct.manual_annotations_path,'phar_idx.mat'),'phar_idx')
     
     % measure task variables
-    get_tv(config_struct,false,q,phar_idx)
+    get_tv(config_struct,false,phar_idx)
     
     % guided factor analysis
-    get_Ugfa(config_struct,variant_switch,q)
+    get_Ugfa(config_struct,variant_switch)
     
     % articulatory strategies
-    get_strategies(config_struct,q)
+    get_strategies(config_struct)
 end

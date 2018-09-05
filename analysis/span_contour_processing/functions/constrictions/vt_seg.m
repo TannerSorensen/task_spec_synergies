@@ -203,6 +203,7 @@ function [Xul,Yul,Xll,Yll,Xtongue,Ytongue,Xalveolar,...
     Xphar = X(ismember(contour_data.sections_id,[7 8]));
     Yphar = Y(ismember(contour_data.sections_id,[7 8]));
     if manual_annotation_flag == true && length(phar_idx) == 2
+        phar_idx(2) = min([phar_idx(2) length(Xphar)]);
         Xphar = Xphar(phar_idx(1):phar_idx(2)); 
         Yphar = Yphar(phar_idx(1):phar_idx(2));
     else
