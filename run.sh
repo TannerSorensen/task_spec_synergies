@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
-# clone repositories
-cd analysis
-git clone https://github.com/usc-sail/span_contour_processing.git
-
 # install R dependencies
+cd analysis
 RScript -e "list_of_packages <- c('lme4','multcomp','RColorBrewer','rptR'); new_packages <- list_of_packages[!(list_of_packages %in% installed.packages()[,'Package'])]; cat(paste('Installing package',new_packages,'; ')); if(length(new_packages)>0) install.packages(new_packages, repos='http://cran.us.r-project.org')"
 
 # download segmentation results
