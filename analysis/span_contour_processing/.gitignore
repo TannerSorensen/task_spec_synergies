@@ -1,0 +1,18 @@
+# ignore directories that the scripts generate, as they contain data
+mat/
+demo/span_contour_processing_demo/
+
+# ignore data and graphics
+*.mat
+*.pdf
+*.avi
+*.mp3
+*.mp4
+*.mov
+*.eps
+*.tif
+*.tiff
+
+*.html*
+*~
+*.DS_Store*
