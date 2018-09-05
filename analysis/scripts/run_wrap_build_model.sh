@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 usc_hpc_flag=0
-if [ $usc_hpc_flag ]
+if [ $usc_hpc_flag -eq 1 ]
 then
 	export TZ=America/Los_Angeles
 	source /usr/usc/matlab/R2018a/setup.sh
