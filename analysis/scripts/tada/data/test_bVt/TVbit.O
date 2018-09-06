@@ -1,0 +1,32 @@
+10 0
+
+% Input string:	<bit>
+%
+%
+% Word 1:	bit
+% arpabet:	(B-IH1_T)
+%
+%
+% syllable 1:	B-IH1_T
+%
+%    onset cluster = <B>
+%    segment 1 [B]:
+'LA' 'ons1_clo1' -2 8 1 JA=8,UH=5,LH=1 100 0.01
+'LA' 'ons1_rel1' 11 8 1 JA=8,UH=5,LH=1 1 1
+'VEL' 'ons1_clo1' -0.1 8 1 NA=1 0 0
+%
+%    nucleus cluster = <IH1>
+%    segment 1 [IH]:
+'TBCL' 'v1' 95 3 1 JA=10,CL=1,CA=1 1 1
+'TBCD' 'v1' 8 3 1 JA=1,CL=1,CA=1 1 1
+%
+%    coda cluster = <T>
+%    segment 1 [T]:
+'TTCL' 'cod1_clo1' 56 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'cod1_clo1' -2 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 10 0.1
+'TTCL' 'cod1_rel1' 24 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'cod1_rel1' 11 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'GLO' 'cod1_h1' 0.4 8 1 GW=1 0 0
+'VEL' 'cod1_clo1' -0.1 8 1 NA=1 0 0
+##
+

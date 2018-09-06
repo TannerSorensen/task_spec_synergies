@@ -1,0 +1,31 @@
+10 0
+
+% Input string:	<ray>
+%
+%
+% Word 1:	ray
+% arpabet:	(R-EY1_Y)
+%
+%
+% syllable 1:	R-EY1_Y
+%
+%    onset cluster = <R>
+%    segment 1 [R]:
+'TTCL' 'ons1_nar1' 80 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'ons1_nar1' 2 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCL' 'ons1_rel1' 24 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'ons1_rel1' 11 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'LA' 'ons1_voc1' 2 4 1 JA=8,UH=5,LH=1 1 1
+%
+%    nucleus cluster = <EY1>
+%    segment 1 [EY]:
+'TBCL' 'v1' 95 4 1 JA=10,CL=1,CA=1 1 1
+'TBCD' 'v1' 8.5 4 1 JA=1,CL=1,CA=1 1 1
+%
+%    coda cluster = <Y>
+%    segment 1 [Y]:
+'TBCL' 'cod1_nar1' 95 8 1 JA=10,CL=1,CA=1 100 0.01
+'TBCD' 'cod1_nar1' 2 8 1 JA=10,CL=1,CA=1 100 0.01
+'LA' 'cod1_nar1' 8 8 1 JA=8,UH=5,LH=1 1 1
+##
+

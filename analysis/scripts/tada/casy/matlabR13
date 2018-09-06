@@ -1,0 +1,4 @@
+#!/bin/bash
+
+/usr2/matlabR13/bin/matlab -nodesktop
+

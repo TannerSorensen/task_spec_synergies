@@ -1,0 +1,72 @@
+10 0
+
+% Input string:	<abogacía>
+%
+%
+% Word 1:	abogacía
+% arpabet:	(-A0_)(B-O0_)(G-A0_)(S-I1_)(-A0_)
+%
+%
+% syllable 1:	-A0_
+%
+%    nucleus cluster = <A0>
+%    segment 1 [A]:
+'TBCL' 'v1' 180 4 1 JA=1,CL=1,CA=1 1 1
+'TBCD' 'v1' 11 4 1 JA=1,CL=1,CA=1 1 1
+%
+% syllable 2:	B-O0_
+%
+%    onset cluster = <B>
+%    segment 1 [B]:
+'LA' 'ons1_clo2' -2 8 1 JA=8,UH=5,LH=1 100 0.01
+'LA' 'ons1_rel2' 11 8 1 JA=8,UH=5,LH=1 1 1
+'VEL' 'ons1_clo2' -0.1 8 1 NA=1 0 0
+%
+%    nucleus cluster = <O0>
+%    segment 1 [O]:
+'TBCL' 'v2' 150 4 1 JA=1,CL=1,CA=1 1 1
+'TBCD' 'v2' 5 4 1 JA=1,CL=1,CA=1 1 1
+'LP' 'v_rnd2' 12 4 1 LX=1 1 1
+'LA' 'v_rnd2' 5 4 1 JA=1,UH=5,LH=1 1 1
+%
+% syllable 3:	G-A0_
+%
+%    onset cluster = <G>
+%    segment 1 [G]:
+'TBCL' 'ons1_clo3' 100 8 1 JA=10,CL=1,CA=1 10 0.1
+'TBCD' 'ons1_clo3' -2 8 1 JA=10,CL=1,CA=1 100 0.01
+'TBCD' 'ons1_rel3' 6 8 1 JA=10,CL=1,CA=1 1 1
+'VEL' 'ons1_clo3' -0.1 8 1 NA=1 0 0
+%
+%    nucleus cluster = <A0>
+%    segment 1 [A]:
+'TBCL' 'v3' 180 4 1 JA=1,CL=1,CA=1 1 1
+'TBCD' 'v3' 11 4 1 JA=1,CL=1,CA=1 1 1
+%
+% syllable 4:	S-I1_
+%
+%    onset cluster = <S>
+%    segment 1 [S]:
+'TTCL' 'ons1_crt4' 56 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'ons1_crt4' 1 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 10 0.1
+'TTCL' 'ons1_rel4' 24 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'ons1_rel4' 11 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TBCL' 'ons1_crt4' 100 8 1 JA=10,CL=1,CA=1 10 0.1
+'TBCD' 'ons1_crt4' 10 8 1 JA=10,CL=1,CA=1 10 0.1
+'GLO' 'ons1_h4' 0.4 8 1 GW=1 0 0
+'VEL' 'ons1_crt4' -0.1 8 1 NA=1 0 0
+%
+%    nucleus cluster = <I1>
+%    segment 1 [I]:
+'TBCD' 'v4' 5 4 1 JA=1,CL=1,CA=1 1 1
+'LA' 'v4' 8 4 1 JA=8,UH=5,LH=1 1 1
+'TBCL' 'v4' 95 4 1 JA=10,CL=1,CA=1 1 1
+%
+% syllable 5:	-A0_
+%
+%    nucleus cluster = <A0>
+%    segment 1 [A]:
+'TBCL' 'v5' 180 4 1 JA=1,CL=1,CA=1 1 1
+'TBCD' 'v5' 11 4 1 JA=1,CL=1,CA=1 1 1
+##
+

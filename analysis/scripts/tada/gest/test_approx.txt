@@ -1,0 +1,23 @@
+## alveolar rhotic:
+rip
+rap
+rot
+rut
+
+## alveolar lateral:
+lip
+lap
+lot
+luck
+
+## labio-velar approx:
+whip
+whack
+what
+won
+
+## palatal approx:
+yip
+yak
+yon
+yuck

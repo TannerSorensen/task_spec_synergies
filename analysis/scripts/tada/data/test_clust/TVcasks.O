@@ -1,0 +1,50 @@
+10 0
+
+% Input string:	<casks>
+%
+%
+% Word 1:	casks
+% arpabet:	(K-AE1_S K S)
+%
+%
+% syllable 1:	K-AE1_S K S
+%
+%    onset cluster = <K>
+%    segment 1 [K]:
+'TBCL' 'ons1_clo1' 100 8 1 JA=10,CL=1,CA=1 10 0.1
+'TBCD' 'ons1_clo1' -2 8 1 JA=10,CL=1,CA=1 100 0.01
+'TBCD' 'ons1_rel1' 6 8 1 JA=10,CL=1,CA=1 1 1
+'GLO' 'ons1_h1' 0.4 8 1 GW=1 0 0
+'VEL' 'ons1_clo1' -0.1 8 1 NA=1 0 0
+%
+%    nucleus cluster = <AE1>
+%    segment 1 [AE]:
+'TBCL' 'v1' 180 4 1 JA=1,CL=1,CA=1 1 1
+'TBCD' 'v1' 17 4 1 JA=1,CL=1,CA=1 1 1
+%
+%    coda cluster = <S K S>
+%    segment 1 [S]:
+'TTCL' 'cod1_crt1' 56 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'cod1_crt1' 1 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 10 0.1
+'TTCL' 'cod1_rel1' 24 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'cod1_rel1' 11 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TBCL' 'cod1_crt1' 100 8 1 JA=10,CL=1,CA=1 10 0.1
+'TBCD' 'cod1_crt1' 10 8 1 JA=10,CL=1,CA=1 10 0.1
+'GLO' 'cod1_h1' 0.4 8 1 GW=1 0 0
+'VEL' 'cod1_crt1' -0.1 8 1 NA=1 0 0
+%    segment 2 [K]:
+'TBCL' 'cod2_clo1' 100 8 1 JA=10,CL=1,CA=1 10 0.1
+'TBCD' 'cod2_clo1' -2 8 1 JA=10,CL=1,CA=1 100 0.01
+'TBCD' 'cod2_rel1' 6 8 1 JA=10,CL=1,CA=1 1 1
+'VEL' 'cod2_clo1' -0.1 8 1 NA=1 0 0
+%    segment 3 [S]:
+'TTCL' 'cod3_crt1' 56 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'cod3_crt1' 1 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 10 0.1
+'TTCL' 'cod3_rel1' 24 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'cod3_rel1' 11 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TBCL' 'cod3_crt1' 100 8 1 JA=10,CL=1,CA=1 10 0.1
+'TBCD' 'cod3_crt1' 10 8 1 JA=10,CL=1,CA=1 10 0.1
+'GLO' 'cod3_h1' 0.4 8 1 GW=1 0 0
+'VEL' 'cod3_crt1' -0.1 8 1 NA=1 0 0
+##
+

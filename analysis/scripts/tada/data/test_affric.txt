@@ -1,0 +1,11 @@
+## pal-alv -vce:
+chip
+chap
+chop
+chump
+
+## pal-alv +vce:
+gyp
+jam
+jot
+junk

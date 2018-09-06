@@ -1,0 +1,52 @@
+10 0
+
+% Input string:	<hosung>
+%
+%
+% Word 1:	hosung
+% arpabet:	(HH-OW1_W)(S-AH1_NX)
+%
+%
+% syllable 1:	HH-OW1_W
+%
+%    onset cluster = <HH>
+%    segment 1 [HH]:
+'GLO' 'ons1_h1' 0.4 8 1 GW=1 0 0
+%
+%    nucleus cluster = <OW1>
+%    segment 1 [OW]:
+'TBCL' 'v1' 150 4 1 JA=1,CL=1,CA=1 1 1
+'TBCD' 'v1' 5 4 1 JA=1,CL=1,CA=1 1 1
+'LP' 'v_rnd1' 12 4 1 LX=1 1 1
+'LA' 'v_rnd1' 5 4 1 JA=1,UH=5,LH=1 1 1
+%
+%    coda cluster = <W>
+%    segment 1 [W]:
+'LA' 'cod1_nar1' 2 8 1 JA=8,UH=5,LH=1 1 1
+'LA' 'cod1_rel1' 11 8 1 JA=8,UH=5,LH=1 1 1
+%
+% syllable 2:	S-AH1_NX
+%
+%    onset cluster = <S>
+%    segment 1 [S]:
+'TTCL' 'ons1_crt2' 56 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'ons1_crt2' 1 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 10 0.1
+'TTCL' 'ons1_rel2' 24 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'ons1_rel2' 11 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TBCL' 'ons1_crt2' 100 8 1 JA=10,CL=1,CA=1 10 0.1
+'TBCD' 'ons1_crt2' 10 8 1 JA=10,CL=1,CA=1 10 0.1
+'GLO' 'ons1_h2' 0.4 8 1 GW=1 0 0
+'VEL' 'ons1_crt2' -0.1 8 1 NA=1 0 0
+%
+%    nucleus cluster = <AH1>
+%    segment 1 [AH]:
+'TBCL' 'v2' 150 3 1 JA=1,CL=1,CA=1 1 1
+'TBCD' 'v2' 6.5 3 1 JA=1,CL=1,CA=1 1 1
+%
+%    coda cluster = <NX>
+%    segment 1 [NX]:
+'TBCL' 'cod1_clo2' 100 8 1 JA=10,CL=1,CA=1 10 0.1
+'TBCD' 'cod1_clo2' -2 8 1 JA=10,CL=1,CA=1 100 0.01
+'VEL' 'cod1_n2' 0.2 8 1 NA=1 1 1
+##
+

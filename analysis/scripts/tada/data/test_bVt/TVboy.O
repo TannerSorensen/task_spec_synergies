@@ -1,0 +1,30 @@
+10 0
+
+% Input string:	<boy>
+%
+%
+% Word 1:	boy
+% arpabet:	(B-OW1_Y)
+%
+%
+% syllable 1:	B-OW1_Y
+%
+%    onset cluster = <B>
+%    segment 1 [B]:
+'LA' 'ons1_clo1' -2 8 1 JA=8,UH=5,LH=1 100 0.01
+'LA' 'ons1_rel1' 11 8 1 JA=8,UH=5,LH=1 1 1
+'VEL' 'ons1_clo1' -0.1 8 1 NA=1 0 0
+%
+%    nucleus cluster = <OW1>
+%    segment 1 [OW]:
+'TBCL' 'v1' 150 4 1 JA=1,CL=1,CA=1 1 1
+'TBCD' 'v1' 5 4 1 JA=1,CL=1,CA=1 1 1
+'LP' 'v_rnd1' 12 4 1 LX=1 1 1
+'LA' 'v_rnd1' 5 4 1 JA=1,UH=5,LH=1 1 1
+%
+%    coda cluster = <Y>
+%    segment 1 [Y]:
+'TBCL' 'cod1_nar1' 95 8 1 JA=10,CL=1,CA=1 100 0.01
+'TBCD' 'cod1_nar1' 2 8 1 JA=10,CL=1,CA=1 100 0.01
+##
+

@@ -1,0 +1,39 @@
+
+Issues raised after meeting Friday 9th March
+--------------------------------------------
+
+[dors]C-[alv]S clusters not great:
+ - TB blending too strongly
+ - too narrow so no frication
+ - eg. 'scream', 'kingsway'
+
+ordering in clusters:
+ - misordered coupling relationships in CCC clusters
+ 
+oscillator names lower case in some files, capitalised in other
+ - make this consistent throughout
+ 
+'beta' blending param now deleted from output but still written to <TV_.O>
+ - check if needed in Hosung's code, and delete if not
+ 
+version number required on TADA GUI before released externally
+ - start with v0.90 for beta release, increment each change v0.91 etc
+ 
+check with Phil Rubin about webpage at Haskins
+ - get style sheet
+ - prepare basic front page with registration form
+ - check ability to download archive through firewall
+
+tongue root gesture:
+ - needed for proper spec of R
+ - ATR vowels?
+
+version control software:
+ - CVS?
+ - check for setting up server on hakins
+ - client-side s/w?
+
+stand-alone TADA verion
+ - haven't fully checked MLC installer and cross-platform independence
+ - check for downloadable installer to post with code on website
+ 

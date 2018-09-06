@@ -1,0 +1,24 @@
+## alv fric -vce:
+sip
+sack
+sop
+suck
+
+## alv fric +vce:
+zip
+zach
+zoe
+zulu
+
+## pal-alv fric -vce:
+ship
+shack
+shop
+shuck
+
+## pal-alv fric +vce:
+beijing
+adagio
+peugeot
+jesuit
+

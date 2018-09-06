@@ -1,0 +1,34 @@
+10 0
+
+% Input string:	<pawed>
+%
+%
+% Word 1:	pawed
+% arpabet:	(P-AO1_D)
+%
+%
+% syllable 1:	P-AO1_D
+%
+%    onset cluster = <P>
+%    segment 1 [P]:
+'LA' 'ons1_clo1' -2 8 1 JA=8,UH=5,LH=1 100 0.01
+'LA' 'ons1_rel1' 11 8 1 JA=8,UH=5,LH=1 1 1
+'GLO' 'ons1_h1' 0.4 8 1 GW=1 0 0
+'VEL' 'ons1_clo1' -0.1 8 1 NA=1 0 0
+%
+%    nucleus cluster = <AO1>
+%    segment 1 [AO]:
+'TBCL' 'v1' 180 4 1 JA=1,CL=1,CA=1 1 1
+'TBCD' 'v1' 11 4 1 JA=1,CL=1,CA=1 1 1
+'LP' 'v_rnd1' 12 4 1 LX=1 1 1
+'LA' 'v_rnd1' 5 4 1 JA=1,UH=5,LH=1 1 1
+%
+%    coda cluster = <D>
+%    segment 1 [D]:
+'TTCL' 'cod1_clo1' 56 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'cod1_clo1' -2 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 100 0.01
+'TTCL' 'cod1_rel1' 24 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'cod1_rel1' 11 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'VEL' 'cod1_clo1' -0.1 8 1 NA=1 0 0
+##
+

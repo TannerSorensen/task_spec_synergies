@@ -1,0 +1,20 @@
+monophthongs:
+IY:  heed	(HH-IY1_D)
+IH:  hid	(HH-IH1_D)
+EH:  head	(HH-EH1_D)
+AE:  had	(HH-AE1_D)
+AA:  hod	(HH-AA1_D)
+AO:  hall	(HH-AO1_L)
+AH:  hud	(HH-AH1_D)
+UH:  hood	(HH-UH1_D)
+ER:  herd	(HH-ER1_D)
+
+diphthongs ??:
+EY:  hay	(HH-EY1_Y)
+OW:  hoe	(HH-OW1_W)
+UW:  who'd	(HH-UW1_D)
+
+diphthongs altered:
+AW:  how	(HH-AA1_W)
+AY:  high	(HH-AA1_Y)
+OY:  hoy	(HH-AO1_Y)

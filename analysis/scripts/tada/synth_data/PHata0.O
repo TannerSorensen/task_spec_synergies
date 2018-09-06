@@ -1,0 +1,14 @@
+%'OSC_ID' NatFreq m,n escap amp_init phase_init / riseramp plateau fallramp
+'v1' 2   1   4   1 NaN/ 10 200 210
+'v2' 2   1   4   1 NaN/ 10 200 210
+'ons1_clo2' 2   1   4   1 NaN/ 5 60 65
+'ons1_rel2' 2   1   4   1 NaN/ 5 20 25
+'ons1_h2' 2   1   4   1 NaN/ 5 60 65
+
+/coupling/
+
+%'OSC_ID1' 'OSC_ID2' strength1(to OSC1) strength2(to OSC2) TargetRelPhase
+'ons1_clo2' 'ons1_rel2' 1  1 65
+'ons1_clo2' 'ons1_h2' 1  1 20
+'ons1_clo2' 'v2' 1 1 0
+'v1' 'ons1_clo2' 1   1 180

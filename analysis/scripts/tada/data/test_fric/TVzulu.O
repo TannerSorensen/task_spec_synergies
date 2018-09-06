@@ -1,0 +1,57 @@
+10 0
+
+% Input string:	<zulu>
+%
+%
+% Word 1:	zulu
+% arpabet:	(Z-UW1_W)(L-UW2_W)
+%
+%
+% syllable 1:	Z-UW1_W
+%
+%    onset cluster = <Z>
+%    segment 1 [Z]:
+'TTCL' 'ons1_crt1' 56 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'ons1_crt1' 0.16 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 10 0.1
+'TTCL' 'ons1_rel1' 24 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'ons1_rel1' 11 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TBCL' 'ons1_crt1' 100 8 1 JA=10,CL=1,CA=1 10 0.1
+'TBCD' 'ons1_crt1' 10 8 1 JA=10,CL=1,CA=1 10 0.1
+'VEL' 'ons1_crt1' -0.1 8 1 NA=1 0 0
+%
+%    nucleus cluster = <UW1>
+%    segment 1 [UW]:
+'TBCL' 'v1' 125 4 1 JA=10,CL=1,CA=1 1 1
+'TBCD' 'v1' 4 4 1 JA=1,CL=1,CA=1 1 1
+'LP' 'v_rnd1' 12 4 1 LX=1 1 1
+'LA' 'v_rnd1' 5 4 1 JA=1,UH=5,LH=1 1 1
+%
+%    coda cluster = <W>
+%    segment 1 [W]:
+'LA' 'cod1_nar1' 2 8 1 JA=8,UH=5,LH=1 1 1
+'LA' 'cod1_rel1' 11 8 1 JA=8,UH=5,LH=1 1 1
+%
+% syllable 2:	L-UW2_W
+%
+%    onset cluster = <L>
+%    segment 1 [L]:
+'TTCD' 'ons1_rel2' 11 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TBCL' 'ons1_voc2' 125 4 1 JA=10,CL=1,CA=1 10 0.1
+'TBCD' 'ons1_voc2' 2 4 1 JA=10,CL=1,CA=1 100 0.01
+'TTCL' 'ons1_nar2' 56 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'ons1_nar2' 2 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCL' 'ons1_rel2' 24 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+%
+%    nucleus cluster = <UW2>
+%    segment 1 [UW]:
+'TBCL' 'v2' 125 4 1 JA=10,CL=1,CA=1 1 1
+'TBCD' 'v2' 4 4 1 JA=1,CL=1,CA=1 1 1
+'LP' 'v_rnd2' 12 4 1 LX=1 1 1
+'LA' 'v_rnd2' 5 4 1 JA=1,UH=5,LH=1 1 1
+%
+%    coda cluster = <W>
+%    segment 1 [W]:
+'LA' 'cod1_nar2' 2 8 1 JA=8,UH=5,LH=1 1 1
+'LA' 'cod1_rel2' 11 8 1 JA=8,UH=5,LH=1 1 1
+##
+

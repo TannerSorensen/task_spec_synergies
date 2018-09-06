@@ -1,0 +1,41 @@
+10 0
+
+% Input string:	<sphere>
+%
+%
+% Word 1:	sphere
+% arpabet:	(S F-IH1_R)
+%
+%
+% syllable 1:	S F-IH1_R
+%
+%    onset cluster = <S F>
+%    segment 1 [S]:
+'TTCL' 'ons1_crt1' 56 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'ons1_crt1' 1 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 10 0.1
+'TTCL' 'ons1_rel1' 24 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'ons1_rel1' 11 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TBCL' 'ons1_crt1' 100 8 1 JA=10,CL=1,CA=1 10 0.1
+'TBCD' 'ons1_crt1' 10 8 1 JA=10,CL=1,CA=1 10 0.1
+'GLO' 'ons1_h1' 0.4 8 1 GW=1 0 0
+'VEL' 'ons1_crt1' -0.1 8 1 NA=1 0 0
+%    segment 2 [F]:
+'LA' 'ons2_crt1' 1 8 1 JA=8,UH=5,LH=1 10 0.1
+'LA' 'ons2_rel1' 11 8 1 JA=8,UH=5,LH=1 1 1
+'LP' 'ons2_crt1' 8 8 1 LX=1 1 1
+'LP' 'ons2_rel1' 9.11 8 1 LX=1 1 1
+'VEL' 'ons2_crt1' -0.1 8 1 NA=1 0 0
+%
+%    nucleus cluster = <IH1>
+%    segment 1 [IH]:
+'TBCL' 'v1' 95 3 1 JA=10,CL=1,CA=1 1 1
+'TBCD' 'v1' 8 3 1 JA=1,CL=1,CA=1 1 1
+%
+%    coda cluster = <R>
+%    segment 1 [R]:
+'TTCL' 'cod1_nar1' 80 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'cod1_nar1' 2 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCL' 'cod1_rel1' 24 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'cod1_rel1' 11 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+##
+

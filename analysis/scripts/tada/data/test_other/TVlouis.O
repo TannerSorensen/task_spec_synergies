@@ -1,0 +1,51 @@
+10 0
+
+% Input string:	<louis>
+%
+%
+% Word 1:	louis
+% arpabet:	(L-UW1_W)(-IH0_S)
+%
+%
+% syllable 1:	L-UW1_W
+%
+%    onset cluster = <L>
+%    segment 1 [L]:
+'TTCL' 'ons1_rel1' 24 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'ons1_rel1' 11 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TBCL' 'ons1_voc1' 125 4 1 JA=10,CL=1,CA=1 10 0.1
+'TBCD' 'ons1_voc1' 2 4 1 JA=10,CL=1,CA=1 100 0.01
+'TTCL' 'ons1_nar1' 56 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'ons1_nar1' 2 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+%
+%    nucleus cluster = <UW1>
+%    segment 1 [UW]:
+'TBCL' 'v1' 125 4 1 JA=10,CL=1,CA=1 1 1
+'TBCD' 'v1' 4 4 1 JA=1,CL=1,CA=1 1 1
+'LP' 'v_rnd1' 12 4 1 LX=1 1 1
+'LA' 'v_rnd1' 5 4 1 JA=1,UH=5,LH=1 1 1
+%
+%    coda cluster = <W>
+%    segment 1 [W]:
+'LA' 'cod1_nar1' 2 8 1 JA=8,UH=5,LH=1 1 1
+'LA' 'cod1_rel1' 11 8 1 JA=8,UH=5,LH=1 1 1
+%
+% syllable 2:	-IH0_S
+%
+%    nucleus cluster = <IH0>
+%    segment 1 [IH]:
+'TBCL' 'v2' 95 3 1 JA=10,CL=1,CA=1 1 1
+'TBCD' 'v2' 8 3 1 JA=1,CL=1,CA=1 1 1
+%
+%    coda cluster = <S>
+%    segment 1 [S]:
+'TTCL' 'cod1_crt2' 56 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'cod1_crt2' 1 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 10 0.1
+'TTCL' 'cod1_rel2' 24 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'cod1_rel2' 11 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TBCL' 'cod1_crt2' 100 8 1 JA=10,CL=1,CA=1 10 0.1
+'TBCD' 'cod1_crt2' 10 8 1 JA=10,CL=1,CA=1 10 0.1
+'GLO' 'cod1_h2' 0.4 8 1 GW=1 0 0
+'VEL' 'cod1_crt2' -0.1 8 1 NA=1 0 0
+##
+

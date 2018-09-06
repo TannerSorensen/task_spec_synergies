@@ -1,0 +1,33 @@
+10 0
+
+% Input string:	<hide>
+%
+%
+% Word 1:	hide
+% arpabet:	(HH-AA1_Y D)
+%
+%
+% syllable 1:	HH-AA1_Y D
+%
+%    onset cluster = <HH>
+%    segment 1 [HH]:
+'GLO' 'ons1_h1' 0.4 8 1 GW=1 0 0
+%
+%    nucleus cluster = <AA1>
+%    segment 1 [AA]:
+'TBCL' 'v1' 180 4 1 JA=1,CL=1,CA=1 1 1
+'TBCD' 'v1' 11 4 1 JA=1,CL=1,CA=1 1 1
+%
+%    coda cluster = <Y D>
+%    segment 1 [Y]:
+'TBCL' 'cod1_nar1' 95 8 1 JA=10,CL=1,CA=1 100 0.01
+'TBCD' 'cod1_nar1' 2 8 1 JA=10,CL=1,CA=1 100 0.01
+'LA' 'cod1_nar1' 8 8 1 JA=8,UH=5,LH=1 1 1
+%    segment 2 [D]:
+'TTCL' 'cod2_clo1' 56 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'cod2_clo1' -2 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 100 0.01
+'TTCL' 'cod2_rel1' 24 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'cod2_rel1' 11 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'VEL' 'cod2_clo1' -0.1 8 1 NA=1 0 0
+##
+

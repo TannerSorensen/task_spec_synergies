@@ -1,0 +1,30 @@
+%'OSC_ID' NatFreq m,n escap amp_init phase_init / riseramp plateau fallramp
+'v1' 3 1 4 1 NaN / 20 340 360 
+'v2' 3 1 4 1 NaN / 20 340 360 
+'v3' 3 1 4 1 NaN / 20 340 360 
+'v_rnd2' 3 1 4 1 NaN / 20 340 360 
+'ons1_crt1' 6 2 4 1 NaN / 20 250 270 
+'ons1_crt2' 6 2 4 1 NaN / 20 250 270 
+'cod1_clo3' 6 2 4 1 NaN / 20 220 240 
+'cod1_nar2' 6 2 4 1 NaN / 20 220 240 
+'cod1_h3' 6 2 4 1 NaN / 20 220 240 
+'ons1_rel1' 6 2 4 1 NaN / 20 160 180 
+'cod1_rel2' 6 2 4 1 NaN / 20 160 180 
+'ons1_rel2' 6 2 4 1 NaN / 20 160 180 
+'cod1_rel3' 6 2 4 1 NaN / 20 160 180 
+
+/coupling/
+
+%'OSC_ID1' 'OSC_ID2' strength1(to OSC1) strength2(to OSC2) TargetRelPhase
+'ons1_crt1' 'ons1_rel1' 1 1 180 
+'ons1_crt2' 'ons1_rel2' 1 1 180 
+'ons1_crt1' 'v1' 1 1 0 
+'ons1_crt2' 'v2' 1 1 0 
+'v_rnd2' 'v2' 1 1 0 
+'cod1_nar2' 'cod1_rel2' 1 1 180 
+'cod1_clo3' 'cod1_rel3' 1 1 180 
+'cod1_clo3' 'cod1_h3' 1 1 90 
+'v2' 'cod1_nar2' 1 1 180 
+'v3' 'cod1_clo3' 1 1 180 
+'v1' 'ons1_crt2' 1 1 180 
+'cod1_nar2' 'v3' 1 1 0 

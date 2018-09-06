@@ -1,0 +1,32 @@
+
+To be tested today:
+- test NAR=2 for Y, W, L, ZH, SH
+- test NAR=2 for Y, W, L, ZH, SH
+- test changed JH: (CLO -1 -> -2 (default), etc)
+- test changed CH: (f -> 2 (from default))
+
+To be done later:
+- change OSC{W,L} wid -> sgl? dep? mon? aux?
+- /R/: test addition of tongue root gesture
+!!! - /R/: test oscillator change to 'wid' (sgl? dep? mon? aux?)
+- test use of JAW TV for sibilants (Value ~ current jaw position) (ref. frame?)
+- relabel vocalic constriction degree.
+- Onset cluster in testlist.
+
+- AH doesn't work.
+- R doesn't get coupling graph.      fixed in coupling.ph (ons2_rel1 should be ons1_rel1, which is coupled in a way.)
+- SH doesn't work. (change TTCD to 1.5 from 2.5, TBCD back to 8)  (seems to work.)
+
+enhancements
+
+
+test new gen.ph that fixes Y in coda bug    ->>>>> fixed
+new version of gest with rules to delete gestures in onset and coda
+new version of gest that puts Y in coda for IY, EY, W in coda for UW, OW.
+test tense and lax vowels
+test that gen_ph will work with new codas that we will generate with revised gest
+gen_ph need to work for initial 'h'   ->>>>fixed
+test N+stop cluster
+
+LA target is too small for IY (maybe 2->4)
+

@@ -1,0 +1,33 @@
+
+To be done (mike):
+- new version of gest with rules to delete gestures in onset and coda
+- new version of gest that puts Y in coda for IY, EY, W in coda for UW, OW
+- new verions of gest which fixes lateral oscillator list
+
+  then after fixing gest:
+- test that gen_ph will work with new codas that we will generate with revised gest
+- test tense/lax (back Vs)
+- test N+stop cluster
+- test all approximants GEST problems resolved:
+  - NAR=2 has been used throughout
+  - R: release gesture added
+
+To be done (hosung):
+- change OSC{W,L,R} wid -> new name
+- onset clusters
+- test that gen_ph will work with new codas that we will generate with revised gest
+- test tense/lax (back Vs)
+- ons_h1 HH-initial Hosung issues
+- test N+stop cluster
+- tadacl more stable
+
+
+
+Too Hard Basket:
+- /R/: test addition of tongue root gesture
+- test use of JAW TV for sibilants (Value ~ current jaw position) (ref. frame?)
+- experiment with oral cavity volume: clicks, ejectives; HLSYN:UC 
+- alveloar quality to labials because TT is lingering in /AE/ context ('chap')
+  (neutral attractor stiffness TT??)
+  (jaw weight TT??)
+

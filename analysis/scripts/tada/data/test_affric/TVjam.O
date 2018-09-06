@@ -1,0 +1,32 @@
+10 0
+
+% Input string:	<jam>
+%
+%
+% Word 1:	jam
+% arpabet:	(JH-AE1_M)
+%
+%
+% syllable 1:	JH-AE1_M
+%
+%    onset cluster = <JH>
+%    segment 1 [JH]:
+'TTCL' 'ons1_crt1' 60 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'ons1_crt1' -2 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 100 0.01
+'TTCL' 'ons1_rel1' 50 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'ons1_rel1' 11 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TBCL' 'ons1_crt1' 95 8 1 JA=10,CL=1,CA=1 100 0.01
+'TBCD' 'ons1_crt1' 5 8 1 JA=10,CL=1,CA=1 100 0.01
+'VEL' 'ons1_crt1' -0.1 8 1 NA=1 0 0
+%
+%    nucleus cluster = <AE1>
+%    segment 1 [AE]:
+'TBCL' 'v1' 180 4 1 JA=1,CL=1,CA=1 1 1
+'TBCD' 'v1' 20 4 1 JA=1,CL=1,CA=1 1 1
+%
+%    coda cluster = <M>
+%    segment 1 [M]:
+'LA' 'cod1_clo1' -2 8 1 JA=8,UH=5,LH=1 100 0.01
+'VEL' 'cod1_n1' 0.2 8 1 NA=1 1 1
+##
+

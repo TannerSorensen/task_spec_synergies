@@ -1,0 +1,68 @@
+P
+T
+K
+B
+D
+G
+F
+V
+S
+Z
+TH
+DH
+SH
+ZH
+CH
+JH
+HH
+M
+N
+R
+L
+W
+Y
+P R
+T R
+K R
+B R
+D R
+G R
+F R
+TH R
+SH R
+P L
+K L
+B L
+G L
+F L
+S L
+T W
+K W
+D W
+S W
+S P
+S T
+S K
+S F
+S M
+S N
+G W
+SH W
+TH W
+P Y
+B Y
+K Y
+G Y
+F Y
+V Y
+M Y
+TH Y
+HH Y
+S P Y
+S K Y
+S P R
+S P L
+S T R
+S K R
+S K W
+S K L

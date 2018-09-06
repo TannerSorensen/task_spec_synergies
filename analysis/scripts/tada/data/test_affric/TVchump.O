@@ -1,0 +1,37 @@
+10 0
+
+% Input string:	<chump>
+%
+%
+% Word 1:	chump
+% arpabet:	(CH-AH1_M P)
+%
+%
+% syllable 1:	CH-AH1_M P
+%
+%    onset cluster = <CH>
+%    segment 1 [CH]:
+'TTCL' 'ons1_crt1' 60 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'ons1_crt1' -2 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 100 0.01
+'TTCL' 'ons1_rel1' 50 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TTCD' 'ons1_rel1' 11 8 1 JA=32,CL=32,CA=32,TL=1,TA=1 1 1
+'TBCL' 'ons1_crt1' 95 8 1 JA=10,CL=1,CA=1 100 0.01
+'TBCD' 'ons1_crt1' 5 8 1 JA=10,CL=1,CA=1 100 0.01
+'GLO' 'ons1_h1' 0.4 8 1 GW=1 0 0
+'VEL' 'ons1_crt1' -0.1 8 1 NA=1 0 0
+%
+%    nucleus cluster = <AH1>
+%    segment 1 [AH]:
+'TBCL' 'v1' 150 3 1 JA=1,CL=1,CA=1 1 1
+'TBCD' 'v1' 6.5 3 1 JA=1,CL=1,CA=1 1 1
+%
+%    coda cluster = <M P>
+%    segment 1 [M]:
+'LA' 'cod1_clo1' -2 8 1 JA=8,UH=5,LH=1 100 0.01
+'VEL' 'cod1_n1' 0.2 8 1 NA=1 1 1
+%    segment 2 [P]:
+'LA' 'cod2_rel1' 11 8 1 JA=8,UH=5,LH=1 1 1
+'GLO' 'cod2_h1' 0.4 8 1 GW=1 0 0
+'VEL' 'cod2_clo1' -0.1 8 1 NA=1 0 0
+##
+
