@@ -29,6 +29,15 @@ tv_key.csv
 .RData
 .Rhistory
 
+## TADA and HLSyn files:
+*.G
+*.g
+*.O
+*.o
+*.HL
+*.hl
+*.wav
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
