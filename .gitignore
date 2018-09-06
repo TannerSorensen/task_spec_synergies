@@ -38,6 +38,9 @@ tv_key.csv
 *.hl
 *.wav
 
+## Directories created in validation
+english*/
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
