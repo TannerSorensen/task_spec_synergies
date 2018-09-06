@@ -157,27 +157,37 @@ function [Xul,Yul,Xll,Yll,Xtongue,Ytongue,Xalveolar,...
         Y=contour_data.Ysim((contour_data.files == file_name & contour_data.frames == frame_number)',:);
     end
     
-    % lips
+    % upper lip
     Xul = X(ismember(contour_data.sections_id,15));
     Yul = Y(ismember(contour_data.sections_id,15));
+    if ~isempty(Xul)
+        Xul = interp1(Xul,1:ds:length(Xul));
+        Yul = interp1(Yul,1:ds:length(Yul));
+    end
+    
+    % lower lip
     Xll = X(ismember(contour_data.sections_id,4));
     Yll = Y(ismember(contour_data.sections_id,4));
-    Xul = interp1(Xul,1:ds:length(Xul));
-    Yul = interp1(Yul,1:ds:length(Yul));
-    Xll = interp1(Xll,1:ds:length(Xll));
-    Yll = interp1(Yll,1:ds:length(Yll));
+    if ~isempty(Xul)
+        Xll = interp1(Xll,1:ds:length(Xll));
+        Yll = interp1(Yll,1:ds:length(Yll));
+    end
     
     % tongue
     Xtongue = X(ismember(contour_data.sections_id,2));
     Ytongue = Y(ismember(contour_data.sections_id,2));
-    Xtongue=interp1(Xtongue,1:ds:length(Xtongue));
-    Ytongue=interp1(Ytongue,1:ds:length(Ytongue));
+    if ~isempty(Xtongue)
+        Xtongue=interp1(Xtongue,1:ds:length(Xtongue));
+        Ytongue=interp1(Ytongue,1:ds:length(Ytongue));
+    end
     
     % epiglottis
     Xepig = X(ismember(contour_data.sections_id,1));
     Yepig = Y(ismember(contour_data.sections_id,1));
-    Xepig=interp1(Xepig,1:ds:length(Xepig));
-    Yepig=interp1(Yepig,1:ds:length(Yepig));
+    if ~isempty(Xepig)
+        Xepig=interp1(Xepig,1:ds:length(Xepig));
+        Yepig=interp1(Yepig,1:ds:length(Yepig));
+    end
     
     % palate and pharynx
     Xalveolar = X(ismember(contour_data.sections_id,11));
@@ -206,11 +216,10 @@ function [Xul,Yul,Xll,Yll,Xtongue,Ytongue,Xalveolar,...
         phar_idx(2) = min([phar_idx(2) length(Xphar)]);
         Xphar = Xphar(phar_idx(1):phar_idx(2)); 
         Yphar = Yphar(phar_idx(1):phar_idx(2));
-    else
-        Xphar = Xphar(15:end); 
-        Yphar = Yphar(15:end);
     end
-    Xphar = interp1(Xphar,1:ds:length(Xphar));
-    Yphar = interp1(Yphar,1:ds:length(Yphar));
+    if ~isempty(Xphar)
+        Xphar = interp1(Xphar,1:ds:length(Xphar));
+        Yphar = interp1(Yphar,1:ds:length(Yphar));
+    end
     
 end
