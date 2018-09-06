@@ -96,6 +96,11 @@ end
 [sig srate A ADOT TV TVDOT TV_SCORE ART ms_frm last_frm AREA TUBELENGTHSMOOTH UPPEROUTLINE BOTTOMOUTLINE F] = ...
     t_casy(utt_name, TV_SCORE, ART, ms_frm, last_frm, ifkill, []);
 
+
+% added by Tanner Sorensen, Sept. 5, 2018
+save([utt_save '_uo'], 'UPPEROUTLINE');
+save([utt_save '_bo'], 'BOTTOMOUTLINE');
+
 % synthesis through HLsyn, added by HN 200901
 if yesHlsyn
     fnHL = [utt_name '.HL'];
