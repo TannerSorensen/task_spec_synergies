@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
 
-cd "./TADA/synth_data/"
-matlab -nodisplay -nodesktop -r "run synthesize_data.m; exit"
+matlab -nodisplay -nodesktop -r "run synthesize_data.m; run validation.m; exit"
+
+rm *.O
+rm *.G
+rm *.HL
+rm *.wav
+rm *.mat
