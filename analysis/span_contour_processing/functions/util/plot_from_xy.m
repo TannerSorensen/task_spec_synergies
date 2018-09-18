@@ -40,18 +40,11 @@ function plot_from_xy(xy_data,sections_id,color)
 X=xy_data(1:length(xy_data)/2);
 Y=xy_data(length(xy_data)/2+1:end);
 
-X1=X(ismember(sections_id,1:6));
-Y1=Y(ismember(sections_id,1:6));
-
-X2=X(ismember(sections_id,7:10));
-Y2=Y(ismember(sections_id,7:10));
-
-X3=X(ismember(sections_id,11:15));
-Y3=Y(ismember(sections_id,11:15));
-
-plot(X1,Y1,color,'LineWidth',2);hold on;
-plot(X2,Y2,color,'LineWidth',2);
-plot(X3,Y3,color,'LineWidth',2);%hold off;
+for i=unique(sections_id)
+    X=X(ismember(sections_id,i));
+    Y=Y(ismember(sections_id,i));
+    plot(X,Y,color,'LineWidth',2);hold on;
+end
 
 axis equal;
 
