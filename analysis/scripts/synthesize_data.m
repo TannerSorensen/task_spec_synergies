@@ -27,7 +27,7 @@ file = cellfun(@(x) strrep('aCa','C',x), num2cell(consonants), 'UniformOutput', 
 
 % jaw weights vary from very small (1e-4, jaw is "light" and moves a lot)
 % to very large (1e4, jaw is "heavy" and moves little)
-weight_param = [1e-4 1e-2 1e0 1e2 1e4];
+weight_param = [1e-1 1e0 1e1];
 weight_param_str = cellfun(@(x) num2str(x), num2cell(0:length(weight_param)-1), 'UniformOutput', false);
 
 % hard-coded indices of tongue, jaw, lower lip, upper lip, hard palate,
@@ -76,6 +76,19 @@ for idx = 1:length(weight_param)
         a=fgets(fid);
     end
     system(['rm ' strrep(output_filename,'.txt','_bak.txt')]);
+    
+    % ------------------------------
+    % ----- CHANGE C-V COUPLING ----
+    % ------------------------------
+    coupling_filename = fullfile(pwd,'..','tada','gest',language_name,'coupling.ph');
+    
+    srch_str = 'ONS_CNS\* V 1 1 0';
+    rep_str = 'ONS_CNS\* V 1 1 180';
+    system(['sed -i "s/' srch_str '/' rep_str '/" ' coupling_filename]);
+    
+    srch_str = 'V COD_C 1 1 180';
+    rep_str = 'V COD_C 1 1 360';
+    system(['sed -i "s/' srch_str '/' rep_str '/" ' coupling_filename]);
     
     % ------------------------------
     % ----- SYNTHESIZE DATASET -----
