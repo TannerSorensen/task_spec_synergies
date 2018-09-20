@@ -35,7 +35,6 @@ B = diag(2.*omega);
 n_timestamps = round(h2.*n_frames./h1);
 zOut = NaN(nZ,n_timestamps);
 t = NaN(1,n_timestamps);
-t(1) = 0;
 phiOut = NaN(2.*nPhi,n_timestamps);
 
 % locally linearize the ODE over N_FRAMES frames
@@ -46,7 +45,7 @@ for i=1:n_frames
         t0 = t(indx(1)-1);
         phiInit = phiOut(:,indx(1)-1);
     else
-        t0 = t(1);
+        t0 = 0;
     end
     t1 = t0+h2-h1;
     tspan = t0:h1:t1;
@@ -54,7 +53,7 @@ for i=1:n_frames
     % get forward kinematic map and jacobian matrix
     J_t = zeros(nZ,nPhi);
     indx2 = knnsearch(phi,phiInit(1:nPhi)','dist','euclidean','K',1);
-    F = lscov([ones(length(idx(i,:)),1) phi(idx(i,:),:)], z(idx(i,:),:), ...
+    F = lscov([ones(length(idx(indx2,:)),1) phi(idx(indx2,:),:)], z(idx(indx2,:),:), ...
         arrayfun(@(u) weight_fun(u), dist(indx2,:)./dist(indx2,end)));
     F = F';
     J = F(:,2:end);
