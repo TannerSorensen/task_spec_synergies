@@ -17,6 +17,9 @@ rm manual_annotations.zip
 # build model
 cd scripts
 ./run_wrap_build_model.sh
+
+# validate model
+matlab -nodesktop -nodisplay -r "run validation.m; exit"
 cd ../..
 
 # make paper
