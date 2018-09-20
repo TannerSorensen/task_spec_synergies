@@ -1,9 +1,9 @@
-function [t,phiOut,zOut] = task_dynamics(omega,z0,h1,h2,n_frames,phiInit,W,nZ,nPhi,z,phi,dzdt,dphidt,f)
+function [t,phiOut,zOut] = task_dynamics(omega,z0,h1,h2,n_frames,timepoints_per_frame,phiInit,W,nZ,nPhi,z,phi,dzdt,dphidt,f)
 
 % Get q nearest neighbors of each articulator parameter value.
-n = size(z,1);
-q = round(f*n);
-[idx, dist] = knnsearch(phi,phi,'dist','euclidean','K',q);
+n = size(phi,1);
+fn = round(f*n);
+[idx, dist] = knnsearch(phi,phi,'dist','euclidean','K',fn);
 
 plain = 1:nPhi;             % indices
 dot = nPhi+1:2*nPhi;        % indices
@@ -32,45 +32,39 @@ B = diag(2.*omega);
 
 % parameters of the simulation
 % parameters of articulators PHI
-n_timestamps = h2.*n_frames./h1;
+n_timestamps = round(h2.*n_frames./h1);
 zOut = NaN(nZ,n_timestamps);
 t = NaN(1,n_timestamps);
 t(1) = 0;
-tspan = h1:h1:h2;
 phiOut = NaN(2.*nPhi,n_timestamps);
-phiOut(:,1) = phiInit;
 
 % locally linearize the ODE over N_FRAMES frames
 for i=1:n_frames
-    indx = (i-1)*n_frames+1:i*n_frames;
+    indx = (i-1)*timepoints_per_frame+1:i*timepoints_per_frame;
     
-    if indx(1)-1 ~= 0
-        t0 = t(indx(1)-1)+h1;
-        t1 = t0+h2-h1;
-        tspan = t0:h1:t1;
+    if indx(1)-1 > 0
+        t0 = t(indx(1)-1);
         phiInit = phiOut(:,indx(1)-1);
+    else
+        t0 = t(1);
     end
-    indx2 = knnsearch(phi,phiInit(1:nPhi)','dist','euclidean','K',1);
+    t1 = t0+h2-h1;
+    tspan = t0:h1:t1;
     
-    F = zeros(nZ,nPhi+1);
-    J = zeros(nZ,nPhi);
+    % get forward kinematic map and jacobian matrix
     J_t = zeros(nZ,nPhi);
-    for j=1:nZ
-        F(j,[true zPhiRel(j,:)]) = lscov([ones(length(idx(indx2,:)),1) phi(idx(indx2,:),zPhiRel(j,:))], ...
-            z(idx(indx2,:),j), ...
-            arrayfun(@(u) weightfun(u), dist(indx2,:)./dist(indx2,end)));
-        % Estimate the jacobian J of the forward map at point phiInit
-        J(j,zPhiRel(j,:)) = lscov(dphidt(idx(indx2,:),zPhiRel(j,:)), ...
-            dzdt(idx(indx2,:),j), ...
-            arrayfun(@(u) weightfun(u), dist(indx2,:)./dist(indx2,end)));
-    end
+    indx2 = knnsearch(phi,phiInit(1:nPhi)','dist','euclidean','K',1);
+    F = lscov([ones(length(idx(i,:)),1) phi(idx(i,:),:)], z(idx(i,:),:), ...
+        arrayfun(@(u) weight_fun(u), dist(indx2,:)./dist(indx2,end)));
+    F = F';
+    J = F(:,2:end);
     Jstar = jacStar(J,W,diag(omega~=0),nZ); % weighted pseudoinverse
     
     % flow on Z
-    f=@(t,phi)[phi(dot);Jstar*(-B*J*phi(dot)-K*(F*[1;phi(plain)]-z0)-J_t*phi(dot))-(G_P-Jstar*J)*B_N*phi(dot)+G_N*(-B_N*phi(dot)-K_N*phi(plain))];
+    flow=@(t,phi)[phi(dot);Jstar*(-B*J*phi(dot)-K*(F*[1;phi(plain)]-z0)-J_t*phi(dot))-(G_P-Jstar*J)*B_N*phi(dot)+G_N*(-B_N*phi(dot)-K_N*phi(plain))];
     
     % solve ODE
-    [tNew,phiNew] = ode45(f,tspan,phiInit);
+    [tNew,phiNew] = ode45(flow,tspan,phiInit);
     
     % save result
     t(indx) = tNew;
