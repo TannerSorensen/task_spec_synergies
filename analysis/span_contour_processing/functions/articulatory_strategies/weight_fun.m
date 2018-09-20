@@ -1,4 +1,4 @@
-function y = weightfun(u)
+function y = weight_fun(u)
 %WEIGHTFUN - weight function for the locally weighted linear regression,
 %used to estimate the jacobian of the forward kinematic map
 % 
