@@ -116,14 +116,7 @@ lip = zeros(n,nz);
 tng = zeros(n,nz);
 vel = zeros(n,nz);
 
-fprintf('[')
-twentieths = round(linspace(1,n,20));
 for i=1:n
-    % monitor progress
-    if ismember(i,twentieths)
-        fprintf('=')
-    end
-    
     % Estimate the jacobian J of the forward map at point w(i,:)
     G = lscov([ones(length(idx(i,:)),1) W(idx(i,:),:)], Z(idx(i,:),:), ...
         arrayfun(@(u) weight_fun(u), dist(i,:)./dist(i,end)));
@@ -136,9 +129,64 @@ for i=1:n
     tng(i,:) = J*Ptng*dwdt(i,:)';
     vel(i,:) = J*Pvel*dwdt(i,:)';
 end
-fprintf(']\n')
 
-contour_data.strategies = struct('jaw',jaw,'lip',lip,'tng',tng,'vel',vel);
+% initialize task variable-file name associations
+biomarker = [];
+try
+    % read in table that associates file names codes (column one, 
+    % 'file_name' to task variables (column two, 'task_variable')
+    tv_key = readtable(fullfile(config_struct.manual_annotations_path,'tv_key.csv'));
+    file_list_key = tv_key.file_name;
+    task_variable_key = tv_key.task_variable;
+    
+    % establish correspondence between the six task variables and the 
+    % numerical indices 1,2,3,4,5,6
+    task_variable_num_ids = 1:6;
+    task_variable_string_ids = {'bilabial','alveolar','palatal','velar','pharyngeal','velopharyngeal'};
+    
+    % initialize matrix with three columns:
+    % - column 1: file number
+    % - column 2: task variable numerical id
+    % - column 3: biomarker value
+    biomarker = zeros(0,3);
+    
+    % for each task variable
+    for i=1:length(task_variable_string_ids)
+        
+        % for each file name code that is specified for that task variable
+        idx = find(strcmp(task_variable_key,task_variable_string_ids{i}));
+        for j=1:length(idx)
+            
+            % get the file numbers that match the file name code
+            file_nums = find(cellfun(@(x) contains(x,file_list_key{idx(j)}),contour_data.file_list))';
+            
+            % get biomarkers that match file numbers in file_nums
+            bms = ones(size(file_nums));
+            for k=1:length(file_nums)
+                if task_variable_num_ids(i) == 1 % compute jaw/(jaw+lips)
+                    bm = diff(quantile(cumsum(jaw(contour_data.files==file_nums(k),task_variable_num_ids(i))),[0.1 0.9])) ...
+                        / (diff(quantile(cumsum(jaw(contour_data.files==file_nums(k),task_variable_num_ids(i))),[0.1 0.9])) ...
+                        + diff(quantile(cumsum(lip(contour_data.files==file_nums(k),task_variable_num_ids(i))),[0.1 0.9])));
+                else % compute jaw/(jaw+tongue)
+                    bm = diff(quantile(cumsum(jaw(contour_data.files==file_nums(k),task_variable_num_ids(i))),[0.1 0.9])) ...
+                        / (diff(quantile(cumsum(jaw(contour_data.files==file_nums(k),task_variable_num_ids(i))),[0.1 0.9])) ...
+                        + diff(quantile(cumsum(tng(contour_data.files==file_nums(k),task_variable_num_ids(i))),[0.1 0.9])));
+                end
+                bms(k) = bm;
+            end
+            
+            % concatenate file numbers, task variables, and biomarker
+            % values onto the biomarker container
+            biomarker = cat(1,biomarker,[file_nums,repmat(task_variable_num_ids(i),size(file_nums,1),1),bms]);
+        end
+    end
+    biomarker = table(biomarker(:,1),biomarker(:,2),biomarker(:,3),'VariableNames',{'file','tv','bm'});
+catch
+    warning('Could not open or process task variable key file\n  %s\nCheck that file exists and has columns ''file_name'' and ''task_variable''',...
+        fullfile(config_struct.manual_annotations_path,'tv_key.csv'))
+end
+
+contour_data.strategies = struct('jaw',jaw,'lip',lip,'tng',tng,'vel',vel,'biomarker',biomarker);
 
 save(fullfile(config_struct.out_path,sprintf('contour_data_jaw%d_tng%d_lip%d_vel1_lar2_f%d.mat',config_struct.q.jaw,config_struct.q.tng,config_struct.q.lip,round(100*config_struct.f))),'contour_data')
 
