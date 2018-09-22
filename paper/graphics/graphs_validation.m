@@ -22,32 +22,32 @@ end
 % declare array of jaw weights from 10^-2 to 10^2 in 10 steps
 % (the point of validation.m is to evaluate agreement between articulator
 % synergy biomarker and known jaw weights)
-jaw_weight_parameters = logspace(-2,2,15);
+jaw_weight_parameters = logspace(-3,2,15);
 
 % make plot for each task variable
 figure(1)
 cm = lines;
 lgd_lines = zeros(1,5);
 for tv = 1:5
-    subtab = bm_tab(bm_tab.tv == tv,:);
-    lgd_lines(tv) = semilogx(jaw_weight_parameters,mean(table2array(subtab(:,3:end)),1), 'Color', cm(tv,:), 'LineWidth', 2);
+    true_subtab = true_bm_tab(cellfun(@(x) contains(x,tv_names(tv)), true_bm_tab.filename), 2:end);
+    lgd_lines(tv) = semilogx(jaw_weight_parameters,mean(table2array(true_subtab),1), 'Color', cm(tv,:), 'LineWidth', 2);
     hold on
     for j=1:15
-        scatter(jaw_weight_parameters(j).*ones(size(subtab,1),1), ...
-            table2array(subtab(:,2+j)), 10, cm(tv,:), 'filled')
+        scatter(jaw_weight_parameters(j).*ones(size(true_subtab,1),1), ...
+            table2array(true_subtab(:,j)), 20, cm(tv,:))
     end
 end
 set(gca,'TickLength',[0.025, 0.01],...
-    'XLim',[10e-5 10e3],...
+    'XLim',[10e-4 10e2],...
     'YLim',[-0.05 1.05],...
     'XTick',[10e-4 10e-3 10e-2 10e-1 10e0 10e1 10e2], ...
     'YTick',0:0.2:1, ...
     'YTickLabel',{'(no jaw) 0%','20%','40%','60%','80%','(all jaw) 100%'},...
     'YMinorTick','on')
-ylabel('measured biomarker')
+ylabel('articulator synergy biomarker')
 xlabel('theoretical jaw weight parameter')
-plot([10e-5 10e3],[1 1],'--k')
-plot([10e-5 10e3],[0 0],'--k')
+plot([10e-4 10e2],[1 1],'--k')
+plot([10e-4 10e2],[0 0],'--k')
 grid on
 axis square
 hold off
@@ -97,7 +97,6 @@ print(fullfile(graphics_path,[graph_file_name num2str(2)]),'-dpdf')
 
 
 
-% 
 % make plot for each task variable
 figure(3)
 cm = lines;
