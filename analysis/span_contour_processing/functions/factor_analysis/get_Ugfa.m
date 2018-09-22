@@ -97,28 +97,34 @@ disp('Performing guided factor analysis')
 load(fullfile(config_struct.out_path,sprintf('contour_data_jaw%d_tng%d_lip%d_vel1_lar2_f%d.mat',config_struct.q.jaw,config_struct.q.tng,config_struct.q.lip,round(100*config_struct.f))),'contour_data')
 
 d = size(contour_data.X,2);
-    
-U_gfa=zeros(2*d,10);
+n_factor = config_struct.q.jaw+config_struct.q.tng+config_struct.q.lip+config_struct.q.vel+config_struct.q.lar;
+U_gfa=zeros(2*d,n_factor);
 
-U_jaw = get_Ujaw(contour_data,variant_switch);
-idx = 1:config_struct.q.jaw;
-U_gfa(:,idx)=U_jaw(:,1:config_struct.q.jaw);
-
-U_tng = get_Utng(contour_data,U_jaw(:,1:config_struct.q.jaw),variant_switch);
-idx = (config_struct.q.jaw+1):(config_struct.q.jaw+config_struct.q.tng);
-U_gfa(:,idx)=U_tng(:,1:config_struct.q.tng);
-
-U_lip = get_Ulip(contour_data,U_jaw(:,1:config_struct.q.jaw),variant_switch);
-idx = (config_struct.q.jaw+config_struct.q.tng+1):(config_struct.q.jaw+config_struct.q.tng+config_struct.q.lip);
-U_gfa(:,idx)=U_lip(:,1:config_struct.q.lip);
-
-U_vel = get_Uvel(contour_data,U_jaw(:,1:config_struct.q.jaw),variant_switch);
-idx = (config_struct.q.jaw+config_struct.q.tng+config_struct.q.lip+1):(config_struct.q.jaw+config_struct.q.tng+config_struct.q.lip+config_struct.q.vel);
-U_gfa(:,idx)=U_vel(:,1:config_struct.q.vel);
-
-U_lar = get_Ular(contour_data,U_jaw(:,1:config_struct.q.jaw),variant_switch);
-idx = (config_struct.q.jaw+config_struct.q.tng+config_struct.q.lip+config_struct.q.vel+1):(config_struct.q.jaw+config_struct.q.tng+config_struct.q.lip+config_struct.q.vel+config_struct.q.lar);
-U_gfa(:,idx)=U_lar(:,1:config_struct.q.lar);
+if config_struct.q.jaw > 0
+    U_jaw = get_Ujaw(contour_data,variant_switch);
+    idx = 1:config_struct.q.jaw;
+    U_gfa(:,idx)=U_jaw(:,1:config_struct.q.jaw);
+end
+if config_struct.q.tng > 0
+    U_tng = get_Utng(contour_data,U_jaw(:,1:config_struct.q.jaw),variant_switch);
+    idx = (config_struct.q.jaw+1):(config_struct.q.jaw+config_struct.q.tng);
+    U_gfa(:,idx)=U_tng(:,1:config_struct.q.tng);
+end
+if config_struct.q.lip > 0
+    U_lip = get_Ulip(contour_data,U_jaw(:,1:config_struct.q.jaw),variant_switch);
+    idx = (config_struct.q.jaw+config_struct.q.tng+1):(config_struct.q.jaw+config_struct.q.tng+config_struct.q.lip);
+    U_gfa(:,idx)=U_lip(:,1:config_struct.q.lip);
+end
+if config_struct.q.vel > 0
+    U_vel = get_Uvel(contour_data,U_jaw(:,1:config_struct.q.jaw),variant_switch);
+    idx = (config_struct.q.jaw+config_struct.q.tng+config_struct.q.lip+1):(config_struct.q.jaw+config_struct.q.tng+config_struct.q.lip+config_struct.q.vel);
+    U_gfa(:,idx)=U_vel(:,1:config_struct.q.vel);
+end
+if config_struct.q.lar > 0
+    U_lar = get_Ular(contour_data,U_jaw(:,1:config_struct.q.jaw),variant_switch);
+    idx = (config_struct.q.jaw+config_struct.q.tng+config_struct.q.lip+config_struct.q.vel+1):(config_struct.q.jaw+config_struct.q.tng+config_struct.q.lip+config_struct.q.vel+config_struct.q.lar);
+    U_gfa(:,idx)=U_lar(:,1:config_struct.q.lar);
+end
 
 D = [contour_data.X,contour_data.Y];
 mean_data=ones(size(D,1),1)*mean(D);
