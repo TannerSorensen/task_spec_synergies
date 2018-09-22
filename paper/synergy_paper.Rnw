@@ -718,6 +718,7 @@ As in the continuous-time Equation~\ref{eq:biomarkerderivationcontinuoustime}, t
 
 The discrete-time signal $\lambda_{\mathcal{U},\ell}[n]$ is the elapsed contribution of the articulator whose factor indices are in the set $\mathcal{U}$ to narrowing or widening the $\ell$th constriction degree $z_\ell$. 
 \begin{align}
+\label{eq:lambda}
 \lambda_{\mathcal{U},\ell} \left[ n \right]
 	= \sum_{k\in \mathcal{U}} \sum_{j=0}^{n} \mathbf{j}_{\ell,\cdot} \mathbf{P}_k \Delta \mathbf{w}_{j,\cdot}
 \end{align}
@@ -738,6 +739,7 @@ Range was computed as the difference between the 90th percentile $P_{90}$ and 10
 %
 Thus, the articulator synergy biomarker $\nu_\ell$ was the following ratio.
 \begin{equation}
+\label{eq:nu}
 \nu_\ell
 =
 \frac{P_{90}\left( \lambda_{\mathcal{J},\ell} [n] \right) - P_{10}\left( \lambda_{\mathcal{J},\ell} [n] \right)}
@@ -771,10 +773,52 @@ After achieving maximum constriction, the jaw and tongue widen the constriction 
 
 
 
-\subsection{Biomarker precision}
+\subsection{Bias}
+\label{subsec:bias}
+
+This section evaluates the bias of the articulator synergy biomarker. Bias is the difference between the expected value of a measurement and its true value. The true value of the articulator synergy biomarker is unknown for any given MRI scan of a particular subject. For this reason, the present study designed a digital phantom for which the true value of the biomarker could be controlled. By varying the biomarker over the full range of possible values,
+
+The vowel-consonant-vowel sequences consisted of two subsequent gestures: [apa] consisted of bilabial closure followed by release; [ata] consisted of alveolar closure followed by release; [aja] consisted of palatal approximation followed by pharyngeal approximation; [aka] consisted of velar closure followed by release.
+
+Following Task Dynamics~\citep{saltzman1989dynamical}, change in the vector $\mathbf{z}$ of constriction degrees evolves according to the following equation for time $t_a \leq t \leq t_b$.
+\begin{equation}
+\label{eq:td_basic}
+\mathbf{\ddot{z}} = -\mathbf{K}(t)\left[\mathbf{z} - \mathbf{z}_0(t)\right] -\mathbf{B}(t)\mathbf{\dot{z}}
+\end{equation}
+where $\mathbf{z}_0$ is a vector of $m$ constriction degree targets and $\mathbf{K}$ and $\mathbf{B}$ are $m \times m$ diagonal matrices of stiffness and damping coefficients, respectively.
+The matrices $\mathbf{K}$ and $\mathbf{B}$ are constant for a given gesture.
+When the constriction is for constriction degree $z_i$, then stiffness $k_{ii} = \omega^2$, damping $b_{ii} = 2\omega$, and $k_{jj} = b_{jj} = 0$ for $j \neq i$, where $\omega$ is the natural frequency of the gesture.
+The vector $\mathbf{z}_0$ of constriction degree targets depended on the gesture: $z_{01} = $~\SI{0}{\milli\meter} for bilabial closure; $z_{01} = $~\SI{7.1}{\milli\meter} for bilabial release; $z_{02} = $~\SI{0}{\milli\meter} for alveolar closure; $z_{02} = $~\SI{7.1}{\milli\meter} for alveolar release; $z_{03} = $~\SI{4.8}{\milli\meter} for palatal approximation; $z_{04} = $~\SI{0}{\milli\meter} for velar closure; $z_{04} = $~\SI{7.1}{\milli\meter} for velar release; and $z_{05} = $~\SI{4.8}{\milli\meter} for pharyngeal approximation.
+The natural frequency $\omega = 10$ and simulation duration (i.e. start time $t_a=0$ and end time $t_b=1.6$) were set arbitrarily, as the relative usage of the jaw, tongue, and lips does not depend on the time-scale of the simulation.
+
+Given model parameters $\mathbf{K}$, $\mathbf{B}$, $\mathbf{z}_0$ and initial conditions $z(t_a)$, $\dot{z}(t_a)$, the solution $\mathbf{z}(t)$ to Equation~\ref{eq:td_basic} is unique for $t_a \leq t \leq t_b$. The unique solution $\mathbf{z}(t)$ maps to many paths $\mathbf{w}(t)$ of factor scores. One particular path $\mathbf{w}(t)$ is determined from the set of many possible paths by the forward kinematic map $\mathbf{G}$, its jacobian $\mathbf{J}(\mathbf{w})$, and a set of weights $v_1, v_2, \ldots, v_q$ for the $q$ factors.
+The unique path $\mathbf{w}(t)$ of factor scores is the solution to the following equation over the time interval $t_a \leq t \leq t_b$.
+\begin{equation}
+\label{eq:td_weight_path}
+\mathbf{\ddot{w}} = \mathbf{J}^+(\mathbf{w}) (-\mathbf{B}\mathbf{J}(\mathbf{w})\mathbf{\dot{w}} - \mathbf{K}(\mathbf{G}(\mathbf{w})-\mathbf{z}_0)) - \mathbf{J}^+(\mathbf{w})\mathbf{\dot{J}}(\mathbf{w},\mathbf{\dot{w}})\mathbf{w}
+\end{equation}
+This follows from the change of variables $\mathbf{z} = \mathbf{G}(\mathbf{w})$, $\mathbf{\dot{z}} = \mathbf{J}(\mathbf{w})\mathbf{\dot{w}}$, $\mathbf{\ddot{z}} = \mathbf{J}(\mathbf{w})\mathbf{\ddot{w}} + \mathbf{\dot{J}}(\mathbf{w},\mathbf{\dot{w}})\mathbf{\dot{w}}$ and the weighted jacobian pseudoinverse $\mathbf{J}^+ = \mathbf{V}^{-1}\mathbf{J}^\intercal (\mathbf{J}\mathbf{V}^{-1}\mathbf{J}^\intercal)^{-1}$.
+
+% TODO: explain the simulation parameters (how we solved the equation)
+
+The dynamical system simulations generated paths $\mathbf{w}[n]$ of factor scores corresponding to the utterances \textipa{[apa]}, \textipa{[ata]}, \textipa{[aja]}, and \textipa{[aka]}. By performing the simulation for \SI{15} different values of the jaw weight $v_{11}$ ranging from \SI{0.01} to \SI{10000} and computing the biomarker value  for each utterance using Equations~\ref{eq:lambda} and~\ref{eq:nu}, the simulation generated synthetic data for which the true articulator synergy biomarker values are known. Figure~\ref{fig:validation} demonstrates that the jaw weight is inversely related to biomarker value: when the jaw weight is large, the biomarker value is close to \SI{0}{\percent} indicating a small jaw contribution; when the jaw weight is small, the biomarker value is close to \SI{100}{\percent}, indicating a large jaw contribution. 
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ValidationFigure.pdf}
+\label{fig:validation}
+\caption{{\bf a.} Relationship between measured biomarker values and theoretical jaw weight parameter values. The jaw weight parameter controls jaw usage in the dynamical systems simulation of vocal tract movement. Large biomarker values close to \SI{100}{\percent} correspond to small jaw weight parameters (indicating great jaw usage). Small biomarker values close to \SI{0}{\percent} correspond to large jaw weight parameters (indicating little jaw usage).
+{\bf b.} Relationship between the true and measured biomarker values. True values were obtained from synthetic data generated in a dynamical systems simulation.
+{\bf c.} Relationship between the true and measured biomarker values. True values were obtained from synthetic data generated in a dynamical systems simulation. \SI{95}{\percent} of the measured biomarker values differed from the true value by \SIrange{-1.4}{0.91}{\percent}. The measurement bias was~\SI{-0.25}{\percent}.}
+\end{figure}
+
+
+
+
+\subsection{Precision}
 \label{subsec:repeatability}
 
-Precision is the agreement between replicate measurements of a vocal tract constriction by the same participant at the same phonetic place of articulation~\citep{kessler2015emerging,sullivan2015metrology}. 
+This section evaluates the precision of the articulator synergy biomarker. Precision is the agreement between replicate measurements of a vocal tract constriction by the same participant at the same phonetic place of articulation~\citep{kessler2015emerging,sullivan2015metrology}. 
 %
 The same-day test-retest repeatability experiment evaluated the repeatability of the articulator synergy biomarker under variable conditions of MRI operator variability, image analysis variability, and short-term physiological variability. 
 %
