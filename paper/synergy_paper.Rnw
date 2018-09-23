@@ -71,7 +71,7 @@ Differences in inter-articulator coordination at different phonetic places of ar
 
 \section{Introduction}
 
-An articulator synergy is a functional grouping of articulators such as the jaw, tongue, and lips whose coordinated movements produce constrictions during speech~\cite{turvey1977preliminaries}. 
+An articulator synergy is a functional grouping of articulators such as the jaw, tongue, and lips whose coordinated movements produce constrictions during speech, and which instantiates a reduction in the effective degrees of freedom from the set of articulators to the space of controlled variables~\cite{turvey1977preliminaries}.
 %
 Phonetic studies have shown that the coordination of articulators differs depending on where in the vocal tract the synergy produces a constriction. 
 %
@@ -80,6 +80,8 @@ For instance, mechanical perturbations to jaw position during a bilabial constri
 whereas mechanical perturbations to jaw position during a lingual constriction induced compensatory tongue movement with no compensatory lip movement~\citep{kelso1984functionally}. 
 %
 Our previous study on unperturbed speech suggested that healthy adult speakers of American English may use the jaw more for anterior constrictions at the bilabial, alveolar, and palatal places of articulation than for posterior constrictions at the velar and pharyngeal places of articulation~\citep{Sorensen+2016}. 
+%
+This may be due to the hinge-like motion of the jaw, whose rotational motion generates greater displacement in the anterior part vocal tract than in the posterior part of the vocal tract.
 %
 Differences in inter-articulator coordination at different places of articulation support the \textit{task-dependence} of articulator synergies~\citep{latash2008synergy}. 
 
@@ -99,7 +101,7 @@ The proposed measure of articulator synergies is derived from in vivo MRI as a d
 
 
 
-The algorithm for computing the articulator synergy biomarker involves a computational model of the direct and differential kinematics of the vocal tract~\citep{lammert2013statistical} based on the Task Dynamics model of speech production~\citep{saltzman1989dynamical}. 
+The algorithm for computing the articulator synergy biomarker involves a statistical model of the direct and differential kinematics of the vocal tract~\citep{lammert2013statistical}, which uses MRI to estimate a forward kinematic map relating articulatory parameters and constriction degrees, as in the Task Dynamics model of speech production~\citep{saltzman1989dynamical}. 
 %
 The direct kinematics relates the position and shape of articulators to the corresponding degree of constriction (measured in millimeters; hereafter, constriction degree) at the phonetic places of articulation by means of a function called the forward kinematic map. 
 %
@@ -119,14 +121,6 @@ The research goals of the present study are
 (ii) to design and evaluate a biomarker of articulator synergies based on the estimated kinematics, and
 %
 (iii) to use the articulator synergy biomarker to test the task-dependence of articulator synergies by determining whether the jaw contributes more for anterior constrictions at the bilabial, alveolar, and palatal places of articulation than for posterior constrictions at the velar and pharyngeal places of articulation. 
-%
-The study demonstrated low error in the estimator of the direct and differential kinematics and consistent estimation of the articulator synergy biomarker in a test-retest repeatability experiment.
-%
-A comparison of the parameters of a mixed effects model fitted to the biomarker values demonstrated that speakers use the jaw more to produce constrictions at the alveolar place of articulation than to produce constrictions at the velar and pharyngeal places of articulation. 
-%
-The pattern of jaw, tongue, and lip usage was heterogeneous for the bilabial and palatal places of articulation.
-%
-The implication of the results is that the articulator synergy biomarker has adequate precision to characterize healthy variability in articulator synergies, and that articulator synergies are task-dependent in that they have different patterns of inter-articulator coordination depending on their place of articulation. 
 
 
 The paper is organized as follows.
@@ -137,9 +131,16 @@ Sections~\ref{sec:cd} and~\ref{sec:gfa} estimate the constriction degrees and pa
 % 
 Section~\ref{sec:forwardkinematicmap} estimates the direct and differential kinematics and evaluates the model through cross-validation. 
 %
-Section~\ref{sec:articulator synergy biomarker} defines the articulator synergy biomarker and evaluates the precision of the articulator synergy biomarker in a test-retest experiment, which estimated the repeatability of the articulator synergy biomarker in two experiments on the same day under the same experimental conditions. 
+Section~\ref{sec:articulator_synergy_biomarker} defines the articulator synergy biomarker and evaluates the precision of the articulator synergy biomarker in a test-retest experiment, which estimated the repeatability of the articulator synergy biomarker in two experiments on the same day under the same experimental conditions. 
 % 
-Section~\ref{sec:taskspec} uses the articulator synergy biomarker to test the task-dependence of articulator synergies.   
+Section~\ref{sec:taskspec} uses the articulator synergy biomarker to test the task-dependence of articulator synergies. 
+
+Section~\ref{sec:mri} describes the MRI experiment, scanner sequence, participant characteristics, and method for manually annotating the start and end time-points in the real-time MRI. 
+Sections~\ref{sec:cd} and~\ref{sec:gfa} describe the segmentation of articulator contours in the images and use the segmentation results to estimate of constriction degrees and parameters of articulator shape and position, which are related by the direct and differential kinematics of the vocal tract. 
+Section~\ref{sec:forwardkinematicmap} estimates the direct and differential kinematics and evaluates the model through cross-validation. 
+Section~\ref{sec:articulator_synergy_biomarker} defines the articulator synergy biomarker and evaluates the precision of the articulator synergy biomarker in a test-retest experiment, which estimated the repeatability of the articulator synergy biomarker in two experiments on the same day under the same experimental conditions. 
+Section~\ref{sec:taskspec} uses the articulator synergy biomarker to test the task-dependence of articulator synergies. 
+Sections~\ref{sec:discussion} and~\ref{sec:conclusions} offer discussion and conclusions.
 
 
 
@@ -248,14 +249,14 @@ Fig.~\ref{fig:constrictions} illustrates the constriction degree measurements at
 \subsection{Objective of the guided factor analysis}
 \label{subsec:objectivesoftheguidedfactoranalysis}
 
-The objective of the guided factor analysis was to parameterize the vocal tract contours $\mathbf{X} \in \mathbb{R}^{n\times p}$, where $n$ is the number of images and $p$ is the number of contour vertices, as the linear combination of factors $\mathbf{f}_1, \mathbf{f}_2, \ldots, \mathbf{f}_q \in \mathbb{R}^p$ such that each factor characterizes spatial variation in the position and shape of an articulator. 
+The objective of the guided factor analysis was to parameterize the vocal tract contours $\mathbf{X} \in \mathbb{R}^{n\times 2p}$, where $n$ is the number of images and $p$ is the number of contour vertices, as the linear combination of factors $\mathbf{f}_1, \mathbf{f}_2, \ldots, \mathbf{f}_q \in \mathbb{R}^{2p}$ such that each factor characterizes spatial variation in the position and shape of an articulator. 
 %
 The coefficients $\mathbf{w}_{\cdot,1},\mathbf{w}_{\cdot,2},\ldots,\mathbf{w}_{\cdot,p} \in \mathbb{R}^n$ of the linear combination are factor scores that characterize temporal variation in the position and shape of the articulators. 
 %
 The guided factor analysis is based on the approach of~\citet{toutios2015factor}.
 
 
-Factors $\mathbf{f}_1, \mathbf{f}_2, \ldots, \mathbf{f}_q \in \mathbb{R}^p$ are the columns of the matrix $\mathbf{F} \in \mathbb{R}^{p\times q}$. 
+Factors $\mathbf{f}_1, \mathbf{f}_2, \ldots, \mathbf{f}_q \in \mathbb{R}^{2p}$ are the columns of the matrix $\mathbf{F} \in \mathbb{R}^{p\times q}$. 
 %
 Rows $\mathbf{w}_{1,\cdot},\mathbf{w}_{2,\cdot},\ldots,\mathbf{w}_{n,\cdot}$ of the matrix $\mathbf{W} \in \mathbb{R}^{n\times q}$ contain the factor scores for images $1,2,\ldots,n$ of the real-time MRI data-set. 
 %
@@ -330,11 +331,11 @@ Different steps of the guided factor analysis focus on different articulators.
 %
 The guided factor analysis uses a projection operator to set to zero the contour vertices of articulators not under analysis in a given step of the analysis.
 % 
-For example, in order to derive the matrix $\mathbf{X}_\text{jaw} \in \mathbb{R}^{n\times p}$ that contains only jaw contour vertices, the guided factor analysis sets to zero the contour vertices (i.e., columns of $\mathbf{X}$) of all non-jaw articulators and leaves the contour vertices of the jaw unchanged. 
+For example, in order to derive the matrix $\mathbf{X}_\text{jaw} \in \mathbb{R}^{n\times 2p}$ that contains only jaw contour vertices, the guided factor analysis sets to zero the contour vertices (i.e., columns of $\mathbf{X}$) of all non-jaw articulators and leaves the contour vertices of the jaw unchanged. 
 %
 Specifically, the non-jaw contour vertices are set to zero by multiplying $\mathbf{X}$  
 % 
-by the diagonal projection matrix $\mathbf{P}_\text{jaw} \in \mathbb{R}^{p\times p}$. 
+by the diagonal projection matrix $\mathbf{P}_\text{jaw} \in \mathbb{R}^{2p\times 2p}$. 
 % 
 We have that $p_{i,i}=1$ if the $i$th column of $\mathbf{X}$ is a jaw vertex. Otherwise, $p_{i,i}=0$. 
 % 
@@ -367,9 +368,11 @@ If jaw contour vertices are in columns $q_1,q_2,\ldots,q_\ell$ of $\mathbf{X}$, 
 \end{split}
 \end{equation}
 %
-Similarly, the matrices $\mathbf{X}_\text{tongue},\mathbf{X}_\text{lips},\mathbf{X}_\text{velum} \in \mathbb{R}^{n\times p}$ focus on the tongue and lip contours, respectively. 
+Similarly, the matrices $\mathbf{X}_\text{tongue},\mathbf{X}_\text{lips},\mathbf{X}_\text{velum} \in \mathbb{R}^{n\times 2p}$ focus on the tongue and lip contours, respectively. 
 % 
 Summing such matrices produces a matrix that corresponds to a set of articulators. For instance, the matrix $\mathbf{X}_{\text{jaw,tongue,lips}} = \mathbf{X}_\text{jaw} + \mathbf{X}_\text{tongue} + \mathbf{X}_\text{lips}$ corresponds to the jaw, tongue, and lips.
+
+Prior to the factor analysis, the vocal tract contours $\mathbf{X}$ were centered on zero.
 
 
 
@@ -409,7 +412,7 @@ Note that the matrix $\boldsymbol{\Lambda}_\text{jaw}^{-1/2}$ is the inverse of 
 %
 Postmultiplying $\boldsymbol{\Sigma}_\text{jaw,tongue,lips} \mathbf{Q}_\text{jaw}$ by $\boldsymbol{\Lambda}_\text{jaw}^{-1/2}$ z-scores the component scores $\mathbf{X}\mathbf{Q}_\text{jaw}$, whose covariances with the jaw, tongue, and lip contour vertices $\mathbf{X}_\text{jaw,tongue,lips}$ are the entries of the jaw factors $\mathbf{F}_\text{jaw}$.
 
-The column space $\mathrm{Col}(\mathbf{F}_\text{jaw})$ of $\mathbf{F}_\text{jaw}$ is a $q_\text{jaw}$-dimensional subspace of $\mathbb{R}^p$. 
+The column space $\mathrm{Col}(\mathbf{F}_\text{jaw})$ of $\mathbf{F}_\text{jaw}$ is a $q_\text{jaw}$-dimensional subspace of $\mathbb{R}^{2p}$. 
 %
 Variance within $\mathrm{Col}(\mathbf{F}_\text{jaw})$ captures jaw contour motion and concomitant tongue and lip motion. 
 %
@@ -422,7 +425,7 @@ The projection $\mathbf{\hat{X}}$ of the data $\mathbf{X}$ on the space $\mathrm
   \mathbf{F}_\text{jaw}^+ 
 \end{equation}
 %
-The null space $\mathrm{Null}(\mathbf{F}_\text{jaw})$ is a $(p-q_\text{jaw})$-dimensional subspace of $\mathbb{R}^p$. 
+The null space $\mathrm{Null}(\mathbf{F}_\text{jaw})$ is a $(p-q_\text{jaw})$-dimensional subspace of $\mathbb{R}^{2p}$. 
 % 
 Variance within $\mathrm{Null}(\mathbf{F}_\text{jaw})$ captures velum motion along with the part of tongue and lip motion that is independent of jaw motion. 
 %
@@ -470,7 +473,7 @@ Column $(\mathbf{f}_\text{tongue})_{\cdot,i}$ of the tongue factor matrix $\math
 \end{equation}
 
 
-The column space $\mathrm{Col}(\mathbf{F}_\text{tongue})$ of $\mathbf{F}_\text{tongue}$ is a $q_\text{tongue}$-dimensional subspace of $\mathbb{R}^p$. 
+The column space $\mathrm{Col}(\mathbf{F}_\text{tongue})$ of $\mathbf{F}_\text{tongue}$ is a $q_\text{tongue}$-dimensional subspace of $\mathbb{R}^{2p}$. 
 %
 Variance within $\mathrm{Col}(\mathbf{F}_\text{tongue})$ captures tongue contour motion that is not concomitant with jaw motion. 
 %
@@ -492,6 +495,8 @@ This section derives the factor scores $\mathbf{W}$ from the factors $\mathbf{F}
 \mathbf{W} 
  = \mathbf{X} \left( \mathbf{F}^\intercal \right) ^+
 \end{equation}
+%
+Superscript ``+'' denotes the Moore-Penrose pseudoinverse.
 %
 In image $i$ of the real-time MRI data-set, the vocal tract contours $\mathbf{x}_{i,\cdot}$ is approximately equal to the linear combination $w_{i,1} \mathbf{f}_1^\intercal + w_{i,2} \mathbf{f}_2^\intercal + \ldots + w_{i,q} \mathbf{f}_q^\intercal$. The factor scores $w_{i,\cdot }$ are the coefficients of the linear combination. Variance of the factor scores parameterizes the temporal variability of vocal tract shape. 
 
@@ -523,7 +528,7 @@ The forward kinematic map is the function that maps the shape and position of th
 %
 Although the function is nonlinear, in the neighborhood of a given point $\mathbf{w}_{j,\cdot}$ the function can be linearized to have the form of a linear system of equations.
 %
-Specifically, the linearized forward kinematic map is a function of the following form, where $\mathbf{w} \in \mathbb{R}^q$ is a vector of $q$ factor scores and $\mathbf{z} \in \mathbb{R}^{m}$ is a vector of constriction degrees at the $m$ phonetic places of articulation.
+Specifically, the linearized forward kinematic map is the following function, where $\mathbf{w} \in \mathbb{R}^q$ is a vector of $q$ factor scores and $\mathbf{z} \in \mathbb{R}^{m}$ is a vector of constriction degrees at the $m$ phonetic places of articulation.
 %
 \begin{align}
 \mathbf{z} 
@@ -550,6 +555,8 @@ The remaining columns $\mathbf{g}_{\cdot,2}(\mathbf{w}), \ldots, \mathbf{g}_{\cd
 \frac{\partial \mathbf{z}_m}{\partial \mathbf{w}_1} & \cdots & \frac{\partial \mathbf{z}_m}{\partial \mathbf{w}_q} \\
 \end{array} \right]
 \end{align}
+%
+The jacobian of the forward kinematic map indicates how much the constriction degrees change as the result of a small change in factor scores.
 %
 The forward kinematic map is estimated using weighted least squares. 
 % 
@@ -588,15 +595,16 @@ The scale $h$ sets the size of the spherical neighborhood around $\mathbf{w}$ wi
 %
 Points close to $\mathbf{w}$ contribute more to the forward map estimator than points at the edge of the neighborhood.
 %
-The neighborhood contains $\lfloor fn \rfloor$ points, where $f$ is a free parameter. 
+The parameter $f\in (0,1]$ sets the percentage of data-points inside the neighborhood within which the forward kinematic map is estimated. The parameter $h$ is the radius of the smallest sphere containing exactly $\lfloor fn \rfloor$ data points. The parameter $h$ is found using the $k$-nearest neighbors algorithm, where $k = \lfloor fn \rfloor$.
 %
 The expression for the estimator of the forward kinematic map in the neighborhood of $\mathbf{w}$ is the following. 
 \begin{equation}
+\label{eq:lsqestimator}
 \mathbf{\hat{G}} (\mathbf{w})
 =
 \left( \mathbf{W}^\intercal \mathbf{C}(\mathbf{w}) \mathbf{W} \right)^{-1} \mathbf{X}^\intercal \mathbf{C}(\mathbf{w}) \mathbf{Z}
 \end{equation}
-
+This estimator is a modified version of the standard linear regression estimator $\left( \mathbf{W}^\intercal \mathbf{W} \right)^{-1} \mathbf{X}^\intercal \mathbf{Z}$ in which data-points close to $\mathbf{w}$ are assigned greater weight by the matrix $\mathbf{C}$. This results in a forward kinematic map whose form differs depending on where it is evaluated in the space of factor scores.
 
 
 
@@ -680,7 +688,7 @@ The standard deviations of observed (frame-to-frame finite differences in) const
 
 
 \section{Articulator synergy biomarkers}
-\label{sec:articulator synergy biomarker}
+\label{sec:articulator_synergy_biomarker}
 
 \subsection{Biomarker definition}
 
@@ -703,6 +711,7 @@ Since real-time MRI provides a discretized sequence of images, the constriction 
 The discrete-time version of Equation~\ref{eq:biomarkerderivationcontinuoustime} is the following.
 %
 \begin{align}
+\label{eq:discretetimedeltaz}
 \begin{split}
 \sum_{j=0}^{N} \Delta \mathbf{z}_{j,\cdot}
 	&= \sum_{j=0}^{N} \mathbf{J}\left( \mathbf{w}_{j,\cdot} \right) \Delta \mathbf{w}_{j,\cdot} \\
@@ -726,7 +735,7 @@ The set $\mathcal{U}$ contained the indices of factors corresponding to the targ
 %
 If $N+1$ is the number of real-time MR images acquired during a single vowel-consonant-vowel utterance, then the integer $n$ starts at $0$ (i.e., the temporal onset of a constriction) and increases to $N$ (i.e., the temporal offset of the subsequent release). 
 %
-As $n$ increases from the onset $0$ of a constriction to the offset $N$ of the subsequent release, the signal $\lambda_{\mathcal{U},\ell}[n]$ dips to a minimum at the time-point of greatest constriction and then rises back up during the release.
+As $n$ increases from the onset $0$ of a constriction to the offset $N$ of the subsequent release, the signal $\lambda_{\mathcal{U},\ell}[n]$ dips to a minimum at the time-point of greatest constriction and then rises back up during the release (cf. Fig.~\ref{fig:biomarkerFigure}).
 
 
 
@@ -776,44 +785,43 @@ After achieving maximum constriction, the jaw and tongue widen the constriction 
 \subsection{Bias}
 \label{subsec:bias}
 
-This section evaluates the bias of the articulator synergy biomarker. Bias is the difference between the expected value of a measurement and its true value. The true value of the articulator synergy biomarker is unknown for any given MRI scan of a particular subject. For this reason, the present study designed a digital phantom for which the true value of the biomarker could be controlled. By varying the biomarker over the full range of possible values,
+This section evaluates the bias of the articulator synergy biomarker. Bias is the difference between the expected value of a measurement and its true value. The true value of the articulator synergy biomarker is unknown for any given MRI scan of a particular subject. For this reason, the present study designed a computer simulation method that generated synthetic vocal tract movements for which the true value of the biomarker could be controlled. By varying the true biomarker value over the range \SIrange{0}{100}{\percent} and comparing to the measured biomarker value, the present study estimated the bias of the articulator synergy biomarker.
 
-The vowel-consonant-vowel sequences consisted of two subsequent gestures: [apa] consisted of bilabial closure followed by release; [ata] consisted of alveolar closure followed by release; [aja] consisted of palatal approximation followed by pharyngeal approximation; [aka] consisted of velar closure followed by release.
+The synthetic data-set was generated through simulation using the $n\times m$ matrix $\mathbf{Z}$ of constriction degrees at $m$ places of articulation in the $n$ observed MR images (Section~\ref{sec:cd}); the $2p\times q$ matrix of factors $\mathbf{F}$ (Section~\ref{sec:gfa}, parameters: $q_\text{jaw}=1$, $q_\text{tongue}=4$, $q_\text{lips}=2$); and the forward kinematic map (Section~\ref{sec:forwardkinematicmap}, parameter $f=1.0$). 
+The synthetic data-set consisted of vocal tract contours from \SI{40} vowel-consonant-vowel utterances (\SI{10}~repetitions each of \textipa{[apa]}, \textipa{[ata]}, \textipa{[aja]}, \textipa{[aka]}). 
+Each vowel-consonant-vowel sequence consisted of two movements. Starting at the open vocal tract posture of the vowel \textipa{[a]}, the vocal tract produced a constriction at the oral place of articulation of the consonant followed by a constriction at the pharyngeal place of articulation of the vowel \textipa{[a]}~\citep{wood1979radiographic}.
 
-Following Task Dynamics~\citep{saltzman1989dynamical}, change in the vector $\mathbf{z}$ of constriction degrees evolves according to the following equation for time $t_a \leq t \leq t_b$.
+Following Task Dynamics~\citep{saltzman1989dynamical}, change in the vector $\mathbf{z}$ of constriction degrees evolves according to the following equation for time $t$ in the interval $[t_0, t_0+T)$, where $t_0$ is the start time and $T$ is the duration.
 \begin{equation}
 \label{eq:td_basic}
 \mathbf{\ddot{z}} = -\mathbf{K}(t)\left[\mathbf{z} - \mathbf{z}_0(t)\right] -\mathbf{B}(t)\mathbf{\dot{z}}
 \end{equation}
-where $\mathbf{z}_0$ is a vector of $m$ constriction degree targets and $\mathbf{K}$ and $\mathbf{B}$ are $m \times m$ diagonal matrices of stiffness and damping coefficients, respectively.
-The matrices $\mathbf{K}$ and $\mathbf{B}$ are constant for a given gesture.
-When the constriction is for constriction degree $z_i$, then stiffness $k_{ii} = \omega^2$, damping $b_{ii} = 2\omega$, and $k_{jj} = b_{jj} = 0$ for $j \neq i$, where $\omega$ is the natural frequency of the gesture.
-The vector $\mathbf{z}_0$ of constriction degree targets depended on the gesture: $z_{01} = $~\SI{0}{\milli\meter} for bilabial closure; $z_{01} = $~\SI{7.1}{\milli\meter} for bilabial release; $z_{02} = $~\SI{0}{\milli\meter} for alveolar closure; $z_{02} = $~\SI{7.1}{\milli\meter} for alveolar release; $z_{03} = $~\SI{4.8}{\milli\meter} for palatal approximation; $z_{04} = $~\SI{0}{\milli\meter} for velar closure; $z_{04} = $~\SI{7.1}{\milli\meter} for velar release; and $z_{05} = $~\SI{4.8}{\milli\meter} for pharyngeal approximation.
-The natural frequency $\omega = 10$ and simulation duration (i.e. start time $t_a=0$ and end time $t_b=1.6$) were set arbitrarily, as the relative usage of the jaw, tongue, and lips does not depend on the time-scale of the simulation.
+The vector $\mathbf{z}_0$ contains $m$ constriction degree targets, where $m$ is the number of places of articulation. The matrices $\mathbf{K}$ and $\mathbf{B}$ are diagonal matrices of $m$ stiffness and damping coefficients, respectively.
+The parameters $\mathbf{z}_0$, $\mathbf{K}$, and $\mathbf{B}$ are constant for time $t$ in $[t_0, t_0+T/2)$ (consonant) and for time $t$ in $[t_0+T/2, t_0+T)$ (vowel), with the parameters changing at the midpoint $t_0+T/2$ separating consonant from vowel.
+When the constriction is for constriction degree $z_i$, then the parameters take on the following values, where $\omega$ is the natural frequency of the gesture: target $z_{0i} = \SI{0}{\milli\meter}$ for \textipa{[p]}, \textipa{[t]}, \textipa{[k]} and $z_{0i} = \SI{2.38}{\milli\meter}$ for \textipa{[i]}, \textipa{[a]}; stiffness $k_{ii} = \omega^2$; damping $b_{ii} = 2\omega$; and $k_{jj} = b_{jj} = 0$ for $j \neq i$.
+The natural frequency $\omega = ~\SI{10}{\Hz}$ and simulation duration $T= \SI{1}{\second}$ were set arbitrarily, as the relative usage of the jaw, tongue, and lips does not depend on the time-scale of the simulation.
 
-Given model parameters $\mathbf{K}$, $\mathbf{B}$, $\mathbf{z}_0$ and initial conditions $z(t_a)$, $\dot{z}(t_a)$, the solution $\mathbf{z}(t)$ to Equation~\ref{eq:td_basic} is unique for $t_a \leq t \leq t_b$. The unique solution $\mathbf{z}(t)$ maps to many paths $\mathbf{w}(t)$ of factor scores. One particular path $\mathbf{w}(t)$ is determined from the set of many possible paths by the forward kinematic map $\mathbf{G}$, its jacobian $\mathbf{J}(\mathbf{w})$, and a set of weights $v_1, v_2, \ldots, v_q$ for the $q$ factors.
-The unique path $\mathbf{w}(t)$ of factor scores is the solution to the following equation over the time interval $t_a \leq t \leq t_b$.
+Given model parameters $\mathbf{K}$, $\mathbf{B}$, $\mathbf{z}_0$, and initial conditions $z(t_0)$, $\dot{z}(t_0)$, the solution $\mathbf{z}(t)$ to Equation~\ref{eq:td_basic} is unique for time $t$ in $[t_0,t_0+T)$. The unique solution $\mathbf{z}(t)$ maps to many paths $\mathbf{w}(t)$ of factor scores. The forward kinematic map $\mathbf{G}$, its jacobian $\mathbf{J}(\mathbf{w})$, and the set of weights $v_{11}, v_{22}, \ldots, v_{qq}$ on the $q$ factors determine one particular path $\mathbf{w}(t)$ out of the many possible paths as the solution to the following equation for time $t$ in $[t_0, t_0+T)$.
 \begin{equation}
 \label{eq:td_weight_path}
 \mathbf{\ddot{w}} = \mathbf{J}^+(\mathbf{w}) (-\mathbf{B}\mathbf{J}(\mathbf{w})\mathbf{\dot{w}} - \mathbf{K}(\mathbf{G}(\mathbf{w})-\mathbf{z}_0)) - \mathbf{J}^+(\mathbf{w})\mathbf{\dot{J}}(\mathbf{w},\mathbf{\dot{w}})\mathbf{w}
 \end{equation}
-This follows from the change of variables $\mathbf{z} = \mathbf{G}(\mathbf{w})$, $\mathbf{\dot{z}} = \mathbf{J}(\mathbf{w})\mathbf{\dot{w}}$, $\mathbf{\ddot{z}} = \mathbf{J}(\mathbf{w})\mathbf{\ddot{w}} + \mathbf{\dot{J}}(\mathbf{w},\mathbf{\dot{w}})\mathbf{\dot{w}}$ and the weighted jacobian pseudoinverse $\mathbf{J}^+ = \mathbf{V}^{-1}\mathbf{J}^\intercal (\mathbf{J}\mathbf{V}^{-1}\mathbf{J}^\intercal)^{-1}$.
+This follows from the change of variables $\mathbf{z} = \mathbf{G}(\mathbf{w})$, $\mathbf{\dot{z}} = \mathbf{J}(\mathbf{w})\mathbf{\dot{w}}$, $\mathbf{\ddot{z}} = \mathbf{J}(\mathbf{w})\mathbf{\ddot{w}} + \mathbf{\dot{J}}(\mathbf{w},\mathbf{\dot{w}})\mathbf{\dot{w}}$ and the weighted jacobian pseudoinverse $\mathbf{J}^+ = \mathbf{V}^{-1}\mathbf{J}^\intercal (\mathbf{J}\mathbf{V}^{-1}\mathbf{J}^\intercal)^{-1}$, where $\mathbf{V}$ is the diagonal matrix of weights $v_{11}, v_{22}, \ldots, v_{qq}$ for the $q$ factors~\citep{saltzman1989dynamical}. 
 
-% TODO: explain the simulation parameters (how we solved the equation)
+Due to its deterministic nature, the dynamical system generates vocal tract contours with a covariance structure that does not closely resemble real data. In order to demonstrate that the factors $\mathbf{F}$ could be recovered from synthetic vocal tract contours with a covariance structure similar to that of actual segmentations of real-time MR images, we estimated factors $\mathbf{\hat{F}}$ from a synthetic data-set of vocal tract contours $\mathbf{X} = \boldsymbol{\Xi}\mathbf{F}$, where $\boldsymbol{\Xi}$ is a matrix whose rows are samples from the multivariate normal distribution with mean and covariance estimated from observed factor scores. 
 
-The dynamical system simulations generated paths $\mathbf{w}[n]$ of factor scores corresponding to the utterances \textipa{[apa]}, \textipa{[ata]}, \textipa{[aja]}, and \textipa{[aka]}. By performing the simulation for \SI{15} different values of the jaw weight $v_{11}$ ranging from \SI{0.01} to \SI{10000} and computing the biomarker value  for each utterance using Equations~\ref{eq:lambda} and~\ref{eq:nu}, the simulation generated synthetic data for which the true articulator synergy biomarker values are known. Figure~\ref{fig:validation} demonstrates that the jaw weight is inversely related to biomarker value: when the jaw weight is large, the biomarker value is close to \SI{0}{\percent} indicating a small jaw contribution; when the jaw weight is small, the biomarker value is close to \SI{100}{\percent}, indicating a large jaw contribution. 
+Numerical simulation of the dynamical system generated paths $\mathbf{w}(t)$ that solved Equation~\ref{eq:td_weight_path} for each of the \SI{40} vowel-consonant-vowel utterances. True biomarker values were computed from these paths using Equations~\ref{eq:lambda} and~\ref{eq:nu}. Measured biomarker values were extracted from the synthetic vocal tract contours $\mathbf{x}(t) = \mathbf{F}\mathbf{w}(t)$ using the same procedure as for real data (i.e., without knowledge of the parameters used to generate them). 
+
+The simulation was repeated \SI{15} times, each with a different value of the jaw weight $v_{11}$ in the range of \SI[parse-numbers=false]{10^{-3}} to \SI[parse-numbers=false]{10^2}. This generated a range of true biomarker values from \SIrange{0}{100}{\percent}. Fig.~\ref{fig:valfig}, panel (a), demonstrates an inverse relation between jaw weight and biomarker value. The measured biomarker values closely matched the true biomarker values over the range from~\SIrange{0}{100}{\percent} (cf. Fig.~\ref{fig:valfig}, panels b and c). A two-sided two-sample {\it t}-test detected no systematic bias ($p = 0.80$). The \SI{95}{\percent} limits of agreement are \SI{-1.03}{\percent} and \SI{0.68}{\percent}, meaning that most errors are contained in the interval $[\SI{-1.03}{\percent},\SI{0.68}{\percent}]$.
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{ValidationFigure.pdf}
-\label{fig:validation}
 \caption{{\bf a.} Relationship between measured biomarker values and theoretical jaw weight parameter values. The jaw weight parameter controls jaw usage in the dynamical systems simulation of vocal tract movement. Large biomarker values close to \SI{100}{\percent} correspond to small jaw weight parameters (indicating great jaw usage). Small biomarker values close to \SI{0}{\percent} correspond to large jaw weight parameters (indicating little jaw usage).
 {\bf b.} Relationship between the true and measured biomarker values. True values were obtained from synthetic data generated in a dynamical systems simulation.
 {\bf c.} Relationship between the true and measured biomarker values. True values were obtained from synthetic data generated in a dynamical systems simulation. \SI{95}{\percent} of the measured biomarker values differed from the true value by \SIrange{-1.4}{0.91}{\percent}. The measurement bias was~\SI{-0.25}{\percent}.}
+\label{fig:valfig}
 \end{figure}
-
-
-
 
 \subsection{Precision}
 \label{subsec:repeatability}
@@ -1072,7 +1080,7 @@ In contrast, at the alveolar and pharyngeal places of articulation, the total va
 pharyngeal inter-quartile range: \SIrange{\Sexpr{signif(100*quantile((with(tab,bm[tv==5])),0.25),2)}}{\Sexpr{signif(100*quantile((with(tab,bm[tv==5])),0.75),2)}}{\percent}),
 suggesting that intra-participant variance is substantial (see the histograms in Fig.~\ref{fig:histograms}). 
 
-Although constrictions at the velar and pharyngeal places may not involve a very great contribution of the jaw, the number of jaw factors nevertheless affects ICC (see panels ``velar place'' and ``pharyngeal place'' of Figure~\ref{fig:icc_all}). This is due to the fact that using more jaw factors increases the variance of the tongue that is explained by jaw factors, and some of this variance may reflect the performance of velar and pharyngeal constrictions. 
+Although constrictions at the velar and pharyngeal places may not involve a very great contribution of the jaw, the number of jaw factors nevertheless affects ICC (see panels ``velar place'' and ``pharyngeal place'' of Fig.~\ref{fig:icc_all}). This is due to the fact that using more jaw factors increases the variance of the tongue that is explained by jaw factors, and some of this variance may reflect the performance of velar and pharyngeal constrictions. 
 
 
 \begin{figure*}[t]
@@ -1276,6 +1284,7 @@ Overall, these results support the inference that the jaw contributed significan
 
 
 \section{Discussion}
+\label{sec:discussion}
 
 The research goals of the present study were (i) to estimate and evaluate the direct and differential kinematics of the vocal tract from MRI, 
 %
@@ -1295,7 +1304,7 @@ The present study supports the idea that different articulator synergies have di
 If synergies organize the articulators on a temporary basis for achieving motor goals such as vocal tract constrictions, as proposed in theories of motor control~\citep{turvey1977preliminaries, saltzman1987skilled}, theories of phonological organization~\citep{browman1986towards, browman1989articulatory}, and robotic systems~\citep{herbort2010sure}, then the pattern of inter-articulator coordination varies over time as the vocal tract deploys different synergies. 
 The articulator synergy biomarker provides the means to characterize this time-varying pattern of inter-articulator coordination on the basis of a computational model of the direct and differential kinematics of the vocal tract. 
 
-The algorithm for computing the articulator synergy biomarker involves a computational model of the forward kinematic map~\citep{lammert2013statistical}, based on the Task Dynamics model of speech production~\citep{saltzman1989dynamical}. In contrast to articulator synergy biomarkers that use a priori physiological models to compute biomarker values~\citep[e.g., articulator synergy biomarkers of kinetic parameters from dynamic contrast-enhanced MRI,][]{aerts2008system},  the articulator synergy biomarker algorithm fits the forward kinematic map to the real-time MRI data and uses the fitted model, not an a priori model, to compute the articulator synergy biomarker. Thus, the proposed algorithm took into account by-participant variability in the forward kinematic map by estimating the forward kinematic map for each participant. 
+The algorithm for computing the articulator synergy biomarker involves a statistical model of the direct and differential kinematics of the vocal tract~\citep{lammert2013statistical}, which uses MRI to estimate a forward kinematic map relating articulatory parameters and constriction degrees, as in the Task Dynamics model of speech production~\citep{saltzman1989dynamical}. In contrast to articulator synergy biomarkers that use a priori physiological models to compute biomarker values~\citep[e.g., articulator synergy biomarkers of kinetic parameters from dynamic contrast-enhanced MRI,][]{aerts2008system},  the articulator synergy biomarker algorithm fits the forward kinematic map to the real-time MRI data and uses the fitted model, not an a priori model, to compute the articulator synergy biomarker. Thus, the proposed algorithm took into account by-participant variability in the forward kinematic map by estimating the forward kinematic map for each participant. 
 
 The proliferation of vocal tract imaging databases~\citep{narayanan2014real,sorensen2017database} and the increasingly complex computational methods for studying the morphological~\citep{lammert2013morphological} and functional~\citep{dawson2016methods} complexities captured therein underscore the importance of evaluating the technical performance of quantitative imaging biomarkers of speech. The model-based approach to computing articulator synergy biomarkers allowed the present study to not only evaluate biomarker performance, but to evaluate the error of specific components of the model, such as the estimator of the jacobian matrix. This provided an understanding of where error is introduced. This approach revealed that poor articulator synergy biomarker performance for the pharyngeal place of articulation was accompanied by error in the estimator of the corresponding row of the jacobian matrix of the forward kinematic map. The error approached the magnitude of the standard deviation of the frame-to-frame finite differences in constriction degrees observed at the pharyngeal place of articulation. Although a strength of MRI over competing imaging modalities such as ultrasound is that MRI allows visualization of the pharynx, this region has a complicated geometry which makes reliably processing images of this region difficult. Specifically, the shape and position of the epiglottis depends on the anterior-posterior position of the tongue, as well as subject-specific anatomical and physiological properties. With the tongue root advanced, air may intervene between the tongue root and epiglottis, whereas no such air-tissue interface exists with the tongue root retracted. This leads to drastic differences in the image depending on the state of the tongue. The present study suggests that improving the quantification of hypopharyngeal structures such as the epiglottis may provide one way to improve the technical performance of the the pharyngeal synergy biomarkers.
 
@@ -1305,6 +1314,7 @@ Our previous study showed that real-time MRI could be used to obtain articulator
 
 
 \section{Conclusions}
+\label{sec:conclusions}
 
 The present study estimated and evaluated the direct and differential kinematics of the vocal tract from MRI, 
 %
