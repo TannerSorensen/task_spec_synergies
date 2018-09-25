@@ -1,0 +1,26 @@
+\documentclass[varwidth=9in]{standalone}
+
+\usepackage{stackengine}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{graphicx}
+\graphicspath{{gfa_var_expl/}}
+
+% for white font in subfigure captions
+\usepackage{xcolor}
+
+\standaloneconfig{crop=true}
+
+\begin{document}
+
+\raggedright
+
+\raisebox{1.75in}{\makebox[0.02\linewidth][l]{{\bf (a)}}}
+\includegraphics[height=2in]{jaw_var_expl}%
+\raisebox{1.75in}{\makebox[0.02\linewidth][l]{{\bf (b)}}}
+\includegraphics[height=2in]{tongue_var_expl}%
+\raisebox{1.75in}{\makebox[0.02\linewidth][l]{{\bf (c)}}}
+\includegraphics[height=2in]{lips_var_expl}%
+
+\end{document}

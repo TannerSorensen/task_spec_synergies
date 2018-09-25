@@ -66,12 +66,12 @@ dev.off()
 col_idx <- 1
 
 # direct kinematics error plots
-plt_tab <- aggregate(bilabial ~ participant + f, tab, function(x){median(abs(x))})
-plot_means(plt_tab,stds[,c("participant","bilabial")],col_idx,TRUE,"bilabial place",graphics_path)
+pctl_tab <- aggregate(bilabial~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
+plot_percentile_range(pctl_tab,stds[,c("participant","bilabial")],col_idx,TRUE,"bilabial place",graphics_path,"")
 
 # differential kinematics error plots
-plt_tab <- aggregate(bilabial_d ~ participant + f, tab, function(x){median(abs(x))})
-plot_means(plt_tab,stds[,c("participant","bilabial_d")],col_idx,TRUE,"bilabial place",graphics_path)
+pctl_tab <- aggregate(bilabial_d~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
+plot_percentile_range(pctl_tab,stds[,c("participant","bilabial_d")],col_idx,TRUE,"bilabial place",graphics_path,"_d")
 
 ############
 # alveolar
@@ -79,12 +79,12 @@ plot_means(plt_tab,stds[,c("participant","bilabial_d")],col_idx,TRUE,"bilabial p
 col_idx <- 2
 
 # direct kinematics error plots
-plt_tab <- aggregate(alveolar ~ participant + f, tab, function(x){median(abs(x))})
-plot_means(plt_tab,stds[,c("participant","alveolar")],col_idx,FALSE,"alveolar place",graphics_path)
+pctl_tab <- aggregate(alveolar~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
+plot_percentile_range(pctl_tab,stds[,c("participant","alveolar")],col_idx,FALSE,"alveolar place",graphics_path,"")
 
 # differential kinematics error plots
-plt_tab <- aggregate(alveolar_d ~ participant + f, tab, function(x){median(abs(x))})
-plot_means(plt_tab,stds[,c("participant","alveolar_d")],col_idx,FALSE,"alveolar place",graphics_path)
+pctl_tab <- aggregate(alveolar_d~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
+plot_percentile_range(pctl_tab,stds[,c("participant","alveolar_d")],col_idx,FALSE,"alveolar place",graphics_path,"_d")
 
 ############
 # palatal
@@ -92,12 +92,12 @@ plot_means(plt_tab,stds[,c("participant","alveolar_d")],col_idx,FALSE,"alveolar 
 col_idx <- 3
 
 # direct kinematics error plots
-plt_tab <- aggregate(palatal ~ participant + f, tab, function(x){median(abs(x))})
-plot_means(plt_tab,stds[,c("participant","palatal")],col_idx,FALSE,"palatal place",graphics_path)
+pctl_tab <- aggregate(palatal~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
+plot_percentile_range(pctl_tab,stds[,c("participant","palatal")],col_idx,FALSE,"palatal place",graphics_path,"")
 
 # differential kinematics error plots
-plt_tab <- aggregate(palatal_d ~ participant + f, tab, function(x){median(abs(x))})
-plot_means(plt_tab,stds[,c("participant","palatal_d")],col_idx,FALSE,"palatal place",graphics_path)
+pctl_tab <- aggregate(palatal_d~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
+plot_percentile_range(pctl_tab,stds[,c("participant","palatal_d")],col_idx,FALSE,"palatal place",graphics_path,"_d")
 
 
 ############
@@ -106,12 +106,12 @@ plot_means(plt_tab,stds[,c("participant","palatal_d")],col_idx,FALSE,"palatal pl
 col_idx <- 4
 
 # direct kinematics error plots
-plt_tab <- aggregate(velar ~ participant + f, tab, function(x){median(abs(x))})
-plot_means(plt_tab,stds[,c("participant","velar")],col_idx,FALSE,"velar place",graphics_path)
+pctl_tab <- aggregate(velar~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
+plot_percentile_range(pctl_tab,stds[,c("participant","velar")],col_idx,FALSE,"velar place",graphics_path,"")
 
 # differential kinematics error plots
-plt_tab <- aggregate(velar_d ~ participant + f, tab, function(x){median(abs(x))})
-plot_means(plt_tab,stds[,c("participant","velar_d")],col_idx,FALSE,"velar place",graphics_path)
+pctl_tab <- aggregate(velar_d~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
+plot_percentile_range(pctl_tab,stds[,c("participant","velar_d")],col_idx,FALSE,"velar place",graphics_path,"_d")
 
 
 ############
@@ -120,10 +120,10 @@ plot_means(plt_tab,stds[,c("participant","velar_d")],col_idx,FALSE,"velar place"
 col_idx <- 6
 
 # direct kinematics error plots
-plt_tab <- aggregate(pharyngeal ~ participant + f, tab, function(x){median(abs(x))})
-plot_means(plt_tab,stds[,c("participant","pharyngeal")],col_idx,FALSE,"pharyngeal place",graphics_path)
+pctl_tab <- aggregate(pharyngeal~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
+plot_percentile_range(pctl_tab,stds[,c("participant","pharyngeal")],col_idx,FALSE,"pharyngeal place",graphics_path,"")
 
 # differential kinematics error plots
-plt_tab <- aggregate(pharyngeal_d ~ participant + f, tab, function(x){median(abs(x))})
-plot_means(plt_tab,stds[,c("participant","pharyngeal_d")],col_idx,FALSE,"pharyngeal place",graphics_path)
+pctl_tab <- aggregate(pharyngeal_d~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
+plot_percentile_range(pctl_tab,stds[,c("participant","pharyngeal_d")],col_idx,FALSE,"pharyngeal place",graphics_path,"_d")
 

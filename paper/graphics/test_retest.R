@@ -47,7 +47,7 @@ for(j in 1:length(jaw_fac)){
 pdf(file.path(graphics_path,paste(paste("icc",gsub(" ","_",tv_loc[tv_loc_idx]),sep="_"),".pdf",sep="")))
 op <- par(mar = c(5,9,4,2) + 0.1)
 matplot(lip_fac,icc, 
-        col=cols, type="b", pch=1, lty=1, lwd=2, axes=FALSE, las=1, cex=4,
+        col=cols, type="b", pch=1, lty=1, lwd=8, axes=FALSE, las=1, cex=4,
         ylim=c(0,1), ylab="ICC", xlim=(range(lip_fac)+c(-0.5,0.5)), xlab="lip factors", cex.lab=font_scale)
 axis(side=1, at=lip_fac, labels=c("2","3"), col.ticks=0, col=NA, cex.axis=font_scale)
 axis(side=2, at=seq(0,1,by=0.25), labels=c("0","0.25","0.5","0.75","1"), col.ticks=1, las=1, cex.axis=font_scale, cex.lab=font_scale, line=-3)
@@ -67,7 +67,7 @@ for(tv_loc_idx in seq(2,5)){
   pdf(file.path(graphics_path,paste(paste("icc",gsub(" ","_",titl),sep="_"),".pdf",sep="")))
   op <- par(mar = c(5,8,4,2) + 0.1)
   matplot(tng_fac,icc, 
-          col=cols, type="b", pch=1, lty=1, lwd=2, axes=FALSE, las=1, cex=4,
+          col=cols, type="b", pch=1, lty=1, lwd=8, axes=FALSE, las=1, cex=4,
           ylim=c(0,1), ylab="", xlim=(range(tng_fac)+c(-0.5,0.5)), xlab="tongue factors", cex.lab=font_scale)
   axis(side=1, at=tng_fac, labels=c("4","6","8"), 
        col.ticks=0, col=NA, cex.axis=font_scale)
@@ -79,5 +79,5 @@ for(tv_loc_idx in seq(2,5)){
 
 pdf(file.path(graphics_path,"legend.pdf"))
 plot.new()
-legend("center", legend = c("1 jaw factor","2 jaw factors","3 jaw factors"), col=cols, pch=1, lty=1, lwd=2)
+legend("center", legend = c("1 jaw factor","2 jaw factors","3 jaw factors"), col=cols, pch=1, lty=1, lwd=8)
 dev.off()

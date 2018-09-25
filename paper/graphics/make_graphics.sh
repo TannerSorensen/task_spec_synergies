@@ -24,7 +24,7 @@ Rscript err.R
 Rscript test_retest.R
 
 # declare a list of subfolders that contain images
-declare -a subfolders=("cv_errors" "mri" "gfa" "segmentation" "constrictions" "histograms" "icc" "templates" "biomarker" "validation")
+declare -a subfolders=("cv_errors" "mri" "gfa" "segmentation" "constrictions" "histograms" "icc" "templates" "biomarker" "validation" "gfa_var_expl")
 
 # crop all figures
 for subfolder in "${subfolders[@]}"
@@ -46,3 +46,4 @@ pdflatex RealtimeMRIFigure.tex
 pdflatex SegTempFigure.tex
 pdflatex BiomarkerFigure.tex
 pdflatex ValidationFigure.tex
+pdflatex VarExplFigure.tex

@@ -1,11 +1,9 @@
-plot_means <- function(plt_tab,stds,col_idx,xlab_flag,titl,graphics_path){
+plot_percentile_range <- function(pctl_tab,stds,col_idx,xlab_flag,titl,graphics_path,filename_suffix){
   require(RColorBrewer)
   cols<-brewer.pal(n=7,name="Set1")
   cols<-c(cols[1:4],cols[6],cols[7])
   
-  x_val_idx <- colnames(plt_tab)[2]
-  y_val_idx <- colnames(plt_tab)[3]
-  pdf(file.path(graphics_path,paste("err_",y_val_idx,".pdf",sep="")), width=4, height=4, bg="white")
+  pdf(file.path(graphics_path,paste("err_",paste(sub(" ","_",titl),filename_suffix,sep = ""),".pdf",sep="")), width=4, height=4, bg="white")
   
   if(xlab_flag==TRUE){
     ylbl <- "RMSE (mm)"
@@ -14,27 +12,43 @@ plot_means <- function(plt_tab,stds,col_idx,xlab_flag,titl,graphics_path){
   }
   
   yub <- 2.4
-  for(i in unique(plt_tab$participant)){
-    row_idx <- plt_tab[,1]==i
-    if(i==unique(plt_tab$participant)[1]){
-      plot(plt_tab[row_idx,x_val_idx],plt_tab[row_idx,y_val_idx],
-           type="o",col=cols[col_idx],pch=19,cex.lab=1.5,
-           ylim=c(0,yub),xlim=c(0,1),
-           xaxt='n',yaxt='n',
-           xlab = "neighborood size",
-           ylab = ylbl,
-           main = titl)
-    }else{
-      lines(plt_tab[row_idx,x_val_idx],plt_tab[row_idx,y_val_idx],type="o",col=cols[col_idx],pch=19)
-    }
-  }
+  
+  # plot 90th percentile
+  plot(pctl_tab[,1],pctl_tab[,2][,1],
+       type="b",col=cols[col_idx],pch=19,cex.lab=1.5,
+       ylim=c(0,yub),xlim=c(0,1),
+       xaxt='n',yaxt='n',
+       xlab = "neighborood size",
+       ylab = ylbl,
+       main = titl)
+  
+  # plot median
+  lines(pctl_tab[,1],pctl_tab[,2][,2],
+        type="o",col=cols[col_idx],pch=19,cex.lab=1.5,
+        ylim=c(0,yub),xlim=c(0,1),
+        xaxt='n',yaxt='n',
+        xlab = "neighborood size",
+        ylab = ylbl,
+        main = titl)
+  
+  # plot 10th percentile
+  lines(pctl_tab[,1],pctl_tab[,2][,3],
+        type="b",col=cols[col_idx],pch=19,cex.lab=1.5,
+        ylim=c(0,yub),xlim=c(0,1),
+        xaxt='n',yaxt='n',
+        xlab = "neighborood size",
+        ylab = ylbl,
+        main = titl)
+  
   axis(1, at=seq(0,1,0.2), labels=paste(seq(0,100,20),"%",sep=""), cex.axis=1)
   rug(x = seq(0.05,0.95,0.05), ticksize = -0.01, side = 1)
   axis(2, at=seq(0,yub,0.2),cex.axis=1)
   rug(x = seq(0,yub,0.05), ticksize = -0.01, side = 2)
-  rug(x = sort(stds[,2]), ticksize = 0.05, side = 4)
+  rug(x = mean(stds[,2]), ticksize = 0.1, side = 4)
   dev.off()
 }
+
+
 
 getICC <- function(tab){
   # GETICC - compute the intra-class correlation coefficients of a test-retest evaluation
