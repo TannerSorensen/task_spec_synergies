@@ -16,7 +16,7 @@ mv -f data/realtimeMRI realtimeMRI
 mv -f data/templates templates
 
 # make MATLAB graphics
-matlab -nodesktop -r "run graphs_segmentation.m; run graphs_factors.m; run graphs_biomarker.m; run graphs_validation; exit"
+matlab -nodisplay -nodesktop -r "run graphs_segmentation.m; run graphs_factors.m; run graphs_biomarker.m; run graphs_validation; run graphs_gfa_var_expl.m; exit"
 
 # make R graphics
 Rscript histograms.R
@@ -47,3 +47,4 @@ pdflatex SegTempFigure.tex
 pdflatex BiomarkerFigure.tex
 pdflatex ValidationFigure.tex
 pdflatex VarExplFigure.tex
+
