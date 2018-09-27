@@ -42,7 +42,7 @@ for i=1:length(participant_list)
         jaw_err_rng(i,j,:) = quantile(err(:),[0.1,0.9]);
         for k=1:length(q_tng)
             xy = D;
-            tng_idx = [jaw_idx, (max(q_jaw)+1):(max(q_jaw)+k)];
+            tng_idx = [jaw_idx, (max(q_jaw)+1):(max(q_jaw)+q_tng(k))];
             xy_mean = repmat(contour_data.mean_vt_shape,n,1);
             xy_hat = xy_mean + w(:,tng_idx)*U(:,tng_idx)';
             xy_hat(:,~ismember([sec_id,sec_id],2)) = [];
@@ -56,7 +56,7 @@ for i=1:length(participant_list)
         end
         for k=1:length(q_lip)
             xy = D;
-            lip_idx = [jaw_idx, (max(q_jaw)+max(q_tng)+1):(max(q_jaw)+max(q_tng)+k)];
+            lip_idx = [jaw_idx, (max(q_jaw)+max(q_tng)+1):(max(q_jaw)+max(q_tng)+q_lip(k))];
             xy_mean = repmat(contour_data.mean_vt_shape,n,1);
             xy_hat = xy_mean + w(:,lip_idx)*U(:,lip_idx)';
             xy_hat(:,~ismember([sec_id,sec_id],[4 15])) = [];

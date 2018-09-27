@@ -513,7 +513,7 @@ For a given participant, the coefficients of this linear combination change from
 
 \includegraphics[width=0.99\linewidth]{VarExplFigure.pdf}
 
-\caption{(color online) Percent variance explained for each number of jaw, tongue, and lip factors.}
+\caption{(color online) Percent variance explained {\bf (a)} for the mandible and chin contours for each number of jaw factors, {\bf (b)} for the tongue contour for different numbers of jaw and tongue factors, and {\bf (c)} for the lip contours for different numbers of jaw and lip factors.}
 \label{fig:varexpl}
 \end{figure*}
 
