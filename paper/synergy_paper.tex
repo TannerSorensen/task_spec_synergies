@@ -102,9 +102,9 @@
 \begin{abstract}
 In speech production, the motor system organizes articulators such as the jaw, tongue, and lips into synergies whose function is to produce speech sounds by forming constrictions at the phonetic places of articulation.
 %
-The present study tested whether synergies with different places of articulation (bilabial closure, alveolar closure, palatal approximation, velar closure, and pharyngeal approximation) differed in terms of inter-articulator coordination.
+The present study tested whether synergies with different places of articulation differed in terms of inter-articulator coordination.
 %
-The test was conducted with a real-time magnetic resonance imaging biomarker that was computed using a statistical model of the direct and differential kinematics of the vocal tract. 
+The test was conducted on utterances \textipa{[apa]}, \textipa{[ata]}, \textipa{[aja]}, and \textipa{[aka]} with a real-time magnetic resonance imaging biomarker that was computed using a statistical model of the direct and differential kinematics of the vocal tract. 
 %
 The present study is the first to estimate the direct and differential kinematics of the vocal tract from speech production data.
 %
@@ -119,7 +119,7 @@ Differences in inter-articulator coordination at different phonetic places of ar
 
 \section{Introduction}
 
-An articulator synergy is a functional grouping of articulators such as the jaw, tongue, and lips whose coordinated movements produce constrictions during speech, and which instantiates a reduction in the effective degrees of freedom from the set of articulators to the space of controlled variables~\cite{turvey1977preliminaries}.
+An articulator synergy is a functional grouping of articulators such as the jaw, tongue, and lips whose coordinated movements produce constrictions during speech, and which instantiates a reduction in the number of independent degrees of freedom for controlling a vocal tract movement~\cite{turvey1977preliminaries}.
 %
 Phonetic studies have shown that the coordination of articulators differs depending on where in the vocal tract the synergy produces a constriction. 
 %
@@ -128,8 +128,6 @@ For instance, mechanical perturbations to jaw position during a bilabial constri
 whereas mechanical perturbations to jaw position during a lingual constriction induced compensatory tongue movement with no compensatory lip movement~\citep{kelso1984functionally}. 
 %
 Our previous study on unperturbed speech suggested that healthy adult speakers of American English may use the jaw more for anterior constrictions at the bilabial, alveolar, and palatal places of articulation than for posterior constrictions at the velar and pharyngeal places of articulation~\citep{Sorensen+2016}. 
-%
-This may be due to the hinge-like motion of the jaw, whose rotational motion generates greater displacement in the anterior part vocal tract than in the posterior part of the vocal tract.
 %
 Differences in inter-articulator coordination at different places of articulation support the \textit{task-dependence} of articulator synergies~\citep{latash2008synergy}. 
 
@@ -149,7 +147,7 @@ The proposed measure of articulator synergies is derived from in vivo MRI as a d
 
 
 
-The algorithm for computing the articulator synergy biomarker involves a statistical model of the direct and differential kinematics of the vocal tract~\citep{lammert2013statistical}, which uses MRI to estimate a forward kinematic map relating articulatory parameters and constriction task variables, as in the Task Dynamics model of speech production~\citep{saltzman1989dynamical}. 
+The algorithm for computing the articulator synergy biomarker involves a statistical model of the direct and differential kinematics of the vocal tract, which uses MRI to estimate a forward kinematic map relating articulatory parameters and constriction task variables, as in the Task Dynamics model of speech production (\citeauthor{saltzman1989dynamical}, \citeyear{saltzman1989dynamical}; see \citeauthor{lammert2013statistical}, \citeyear{lammert2013statistical}, for a procedure of estimating the direct and differential kinematics from synthetic data). 
 %
 The direct kinematics relates the position and shape of articulators to the corresponding degree of constriction (i.e., constriction task variable, measured in millimeters) at the phonetic places of articulation by means of a function called the forward kinematic map. 
 %
@@ -297,9 +295,11 @@ Fig.~\ref{fig:constrictions} illustrates the constriction task variable measurem
 \subsection{Objective of the guided factor analysis}
 \label{subsec:objectivesoftheguidedfactoranalysis}
 
+The guided factor analysis of the present study was motivated by the analysis of~\citet{maeda1990compensatory}, which extracts factors of the jaw, tongue, and lip articulators (\citeauthor{maeda1990compensatory}’s ``elementary articulators’’) and factor scores that parameterize how the position and shape of these articulators change over time (\citeauthor{maeda1990compensatory}’s ``elementary gestures’’). In this framework, vocal tract movements are the sum of a few elementary gestures, which are factors in our analysis. 
+
 The objective of the guided factor analysis was to parameterize the vocal tract contours $\mathbf{X} \in \mathbb{R}^{n\times 2p}$, where $n$ is the number of images and $p$ is the number of contour vertices, as the linear combination of factors $\mathbf{f}_1, \mathbf{f}_2, \ldots, \mathbf{f}_q \in \mathbb{R}^{2p}$ such that each factor characterizes spatial variation in the position and shape of an articulator (specifically, the jaw, tongue, lips). 
 %
-The coefficients $\mathbf{w}_{\cdot,1},\mathbf{w}_{\cdot,2},\ldots,\mathbf{w}_{\cdot,p} \in \mathbb{R}^n$ of the linear combination are factor scores that characterize temporal variation in the position and shapes of the articulators. Each image has factor scores, which change from one image to the next as the articulators move and change shape. Thus, changes in the factor scores parameterize articulator motion
+The time-varying coefficients coefficients $\mathbf{w}_{\cdot,1},\mathbf{w}_{\cdot,2},\ldots,\mathbf{w}_{\cdot,p} \in \mathbb{R}^n$ of the linear combination are factor scores that characterize temporal variation in the position and shapes of the articulators. Each image has factor scores, which change from one image to the next as the articulators move and change shape. Thus, changes in the factor scores parameterize articulator motion
 %
 The guided factor analysis is based on the approach of~\citet{toutios2015factor}.
 
@@ -1047,7 +1047,7 @@ $p=0.19$),
 \SI{40}{\percent} 
 less at the velar place compared to the alveolar place
 ($z=7$, 
-$p=\ensuremath{7.6\times 10^{-12}}$), and
+$p=\ensuremath{7.5\times 10^{-12}}$), and
 %
 % velar vs. palatal
 %
@@ -1075,7 +1075,7 @@ $p=0.96$),
 \SI{28}{\percent} 
 less at the pharyngeal place compared to the alveolar place
 ($z=4$, 
-$p=\ensuremath{2.4\times 10^{-4}}$), and
+$p=\ensuremath{3\times 10^{-4}}$), and
 %
 % pharyngeal vs. palatal
 %
@@ -1175,19 +1175,6 @@ The articulator synergy biomarker provides the means to characterize this time-v
 
 %The algorithm for computing the articulator synergy biomarker involves a statistical model of the direct and differential kinematics of the vocal tract~\citep{lammert2013statistical}, which uses MRI to estimate a forward kinematic map relating articulatory parameters and constriction task variables, as in the Task Dynamics model of speech production~\citep{saltzman1989dynamical}. In contrast to articulator synergy biomarkers that use a priori physiological models to compute biomarker values~\citep[e.g., articulator synergy biomarkers of kinetic parameters from dynamic contrast-enhanced MRI,][]{aerts2008system},  the articulator synergy biomarker algorithm fits the forward kinematic map to the real-time MRI data and uses the fitted model, not an a priori model, to compute the articulator synergy biomarker. Thus, the proposed algorithm took into account by-participant variability in the forward kinematic map by estimating the forward kinematic map for each participant. 
 
-
-\subsection{Comparison of guided factor analysis methods}
-
-The guided factor analysis of the present study was motivated by the analysis of~\citet{maeda1990compensatory}, which extracts factors of the jaw, tongue, and lip articulators (\citeauthor{maeda1990compensatory}’s ``elementary articulators’’) and factor scores that parameterize how the position and shape of these articulators change over time (\citeauthor{maeda1990compensatory}’s ``elementary gestures’’). In this framework, vocal tract movements are the sum of a few elementary gestures, which are factors in our analysis. This section clarifies how the definition of jaw, tongue, and lip factors differs from those used in similar statistical studies of jaw, tongue, and lip movement.
-
-The jaw factor of \citet{maeda1990compensatory} is a vector of correlation coefficients between the jaw position and tongue contour. This differs from the present analysis, in which jaw factors are vectors of covariances between z-scored principal component scores and the contours of the tongue and lower lip. The jaw factor of~\citet{cai2009articulatory} is a vector of correlation coefficients of the contour vertices with one-dimensional features of jaw opening. The jaw factor of~\citet{badin2006three} is a vector of correlation coefficients of the contour vertices with a z-scored geometric measurement of jaw height. This differs from the present analysis, in which the jaw factors are vectors of covariances between the coordinates of articulator contour vertices and the (z-scored) component scores for principal components of the jaw contour vertices.
-
-After extracting the jaw factor, \citet{maeda1990compensatory} proposes two different methods for deriving tongue factors: (a) extract tongue dorsum and tongue tip factors as vectors of correlations between tongue dorsum/tip positions and the rest of the tongue contour; (b) use principal components as tongue factors. The former provides factors which are interpretable as tongue dorsum and tongue tip factors. The latter provides factors which explain variance using a minimal number of components. 
-The tongue factors of~\citet{cai2009articulatory} were vectors of correlation coefficients of the contour vertices with one-dimensional features of tongue root position on the anterior-posterior axis, tongue dorsum position on an oblique gridline, and tongue tip position on a superior-inferior axis. Thus, \citet{cai2009articulatory} extracted factors in a way that was consistent with method (a) of~\citet{maeda1990compensatory}. The factors of~\citet{badin2006three} were of two types: z-scored geometric measurements made on the video and MR images (i.e., lip protrusion, vertical lip elevation); or principal components extracted from the lips, tongue tip, tongue dorsum, and tongue body. Thus,~\citet{badin2006three} used both method (a) and method (b) of~\citet{maeda1990compensatory}. In the present analysis, all factors are vectors of covariances between principal components and (z-scored) principal component scores. Thus, the present analysis is consistent with method (b) of~\citet{maeda1990compensatory}. 
-
-In summary, the methods of~\citet{maeda1990compensatory}, \citet{cai2009articulatory}, and~\citet{badin2006three} are all interrelated. The methods primarily differ with respect to whether principal components, raw articulator positions, or both are used to define the factors. This choice is partly motivated by the way the data is represented. In the present study, the articulators appeared as contours in the MR images. For this reason, the present study used principal components to define factors. Representing articulators with principal components prevented the introduction of bias in choosing any single contour vertex as representative of the position and shape of a whole articulator. Studies that represent rigid structures such as the mandible as a single point can reasonably use the raw jaw position instead. 
-
-
 \subsection{Technical performance of the articulator synergy biomarker}
 
 The proliferation of vocal tract imaging databases~\citep{narayanan2014real,sorensen2017database} and the increasingly complex computational methods for studying the morphological~\citep{lammert2013morphological} and functional~\citep{dawson2016methods} complexities captured therein underscore the importance of evaluating the technical performance of quantitative imaging biomarkers of speech. The model-based approach to computing articulator synergy biomarkers allowed the present study to not only evaluate biomarker performance, but to evaluate the error of specific components of the model, such as the estimator of the jacobian matrix. This provided an understanding of where error is introduced. This approach revealed that poor articulator synergy biomarker performance for the pharyngeal place of articulation was accompanied by error in the estimator of the corresponding row of the jacobian matrix of the forward kinematic map. The error approached the magnitude of the standard deviation of the frame-to-frame finite differences in constriction task variables observed at the pharyngeal place of articulation. Although a strength of MRI over competing imaging modalities such as ultrasound is that MRI allows visualization of the pharynx, this region has a complicated geometry which makes reliably processing images of this region difficult. Specifically, the shape and position of the epiglottis depends on the anterior-posterior position of the tongue, as well as subject-specific anatomical and physiological properties. With the tongue root advanced, air may intervene between the tongue root and epiglottis, whereas no such air-tissue interface exists with the tongue root retracted. This leads to drastic differences in the image depending on the state of the tongue. The present study suggests that improving the quantification of hypopharyngeal structures such as the epiglottis may provide one way to improve the technical performance of the the pharyngeal synergy biomarkers.
@@ -1211,7 +1198,7 @@ used the articulator synergy biomarker to test the task-dependence of articulato
 %
 The study quantified the precision of the articulator synergy biomarker and used the articulator synergy biomarker to characterize healthy variability in articulator synergies. 
 %
-The analysis showed that articulator synergies vary for the following gestures: bilabial closure, alveolar closure, palatal approximation, velar closure, and pharyngeal approximation and also vary by speaker. 
+The analysis showed that articulator synergies vary for the following gestures in the intervocalic context \textipa{[a]}-consonant-\textipa{[a]}: bilabial closure, alveolar closure, palatal approximation, velar closure, and pharyngeal approximation and also vary by speaker. 
 %
 The implication of the results is that articulator synergies are task-dependent in that they have different patterns of inter-articulator coordination depending on their place of articulation. 
 
