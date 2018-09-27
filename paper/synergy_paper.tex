@@ -1,4 +1,4 @@
-\documentclass[preprint]{JASAnew}\usepackage[]{graphicx}\usepackage[]{color}
+\documentclass[reprint]{JASAnew}\usepackage[]{graphicx}\usepackage[]{color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -916,6 +916,7 @@ The random effects $p_i$ and $e_{ij}$ were independently and identically distrib
 The ICC is the proportion of variance in the articulator synergy biomarker value due to biological variation among participants, compared to the total variance of the articulator synergy biomarker.
 %
 \begin{equation}
+\label{eq:icc}
 \text{ICC}(\nu) = \frac{\hat{\sigma}_p^2}{\hat{\sigma}_p^2 + \hat{\sigma}_e^2}
 \end{equation}
 %
@@ -931,7 +932,7 @@ We investigated how varying the number of factors and the neighborhood size affe
 %
 The reason that the present study investigated parameters of the statistical analysis and did not investigate parameters of image acquisition and reconstruction was that the statistical analysis directly related to the novel proposal of the present study, namely, estimating the forward kinematic map from MRI. Image acquisition and reconstruction was only indirectly related to this aim. 
 %
-Nevertheless, repeatability will depend on imaging parameters, and if different imaging parameters are used for future studies on the articulator synergy biomarker, the repeatability of the biomarker should be evaluated before drawing conclusions. 
+Nevertheless, repeatability will depend on imaging parameters, and if different imaging parameters are used for future studies on the articulator synergy biomarker, the repeatability of the biomarker should be evaluated before drawing scientific conclusions. 
 
 Fig.~\ref{fig:icc_all} shows the repeatability of the articulator synergy biomarker for different numbers of jaw, tongue, and lip factors. 
 %
@@ -1001,7 +1002,7 @@ In contrast, at the alveolar and pharyngeal places of articulation, the total va
 pharyngeal inter-quartile range: \SIrange{13}{32}{\percent}),
 suggesting that intra-participant variance is substantial (see the histograms in Fig.~\ref{fig:histograms}). 
 
-Although constrictions at the velar and pharyngeal places may not involve a very great contribution of the jaw, the number of jaw factors nevertheless affects ICC (see panels ``velar place'' and ``pharyngeal place'' of Fig.~\ref{fig:icc_all}). This is due to the fact that using more jaw factors increases the variance of the tongue that is explained by jaw factors, and some of this variance may reflect the performance of velar and pharyngeal constrictions. 
+Although constrictions at the velar and pharyngeal places may not involve a very great contribution of the jaw, the number of jaw factors nevertheless affects ICC (see panels ``velar place'' and ``pharyngeal place'' of Fig.~\ref{fig:icc_all}). This is due to the fact that using more jaw factors increases the variance of the tongue that is explained by jaw factors (cf. Fig.~\ref{fig:varexpl}, panel b), and some of this variance may reflect the performance of velar and pharyngeal constrictions. 
 
 
 \begin{figure*}[t]
@@ -1047,7 +1048,7 @@ $p=0.19$),
 \SI{40}{\percent} 
 less at the velar place compared to the alveolar place
 ($z=7$, 
-$p=\ensuremath{1.1\times 10^{-11}}$), and
+$p=\ensuremath{1.2\times 10^{-11}}$), and
 %
 % velar vs. palatal
 %
@@ -1075,7 +1076,7 @@ $p=0.96$),
 \SI{28}{\percent} 
 less at the pharyngeal place compared to the alveolar place
 ($z=4$, 
-$p=\ensuremath{4\times 10^{-4}}$), and
+$p=\ensuremath{2\times 10^{-4}}$), and
 %
 % pharyngeal vs. palatal
 %
@@ -1175,11 +1176,23 @@ The articulator synergy biomarker provides the means to characterize this time-v
 
 %The algorithm for computing the articulator synergy biomarker involves a statistical model of the direct and differential kinematics of the vocal tract~\citep{lammert2013statistical}, which uses MRI to estimate a forward kinematic map relating articulatory parameters and constriction task variables, as in the Task Dynamics model of speech production~\citep{saltzman1989dynamical}. In contrast to articulator synergy biomarkers that use a priori physiological models to compute biomarker values~\citep[e.g., articulator synergy biomarkers of kinetic parameters from dynamic contrast-enhanced MRI,][]{aerts2008system},  the articulator synergy biomarker algorithm fits the forward kinematic map to the real-time MRI data and uses the fitted model, not an a priori model, to compute the articulator synergy biomarker. Thus, the proposed algorithm took into account by-participant variability in the forward kinematic map by estimating the forward kinematic map for each participant. 
 
-\subsection{Technical performance of the articulator synergy biomarker}
+\subsection{Technical performance}
 
-The proliferation of vocal tract imaging databases~\citep{narayanan2014real,sorensen2017database} and the increasingly complex computational methods for studying the morphological~\citep{lammert2013morphological} and functional~\citep{dawson2016methods} complexities captured therein underscore the importance of evaluating the technical performance of quantitative imaging biomarkers of speech. The model-based approach to computing articulator synergy biomarkers allowed the present study to not only evaluate biomarker performance, but to evaluate the error of specific components of the model, such as the estimator of the jacobian matrix. This provided an understanding of where error is introduced. This approach revealed that poor articulator synergy biomarker performance for the pharyngeal place of articulation was accompanied by error in the estimator of the corresponding row of the jacobian matrix of the forward kinematic map. The error approached the magnitude of the standard deviation of the frame-to-frame finite differences in constriction task variables observed at the pharyngeal place of articulation. Although a strength of MRI over competing imaging modalities such as ultrasound is that MRI allows visualization of the pharynx, this region has a complicated geometry which makes reliably processing images of this region difficult. Specifically, the shape and position of the epiglottis depends on the anterior-posterior position of the tongue, as well as subject-specific anatomical and physiological properties. With the tongue root advanced, air may intervene between the tongue root and epiglottis, whereas no such air-tissue interface exists with the tongue root retracted. This leads to drastic differences in the image depending on the state of the tongue. The present study suggests that improving the quantification of hypopharyngeal structures such as the epiglottis may provide one way to improve the technical performance of the the pharyngeal synergy biomarkers.
+The proliferation of vocal tract imaging databases~\citep{narayanan2014real,sorensen2017database} and the increasingly complex computational methods for studying the morphological~\citep{lammert2013morphological} and functional~\citep{dawson2016methods} complexities captured therein underscore the importance of evaluating the technical performance of quantitative imaging biomarkers of speech. 
+%
+The present study evaluated the bias and precision of the articulator synergy biomarker. The study did not detect any systematic bias in the biomarker in an analysis of synthetic data. However, the study determined that precision was weak or poor at the alveolar, velar, and pharyngeal places of articulation. 
+%
+Since the intra-class correlation coefficient is the ratio of inter-participant variability to total
+variability, which is the sum of intra- and inter-participant variability (cf. Equation~\ref{eq:icc}), low precision may be due to large intra-participant variance, small inter-participant variance, or some combination of the two. 
+%
+For the velar place of articulation, low precision was due to small inter-participant variance (cf. Fig.~\ref{fig:histograms}). 
+%
+For the alveolar and pharyngeal places, low precision was due to large intra-participant variance.
+%
+Intra-participant variance is unavoidable in voluntary movement due to short-term physiological variability that arises from the way the brain regulates noise in the motor system~\citep{harris1998signal,van2009motor,wu2014temporal}. 
+%
+Although we do not discount other technical sources of variance such as MRI operator variability and image analysis variability, here we emphasize short-term physiological variability as the fundamental obstacle to achieving high precision in biomarkers of voluntary movement.
 
-Our previous study showed that real-time MRI could be used to obtain biomarkers of the range of motion at the phonetic places of articulation, but showed poor precision for biomarkers of articulator velocities~\citep{toger2017test}. Despite the importance of velocity information for obtaining articulator synergy biomarkers, the technical performance of the articulator synergy biomarker nevertheless represents an improvement over biomarkers of articulator velocities. This improvement is likely due to the algorithm not using the raw articulator velocities from any one time-point, but rather transforming and integrating multiple articulator velocities over the time-course of an entire vowel-consonant-vowel sequence. The integration may reduce noise and provide robustness. 
 
 
 
