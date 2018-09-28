@@ -24,6 +24,8 @@ tv_key.csv
 *.jpg
 *.avi
 
+*#
+.~*
 *~
 .DS_Store
 .RData
