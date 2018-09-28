@@ -656,7 +656,7 @@ For a given $f$-value and phonetic place of articulation, the 10-fold cross-vali
 %
 The reported $\mathrm{median}_{\mathbf{G},k}$ and $\mathrm{median}_{\mathbf{J},k}$ values are the medians of these \num{10} values.
 %
-The results reported in this section were obtained with one jaw factor, four tongue factors, and two lip factors. Results obtained with other numbers of factors are available as supplementary material.\footnote{Supplementary material available at [URL will be inserted by AIP] performs the evaluation of the forward kinematic map with different numbers of factors.}
+The results reported in this section were obtained with one jaw factor, four tongue factors, and two lip factors.
 
 
 
@@ -888,7 +888,7 @@ Nevertheless, repeatability will depend on imaging parameters, and if different 
 
 Fig.~\ref{fig:icc_all} shows the repeatability of the articulator synergy biomarker for different numbers of jaw, tongue, and lip factors. 
 %
-Regardless of the neighborhood size used for the forward kinematic map estimator, the error of the estimator was well in the subvoxel range (cf. Section~\ref{subsec:crossval}). For this reason, neighborhood size was fixed at \SI{70}{\percent} of training data-points. Supplementary material reports similar ICC for other neighborhood sizes.\footnote{Supplementary material available at [URL will be inserted by AIP] reports ICC for different neighborhood sizes.}
+Regardless of the neighborhood size used for the forward kinematic map estimator, the error of the estimator was well in the subvoxel range (cf. Section~\ref{subsec:crossval}). For this reason, neighborhood size was fixed at \SI{70}{\percent} of training data-points. 
 %
 The images of participant F3 were excluded from the repeatability analysis due to poor image quality in the second scan. 
 
@@ -1267,7 +1267,7 @@ for(f_val in seq(from = 20, to = 90, by = 10)){
 }
 @
 
-In order to determine whether the results reported above depended on the choice of a particular number of jaw, tongue, and lip factors or on the choice of a particular neighborhood size for the forward kinematic map estimator, we repeated the statistical analysis with different parameter values (number of jaw factors: 1, 2, 3; number of tongue factors: 4, 6, 8; number of lip factors: 2, 3; neighborhood size: \SIrange{20}{90}{\percent} in \SI{10}{\percent} steps).\footnote{Supplementary material available at [URL will be inserted by AIP] graphs the results of the sensitivity analysis.}
+In order to determine whether the results reported above depended on the choice of a particular number of jaw, tongue, and lip factors or on the choice of a particular neighborhood size for the forward kinematic map estimator, we repeated the statistical analysis with different parameter values (number of jaw factors: 1, 2, 3; number of tongue factors: 4, 6, 8; number of lip factors: 2, 3; neighborhood size: \SIrange{20}{90}{\percent} in \SI{10}{\percent} steps).
 %
 The finding that the articulator synergy biomarker was greater at the alveolar place than at the velar place was reproduced with \Sexpr{sum(p[,2] < 0.05)} of \Sexpr{nrow(p)} parameterizations (\SI{\Sexpr{signif(100*sum(p[,2] < 0.05)/nrow(p),2)}}{\percent} of cases).
 %
