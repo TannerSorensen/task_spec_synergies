@@ -1337,6 +1337,27 @@ Although we do not discount other technical sources of variance such as MRI oper
 
 
 
+\subsection{Parametric estimation for Task Dynamics}
+
+The present study performed parametric estimation for the Task Dynamics model of speech production~\citep{saltzman1989dynamical}. The estimated parameters characterize both the forward kinematics and the inverse kinematics of the vocal tract. This is the first task dynamical system directly estimated from speech kinematic data. 
+
+The forward kinematics characterizes vocal tract geometry. It relates articulator movements to the changes in constriction task variables that these movements produce. 
+%
+In Task Dynamics, the forward kinematics is specified by the forward kinematic map and its jacobian matrix. 
+%
+The study estimated these parameters from real-time MR images of speech production and evaluated the estimator by cross-validation. Error was well below the spatial resolution of the scanner.
+
+The inverse kinematics characterizes motor control of the vocal tract.
+It relates changes in constriction task variables to the articulator movements that produce them.
+In Task Dynamics, the inverse kinematics is specified by articulator weight parameters, which determine the relative contribution of each articulator to producing changes in the constriction task variables.
+%
+Analysis of synthetic data in Section~\ref{subsec:bias} suggested that the articulator synergy biomarker is a monotonic function of the jaw weight parameter (\ref{fig:valfig}, panel a).
+%
+The function will depend on the forward kinematics of the vocal tract, the place of articulation, and the weights of other articulators. Further work is necessary to characterize these sources of variance, but the present study suggests that articulator synergy biomarkers can be mapped to articulator weights, and thus that jaw weight parameters can be estimated from real-time MR images of speech production.
+
+
+
+
 
 
 
