@@ -383,7 +383,7 @@ Prior to the factor analysis, the vocal tract contours $\mathbf{X}$ were centere
 
 We first obtained the factors $\mathbf{F}_\text{jaw}$ that capture the contribution of the jaw to vocal tract shaping (see the jaw factor in Fig.~\ref{fig:gfa}). 
 % 
-We performed principal components analysis of the jaw contour vertices through eigendecomposition of the covariance matrix $\boldsymbol{\Sigma}_\text{jaw} = \mathbf{X}_\text{jaw}^\intercal \mathbf{X}_\text{jaw}/(n-1)$ into an orthogonal matrix $\mathbf{Q}_\text{jaw} \in \mathbb{R}^{p\times q_\text{jaw}}$ whose columns are the principal axes of $\mathbf{X}_\text{jaw}$ and a diagonal matrix $\boldsymbol{\Lambda}_\text{jaw} \in \mathbb{R}^{q_\text{jaw} \times q_\text{jaw}}$ whose diagonal entries are the variances of $\mathbf{X}_\text{jaw}$ on the principal axes.
+We performed principal components analysis of the jaw (i.e., mandible and chin, cf. Fig.~\ref{fig:segtemp}) contour vertices through eigendecomposition of the covariance matrix $\boldsymbol{\Sigma}_\text{jaw} = \mathbf{X}_\text{jaw}^\intercal \mathbf{X}_\text{jaw}/(n-1)$ into an orthogonal matrix $\mathbf{Q}_\text{jaw} \in \mathbb{R}^{p\times q_\text{jaw}}$ whose columns are the principal axes of $\mathbf{X}_\text{jaw}$ and a diagonal matrix $\boldsymbol{\Lambda}_\text{jaw} \in \mathbb{R}^{q_\text{jaw} \times q_\text{jaw}}$ whose diagonal entries are the variances of $\mathbf{X}_\text{jaw}$ on the principal axes.
 % 
 \begin{equation}
 \boldsymbol{\Sigma}_\text{jaw} = \mathbf{Q}_\text{jaw}\boldsymbol{\Lambda}_\text{jaw} \mathbf{Q}_\text{jaw}^{-1}
