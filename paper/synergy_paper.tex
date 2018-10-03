@@ -1,4 +1,4 @@
-\documentclass[preprint]{JASAnew}\usepackage[]{graphicx}\usepackage[]{color}
+\documentclass[reprint]{JASAnew}\usepackage[]{graphicx}\usepackage[]{color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -1052,7 +1052,7 @@ alveolar &
 \SI{40} &
 velar &
 7 &
-\ensuremath{1.8\times 10^{-11}} \\
+\ensuremath{1.7\times 10^{-11}} \\
 %
 % velar vs. palatal
 %
@@ -1076,7 +1076,7 @@ alveolar &
 \SI{28} &
 pharyngeal &
 4 &
-\ensuremath{2.8\times 10^{-4}} \\
+\ensuremath{3\times 10^{-4}} \\
 %
 % pharyngeal vs. palatal
 %
@@ -1109,12 +1109,12 @@ Compared to the alveolar place, the percent jaw contribution was
 \SI{40}{\percent} 
 less at the velar place
 ($z=7$, 
-$p=\ensuremath{1.8\times 10^{-11}}$), and
+$p=\ensuremath{1.7\times 10^{-11}}$), and
 %
 \SI{28}{\percent} 
 less at the pharyngeal place
 ($z=4$, 
-$p=\ensuremath{2.8\times 10^{-4}}$).
+$p=\ensuremath{3\times 10^{-4}}$).
 %
 We infer that the jaw contributed significantly more to constrictions at the alveolar place compared to constrictions at the velar and pharyngeal places.
 %
@@ -1227,20 +1227,25 @@ Although we do not discount other technical sources of variance such as MRI oper
 
 The present study performed parametric estimation for the Task Dynamics model of speech production~\citep{saltzman1989dynamical}. The estimated parameters characterize both the forward kinematics and the inverse kinematics of the vocal tract. This is the first task dynamical system directly estimated from speech kinematic data. 
 
-The forward kinematics characterizes vocal tract geometry. It relates articulator movements to the changes in constriction task variables that these movements produce. 
+The relates articulator movements to the changes in constriction task variables that these movements produce. 
 %
 In Task Dynamics, the forward kinematics is specified by the forward kinematic map and its jacobian matrix. 
 %
 The study estimated these parameters from real-time MR images of speech production and evaluated the estimator by cross-validation. Error was well below the spatial resolution of the scanner.
 
-The inverse kinematics characterizes motor control of the vocal tract.
-It relates changes in constriction task variables to the articulator movements that produce them.
+The inverse kinematics relates changes in constriction task variables to the articulator movements that produce them. 
 In Task Dynamics, the inverse kinematics is specified by articulator weight parameters, which determine the relative contribution of each articulator to producing changes in the constriction task variables.
 %
 Analysis of synthetic data in Section~\ref{subsec:bias} suggested that the articulator synergy biomarker is a monotonic function of the jaw weight parameter (\ref{fig:valfig}, panel a).
 %
-The function will depend on the forward kinematics of the vocal tract, the place of articulation, and the weights of other articulators. Further work is necessary to characterize these sources of variance, but the present study suggests that articulator synergy biomarkers can be mapped to articulator weights, and thus that jaw weight parameters can be estimated from real-time MR images of speech production.
+The function will depend on the number of articulator degrees of freedom, the coordinate system for the articulator degrees of freedom, the place of articulation, and the weights of other articulators. Further work is necessary to characterize these sources of variance, but the present study suggests that the articulator synergy biomarker can be mapped to articulator weights, and thus that jaw weight parameters can be estimated from real-time MR images of speech production.
 
+
+
+\subsection{On some connections to motor control}
+
+The present study estimated the forward kinematics of the vocal tract. This is an important component of computational models of motor control~\cite{Ramanarayanan+2016,houde2011speech,todorov2002optimal}. The present study did not, however, characterize the relation between the forward kinematics estimated from MRI and the nervous system's internal model of the forward kinematics (for a theoretical model of speech motor control that cleanly distinguishes these components, see \citeauthor{Ramanarayanan+2016},~\citeyear{Ramanarayanan+2016}; cf. ``forward kinematics'' and ``model of forward kinematics'' blocks). While both relate the articulator degrees of freedom to task variables, the coordinate systems that represent the articulator degrees of freedom and task variables in the nervous system may differ from the coordinate systems used in the present study. That is, the nervous system may represent the articulator degrees of freedom differently than with jaw, tongue, and lip factors and may control a different set of task variables than the constriction task variables. If the coordinate system for the nervous control of vocal tract movement were known, insight into motor variability, motor equivalence, and redundancy could be gleaned from analysis of the forward kinematic map using the uncontrolled manifold approach~\cite{scholz1999uncontrolled}. However, the results of such studies are inconclusive without knowledge of the coordinate system used in the nervous system~\cite{sternad2010coordinate}. Knowledge of the coordinate system could potentially be obtained through detailed study of how muscle contraction in the vocal tract relates to nervous system activity (e.g., in sensory afferent fibers and in the central nervous system). Indeed, detailed physiological knowledge guides the choice of coordinate system for analysis of the uncontrolled manifold in human upper limb movement (cf. argument of~\citeauthor{scholz2014use},~\citeyear{scholz2014use}, Sec. 7.1, Point 3).
+Biomechanical models offer tools for investigating the coordinate system available to the nervous system for producing vocal tract movements~\cite{lloyd2012artisynth}. \citet{Szabados+2016} used a biomechanical model to investigate motor equivalence using the uncontrolled manifold approach. Future work should investigate whether MRI and the methods presented in the present study can be adapted for use with biomechanical models to infer parameters of the internal model of the forward kinematics. 
 
 
 
