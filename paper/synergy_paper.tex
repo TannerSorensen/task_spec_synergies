@@ -1,4 +1,4 @@
-\documentclass[reprint]{JASAnew}\usepackage[]{graphicx}\usepackage[]{color}
+\documentclass[preprint]{JASAnew}\usepackage[]{graphicx}\usepackage[]{color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -102,13 +102,13 @@
 \begin{abstract}
 In speech production, the motor system organizes articulators such as the jaw, tongue, and lips into synergies whose function is to produce speech sounds by forming constrictions at the phonetic places of articulation.
 %
-The present study tested whether synergies with different places of articulation differed in terms of inter-articulator coordination.
+The present study tests whether synergies with different places of articulation differ in terms of inter-articulator coordination.
 %
-The test was conducted on utterances \textipa{[apa]}, \textipa{[ata]}, \textipa{[aja]}, and \textipa{[aka]} with a real-time magnetic resonance imaging biomarker that was computed using a statistical model of the direct and differential kinematics of the vocal tract. 
+The test is conducted on utterances \textipa{[apa]}, \textipa{[ata]}, \textipa{[aja]}, and \textipa{[aka]} with a real-time magnetic resonance imaging biomarker that is computed using a statistical model of the forward kinematics of the vocal tract. 
 %
-The present study is the first to estimate the direct and differential kinematics of the vocal tract from speech production data.
+The present study is the first to estimate the forward kinematics of the vocal tract from speech production data.
 %
-The study determined that the jaw contributes more to anterior constrictions at the alveolar place of articulation than to posterior constrictions at the velar and pharyngeal places of articulation, and that there was substantial inter-speaker variability in jaw, tongue, and lip usage at the bilabial and palatal places of articulation. 
+The study finds that the jaw contributes more to anterior constrictions at the alveolar place of articulation than to posterior constrictions at the velar and pharyngeal places of articulation, and that there is substantial inter-speaker variability in jaw, tongue, and lip usage at the bilabial and palatal places of articulation. 
 %
 Differences in inter-articulator coordination at different phonetic places of articulation support the claim that articulator synergies are task-dependent.
 \end{abstract}
@@ -123,37 +123,43 @@ An articulator synergy is a functional grouping of articulators such as the jaw,
 %
 Phonetic studies have shown that the coordination of articulators differs depending on where in the vocal tract the synergy produces a constriction. 
 %
-For instance, mechanical perturbations to jaw position during a bilabial constriction induced compensatory lip movement with no compensatory tongue movement, 
+For instance, mechanical perturbations to jaw position during a bilabial constriction induce compensatory lip movement with no compensatory tongue movement, 
 %
-whereas mechanical perturbations to jaw position during a lingual constriction induced compensatory tongue movement with no compensatory lip movement~\citep{kelso1984functionally}. 
+whereas mechanical perturbations to jaw position during a lingual constriction induce compensatory tongue movement with no compensatory lip movement~\citep{kelso1984functionally}. 
 %
-Our previous study on unperturbed speech suggested that healthy adult speakers of American English may use the jaw more for anterior constrictions at the bilabial, alveolar, and palatal places of articulation than for posterior constrictions at the velar and pharyngeal places of articulation~\citep{Sorensen+2016}. 
+Our previous study on unperturbed speech suggests that healthy adult speakers of American English may use the jaw more for anterior constrictions at the bilabial, alveolar, and palatal places of articulation than for posterior constrictions at the velar and pharyngeal places of articulation~\citep{Sorensen+2016}. 
 %
-Differences in inter-articulator coordination at different places of articulation support the \textit{task-dependence} of articulator synergies~\citep{latash2008synergy}. 
+Differences in inter-articulator coordination at different places of articulation support the task-dependence of articulator synergies~\citep{latash2008synergy}. 
 
-The present study investigated the task-dependence of articulator synergies by quantifying the percent contribution of each articulator to narrowing or widening the vocal tract at the synergy's place of articulation. 
+The present study investigates the task-dependence of articulator synergies by quantifying the percent contribution of each articulator to narrowing or widening the vocal tract at the synergy's place of articulation. 
 %
 In the Task Dynamics model of speech production~\citep{saltzman1989dynamical}, the percent contribution of each articulator in a synergy is determined by assigning weights to the articulators. 
 %
-In contrast to studies that manually assigned weights to the articulators based on theoretical considerations~\citep[for example, see][for an assignment of weights based on articulator mass]{simko2010embodied}, the present study is the first to obtain a quantitative readout of these weights from speech production data. 
+In contrast to studies that manually assign weights to the articulators based on theoretical considerations~\citep[for example, see][for an assignment of weights based on articulator mass]{simko2010embodied}, the present study is the first to obtain a quantitative readout of these weights from speech production data. 
 
 Advances in magnetic resonance imaging (MRI) have achieved a balance among the competing factors of temporal resolution, spatial resolution, and signal-to-noise ratio that provides a rich source of speech production data for the present study~\citep{scott2014speech}. Real-time MRI pulse sequences and reconstruction techniques allow for the capture and visualization of the motion of the jaw, tongue, and lips with \SI{12}{\milli\second} temporal resolution~\citep{toutios2016advances,lingala2016state}. 
 %
-The present study used real-time MRI to quantify articulator synergies in terms of the percent contribution of each articulator to constriction tasks at the phonetic places of articulation.
+The present study uses real-time MRI to quantify articulator synergies in terms of the percent contribution of each articulator to constriction tasks at the phonetic places of articulation.
 %
-The proposed measure of articulator synergies is derived from in vivo MRI as a descriptor of articulator synergies. This measure meets the definition of quantitative imaging biomarker as ``an objective characteristic derived from an in vivo image measured on a ratio or interval scale as an indicator of normal biological processes''~\citep{kessler2015emerging,sullivan2015metrology}. 
+The proposed measure of articulator synergies is derived from in vivo MRI as a descriptor of articulator synergies (i.e., a quantitative imaging biomarker, ``an objective characteristic derived from an in vivo image measured on a ratio or interval scale as an indicator of normal biological processes'', \citealt{kessler2015emerging,sullivan2015metrology}). 
 
 
 
 
 
-The algorithm for computing the articulator synergy biomarker involves a statistical model of the direct and differential kinematics of the vocal tract, which uses MRI to estimate a forward kinematic map relating articulatory parameters and constriction task variables, as in the Task Dynamics model of speech production (\citeauthor{saltzman1989dynamical}, \citeyear{saltzman1989dynamical}; see \citeauthor{lammert2013statistical}, \citeyear{lammert2013statistical}, for a procedure of estimating the direct and differential kinematics from synthetic data). 
+The algorithm for computing the articulator synergy biomarker involves a statistical model of the forward kinematics of the vocal tract. The forward kinematics relates articulator parameters to constriction task variables, as in the Task Dynamics model of speech production (\citealt{saltzman1989dynamical}; see \citealt{lammert2013statistical} for a procedure of estimating the forward kinematics of the vocal tract from synthetic data). 
 %
-The direct kinematics relates the position and shape of articulators to the corresponding degree of constriction (i.e., constriction task variable, measured in millimeters) at the phonetic places of articulation by means of a function called the forward kinematic map. 
+The forward kinematics has two parts: the direct and differential kinematics.
 %
-The differential kinematics relates small increments of articulator movement to the resulting changes in the constriction task variables by means of the jacobian matrix of the forward kinematic map. 
+The direct kinematics expresses the degree of constriction (i.e., constriction task variable, measured in millimeters) at the phonetic places of articulation as a function of the position and shape of articulators. 
 %
-The algorithm computes the percent contribution of each articulator to narrowing or widening the vocal tract at the synergy's place of articulation using the jacobian matrix of the forward kinematic map. 
+This function is called the forward kinematic map. 
+%
+The differential kinematics expresses change in the constriction task variables as a function of small increments of articulator movement.
+%
+This function is the jacobian matrix of the forward kinematic map. 
+%
+The algorithm uses the jacobian matrix of the forward kinematic map to compute the percent contribution of each articulator to narrowing or widening the vocal tract at the synergy's place of articulation. 
 
 
 
@@ -162,28 +168,18 @@ The algorithm computes the percent contribution of each articulator to narrowing
 
 The research goals of the present study are 
 %
-(i) to estimate and evaluate the direct and differential kinematics of the vocal tract from MRI, 
+(i) to estimate and evaluate the forward kinematics of the vocal tract from MRI, 
 %
-(ii) to design and evaluate a biomarker of articulator synergies based on the estimated kinematics, and
+(ii) to design and evaluate a biomarker of articulator synergies based on the forward kinematics, and
 %
 (iii) to use the articulator synergy biomarker to test the task-dependence of articulator synergies by determining whether the jaw contributes more for anterior constrictions at the bilabial, alveolar, and palatal places of articulation than for posterior constrictions at the velar and pharyngeal places of articulation. 
 
 
 The paper is organized as follows.
 %
-Section~\ref{sec:mri} describes the MRI experiment, scanner sequence, participant characteristics, and method for manually annotating the start and end time-points of utterances in the real-time MRI.
-%
-Sections~\ref{sec:cd} and~\ref{sec:gfa} estimate the constriction task variables and parameters of articulator shape and position, respectively, that are related by the direct and differential kinematics. 
-% 
-Section~\ref{sec:forwardkinematicmap} estimates the direct and differential kinematics and evaluates the model through cross-validation. 
-%
-Section~\ref{sec:articulator_synergy_biomarker} defines the articulator synergy biomarker and evaluates the precision of the articulator synergy biomarker in a test-retest experiment, which estimated the repeatability of the articulator synergy biomarker in two experiments on the same day under the same experimental conditions. 
-% 
-Section~\ref{sec:taskspec} uses the articulator synergy biomarker to test the task-dependence of articulator synergies. 
-
 Section~\ref{sec:mri} describes the MRI experiment, scanner sequence, participant characteristics, and method for manually annotating the start and end time-points in the real-time MRI. 
-Sections~\ref{sec:cd} and~\ref{sec:gfa} describe the segmentation of articulator contours in the images and use the segmentation results to estimate constriction task variables and parameters of articulator shape and position, which are related by the direct and differential kinematics of the vocal tract. 
-Section~\ref{sec:forwardkinematicmap} estimates the direct and differential kinematics and evaluates the model through cross-validation. 
+Sections~\ref{sec:cd} and~\ref{sec:gfa} describe the segmentation of articulator contours in the images and use the segmentation results to estimate constriction task variables and parameters of articulator shape and position, which are related by the forward kinematics of the vocal tract. 
+Section~\ref{sec:forwardkinematicmap} estimates the forward kinematics and evaluates the model through cross-validation. 
 Section~\ref{sec:articulator_synergy_biomarker} defines the articulator synergy biomarker and evaluates the precision of the articulator synergy biomarker in a test-retest experiment, which estimated the repeatability of the articulator synergy biomarker in two experiments on the same day under the same experimental conditions. 
 Section~\ref{sec:taskspec} uses the articulator synergy biomarker to test the task-dependence of articulator synergies. 
 Sections~\ref{sec:discussion} and~\ref{sec:conclusions} offer discussion and conclusions.
@@ -570,7 +566,7 @@ For a given participant, the coefficients of this linear combination change from
 
 
 
-\section{Direct and differential kinematics}
+\section{Kinematics}
 \label{sec:forwardkinematicmap}
 
 \subsection{Estimation of the direct and differential kinematics}
@@ -796,11 +792,12 @@ over all samples $n \in \{0, 1, 2, \ldots, N\}$.
 %
 Range was computed as the difference between the 90th percentile $P_{90}$ and 10th percentile $P_{10}$. 
 %
-Thus, the articulator synergy biomarker $\nu_\ell$ was the following ratio.
+Thus, the articulator synergy biomarker $\nu_\ell$ was the following percentage.
 \begin{equation}
 \label{eq:nu}
 \nu_\ell
-=
+= 
+100 \times
 \frac{P_{90}\left( \lambda_{\mathcal{J},\ell} [n] \right) - P_{10}\left( \lambda_{\mathcal{J},\ell} [n] \right)}
 {P_{90}\left( \lambda_{\mathcal{J},\ell} [n] + \lambda_{\mathcal{E},\ell} [n] \right) - P_{10}\left( \lambda_{\mathcal{J},\ell} [n] + \lambda_{\mathcal{E},\ell} [n]\right)}
 \end{equation}
@@ -864,7 +861,7 @@ Due to its deterministic nature, the dynamical system generates vocal tract cont
 
 Numerical simulation of the dynamical system generated paths $\mathbf{w}(t)$ that solved Equation~\ref{eq:td_weight_path} for each of the \SI{40} vowel-consonant-vowel utterances. True biomarker values were computed from these paths using Equations~\ref{eq:lambda} and~\ref{eq:nu}. Measured biomarker values were extracted from the synthetic vocal tract contours $\mathbf{x}(t) = \mathbf{F}\mathbf{w}(t)$ using the same procedure as for real data (i.e., without knowledge of the parameters used to generate them). 
 
-The simulation was repeated \SI{15} times, each with a different value of the jaw weight $v_{11}$ in the range of \SI[parse-numbers=false]{10^{-3}} to \SI[parse-numbers=false]{10^2}. This generated a range of true biomarker values from \SIrange{0}{100}{\percent}. Fig.~\ref{fig:valfig}, panel (a), demonstrates an inverse relation between jaw weight and biomarker value. The measured biomarker values closely matched the true biomarker values over the range from~\SIrange{0}{100}{\percent} (cf. Fig.~\ref{fig:valfig}, panels b and c). A two-sided two-sample {\it t}-test detected no systematic bias ($p = 0.80$). The \SI{95}{\percent} limits of agreement are \SI{-1.03}{\percent} and \SI{0.68}{\percent}, meaning that most errors are contained in the interval $[\SI{-1.03}{\percent},\SI{0.68}{\percent}]$.
+The simulation was repeated \SI{15} times, each with a different value of the jaw weight $v_{11}$ in the range of \SI[parse-numbers=false]{10^{-3}} to \SI[parse-numbers=false]{10^2}. This generated a range of true biomarker values from \SIrange{0}{100}{\percent}. Fig.~\ref{fig:valfig}, panel (a), demonstrates an inverse relation between jaw weight and biomarker value. The measured biomarker values closely matched the true biomarker values over the range from~\SIrange{0}{100}{\percent} (cf. Fig.~\ref{fig:valfig}, panels b and c). A two-sided two-sample \textit{t}-test detected no systematic bias ($p = 0.80$). The \SI{95}{\percent} limits of agreement are \SI{-1.03}{\percent} and \SI{0.68}{\percent}, meaning that most errors are contained in the interval $[\SI{-1.03}{\percent},\SI{0.68}{\percent}]$.
 
 \begin{figure*}
 \centering
@@ -1052,7 +1049,7 @@ alveolar &
 \SI{40} &
 velar &
 7 &
-\ensuremath{1.7\times 10^{-11}} \\
+\ensuremath{9.6\times 10^{-12}} \\
 %
 % velar vs. palatal
 %
@@ -1076,7 +1073,7 @@ alveolar &
 \SI{28} &
 pharyngeal &
 4 &
-\ensuremath{3\times 10^{-4}} \\
+\ensuremath{2.1\times 10^{-4}} \\
 %
 % pharyngeal vs. palatal
 %
@@ -1109,12 +1106,12 @@ Compared to the alveolar place, the percent jaw contribution was
 \SI{40}{\percent} 
 less at the velar place
 ($z=7$, 
-$p=\ensuremath{1.7\times 10^{-11}}$), and
+$p=\ensuremath{9.6\times 10^{-12}}$), and
 %
 \SI{28}{\percent} 
 less at the pharyngeal place
 ($z=4$, 
-$p=\ensuremath{3\times 10^{-4}}$).
+$p=\ensuremath{2.1\times 10^{-4}}$).
 %
 We infer that the jaw contributed significantly more to constrictions at the alveolar place compared to constrictions at the velar and pharyngeal places.
 %
@@ -1176,44 +1173,34 @@ Overall, these results support the inference that the jaw contributed significan
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{Main findings}
+\subsection{Task specificity of articulator synergies}
 
-The research goals of the present study were (i) to estimate and evaluate the direct and differential kinematics of the vocal tract from MRI, 
+The present study demonstrates that speakers use the jaw more to produce constrictions at the alveolar place of articulation than to produce constrictions at the velar and pharyngeal places of articulation. 
 %
-(ii) to design and evaluate an articulator synergy biomarker based on the estimated kinematics, and
+The pattern of jaw, tongue, and lip usage is heterogeneous for the bilabial and palatal places of articulation.
 %
-(iii) to use the articulator synergy biomarker to test the task-dependence of articulator synergies by determining whether the jaw contributes more for anterior constrictions at the bilabial, alveolar, and palatal places of articulation than for posterior constrictions at the velar and pharyngeal places of articulation.
+This supports the idea that different articulator synergies have different patterns of inter-articulator coordination.
 %
-The study demonstrated low error in the estimator of the direct and differential kinematics, no detectable measurement bias, and consistent estimation of the articulator synergy biomarker in a test-retest repeatability experiment.
-%
-A comparison of the parameters of a mixed effects model fitted to the biomarker values demonstrated that speakers use the jaw more to produce constrictions at the alveolar place of articulation than to produce constrictions at the velar and pharyngeal places of articulation. 
-%
-The pattern of jaw, tongue, and lip usage was heterogeneous for the bilabial and palatal places of articulation.
-%
-The implication of the results is that the articulator synergy biomarker has adequate precision to characterize healthy variability in articulator synergies, and that these synergies vary by speaker and by place of articulation. 
-%
-The present study supports the idea that different articulator synergies have different patterns of inter-articulator coordination. 
 If synergies organize the articulators on a temporary basis for achieving motor goals such as vocal tract constrictions, as proposed in theories of motor control~\citep{turvey1977preliminaries, saltzman1987skilled}, theories of phonological organization~\citep{browman1986towards, browman1989articulatory}, and robotic systems~\citep{herbort2010sure}, then the pattern of inter-articulator coordination varies over time as the vocal tract deploys different synergies. 
-The articulator synergy biomarker provides the means to characterize this time-varying pattern of inter-articulator coordination on the basis of a statistical model of the direct and differential kinematics of the vocal tract. 
+%
+The articulator synergy biomarker provides the means to characterize this time-varying pattern of inter-articulator coordination in terms of the percent contribution of each articulator to changing the constriction task variable at the synergy's place of articulation. 
+%
+This complements the finding that articulator synergies are task-dependent in terms of inter-articulator coupling~\citep{lancia2018coupling}, inter-articulator correlation~\citep{jackson2009statistical}, and response to mechanical perturbation of articulator positions~\citep{kelso1984functionally}.
 
 
-
-%\subsection{Parametric estimation of a dynamical system}
-
-%The algorithm for computing the articulator synergy biomarker involves a statistical model of the direct and differential kinematics of the vocal tract~\citep{lammert2013statistical}, which uses MRI to estimate a forward kinematic map relating articulatory parameters and constriction task variables, as in the Task Dynamics model of speech production~\citep{saltzman1989dynamical}. In contrast to articulator synergy biomarkers that use a priori physiological models to compute biomarker values~\citep[e.g., articulator synergy biomarkers of kinetic parameters from dynamic contrast-enhanced MRI,][]{aerts2008system},  the articulator synergy biomarker algorithm fits the forward kinematic map to the real-time MRI data and uses the fitted model, not an a priori model, to compute the articulator synergy biomarker. Thus, the proposed algorithm took into account by-participant variability in the forward kinematic map by estimating the forward kinematic map for each participant. 
 
 \subsection{Technical performance}
 
 The proliferation of vocal tract imaging databases~\citep{narayanan2014real,sorensen2017database} and the increasingly complex computational methods for studying the morphological~\citep{lammert2013morphological} and functional~\citep{dawson2016methods} complexities captured therein underscore the importance of evaluating the technical performance of quantitative imaging biomarkers of speech. 
 %
-The present study evaluated the bias and precision of the articulator synergy biomarker. The study did not detect any systematic bias in the biomarker in an analysis of synthetic data. However, the study determined that precision was weak or poor at the alveolar, velar, and pharyngeal places of articulation. 
+The articulator synergy biomarker does not have systematic bias. However, precision is weak or poor at the alveolar, velar, and pharyngeal places of articulation. 
 %
 Since the intra-class correlation coefficient is the ratio of inter-participant variability to total
 variability, which is the sum of intra- and inter-participant variability (cf. Equation~\ref{eq:icc}), low precision may be due to large intra-participant variance, small inter-participant variance, or some combination of the two. 
 %
-For the velar place of articulation, low precision was due to small inter-participant variance (cf. Fig.~\ref{fig:histograms}). 
+For the velar place of articulation, low precision is due to small inter-participant variance (cf. Fig.~\ref{fig:histograms}). 
 %
-For the alveolar and pharyngeal places, low precision was due to large intra-participant variance.
+For the alveolar and pharyngeal places, low precision is due to large intra-participant variance.
 %
 Intra-participant variance is unavoidable in voluntary movement due to short-term physiological variability that arises from the way the brain regulates noise in the motor system~\citep{harris1998signal,van2009motor,wu2014temporal}. 
 %
@@ -1225,27 +1212,37 @@ Although we do not discount other technical sources of variance such as MRI oper
 
 \subsection{Parametric estimation for Task Dynamics}
 
-The present study performed parametric estimation for the Task Dynamics model of speech production~\citep{saltzman1989dynamical}. The estimated parameters characterize both the forward kinematics and the inverse kinematics of the vocal tract. This is the first task dynamical system directly estimated from speech kinematic data. 
 
-The relates articulator movements to the changes in constriction task variables that these movements produce. 
+
+The forward kinematics relates articulator movements to the changes in constriction task variables that these movements produce. 
 %
-In Task Dynamics, the forward kinematics is specified by the forward kinematic map and its jacobian matrix. 
+In the Task Dynamics model of speech production~\citep{saltzman1989dynamical}, the forward kinematics is specified by the forward kinematic map and its jacobian matrix. 
 %
 The study estimated these parameters from real-time MR images of speech production and evaluated the estimator by cross-validation. Error was well below the spatial resolution of the scanner.
 
+
+
 The inverse kinematics relates changes in constriction task variables to the articulator movements that produce them. 
-In Task Dynamics, the inverse kinematics is specified by articulator weight parameters, which determine the relative contribution of each articulator to producing changes in the constriction task variables.
 %
-Analysis of synthetic data in Section~\ref{subsec:bias} suggested that the articulator synergy biomarker is a monotonic function of the jaw weight parameter (\ref{fig:valfig}, panel a).
+In the Task Dynamics model of speech production~\citep{saltzman1989dynamical}, the percent contribution of each articulator in a synergy is determined by assigning weights to the articulators. 
+%
+In contrast to studies that manually assigned weights to the articulators based on theoretical considerations~\citep[for example, see][for an assignment of weights based on articulator mass]{simko2010embodied}, the present study is the first to obtain a quantitative readout of these weights from speech production data. 
+%
+Analysis of synthetic data in Section~\ref{subsec:bias} suggested that the articulator synergy biomarker is a monotonic function of the jaw weight parameter (Fig.~\ref{fig:valfig}, panel a).
 %
 The function will depend on the number of articulator degrees of freedom, the coordinate system for the articulator degrees of freedom, the place of articulation, and the weights of other articulators. Further work is necessary to characterize these sources of variance, but the present study suggests that the articulator synergy biomarker can be mapped to articulator weights, and thus that jaw weight parameters can be estimated from real-time MR images of speech production.
 
 
 
-\subsection{On some connections to motor control}
 
-The present study estimated the forward kinematics of the vocal tract. This is an important component of computational models of motor control~\cite{Ramanarayanan+2016,houde2011speech,todorov2002optimal}. The present study did not, however, characterize the relation between the forward kinematics estimated from MRI and the nervous system's internal model of the forward kinematics (for a theoretical model of speech motor control that cleanly distinguishes these components, see \citeauthor{Ramanarayanan+2016},~\citeyear{Ramanarayanan+2016}; cf. ``forward kinematics'' and ``model of forward kinematics'' blocks). While both relate the articulator degrees of freedom to task variables, the coordinate systems that represent the articulator degrees of freedom and task variables in the nervous system may differ from the coordinate systems used in the present study. That is, the nervous system may represent the articulator degrees of freedom differently than with jaw, tongue, and lip factors and may control a different set of task variables than the constriction task variables. If the coordinate system for the nervous control of vocal tract movement were known, insight into motor variability, motor equivalence, and redundancy could be gleaned from analysis of the forward kinematic map using the uncontrolled manifold approach~\cite{scholz1999uncontrolled}. However, the results of such studies are inconclusive without knowledge of the coordinate system used in the nervous system~\cite{sternad2010coordinate}. Knowledge of the coordinate system could potentially be obtained through detailed study of how muscle contraction in the vocal tract relates to nervous system activity (e.g., in sensory afferent fibers and in the central nervous system). Indeed, detailed physiological knowledge guides the choice of coordinate system for analysis of the uncontrolled manifold in human upper limb movement (cf. argument of~\citeauthor{scholz2014use},~\citeyear{scholz2014use}, Sec. 7.1, Point 3).
-Biomechanical models offer tools for investigating the coordinate system available to the nervous system for producing vocal tract movements~\cite{lloyd2012artisynth}. \citet{Szabados+2016} used a biomechanical model to investigate motor equivalence using the uncontrolled manifold approach. Future work should investigate whether MRI and the methods presented in the present study can be adapted for use with biomechanical models to infer parameters of the internal model of the forward kinematics. 
+
+
+\subsection{Forward kinematics and the nervous system}
+
+The nervous system has an internal model of the forward kinematics~\citep{shadmehr2010error}. This model encodes the expected result of motor commands in terms of expected sensory consequences (proprioceptive and auditory consequences in the case of speech). 
+%
+Both the forward kinematics of the vocal tract and the nervous system's internal model of the forward kinematics are important components of a computational model of motor control  (for a theoretical model of speech motor control that cleanly distinguishes these components, see \citealt{Ramanarayanan+2016}; cf. ``forward kinematics'' and ``model of forward kinematics'' blocks; see also \citealt{houde2011speech,todorov2002optimal}). Although the present study estimates the forward kinematics, it does not characterize the nervous system's internal model of the forward kinematics. While both relate the articulator degrees of freedom to task variables, the coordinate system that represents the articulator degrees of freedom in the nervous system may differ from the coordinate system of the present study. That is, the nervous system may represent the articulator degrees of freedom differently than with jaw, tongue, and lip factors. If the coordinate system for the nervous control of vocal tract movement were known, insight into motor variability, motor equivalence, and redundancy could be gleaned from analysis of the forward kinematic map using the uncontrolled manifold approach~\cite{scholz1999uncontrolled}. However, the results of such studies are inconclusive without knowledge of the coordinate system used in the nervous system~\cite{sternad2010coordinate}. Knowledge of the coordinate system could potentially be obtained through detailed modeling of the innervation of head and neck muscles. Indeed, physiological knowledge guides the choice of coordinate system for analysis of the uncontrolled manifold in human upper limb movement (cf. argument of~\citealt{scholz2014use}, \S~7.1, Point~3).
+Biomechanical models offer tools for investigating the coordinate system available to the nervous system for producing vocal tract movements~\cite{lloyd2012artisynth}. \citet{Szabados+2016} used a biomechanical model to investigate motor equivalence using the uncontrolled manifold approach. Future work should investigate whether MRI can be used to model the nervous system's internal model of the forward kinematics of the vocal tract. 
 
 
 
@@ -1255,31 +1252,24 @@ Biomechanical models offer tools for investigating the coordinate system availab
 \section{Conclusions}
 \label{sec:conclusions}
 
-The present study estimated and evaluated the direct and differential kinematics of the vocal tract from MRI, 
+The present study demonstrates that speakers use the jaw more for alveolar closure gestures than for velar closure and pharyngeal approximation gestures. 
 %
-designed and evaluated an articulator synergy biomarker based on the estimated kinematics, and
+The pattern of jaw, tongue, and lip usage is heterogeneous for bilabial closure and palatal approximation.
 %
-used the articulator synergy biomarker to test the task-dependence of articulator synergies.
-%
-The study quantified the precision of the articulator synergy biomarker and used the articulator synergy biomarker to characterize healthy variability in articulator synergies. 
-%
-The analysis showed that articulator synergies vary for the following gestures in the intervocalic context \textipa{[a]}-consonant-\textipa{[a]}: bilabial closure, alveolar closure, palatal approximation, velar closure, and pharyngeal approximation and also vary by speaker. 
-%
-The implication of the results is that articulator synergies are task-dependent in that they have different patterns of inter-articulator coordination depending on their place of articulation. 
-%
-This complements findings that articulator synergies are task-dependent in terms of inter-articulator coupling~\citep{lancia2018coupling} and in terms of response to mechanical perturbation of articulator positions~\citep{kelso1984functionally}.
+This supports the idea that synergies organize the articulators on a temporary basis for achieving motor goals such as vocal tract constrictions, and that the pattern of inter-articulator coordination varies over time as the vocal tract deploys different synergies. 
+
 
 
 
 The following are four potential threads of research that build on the results of the present study.
 %
-First, the articulator synergy biomarker was computed using the forward kinematics of the vocal tract, which relates articulator motion to the resulting changes in constriction task variables at the phonetic places of articulation. Future studies may investigate the inverse kinematics, which relates changes in constriction task variables to the optimal articulator movements for producing them. 
+First, the present study estimated parameters of vocal tract \textit{kinematics}, not parameters of vocal tract \textit{dynamics}. That is, the parameters have to do with motion, not with the forces that produce the motion. In the Task Dynamics model of speech production, dynamical parameters include gestural parameters (e.g., stiffness, damping, mass), parameters of inter-gestural coordination (e.g., coupling, blending). Future studies may attempt to estimate these parameters from MRI.
 %
 Second, the present study showed that the articulator synergy biomarker varied depending on the place of articulation. Future studies may evaluate whether the articulator synergy biomarker further depends on sociolinguistic factors, sex, anatomy, and age, especially during childhood development.
 %
 Third, jaw usage varies not only by place of articulation, but also by manner of articulation~\cite{vatikiotis1995analysis}. This introduces a potential confound, and thus is a limitation of the present study. Future research should focus on manner differences in articulator synergy biomarker values.
 %
-Fourth, while the present study focused on jaw-tongue and jaw-lip synergies, the proposed method could be used to study other synergies, such as those between the dorsum and tip of the tongue or between the tongue and velum. Future research studies should characterize biomarker values for these synergies.
+Fourth, while the present study focused on jaw-tongue and jaw-lip synergies, the proposed method could be used to study other synergies, such as those between the dorsum and tip of the tongue or between the tongue and velum. Future research studies should investigate these synergies.
 
 \section{Reproducibility and replication}
 
