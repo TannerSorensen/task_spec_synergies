@@ -3,49 +3,36 @@ plot_percentile_range <- function(pctl_tab,stds,col_idx,xlab_flag,titl,graphics_
   cols<-brewer.pal(n=7,name="Set1")
   cols<-c(cols[1:4],cols[6],cols[7])
   
-  pdf(file.path(graphics_path,paste("err_",paste(sub(" ","_",titl),filename_suffix,sep = ""),".pdf",sep="")), width=4, height=4, bg="white")
+  plot.new()
   
   if(xlab_flag==TRUE){
-    ylbl <- "RMSE (mm)"
+    ylbl <- "error (mm)"
   }else{
     ylbl <- ""
   }
   
   yub <- 2.4
   
-  # plot 90th percentile
-  plot(pctl_tab[,1],pctl_tab[,2][,1],
-       type="b",col=cols[col_idx],pch=19,cex.lab=1.5,
-       ylim=c(0,yub),xlim=c(0,1),
-       xaxt='n',yaxt='n',
-       xlab = "neighborood size",
-       ylab = ylbl,
-       main = titl)
-  
-  # plot median
-  lines(pctl_tab[,1],pctl_tab[,2][,2],
-        type="o",col=cols[col_idx],pch=19,cex.lab=1.5,
-        ylim=c(0,yub),xlim=c(0,1),
-        xaxt='n',yaxt='n',
-        xlab = "neighborood size",
-        ylab = ylbl,
-        main = titl)
-  
-  # plot 10th percentile
-  lines(pctl_tab[,1],pctl_tab[,2][,3],
-        type="b",col=cols[col_idx],pch=19,cex.lab=1.5,
-        ylim=c(0,yub),xlim=c(0,1),
-        xaxt='n',yaxt='n',
-        xlab = "neighborood size",
-        ylab = ylbl,
-        main = titl)
+  df <- data.frame(intvl=pctl_tab[,1], 
+                   med=pctl_tab[,2][,2],
+                   lb=pctl_tab[,2][,3],
+                   ub=pctl_tab[,2][,1])
+  ggplot(data=df, aes(x=intvl, y=med)) + geom_point() + geom_line() + 
+    geom_ribbon(aes(ymin=lb, ymax=ub), linetype=2, alpha=0.1) +
+    theme_classic(base_size = 20) +
+    labs(x="neighborhood size",
+         y=ylbl,
+         title=titl)
   
   axis(1, at=seq(0,1,0.2), labels=paste(seq(0,100,20),"%",sep=""), cex.axis=1)
   rug(x = seq(0.05,0.95,0.05), ticksize = -0.01, side = 1)
   axis(2, at=seq(0,yub,0.2),cex.axis=1)
   rug(x = seq(0,yub,0.05), ticksize = -0.01, side = 2)
   rug(x = mean(stds[,2]), ticksize = 0.1, side = 4)
-  dev.off()
+  
+  ggsave(file.path(graphics_path,paste("err_",paste(sub(" ","_",titl),filename_suffix,sep = ""),".pdf",sep="")), plot = last_plot(), device = NULL, path = NULL,
+         scale = 1, width = 4, height = 4, units = "in",
+         dpi = 600, limitsize = TRUE)
 }
 
 
