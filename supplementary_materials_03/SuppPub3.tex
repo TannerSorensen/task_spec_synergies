@@ -1,4 +1,54 @@
-\documentclass[reprint]{JASAnew}
+\documentclass[reprint]{JASAnew}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
 
 \graphicspath{{./graphics/}}
 
@@ -19,7 +69,7 @@
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \usepackage{stackengine}
-
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
 
 \section{Introduction}
@@ -107,13 +157,12 @@ With the exception of the pharyngeal place of articulation, the RMSE was smaller
 
 \begin{figure*}
 \raggedright
-\includegraphics[width=\linewidth]{SuppPub5_ErrorFigure.pdf}
+\includegraphics[width=\linewidth]{SuppPub3_ErrorFigure.pdf}
 \caption{
-{\bf (a)} Root mean squared error (RMSE) of the forward kinematic map estimator of constriction degrees and {\bf (b)} RMSE of the jacobian matrix estimator of frame-to-frame finite differences in constriction degrees. 
-Data-points are the median RMSE computed over all 10 folds of cross-validation.
-Lines connect the RMSE values of a single participant at different neighborhood sizes ($X$-axis).
+{\bf (a)} Median error (line) and 10\textsuperscript{th}-90\textsuperscript{th} percentile error range (shaded) of the forward kinematic map estimator of constriction task variables. {\bf (b)} Median error (line) and 10\textsuperscript{th}-90\textsuperscript{th} percentile error range (shaded) of the jacobian matrix estimator of frame-to-frame finite differences in constriction task variables. 
+Data-points are the errors computed over all 10 folds of cross-validation.
 Neighborhood size is given as percentage of training data-points.
-The standard deviations of observed (frame-to-frame finite differences in) constriction degrees are indicated as tick marks on the right $Y$-axis for each participant whenever the standard deviations are small enough to fit within the $Y$-axis limits.}
+The standard deviation of observed (frame-to-frame finite differences in) constriction task variables is indicated as a tick mark on the right $y$-axis whenever the standard deviation is small enough to fit within the $y$-axis limits.}
 \label{fig:cverrors}
 \end{figure*}
 
@@ -122,10 +171,10 @@ The standard deviations of observed (frame-to-frame finite differences in) const
 
 \begin{figure*}
 
-\includegraphics[width=\textwidth]{SuppPub5_HistogramFigure.pdf}
+\includegraphics[width=\textwidth]{SuppPub3_HistogramFigure.pdf}
 
 \caption{\label{fig:histograms}
-Sample distribution of the jaw contributions to constrictions at the bilabial, alveolar, palatal, velar, and pharyngeal places of articulation. The quantity plotted is the percent of a constriction that was produced by the jaw.
+Sample distribution of the articulator synergy biomarker at the bilabial, alveolar, palatal, velar, and pharyngeal places of articulation. The biomarker indicates the percent of a constriction that was produced by the jaw.
 A value of \SI{0}{\percent} indicates that lip or tongue motion produced the entire constriction, whereas a value of \SI{100}{\percent} indicates that jaw motion produced the entire constriction. 
 Sample distribution by participant shown with a different color for each participant.}
 
@@ -134,45 +183,7 @@ Sample distribution by participant shown with a different color for each partici
 
 
 
-<<task_specificity,echo=FALSE,results='hide',message=FALSE,warning=FALSE>>=
 
-setwd(file.path(".","graphics"))
-
-# REQUIRE A SET OF LIBRARIES
-############################
-source(file.path("..","..","paper","graphics","require_libraries.R"))
-
-# CHOOSE DATA-SET
-#################
-
-morphology_dataset <- TRUE
-
-# READ IN DATA-SET
-##################
-
-tab <- read.csv(file.path("..","..","analysis","mat","bm_tab_f70.csv"))
-if(morphology_dataset==TRUE){
-  tab <- subset(tab,is.nan(repetition) & n_jaw==1 & n_tng==6 & n_lip==2)
-}else{
-  tab <- subset(tab,repetition==1 & n_jaw==1 & n_tng==6 & n_lip==2)
-}
-
-# PERFORM STATISTICAL TEST
-##########################
-
-tab$tv <- factor(tab$tv)
-tab$participant <- factor(tab$participant)
-
-# velar as baseline
-contrasts(tab$tv) <- contr.treatment(5, base = 4)
-m_velar <- lmer(bm ~ 1 + tv + (1 + tv | participant), tab, REML=TRUE)
-stat_test <- summary(glht(m_velar,linfct=c("tv1 = 0",
-                              "tv2 = 0",
-                              "tv3 = 0",
-                              "tv1 - tv5 = 0",
-                              "tv2 - tv5 = 0",
-                              "tv3 - tv5 = 0")))
-@
 
 
 
@@ -191,62 +202,68 @@ Consider the sample of $n=320$ articulator synergy biomarker values (\num{8} par
 y_{i,j,k,\ell} = m + b_i + p_j + q_{j,k} + r_{j,\ell} + c_\ell + e_{i,j,k,\ell},
 \end{equation}
 %
-where $m$ was the baseline mean, $b_i$ was the fixed effect for place of articulation, $c_\ell$ was the fixed effect for scan number, $p_i$ was the random intercept for participant $i$, $q_{j,k}$ was the by-participant random slope for place of articulation, $r_{j,\ell}$ was the by-participant random slope for scan number, and $e_{i,j,k}$ was the intra-participant error. Multiple comparisons were corrected for using Tukey's range test with the package multcomp~\citep{hothorn2008simultaneous} in R~\citep{r2017language}. This section reports adjusted $p$-values. 
+where $m$ was the baseline mean, $b_i$ was the fixed effect for place of articulation, $c_\ell$ was the fixed effect for scan number, $p_i$ was the random intercept for participant $i$, $q_{j,k}$ was the by-participant random slope for place of articulation, $r_{j,\ell}$ was the by-participant random slope for scan number, and $e_{i,j,k}$ was the intra-participant error. Multiple comparisons were corrected for using Tukey's range test with the package multcomp~\citep{hothorn2008simultaneous} in R~\citep{r2017language}. This section reports adjusted $p$-values. See Table~\ref{tab:stat_results} for results.
 
-% velar comparisons
-%
-On average, the percent jaw contribution was 
+
+\begin{table}
+\centering
+\begin{tabular}{l l l l l}
+treatment & estimate (\%) & reference & $z$ & $p$ \\
+\hline
 %
 % velar vs. bilabial
 %
-\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv1"],2)}}{\percent} 
-less at the velar place compared to the bilabial place
-($z=\Sexpr{signif(stat_test$test$tstat["tv1"],2)}$, 
-$p=\Sexpr{signif(stat_test$test$pvalues[1],2)}$),
+bilabial &
+\SI{3.8} &
+velar &
+0.57 &
+0.96 \\
 %
 % velar vs. alveolar
 %
-\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv2"],2)}}{\percent} 
-less at the velar place compared to the alveolar place
-($z=\Sexpr{signif(stat_test$test$tstat["tv2"],2)}$, 
-$p=\Sexpr{signif(stat_test$test$pvalues[2],2)}$), and
+alveolar &
+\SI{42} &
+velar &
+6 &
+\ensuremath{7.3\times 10^{-9}} \\
 %
 % velar vs. palatal
 %
-\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv3"],2)}}{\percent} 
-less at the velar place compared to the palatal place
-($z=\Sexpr{signif(stat_test$test$tstat["tv3"],2)}$, 
-$p=\Sexpr{signif(stat_test$test$pvalues[3],2)}$).
-
-
-
-
-% pharyngeal comparisons
-%
-On average, the percent jaw contribution was 
+palatal &
+\SI{23} &
+velar &
+4.3 &
+\ensuremath{1.4\times 10^{-4}} \\
 %
 % pharyngeal vs. bilabial
 %
-\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv1 - tv5"],2)}}{\percent} 
-less at the pharyngeal place compared to the bilabial place
-($z=\Sexpr{signif(stat_test$test$tstat["tv1 - tv5"],2)}$, 
-$p=\Sexpr{signif(stat_test$test$pvalues[4],2)}$),
+bilabial &
+\SI{-9.3} &
+pharyngeal &
+-1.2 &
+0.67 \\
 %
 % pharyngeal vs. alveolar
 %
-\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv2 - tv5"],2)}}{\percent} 
-less at the pharyngeal place compared to the alveolar place
-($z=\Sexpr{signif(stat_test$test$tstat["tv2 - tv5"],2)}$, 
-$p=\Sexpr{signif(stat_test$test$pvalues[5],2)}$), and
+alveolar &
+\SI{29} &
+pharyngeal &
+4.3 &
+\ensuremath{8.7\times 10^{-5}} \\
 %
 % pharyngeal vs. palatal
 %
-\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv3 - tv5"],2)}}{\percent} 
-less at the pharyngeal place compared to the palatal place
-($z=\Sexpr{signif(stat_test$test$tstat["tv3 - tv5"],2)}$, 
-$p=\Sexpr{signif(stat_test$test$pvalues[6],2)}$).
+palatal &
+\SI{10} &
+pharyngeal &
+2.7 &
+0.039 \\
 
-
+\hline
+\end{tabular}
+\caption{Results for statistical tests of the null hypothesis that the difference in articulator synergy biomarker value between treatment and reference place of articulation. Rows indicate separate tests. $p$-values corrected for multiple comparisons with Tukey's range test; adjusted $p$-values reported.}
+\label{tab:stat_results}
+\end{table}
 
 
 We reject the null hypothesis that the articulator synergy biomarker does not differ between velar and alveolar and between pharyngeal and alveolar places of articulation. 
@@ -260,13 +277,13 @@ This indicates that synergies with different places of articulation may differ i
 
 The sample distribution of the articulator synergy biomarker at the velar place had small dispersion about a distinct peak at \SI{10}{\percent} 
 %
-(median: \SI{\Sexpr{signif(100*median(with(tab,bm[tv==4])),2)}}{\percent}, 
-inter-quartile range: \SIrange{\Sexpr{signif(100*quantile((with(tab,bm[tv==4])),0.25),2)}}{\Sexpr{signif(100*quantile((with(tab,bm[tv==4])),0.75),2)}}{\percent}; see histograms in Fig.~\ref{fig:histograms}).
+(median: \SI{12}{\percent}, 
+inter-quartile range: \SIrange{6.3}{27}{\percent}; see histograms in Fig.~\ref{fig:histograms}).
 %
 The sample distribution of the articulator synergy biomarker at the alveolar place had a distinct peak at \SI{60}{\percent}
 %
-(median: \SI{\Sexpr{signif(100*median(with(tab,bm[tv==2])),2)}}{\percent}, 
-inter-quartile range: \SIrange{\Sexpr{signif(100*quantile((with(tab,bm[tv==2])),0.25),2)}}{\Sexpr{signif(100*quantile((with(tab,bm[tv==2])),0.75),2)}}{\percent}; see histograms in Fig.~\ref{fig:histograms}).
+(median: \SI{57}{\percent}, 
+inter-quartile range: \SIrange{49}{78}{\percent}; see histograms in Fig.~\ref{fig:histograms}).
 %
 The distinctly peaked sample distributions of the articulator synergy biomarkers at the alveolar and velar places likely contributed to the statistically significant alveolar-velar and alveolar-pharyngeal differences.
 
@@ -276,13 +293,13 @@ In contrast to the alveolar-velar and alveolar-pharyngeal comparisons, the bioma
 %
 The large dispersion of the biomarker sample distribution at the bilabial place
 %
-(median: \SI{\Sexpr{signif(100*median(with(tab,bm[tv==1])),2)}}{\percent}, 
-inter-quartile range: \SIrange{\Sexpr{signif(100*quantile((with(tab,bm[tv==1])),0.25),2)}}{\Sexpr{signif(100*quantile((with(tab,bm[tv==1])),0.75),2)}}{\percent}), 
+(median: \SI{16}{\percent}, 
+inter-quartile range: \SIrange{10}{26}{\percent}), 
 %
 and palatal place
 %
-(median: \SI{\Sexpr{signif(100*median(with(tab,bm[tv==3])),2)}}{\percent}, 
-inter-quartile range: \SIrange{\Sexpr{signif(100*quantile((with(tab,bm[tv==3])),0.25),2)}}{\Sexpr{signif(100*quantile((with(tab,bm[tv==3])),0.75),2)}}{\percent})
+(median: \SI{45}{\percent}, 
+inter-quartile range: \SIrange{19}{58}{\percent})
 %
 suggests that participants exhibited substantial heterogeneity in biomarker values at these places of articulation.  
 

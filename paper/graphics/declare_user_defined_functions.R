@@ -1,5 +1,5 @@
 plot_percentile_range <- function(pctl_tab,stds,col_idx,xlab_flag,titl,graphics_path,filename_suffix){
-  require(RColorBrewer)
+
   cols<-brewer.pal(n=7,name="Set1")
   cols<-c(cols[1:4],cols[6],cols[7])
   

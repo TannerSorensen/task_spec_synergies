@@ -1,4 +1,4 @@
-\documentclass[preprint]{JASAnew}\usepackage[]{graphicx}\usepackage[]{color}
+\documentclass[reprint]{JASAnew}\usepackage[]{graphicx}\usepackage[]{color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -1027,7 +1027,7 @@ Consider the sample of $n=320$ articulator synergy biomarker values (\num{8} par
 y_{i,j,k,\ell} = m + b_i + p_j + q_{j,k} + r_{j,\ell} + c_\ell + e_{i,j,k,\ell},
 \end{equation}
 %
-where $m$ was the baseline mean, $b_i$ was the fixed effect for place of articulation, $c_\ell$ was the fixed effect for scan number, $p_i$ was the random intercept for participant $i$, $q_{j,k}$ was the by-participant random slope for place of articulation, $r_{j,\ell}$ was the by-participant random slope for scan number, and $e_{i,j,k}$ was the intra-participant error. Multiple comparisons were corrected for using Tukey's range test with the package multcomp~\citep{hothorn2008simultaneous} in R~\citep{r2017language}. This section reports adjusted $p$-values. See Table~\ref{tab:stat_results}
+where $m$ was the baseline mean, $b_i$ was the fixed effect for place of articulation, $c_\ell$ was the fixed effect for scan number, $p_i$ was the random intercept for participant $i$, $q_{j,k}$ was the by-participant random slope for place of articulation, $r_{j,\ell}$ was the by-participant random slope for scan number, and $e_{i,j,k}$ was the intra-participant error. Multiple comparisons were corrected for using Tukey's range test with the package multcomp~\citep{hothorn2008simultaneous} in R~\citep{r2017language}. This section reports adjusted $p$-values. See Table~\ref{tab:stat_results} for results.
 
 \begin{table}
 \centering
@@ -1049,7 +1049,7 @@ alveolar &
 \SI{40} &
 velar &
 7 &
-\ensuremath{8.1\times 10^{-12}} \\
+\ensuremath{10^{-11}} \\
 %
 % velar vs. palatal
 %
@@ -1073,7 +1073,7 @@ alveolar &
 \SI{28} &
 pharyngeal &
 4 &
-\ensuremath{3\times 10^{-4}} \\
+\ensuremath{2.4\times 10^{-4}} \\
 %
 % pharyngeal vs. palatal
 %
@@ -1106,12 +1106,12 @@ Compared to the alveolar place, the percent jaw contribution was
 \SI{40}{\percent} 
 less at the velar place
 ($z=7$, 
-$p=\ensuremath{8.1\times 10^{-12}}$), and
+$p=\ensuremath{10^{-11}}$), and
 %
 \SI{28}{\percent} 
 less at the pharyngeal place
 ($z=4$, 
-$p=\ensuremath{3\times 10^{-4}}$).
+$p=\ensuremath{2.4\times 10^{-4}}$).
 %
 We infer that the jaw contributed significantly more to constrictions at the alveolar place compared to constrictions at the velar and pharyngeal places.
 %
