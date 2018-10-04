@@ -74,11 +74,13 @@ end
 cm = colormap('lines');
 
 % jaw explained variance
-figure
-hold on
-plot(q_jaw, mean(jaw_var_expl,1), '-o', 'Color', cm(1,:), 'LineWidth', 2)
-plot([min(q_jaw) max(q_jaw)],[0 0], '--k')
+plot([min(q_jaw) max(q_jaw)],[0 0], '--k'), hold on
 plot([min(q_jaw) max(q_jaw)],[1 1], '--k')
+jaw_var_expl = mean(jaw_var_expl,1);
+plot(q_jaw, jaw_var_expl, '-', 'Color', [0.4 0.4 0.4], 'LineWidth', 4)
+for j=1:length(q_jaw)
+    scatter(q_jaw(j), jaw_var_expl(j), 10^2, 'LineWidth', 4, 'MarkerEdgeColor', cm(j,:), 'MarkerFaceColor', 'w')
+end
 xlim([min(q_jaw)-0.1 max(q_jaw)+0.1])
 ylim([-0.05 1.05])
 set(gca,'box','off')
@@ -86,42 +88,44 @@ set(gca,'YGrid','on')
 set(gca,'XGrid','off')
 set(gca,'XTick',q_jaw)
 set(gca,'YTick',linspace(0,1,11),'YTickLabel',{'0%','10%','20%','30%','40%','50%','60%','70%','80%','90%','100%'})
-ylabel('explained variance (%)')
+ylabel('explained variance')
 xlabel('number of jaw factors')
-set(gca,'FontSize',18), hold off
+set(gca,'FontSize',20), hold off
 print(fullfile(pwd,'gfa_var_expl','jaw_var_expl.pdf'),'-dpdf')
 
 % tongue explained variance
 figure
 hold on
 h=[];
-for j=1:length(q_jaw)
-    h(j) = plot(1:length(q_tng), squeeze(mean(tng_var_expl(:,j,:),1)), '-o', 'Color', cm(j,:), 'LineWidth', 2);
-end
 plot([min(q_tng) max(q_tng)],[0 0], '--k')
-plot([min(q_tng) max(q_tng)],[1 1], '--k'), hold off
+plot([min(q_tng) max(q_tng)],[1 1], '--k')
+for j=1:length(q_jaw)
+    h(j) = plot(1:length(q_tng), squeeze(mean(tng_var_expl(:,j,:),1)), '-o', 'Color', cm(j,:), 'LineWidth', 4, 'MarkerEdgeColor', cm(j,:), 'MarkerFaceColor', 'w', 'MarkerSize', 10);
+end
+hold off
 xlim([0.9 length(q_tng)+0.1])
 ylim([-0.05 1.05])
 set(gca,'box','off')
 set(gca,'YGrid','on')
 set(gca,'XGrid','off')
 set(gca,'XTick',1:length(q_tng),'XTickLabel',q_tng)
-ylabel('explained variance (%)')
+ylabel('explained variance')
 set(gca,'YTick',linspace(0,1,11),'YTickLabel',{'0%','10%','20%','30%','40%','50%','60%','70%','80%','90%','100%'})
 xlabel('number of tongue factors')
 legend(h,{'0 jaw factors','1 jaw factor','2 jaw factors','3 jaw factors'},'Location','SouthEast')
-set(gca,'FontSize',18)
+set(gca,'FontSize',20)
 print(fullfile(pwd,'gfa_var_expl','tongue_var_expl.pdf'),'-dpdf')
 
 % lips explained variance
 figure
 hold on
 h=[];
-for j=1:length(q_jaw)
-    h(j) = plot(1:length(q_lip), squeeze(mean(lip_var_expl(:,j,:),1)), '-o', 'Color', cm(j,:), 'LineWidth', 2);
-end
 plot([min(q_lip) max(q_lip)],[0 0], '--k')
-plot([min(q_lip) max(q_lip)],[1 1], '--k'), hold off
+plot([min(q_lip) max(q_lip)],[1 1], '--k')
+for j=1:length(q_jaw)
+    h(j) = plot(1:length(q_lip), squeeze(mean(lip_var_expl(:,j,:),1)), '-o', 'Color', cm(j,:), 'LineWidth', 4, 'MarkerEdgeColor', cm(j,:), 'MarkerFaceColor', 'w', 'MarkerSize', 10);
+end
+hold off
 xlim([0.9 length(q_lip)+0.25])
 ylim([-0.05 1.05])
 set(gca,'box','off')
@@ -129,9 +133,9 @@ set(gca,'YGrid','on')
 set(gca,'XGrid','off')
 set(gca,'XTick',1:length(q_lip),'XTickLabel',q_lip)
 set(gca,'YTick',linspace(0,1,11),'YTickLabel',{'0%','10%','20%','30%','40%','50%','60%','70%','80%','90%','100%'})
-ylabel('explained variance (%)')
+ylabel('explained variance')
 xlabel('number of lip factors')
-set(gca,'FontSize',18)
+set(gca,'FontSize',20)
 print(fullfile(pwd,'gfa_var_expl','lips_var_expl.pdf'),'-dpdf')
 
 close all
