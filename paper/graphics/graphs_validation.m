@@ -26,6 +26,7 @@ jaw_weight_parameters = logspace(-3,2,15);
 
 % make plot for each task variable
 figure(1)
+set(0,'defaultAxesFontSize',18)
 cm = lines;
 lgd_lines = zeros(1,5);
 for tv = 1:5
@@ -34,7 +35,7 @@ for tv = 1:5
     hold on
     for j=1:15
         scatter(jaw_weight_parameters(j).*ones(size(true_subtab,1),1), ...
-            table2array(true_subtab(:,j)), 20, cm(tv,:))
+            table2array(true_subtab(:,j)), 50, cm(tv,:))
     end
 end
 set(gca,'TickLength',[0.025, 0.01],...
@@ -51,7 +52,7 @@ plot([10e-4 10e2],[0 0],'--k')
 grid on
 axis square
 hold off
-legend(lgd_lines,{'bilabial place','alveolar place','palatal place','velar place','pharyngeal place'})
+legend(lgd_lines,{'bilabial','alveolar','palatal','velar','pharyngeal'})
 print(fullfile(graphics_path,[graph_file_name num2str(1)]),'-dpdf')
 
 
@@ -64,6 +65,7 @@ print(fullfile(graphics_path,[graph_file_name num2str(1)]),'-dpdf')
 % 
 % make plot for each task variable
 figure(2)
+set(0,'defaultAxesFontSize',18)
 cm = lines;
 lgd_lines = zeros(1,5);
 plot([0 1],[0 1],'--k')
@@ -73,7 +75,7 @@ for tv = 1:5
     true_subtab = true_bm_tab(cellfun(@(x) contains(x,tv_names(tv)), true_bm_tab.filename), 2:end);
     x = mean(table2array(true_subtab(:,1:end)));
     y = mean(table2array(subtab(:,3:end)),1);
-    lgd_lines(tv) = scatter(x, y, 20, cm(tv,:), 'filled');
+    lgd_lines(tv) = scatter(x, y, 10^2, cm(tv,:), 'filled');
 end
 set(gca,'XLim',[-0.05 1.05],...
     'YLim',[-0.05 1.05],...
@@ -99,6 +101,7 @@ print(fullfile(graphics_path,[graph_file_name num2str(2)]),'-dpdf')
 
 % make plot for each task variable
 figure(3)
+set(0,'defaultAxesFontSize',18)
 cm = lines;
 hold on
 plot([0 1],mean(x-y)*ones(1,2),'-k')
@@ -109,7 +112,7 @@ for tv = 1:5
     true_subtab = true_bm_tab(cellfun(@(x) contains(x,tv_names(tv)), true_bm_tab.filename), 2:end);
     x = mean(table2array(true_subtab(:,1:end)));
     y = mean(table2array(subtab(:,3:end)),1);
-    scatter(mean([x;y],1), x-y, 20, cm(tv,:), 'filled');
+    scatter(mean([x;y],1), x-y, 10^2, cm(tv,:), 'filled');
 end
 
 set(gca,'XLim',[-0.05 1.05],...
@@ -119,8 +122,8 @@ set(gca,'XLim',[-0.05 1.05],...
     'XTickLabel',{'(no jaw) 0%','20%','40%','60%','80%','(all jaw) 100%'}, ...
     'YTickLabel',arrayfun(@(x) [num2str(x) '%'], 100*[-0.03:0.005:0.03], 'UniformOutput', false), ...
     'XTickLabelRotation',30)
-ylabel('difference between true and measured biomarker values')
-xlabel('average of true and measured biomarker values')
+ylabel('difference')
+xlabel('average')
 grid on
 hold off
 

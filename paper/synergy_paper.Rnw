@@ -197,7 +197,7 @@ See Fig.~\ref{fig:segtemp} for example segmentation results.
 
 \includegraphics[width=\linewidth]{SegTempFigure.pdf}
 
-\caption{(color online) {\bf a.} The authors manually created subject-specific templates for \textipa{[a]}, \textipa{[i]}, \textipa{[p]}, \textipa{[t]}, \textipa{[k]}, which were then automatically deformed to fit the articulator contours in the real-time magnetic resonance images. The different articulator contours are in different colors.
+\caption{(color online) {\bf a.} Subject-specific templates for \textipa{[a]}, \textipa{[i]}, \textipa{[p]}, \textipa{[t]}, \textipa{[k]}, which are automatically deformed to fit the articulator contours in the real-time magnetic resonance images.
 {\bf b.} Articulator contour segmentation of a sequence of real-time magnetic resonance images acquired in the transition from vowel \textipa{[a]} to glide \textipa{[j]} in \textipa{[aja]}. Frame rate downsampled for presentation.}
 \label{fig:segtemp}
 \end{figure}
@@ -675,10 +675,10 @@ The next section introduces and evaluates the articulator synergy biomarker.
 \includegraphics[width=\linewidth]{ErrorFigure.pdf}
 
 \caption{(color online) 
-{\bf (a)} Median error (solid line) and 10\textsuperscript{th}-90\textsuperscript{th} percentile error range (dashed lines) of the forward kinematic map estimator of constriction task variables. {\bf (b)} Median error (solid line) and 10\textsuperscript{th}-90\textsuperscript{th} percentile error range (dashed lines) of the jacobian matrix estimator of frame-to-frame finite differences in constriction task variables. 
+{\bf (a)} Median error (line) and 10\textsuperscript{th}-90\textsuperscript{th} percentile error range (shaded) of the forward kinematic map estimator of constriction task variables. {\bf (b)} Median error (line) and 10\textsuperscript{th}-90\textsuperscript{th} percentile error range (shaded) of the jacobian matrix estimator of frame-to-frame finite differences in constriction task variables. 
 Data-points are the errors computed over all 10 folds of cross-validation.
 Neighborhood size is given as percentage of training data-points.
-The standard deviations of observed (frame-to-frame finite differences in) constriction task variables are indicated as tick marks on the right $Y$-axis for each participant whenever the standard deviations are small enough to fit within the $Y$-axis limits.}
+The standard deviation of observed (frame-to-frame finite differences in) constriction task variables is indicated as a tick mark on the right $y$-axis whenever the standard deviation is small enough to fit within the $y$-axis limits.}
 \label{fig:cverrors}
 \end{figure*}
 
@@ -813,14 +813,14 @@ Due to its deterministic nature, the dynamical system generates vocal tract cont
 
 Numerical simulation of the dynamical system generated paths $\mathbf{w}(t)$ that solved Equation~\ref{eq:td_weight_path} for each of the \SI{40} vowel-consonant-vowel utterances. True biomarker values were computed from these paths using Equations~\ref{eq:lambda} and~\ref{eq:nu}. Measured biomarker values were extracted from the synthetic vocal tract contours $\mathbf{x}(t) = \mathbf{F}\mathbf{w}(t)$ using the same procedure as for real data (i.e., without knowledge of the parameters used to generate them). 
 
-The simulation was repeated \SI{15} times, each with a different value of the jaw weight $v_{11}$ in the range of \SI[parse-numbers=false]{10^{-3}} to \SI[parse-numbers=false]{10^2}. This generated a range of true biomarker values from \SIrange{0}{100}{\percent}. Fig.~\ref{fig:valfig}, panel (a), demonstrates an inverse relation between jaw weight and biomarker value. The measured biomarker values closely matched the true biomarker values over the range from~\SIrange{0}{100}{\percent} (cf. Fig.~\ref{fig:valfig}, panels b and c). A two-sided two-sample \textit{t}-test detected no systematic bias ($p = 0.80$). The \SI{95}{\percent} limits of agreement are \SI{-1.03}{\percent} and \SI{0.68}{\percent}, meaning that most errors are contained in the interval $[\SI{-1.03}{\percent},\SI{0.68}{\percent}]$.
+The simulation was repeated \SI{15} times, each with a different value of the jaw weight $v_{11}$ in the range of \SI[parse-numbers=false]{10^{-3}} to \SI[parse-numbers=false]{10^2}. This generated a range of true biomarker values from \SIrange{0}{100}{\percent}. Fig.~\ref{fig:valfig}, panel (a), demonstrates an inverse relation between jaw weight and biomarker value. The measured biomarker values closely matched the true biomarker values over the range from~\SIrange{0}{100}{\percent} (cf. Fig.~\ref{fig:valfig}, panels b and c). A two-sided paired-sample \textit{t}-test detected no systematic bias ($p = 0.80$). The \SI{95}{\percent} limits of agreement are \SI{-1.03}{\percent} and \SI{0.68}{\percent}, meaning that most errors are contained in the interval $[\SI{-1.03}{\percent},\SI{0.68}{\percent}]$.
 
 \begin{figure*}
 \centering
 \includegraphics[width=\textwidth]{ValidationFigure.pdf}
 \caption{{\bf a.} Relationship between measured biomarker values and theoretical jaw weight parameter values. The jaw weight parameter controls jaw usage in the dynamical systems simulation of vocal tract movement. Large biomarker values close to \SI{100}{\percent} correspond to small jaw weight parameters (indicating great jaw usage). Small biomarker values close to \SI{0}{\percent} correspond to large jaw weight parameters (indicating little jaw usage).
 {\bf b.} Relationship between the true and measured biomarker values. True values were obtained from synthetic data generated in a dynamical systems simulation.
-{\bf c.} Bland-Altman diagram of \SI{95}{\percent} of the measured biomarker values differed from the true value by \SIrange{-1.03}{0.68}{\percent}. Measurement bias (\SI{-0.25}{\percent}) was not significantly different from zero.}
+{\bf c.} Bland-Altman diagram graphs the difference between true and measured biomarker values ($y$-axis) against the average of the true and measured biomarker values ($x$-axis). \SI{95}{\percent} of the measured biomarker values differed from the true value by \SIrange{-1.03}{0.68}{\percent}. Measurement bias (\SI{-0.17}{\percent}) was not significantly different from zero.}
 \label{fig:valfig}
 \end{figure*}
 
@@ -1090,7 +1090,7 @@ Although constrictions at the velar and pharyngeal places may not involve a very
 \includegraphics[width=\linewidth]{HistogramsFigure.pdf}
 
 \caption{\label{fig:histograms}(color online) 
-Sample distribution of the jaw contributions to constrictions at the bilabial, alveolar, palatal, velar, and pharyngeal places of articulation. The quantity plotted is the percent of a constriction that was produced by the jaw.
+Sample distribution of the articulator synergy biomarker at the bilabial, alveolar, palatal, velar, and pharyngeal places of articulation. The biomarker indicates the percent of a constriction that was produced by the jaw.
 A value of \SI{0}{\percent} indicates that lip or tongue motion produced the entire constriction, whereas a value of \SI{100}{\percent} indicates that jaw motion produced the entire constriction. 
 Sample distribution by participant shown with a different color for each participant.}
 
