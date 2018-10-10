@@ -40,10 +40,14 @@ for i=1:length(idx)
     set(gca,'ColorOrder',colr)
     u_sec_id = unique(contour_data.sections_id);
     sections_id = contour_data.sections_id;
-    for j=1:length(unique(contour_data.sections_id))
-        vertex_idx = sections_id == j;
+    keep_sections = [1 2 3 4 5 7 11 12 15];
+    cm = linspecer(9);
+    ell=1;
+    for j=1:length(keep_sections)
+        vertex_idx = sections_id == keep_sections(j);
         plot(contour_data.X(idx(i),vertex_idx)+42.5, ...
-            -(contour_data.Y(idx(i),vertex_idx)-42.5), 'LineWidth',2)
+            -(contour_data.Y(idx(i),vertex_idx)-42.5), 'Color',cm(ell,:), 'LineWidth',4)
+        ell=ell+1;
     end
     hold off
     
@@ -101,8 +105,8 @@ for i=1:length(idx)
         out = [out(1:(end/2)); out((end/2)+1:end)]';
         in = in(idx(i),:);
         out = out(idx(i),:);
-        scatter([in(1)+42.5 out(1)+42.5],[-in(2)+42.5 -out(2)+42.5],[],colr(2,:),'filled')
-        plot([in(1)+42.5 out(1)+42.5],[-in(2)+42.5 -out(2)+42.5],'LineWidth',2,'Color',colr(2,:))
+        scatter([in(1)+42.5 out(1)+42.5],[-in(2)+42.5 -out(2)+42.5],10^2,colr(2,:),'filled')
+        plot([in(1)+42.5 out(1)+42.5],[-in(2)+42.5 -out(2)+42.5],'LineWidth',4,'Color',colr(2,:))
     end
     
     hold off

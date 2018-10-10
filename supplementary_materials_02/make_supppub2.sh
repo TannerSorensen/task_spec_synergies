@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
-cd graphics
-Rscript test_retest.R
-cd ..
-pdflatex SuppPub2.tex
+
+wget -O SuppPub2.zip https://github.com/TannerSorensen/task_spec_synergies/archive/master.zip

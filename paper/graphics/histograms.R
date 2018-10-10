@@ -40,7 +40,7 @@ for(i in seq(1,5)){
   pdf(file.path(graphics_path,paste("histogram_",sub(" ","_",tv_loc[i]),".pdf",sep = "")))
   par(mar=c(5,6,4,1)+.1)
   with(tab,hist(bm[tv==i],main=tv_loc[i],
-                   yaxt="n",ylab="frequency",ylim=c(-n_participants*spacing,30),
+                   yaxt="n",ylab="",ylim=c(-n_participants*spacing,30),
                    xaxt="n",xlab="percent jaw contribution",xlim=c(0,1),
                    cex.axis=2,cex.lab=2,cex.main=2))
   yul <- par("usr")[4] - par("usr")[4] %% 10
@@ -52,6 +52,8 @@ for(i in seq(1,5)){
     with(tab,points(bm[idx],rep(-k*spacing,sum(idx)),col="#000000",bg=colrs[k],pch=21,cex=2))
     k <- k+1
   }
+  text(-0.2,15,"frequency",srt=90,xpd=NA,cex=2)
+  text(-0.05,-9,"participant",srt=90,xpd=NA,cex=2)
   dev.off()
 }
 

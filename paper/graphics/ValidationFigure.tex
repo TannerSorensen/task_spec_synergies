@@ -1,0 +1,24 @@
+\documentclass[varwidth=7in]{standalone}
+
+\usepackage{stackengine}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{graphicx}
+\graphicspath{{validation/}}
+
+% for white font in subfigure captions
+\usepackage{xcolor}
+
+\standaloneconfig{crop=true}
+
+\begin{document}
+
+\raisebox{1.75in}{\makebox[0.02\linewidth][l]{{\bf (a)}}}
+\includegraphics[width=0.3\linewidth]{validation_graphic1.pdf}%
+\raisebox{1.75in}{\makebox[0.02\linewidth][l]{{\bf (b)}}}
+\includegraphics[width=0.3\linewidth]{validation_graphic2.pdf}%
+\raisebox{1.75in}{\makebox[0.02\linewidth][l]{{\bf (c)}}}
+\includegraphics[width=0.3\linewidth]{validation_graphic3.pdf}%
+
+\end{document}

@@ -141,7 +141,7 @@ config_struct = config;
 for i=1:length(jaw_fac)
     for j=1:length(tng_fac)
         config_struct.q = struct('jaw',jaw_fac(i),'tng',tng_fac(j),'lip',2,'vel',1,'lar',2);
-        %write_tabs(config_struct,subject_list)
+        write_tabs(config_struct,subject_list)
     end
     for j=1:length(lip_fac)
         config_struct.q = struct('jaw',jaw_fac(i),'tng',4,'lip',lip_fac(j),'vel',1,'lar',2);

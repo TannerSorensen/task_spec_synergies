@@ -16,7 +16,7 @@ Execute the command `./run.sh` in a Bash shell to perform the analysis and compi
 (available at https://www.r-project.org)
 + R libraries `lme4`, `multcomp`, `RColorBrewer`, and `rptR`  
 (install with the R command  
-`install.packages(c("lme4","multcomp","RColorBrewer","rptR"))`)
+`install.packages(c("lme4","multcomp","RColorBrewer","rptR","ggplot2"))`)
 + `wget`  
 (available with `brew install wget` through [Homebrew](https://brew.sh/) on macOS)
 + Git  
