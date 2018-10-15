@@ -385,9 +385,9 @@ We performed principal components analysis of the jaw (i.e., mandible and chin, 
 \boldsymbol{\Sigma}_\text{jaw} = \mathbf{Q}_\text{jaw}\boldsymbol{\Lambda}_\text{jaw} \mathbf{Q}_\text{jaw}^{-1}
 \end{equation}
 %
-The principal axes $(\mathbf{q}_\text{jaw})_{\cdot,1}, (\mathbf{q}_\text{jaw})_{\cdot,2}, \ldots, (\mathbf{q}_\text{jaw})_{\cdot,q_\text{jaw}}$ and the variances $(\lambda_\text{jaw})_{1,1}, (\lambda_\text{jaw})_{2,2}, \ldots, (\lambda_\text{jaw})_{q_\text{jaw},q_\text{jaw}}$ on these axes capture the direction and variance of jaw motion. 
+The principal axes $(\mathbf{q}_\text{jaw})_{\cdot,1}$, $(\mathbf{q}_\text{jaw})_{\cdot,2}$, $\ldots$, $(\mathbf{q}_\text{jaw})_{\cdot,q_\text{jaw}}$ and the variances $(\lambda_\text{jaw})_{1,1}$, $(\lambda_\text{jaw})_{2,2}$, $\ldots$, $(\lambda_\text{jaw})_{q_\text{jaw},q_\text{jaw}}$ on these axes capture the direction and variance of jaw motion. 
 % 
-The jaw factors $(\mathbf{f}_\text{jaw})_{\cdot,1},(\mathbf{f}_\text{jaw})_{\cdot,2},\ldots,(\mathbf{f}_\text{jaw})_{\cdot,q_\text{jaw}}$ capture this jaw motion along with concomitant tongue and lip motion.
+The jaw factors $(\mathbf{f}_\text{jaw})_{\cdot,1}$, $(\mathbf{f}_\text{jaw})_{\cdot,2}$, $\ldots$, $(\mathbf{f}_\text{jaw})_{\cdot,q_\text{jaw}}$ capture this jaw motion along with concomitant tongue and lip motion.
 % 
 The jaw factors are the columns of matrix $\mathbf{F}_\text{jaw} \in \mathbb{R}^{p\times q_\text{jaw}}$. 
 %
@@ -1317,7 +1317,7 @@ Overall, these results support the inference that the jaw contributed significan
 
 The present study demonstrates that speakers use the jaw more to produce constrictions at the alveolar place of articulation than to produce constrictions at the velar and pharyngeal places of articulation. 
 %
-The pattern of jaw, tongue, and lip usage is heterogeneous for the bilabial and palatal places of articulation.
+The pattern of jaw, tongue, and lip usage is heterogeneous for the bilabial, coronal, and palatal places of articulation.
 %
 This supports the idea that different articulator synergies have different patterns of inter-articulator coordination.
 %
@@ -1340,7 +1340,7 @@ variability, which is the sum of intra- and inter-participant variability (cf. E
 %
 For the velar place of articulation, low precision is due to small inter-participant variance (cf. Fig.~\ref{fig:histograms}). 
 %
-For the alveolar and pharyngeal places, low precision is due to large intra-participant variance.
+For the coronal and pharyngeal places, low precision is due to large intra-participant variance.
 %
 Intra-participant variance is unavoidable in voluntary movement due to short-term physiological variability that arises from the way the brain regulates noise in the motor system~\citep{harris1998signal,van2009motor,wu2014temporal}. 
 %
@@ -1401,9 +1401,9 @@ This supports the idea that synergies organize the articulators on a temporary b
 
 
 
-The following are four potential threads of research that build on the results of the present study.
+The following are five potential threads of research that build on the results of the present study.
 %
-First, the present study estimated parameters of vocal tract \textit{kinematics}, not parameters of vocal tract \textit{dynamics}. That is, the parameters have to do with motion, not with the forces that produce the motion. In the Task Dynamics model of speech production, dynamical parameters include gestural parameters (e.g., stiffness, damping, mass), parameters of inter-gestural coordination (e.g., coupling, blending). Future studies may attempt to estimate these parameters from MRI.
+First, the present study estimated parameters of vocal tract \textit{kinematics}, not parameters of vocal tract \textit{dynamics}. That is, the parameters have to do with motion, not with the forces that produce the motion. In the Task Dynamics model of speech production, dynamical parameters include gestural parameters (e.g., stiffness, damping, mass) and parameters of inter-gestural coordination (e.g., coupling, blending). Future studies may attempt to estimate these parameters from MRI.
 %
 Second, the present study showed that the articulator synergy biomarker varied depending on the place of articulation. Future studies may evaluate whether the articulator synergy biomarker further depends on sociolinguistic factors, sex, anatomy, and age, especially during childhood development.
 %
