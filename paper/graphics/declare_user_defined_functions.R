@@ -3,7 +3,7 @@ plot_percentile_range <- function(pctl_tab,stds,col_idx,xlab_flag,titl,graphics_
   cols<-brewer.pal(n=7,name="Set1")
   cols<-c(cols[1:4],cols[6],cols[7])
   
-  plot.new()
+  
   
   if(xlab_flag==TRUE){
     ylbl <- "error (mm)"
@@ -12,6 +12,8 @@ plot_percentile_range <- function(pctl_tab,stds,col_idx,xlab_flag,titl,graphics_
   }
   
   yub <- 2.4
+  
+  plot.new()
   
   df <- data.frame(intvl=pctl_tab[,1], 
                    med=pctl_tab[,2][,2],
@@ -22,13 +24,8 @@ plot_percentile_range <- function(pctl_tab,stds,col_idx,xlab_flag,titl,graphics_
     theme_classic(base_size = 20) +
     labs(x="neighborhood size",
          y=ylbl,
-         title=titl)
+         title=titl) + geom_hline(yintercept=mean(stds[,2]), linetype="dashed", color = "black")
   
-  axis(1, at=seq(0,1,0.2), labels=paste(seq(0,100,20),"%",sep=""), cex.axis=1)
-  rug(x = seq(0.05,0.95,0.05), ticksize = -0.01, side = 1)
-  axis(2, at=seq(0,yub,0.2),cex.axis=1)
-  rug(x = seq(0,yub,0.05), ticksize = -0.01, side = 2)
-  rug(x = mean(stds[,2]), ticksize = 0.1, side = 4)
   
   ggsave(file.path(graphics_path,paste("err_",paste(sub(" ","_",titl),filename_suffix,sep = ""),".pdf",sep="")), plot = last_plot(), device = NULL, path = NULL,
          scale = 1, width = 4, height = 4, units = "in",

@@ -41,9 +41,7 @@ X=xy_data(1:length(xy_data)/2);
 Y=xy_data(length(xy_data)/2+1:end);
 
 for i=unique(sections_id)
-    X=X(ismember(sections_id,i));
-    Y=Y(ismember(sections_id,i));
-    plot(X,Y,color,'LineWidth',2);hold on;
+    plot(X(ismember(sections_id,i)),Y(ismember(sections_id,i)),color,'LineWidth',2);hold on;
 end
 
 axis equal;
