@@ -184,7 +184,7 @@ Reconstruction was performed using the Berkeley Advanced Reconstruction Toolbox~
 
 
 
-\section{constriction task variable measurement}
+\section{Constriction task variable measurement}
 \label{sec:cd}
 
 The contours of articulators were identified in the real-time MRI videos and tracked automatically during vocal tract constrictions~\citep{bresch2009region}. The algorithm was manually initialized with templates matching vocal tract contours during the sounds \textipa{[a], [j], [p], [t], [k]} (Fig.~\ref{fig:segtemp}). 
@@ -818,7 +818,7 @@ The simulation was repeated \SI{15} times, each with a different value of the ja
 \begin{figure*}
 \centering
 \includegraphics[width=\textwidth]{ValidationFigure.pdf}
-\caption{{\bf a.} Relationship between measured biomarker values and theoretical jaw weight parameter values. The jaw weight parameter controls jaw usage in the dynamical systems simulation of vocal tract movement. Large biomarker values close to \SI{100}{\percent} correspond to small jaw weight parameters (indicating great jaw usage). Small biomarker values close to \SI{0}{\percent} correspond to large jaw weight parameters (indicating little jaw usage).
+\caption{(color online) {\bf a.} Relationship between measured biomarker values and theoretical jaw weight parameter values. The jaw weight parameter controls jaw usage in the dynamical systems simulation of vocal tract movement. Large biomarker values close to \SI{100}{\percent} correspond to small jaw weight parameters (indicating great jaw usage). Small biomarker values close to \SI{0}{\percent} correspond to large jaw weight parameters (indicating little jaw usage).
 {\bf b.} Relationship between the true and measured biomarker values. True values were obtained from synthetic data generated in a dynamical systems simulation.
 {\bf c.} Bland-Altman diagram graphs the difference between true and measured biomarker values ($y$-axis) against the average of the true and measured biomarker values ($x$-axis). \SI{95}{\percent} of the measured biomarker values differed from the true value by \SIrange{-1.03}{0.68}{\percent}. Measurement bias (\SI{-0.17}{\percent}) was not significantly different from zero.}
 \label{fig:valfig}

@@ -232,7 +232,7 @@ Reconstruction was performed using the Berkeley Advanced Reconstruction Toolbox~
 
 
 
-\section{constriction task variable measurement}
+\section{Constriction task variable measurement}
 \label{sec:cd}
 
 The contours of articulators were identified in the real-time MRI videos and tracked automatically during vocal tract constrictions~\citep{bresch2009region}. The algorithm was manually initialized with templates matching vocal tract contours during the sounds \textipa{[a], [j], [p], [t], [k]} (Fig.~\ref{fig:segtemp}). 
@@ -433,9 +433,9 @@ We performed principal components analysis of the jaw (i.e., mandible and chin, 
 \boldsymbol{\Sigma}_\text{jaw} = \mathbf{Q}_\text{jaw}\boldsymbol{\Lambda}_\text{jaw} \mathbf{Q}_\text{jaw}^{-1}
 \end{equation}
 %
-The principal axes $(\mathbf{q}_\text{jaw})_{\cdot,1}, (\mathbf{q}_\text{jaw})_{\cdot,2}, \ldots, (\mathbf{q}_\text{jaw})_{\cdot,q_\text{jaw}}$ and the variances $(\lambda_\text{jaw})_{1,1}, (\lambda_\text{jaw})_{2,2}, \ldots, (\lambda_\text{jaw})_{q_\text{jaw},q_\text{jaw}}$ on these axes capture the direction and variance of jaw motion. 
+The principal axes $(\mathbf{q}_\text{jaw})_{\cdot,1}$, $(\mathbf{q}_\text{jaw})_{\cdot,2}$, $\ldots$, $(\mathbf{q}_\text{jaw})_{\cdot,q_\text{jaw}}$ and the variances $(\lambda_\text{jaw})_{1,1}$, $(\lambda_\text{jaw})_{2,2}$, $\ldots$, $(\lambda_\text{jaw})_{q_\text{jaw},q_\text{jaw}}$ on these axes capture the direction and variance of jaw motion. 
 % 
-The jaw factors $(\mathbf{f}_\text{jaw})_{\cdot,1},(\mathbf{f}_\text{jaw})_{\cdot,2},\ldots,(\mathbf{f}_\text{jaw})_{\cdot,q_\text{jaw}}$ capture this jaw motion along with concomitant tongue and lip motion.
+The jaw factors $(\mathbf{f}_\text{jaw})_{\cdot,1}$, $(\mathbf{f}_\text{jaw})_{\cdot,2}$, $\ldots$, $(\mathbf{f}_\text{jaw})_{\cdot,q_\text{jaw}}$ capture this jaw motion along with concomitant tongue and lip motion.
 % 
 The jaw factors are the columns of matrix $\mathbf{F}_\text{jaw} \in \mathbb{R}^{p\times q_\text{jaw}}$. 
 %
@@ -866,7 +866,7 @@ The simulation was repeated \SI{15} times, each with a different value of the ja
 \begin{figure*}
 \centering
 \includegraphics[width=\textwidth]{ValidationFigure.pdf}
-\caption{{\bf a.} Relationship between measured biomarker values and theoretical jaw weight parameter values. The jaw weight parameter controls jaw usage in the dynamical systems simulation of vocal tract movement. Large biomarker values close to \SI{100}{\percent} correspond to small jaw weight parameters (indicating great jaw usage). Small biomarker values close to \SI{0}{\percent} correspond to large jaw weight parameters (indicating little jaw usage).
+\caption{(color online) {\bf a.} Relationship between measured biomarker values and theoretical jaw weight parameter values. The jaw weight parameter controls jaw usage in the dynamical systems simulation of vocal tract movement. Large biomarker values close to \SI{100}{\percent} correspond to small jaw weight parameters (indicating great jaw usage). Small biomarker values close to \SI{0}{\percent} correspond to large jaw weight parameters (indicating little jaw usage).
 {\bf b.} Relationship between the true and measured biomarker values. True values were obtained from synthetic data generated in a dynamical systems simulation.
 {\bf c.} Bland-Altman diagram graphs the difference between true and measured biomarker values ($y$-axis) against the average of the true and measured biomarker values ($x$-axis). \SI{95}{\percent} of the measured biomarker values differed from the true value by \SIrange{-1.03}{0.68}{\percent}. Measurement bias (\SI{-0.17}{\percent}) was not significantly different from zero.}
 \label{fig:valfig}
@@ -1049,7 +1049,7 @@ alveolar &
 \SI{40} &
 velar &
 7 &
-\ensuremath{8.3\times 10^{-12}} \\
+\ensuremath{8.7\times 10^{-12}} \\
 %
 % velar vs. palatal
 %
@@ -1057,7 +1057,7 @@ palatal &
 \SI{19} &
 velar &
 2.4 &
-0.06 \\
+0.061 \\
 %
 % pharyngeal vs. bilabial
 %
@@ -1073,7 +1073,7 @@ alveolar &
 \SI{28} &
 pharyngeal &
 4 &
-\ensuremath{1.9\times 10^{-4}} \\
+\ensuremath{2.5\times 10^{-4}} \\
 %
 % pharyngeal vs. palatal
 %
@@ -1106,12 +1106,12 @@ Compared to the alveolar place, the percent jaw contribution was
 \SI{40}{\percent} 
 less at the velar place
 ($z=7$, 
-$p=\ensuremath{8.3\times 10^{-12}}$), and
+$p=\ensuremath{8.7\times 10^{-12}}$), and
 %
 \SI{28}{\percent} 
 less at the pharyngeal place
 ($z=4$, 
-$p=\ensuremath{1.9\times 10^{-4}}$).
+$p=\ensuremath{2.5\times 10^{-4}}$).
 %
 We infer that the jaw contributed significantly more to constrictions at the alveolar place compared to constrictions at the velar and pharyngeal places.
 %
