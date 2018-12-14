@@ -21,6 +21,14 @@
 \newcommand\bovermat[2]{%
   \makebox[0pt][l]{$\smash{\overbrace{\phantom{%
     \begin{matrix}#2\end{matrix}}}^{#1}}$}#2}
+    
+% participant characteristics table
+\usepackage{multirow,array}
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \begin{document}
 
@@ -132,7 +140,7 @@ The paper is organized as follows.
 Section~\ref{sec:mri} describes the MRI experiment, scanner sequence, participant characteristics, and method for manually annotating the start and end time-points in the real-time MRI. 
 Sections~\ref{sec:cd} and~\ref{sec:gfa} describe the segmentation of articulator contours in the images and use the segmentation results to estimate constriction task variables and parameters of articulator shape and position, which are related by the forward kinematics of the vocal tract. 
 Section~\ref{sec:forwardkinematicmap} estimates the forward kinematics and evaluates the model through cross-validation. 
-Section~\ref{sec:articulator_synergy_biomarker} defines the articulator synergy biomarker. It evaluates the precision articulator synergy biomarker with respect to bias and precision. 
+Section~\ref{sec:articulator_synergy_biomarker} defines the articulator synergy biomarker. It evaluates the articulator synergy biomarker with respect to bias and precision. 
 Section~\ref{sec:taskspec} uses the articulator synergy biomarker to test the task-dependence of articulator synergies. 
 Sections~\ref{sec:discussion} and~\ref{sec:conclusions} offer discussion and conclusions.
 
@@ -143,7 +151,32 @@ Sections~\ref{sec:discussion} and~\ref{sec:conclusions} offer discussion and con
 
 \subsection{Experiment}
 
-The data-set included eight (4 male, 4 female) speakers of American English. Five participants were native speakers of American English. None of the participants reported speech pathology or abnormal hearing.\footnote{Supplementary material available at [URL will be inserted by AIP] provides participant characteristics.} Each participant took part in one session. The authors explained the nature of the experiment and the protocol to the participant before each scan. The participant lay on the scanner table in a supine position. The head was fixed in place by foam pads inserted between the temple and the receiver coil on the left and right sides of the head. The participant read visually presented text from a paper card taped to the scanner bore in front of the face. The speech corpus included real-time MRI videos of the isolated vowel-consonant-vowel utterances \textipa{[apa]}, \textipa{[ata]}, \textipa{[aka]}, \textipa{[aja]}. The participant produced each vowel-consonant-vowel utterance ten times. The authors removed the participant from the scanner for a short break, and then repeated the experiment. After completing the session, the speaker was paid for their participation in the study. The USC Institutional Review Board approved the data collection procedures. 
+The data-set included eight (4 male, 4 female) speakers of American English. Five participants were native speakers of American English. None of the participants reported speech pathology or abnormal hearing. Table~\ref{tab:subj2} provides participant characteristics. Each participant took part in one session. The authors explained the nature of the experiment and the protocol to the participant before each scan. The participant lay on the scanner table in a supine position. The head was fixed in place by foam pads inserted between the temple and the receiver coil on the left and right sides of the head. The participant read visually presented text from a paper card taped to the scanner bore in front of the face. The speech corpus included real-time MRI videos of the isolated vowel-consonant-vowel utterances \textipa{[apa]}, \textipa{[ata]}, \textipa{[aka]}, \textipa{[aja]}. The participant produced each vowel-consonant-vowel utterance ten times. The authors removed the participant from the scanner for a short break, and then repeated the experiment. After completing the session, the speaker was paid for their participation in the study. The USC Institutional Review Board approved the data collection procedures. 
+
+\begin{table}
+\centering
+\begin{tabular}{l l l L{0.2\linewidth} l}
+\hline
+ID & age & gender & state of origin & native language \Tstrut \Bstrut \\
+\hline
+F1 & 25 & F & Rhode Island & American English \Tstrut \\
+F2 & 28 & F & Texas & American English \\
+F3 & 24 & F & Nebraska & American English \\
+F4 & 29 & F & Korea & Korean \\
+M1 & 29 & M & Iowa & American English \\
+M2 & 27 & M & United Arab Emirates & American English \\
+M3 & 26 & M & Germany & German \\
+M4 & 39 & M & Greece & Greek \\
+\hline
+& \shortstack[l]{\Tstrut median: 28 \\ range: 24--39}
+& \shortstack[l]{\Tstrut 4 male \\ 4 female}
+&
+& \shortstack[l]{5 American English \\ 3 other}\Tstrut \Bstrut \\
+\hline
+\end{tabular}
+\caption{Participant characteristics of the test-retest data-set}
+\label{tab:subj2}
+\end{table}
 
 Vocal tract constrictions were manually identified in the real-time MRI videos. 
 %
@@ -247,12 +280,14 @@ The guided factor analysis of the present study was motivated by the analysis of
 
 The objective of the guided factor analysis was to parameterize the vocal tract contours $\mathbf{X} \in \mathbb{R}^{n\times 2p}$, where $n$ is the number of images and $p$ is the number of contour vertices, as the linear combination of factors $\mathbf{f}_1, \mathbf{f}_2, \ldots, \mathbf{f}_q \in \mathbb{R}^{2p}$ such that each factor characterizes spatial variation in the position and shape of an articulator (specifically, the jaw, tongue, lips). 
 %
-The time-varying coefficients coefficients $\mathbf{w}_{\cdot,1},\mathbf{w}_{\cdot,2},\ldots,\mathbf{w}_{\cdot,p} \in \mathbb{R}^n$ of the linear combination are factor scores that characterize temporal variation in the position and shapes of the articulators. Each image has factor scores, which change from one image to the next as the articulators move and change shape. Thus, changes in the factor scores parameterize articulator motion
+Prior to the factor analysis, the vocal tract contours $\mathbf{X}$ were centered on zero.
+%
+The time-varying coefficients $\mathbf{w}_{\cdot,1},\mathbf{w}_{\cdot,2},\ldots,\mathbf{w}_{\cdot,p} \in \mathbb{R}^n$ of the linear combination are factor scores that characterize temporal variation in the position and shapes of the articulators. Factor scores change from one image to the next as the articulators move and change shape. Thus, changes in the factor scores parameterize articulator motion.
 %
 The guided factor analysis is based on the approach of~\citet{toutios2015factor}.
 
 
-Factors $\mathbf{f}_1, \mathbf{f}_2, \ldots, \mathbf{f}_q \in \mathbb{R}^{2p}$ are the columns of the matrix $\mathbf{F} \in \mathbb{R}^{p\times q}$. 
+Factors $\mathbf{f}_1, \mathbf{f}_2, \ldots, \mathbf{f}_q \in \mathbb{R}^{2p}$ are the columns of the matrix $\mathbf{F} \in \mathbb{R}^{2p\times q}$. 
 %
 Rows $\mathbf{w}_{1,\cdot},\mathbf{w}_{2,\cdot},\ldots,\mathbf{w}_{n,\cdot}$ of the matrix $\mathbf{W} \in \mathbb{R}^{n\times q}$ contain the factor scores for images $1,2,\ldots,n$ of the real-time MRI data-set. 
 %
@@ -347,7 +382,7 @@ If jaw contour vertices are in columns $q_1,q_2,\ldots,q_\ell$ of $\mathbf{X}$, 
    0 & \bovermat{\text{jaw contour vertices}}{x_{1,q_1} &  \cdots & x_{1,q_\ell}} & 0 \\
    0 & x_{2,q_1} &  \cdots & x_{2,q_\ell} & 0 \\
    \vdots & \vdots & & \vdots & \vdots \\
-   0 & x_{m,q_1} & \cdots & x_{m,q_\ell} & 0 \\
+   0 & x_{n,q_1} & \cdots & x_{m,q_\ell} & 0 \\
   \end{array} } \right]
 %
   &= 
@@ -368,8 +403,6 @@ Similarly, the matrices $\mathbf{X}_\text{tongue},\mathbf{X}_\text{lips},\mathbf
 % 
 Summing such matrices produces a matrix that corresponds to a set of articulators. For instance, the matrix $\mathbf{X}_{\text{jaw,tongue,lips}} = \mathbf{X}_\text{jaw} + \mathbf{X}_\text{tongue} + \mathbf{X}_\text{lips}$ corresponds to the jaw, tongue, and lips.
 
-Prior to the factor analysis, the vocal tract contours $\mathbf{X}$ were centered on zero.
-
 
 
 
@@ -379,7 +412,7 @@ Prior to the factor analysis, the vocal tract contours $\mathbf{X}$ were centere
 
 We first obtained the factors $\mathbf{F}_\text{jaw}$ that capture the contribution of the jaw to vocal tract shaping (see the jaw factor in Fig.~\ref{fig:gfa}). 
 % 
-We performed principal components analysis of the jaw (i.e., mandible and chin, cf. Fig.~\ref{fig:segtemp}) contour vertices through eigendecomposition of the covariance matrix $\boldsymbol{\Sigma}_\text{jaw} = \mathbf{X}_\text{jaw}^\intercal \mathbf{X}_\text{jaw}/(n-1)$ into an orthogonal matrix $\mathbf{Q}_\text{jaw} \in \mathbb{R}^{p\times q_\text{jaw}}$ whose columns are the principal axes of $\mathbf{X}_\text{jaw}$ and a diagonal matrix $\boldsymbol{\Lambda}_\text{jaw} \in \mathbb{R}^{q_\text{jaw} \times q_\text{jaw}}$ whose diagonal entries are the variances of $\mathbf{X}_\text{jaw}$ on the principal axes.
+We performed principal components analysis of the jaw (i.e., mandible and chin, cf. Fig.~\ref{fig:segtemp}) contour vertices through eigendecomposition of the covariance matrix $\boldsymbol{\Sigma}_\text{jaw} = \mathbf{X}_\text{jaw}^\intercal \mathbf{X}_\text{jaw}/(n-1)$ into an orthogonal matrix $\mathbf{Q}_\text{jaw} \in \mathbb{R}^{2p\times q_\text{jaw}}$ whose columns are the principal axes of $\mathbf{X}_\text{jaw}$ and a diagonal matrix $\boldsymbol{\Lambda}_\text{jaw} \in \mathbb{R}^{q_\text{jaw} \times q_\text{jaw}}$ whose diagonal entries are the variances of $\mathbf{X}_\text{jaw}$ on the principal axes.
 % 
 \begin{equation}
 \boldsymbol{\Sigma}_\text{jaw} = \mathbf{Q}_\text{jaw}\boldsymbol{\Lambda}_\text{jaw} \mathbf{Q}_\text{jaw}^{-1}
@@ -389,7 +422,7 @@ The principal axes $(\mathbf{q}_\text{jaw})_{\cdot,1}$, $(\mathbf{q}_\text{jaw})
 % 
 The jaw factors $(\mathbf{f}_\text{jaw})_{\cdot,1}$, $(\mathbf{f}_\text{jaw})_{\cdot,2}$, $\ldots$, $(\mathbf{f}_\text{jaw})_{\cdot,q_\text{jaw}}$ capture this jaw motion along with concomitant tongue and lip motion.
 % 
-The jaw factors are the columns of matrix $\mathbf{F}_\text{jaw} \in \mathbb{R}^{p\times q_\text{jaw}}$. 
+The jaw factors are the columns of matrix $\mathbf{F}_\text{jaw} \in \mathbb{R}^{2p\times q_\text{jaw}}$. 
 %
 \begin{equation}
 \mathbf{F}_\text{jaw}
@@ -590,11 +623,8 @@ K(\mathbf{w},\mathbf{w}_{k,\cdot}) \\
 \end{cases} 
 \end{align}
 %
-The scale $h$ sets the size of the spherical neighborhood around $\mathbf{w}$ within which the forward map is computed. 
-%
-Points close to $\mathbf{w}$ contribute more to the forward map estimator than points at the edge of the neighborhood.
-%
-The parameter $f\in (0,1]$ sets the percentage of data-points inside the neighborhood within which the forward kinematic map is estimated. The parameter $h$ is the radius of the smallest sphere containing exactly $\lfloor fn \rfloor$ data points. The parameter $h$ is found using the $k$-nearest neighbors algorithm, where $k = \lfloor fn \rfloor$.
+The parameter $h$ is the radius of a spherical neighborhood centered on $\mathbf{w}$ containing exactly $\lfloor fn \rfloor$ data-points, where $f\in (0,1]$ and $n$ is the number of data-points. The parameter $h$ is found using the $k$-nearest neighbors algorithm, where $k = \lfloor fn \rfloor$. Equation~\ref{eq:gaussiankernel} has that the forward kinematic map is computed within this neighborhood, 
+with points close to the center $\mathbf{w}$ contributing more to the forward map estimator than points at the edge of the neighborhood.
 %
 The expression for the estimator of the forward kinematic map in the neighborhood of $\mathbf{w}$ is the following. 
 \begin{equation}
@@ -799,7 +829,7 @@ Following Task Dynamics~\citep{saltzman1989dynamical}, change in the vector $\ma
 \end{equation}
 The vector $\mathbf{z}_0$ contains $m$ constriction task variable targets, where $m$ is the number of places of articulation. The matrices $\mathbf{K}$ and $\mathbf{B}$ are diagonal matrices of $m$ stiffness and damping coefficients, respectively.
 The parameters $\mathbf{z}_0$, $\mathbf{K}$, and $\mathbf{B}$ are constant for time $t$ in $[t_0, t_0+T/2)$ (consonant) and for time $t$ in $[t_0+T/2, t_0+T)$ (vowel), with the parameters changing at the midpoint $t_0+T/2$ separating consonant from vowel.
-When the constriction is for constriction task variable $z_i$, then the parameters take on the following values, where $\omega$ is the natural frequency of the gesture: target $z_{0i} = \SI{0}{\milli\meter}$ for \textipa{[p]}, \textipa{[t]}, \textipa{[k]} and $z_{0i} = \SI{2.38}{\milli\meter}$ for \textipa{[i]}, \textipa{[a]}; stiffness $k_{ii} = \omega^2$; damping $b_{ii} = 2\omega$; and $k_{jj} = b_{jj} = 0$ for $j \neq i$.
+When the constriction is for task variable $z_i$, then the parameters take on the following values, where $\omega$ is the natural frequency of the gesture: target $z_{0i} = \SI{0}{\milli\meter}$ for \textipa{[p]}, \textipa{[t]}, \textipa{[k]} and $z_{0i} = \SI{2.38}{\milli\meter}$ for \textipa{[i]}, \textipa{[a]}; stiffness $k_{ii} = \omega^2$; damping $b_{ii} = 2\omega$; and $k_{jj} = b_{jj} = 0$ for $j \neq i$.
 The natural frequency $\omega = ~\SI{10}{\Hz}$ and simulation duration $T= \SI{1}{\second}$ were set arbitrarily, as the relative usage of the jaw, tongue, and lips does not depend on the time-scale of the simulation.
 
 Given model parameters $\mathbf{K}$, $\mathbf{B}$, $\mathbf{z}_0$, and initial conditions $z(t_0)$, $\dot{z}(t_0)$, the solution $\mathbf{z}(t)$ to Equation~\ref{eq:td_basic} is unique for time $t$ in $[t_0,t_0+T)$. The unique solution $\mathbf{z}(t)$ maps to many paths $\mathbf{w}(t)$ of factor scores. The forward kinematic map $\mathbf{G}$, its jacobian $\mathbf{J}(\mathbf{w})$, and the set of weights $v_{11}, v_{22}, \ldots, v_{qq}$ on the $q$ factors determine one particular path $\mathbf{w}(t)$ out of the many possible paths as the solution to the following equation for time $t$ in $[t_0, t_0+T)$.
@@ -1405,7 +1435,7 @@ The following are five potential threads of research that build on the results o
 %
 First, the present study estimated parameters of vocal tract \textit{kinematics}, not parameters of vocal tract \textit{dynamics}. That is, the parameters have to do with motion, not with the forces that produce the motion. In the Task Dynamics model of speech production, dynamical parameters include gestural parameters (e.g., stiffness, damping, mass) and parameters of inter-gestural coordination (e.g., coupling, blending). Future studies may attempt to estimate these parameters from MRI.
 %
-Second, the present study showed that the articulator synergy biomarker varied depending on the place of articulation. Future studies may evaluate whether the articulator synergy biomarker further depends on sociolinguistic factors, sex, anatomy, and age, especially during childhood development.
+Second, the present study showed that the articulator synergy biomarker varied depending on the place of articulation. Future studies may evaluate whether the articulator synergy biomarker depends on linguistic context (e.g., phonetic, lexical, syntactic), speech conditions (e.g., speech in noise vs. clean speech, variable speech rate), sociolinguistic factors, sex, anatomy, and age, especially during childhood development.
 %
 Third, jaw usage varies not only by place of articulation, but also by manner of articulation~\cite{vatikiotis1995analysis}. This introduces a potential confound, and thus is a limitation of the present study. Future research should focus on manner differences in articulator synergy biomarker values.
 %
