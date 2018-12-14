@@ -539,7 +539,7 @@ For a given participant, the coefficients of this linear combination change from
 
 \includegraphics[width=0.99\linewidth]{VarExplFigure.pdf}
 
-\caption{(color online) Percent variance explained {\bf (a)} for the mandible and chin contours for each number of jaw factors, {\bf (b)} for the tongue contour for different numbers of jaw and tongue factors, and {\bf (c)} for the lip contours for different numbers of jaw and lip factors.}
+\caption{(color online) Percent variance explained {\bf (a)} for the mandible and chin contours for each number of jaw factors, {\bf (b)} for the tongue contour for different numbers of jaw and tongue factors, and {\bf (c)} for the lip contours for different numbers of jaw and lip factors. Results averaged over participants.}
 \label{fig:varexpl}
 \end{figure*}
 
@@ -691,10 +691,10 @@ The median error of the jacobian matrix was smaller than the \SI{2.4}{\milli\met
 For many participants, the median error approached the standard deviation of the frame-to-frame finite differences in constriction task variable, especially for the velar and pharyngeal places of articulation.
 %
 The reason for this is that error for the jacobian matrix was small, but the frame-to-frame differences in constriction task variables varied over a small range to begin with. 
+
+In sum, the error of the forward kinematic map is small enough to reliably quantify speech behavior for the purpose of the present study.
 % 
-Whether the error of the jacobian matrix was small enough to reliably quantify speech behavior was quantified through the bias and precision of the articulator synergy biomarker. 
-% 
-The next section introduces and evaluates the articulator synergy biomarker. 
+Whether the error of the jacobian matrix was small enough to reliably quantify speech behavior was quantified through the bias and precision of the articulator synergy biomarker, a topic taken up in the next section. 
 
 \begin{figure*}
 \raggedright
@@ -1109,7 +1109,7 @@ At the velar place of articulation, the total variance of the biomarker is small
 (inter-quartile range: \SIrange{\Sexpr{signif(100*quantile((with(tab,bm[tv==4])),0.25),2)}}{\Sexpr{signif(100*quantile((with(tab,bm[tv==4])),0.75),2)}}{\percent}). 
 Even if the intra-participant variance is small to begin with, the intra-participant variance makes up a substantial part of the total variance (see the histograms in Fig.~\ref{fig:histograms}). 
 %
-In contrast, at the coronal and pharyngeal places of articulation, the total variance of biomarker is large 
+In contrast, at the coronal and pharyngeal places of articulation, the total variance of the biomarker is large 
 (coronal inter-quartile range: \SIrange{\Sexpr{signif(100*quantile((with(tab,bm[tv==2])),0.25),2)}}{\Sexpr{signif(100*quantile((with(tab,bm[tv==2])),0.75),2)}}{\percent};
 pharyngeal inter-quartile range: \SIrange{\Sexpr{signif(100*quantile((with(tab,bm[tv==5])),0.25),2)}}{\Sexpr{signif(100*quantile((with(tab,bm[tv==5])),0.75),2)}}{\percent}),
 suggesting that intra-participant variance is substantial (see the histograms in Fig.~\ref{fig:histograms}). 

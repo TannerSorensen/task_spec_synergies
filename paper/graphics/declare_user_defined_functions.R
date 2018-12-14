@@ -22,9 +22,10 @@ plot_percentile_range <- function(pctl_tab,stds,col_idx,xlab_flag,titl,graphics_
   ggplot(data=df, aes(x=intvl, y=med)) + geom_point() + geom_line() + 
     geom_ribbon(aes(ymin=lb, ymax=ub), linetype=2, alpha=0.1) +
     theme_classic(base_size = 20) +
-    labs(x="neighborhood size",
-         y=ylbl,
-         title=titl) + geom_hline(yintercept=mean(stds[,2]), linetype="dashed", color = "black")
+    labs(x="neighborhood size", y=ylbl,
+         title=titl) + 
+    geom_hline(yintercept=mean(stds[,2]), linetype="dashed", color = "black") +
+    coord_cartesian(ylim = c(0.0, 5.0)) 
   
   
   ggsave(file.path(graphics_path,paste("err_",paste(sub(" ","_",titl),filename_suffix,sep = ""),".pdf",sep="")), plot = last_plot(), device = NULL, path = NULL,
