@@ -1342,6 +1342,17 @@ Overall, these results support the inference that the jaw contributed significan
 
 
 
+\section{Patterns of inter- and intra-participant variability}
+\label{sec:patterns}
+
+
+
+
+
+
+
+
+
 \section{Discussion}
 \label{sec:discussion}
 
@@ -1358,6 +1369,10 @@ If synergies organize the articulators on a temporary basis for achieving motor 
 The articulator synergy biomarker provides the means to characterize this time-varying pattern of inter-articulator coordination in terms of the percent contribution of each articulator to changing the constriction task variable at the synergy's place of articulation. 
 %
 This complements the finding that articulator synergies are task-dependent in terms of inter-articulator coupling~\citep{lancia2018coupling}, inter-articulator correlation~\citep{jackson2009statistical}, and response to mechanical perturbation of articulator positions~\citep{kelso1984functionally}.
+
+
+
+\subsection{Differences in articulator synergies by manner classes}
 
 
 
