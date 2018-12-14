@@ -360,45 +360,41 @@ Thus, the contour vertices $\mathbf{x}_{i,\cdot}$ for the $i$th image of the rea
 The motion of the tongue and lips systematically co-occurs with motion of the jaw due to mechanical constraints and regularities in motor commands. For this reason, we seek a factor that corresponds to the motion of the jaw along with the concomitant motion of the tongue and lips.
 
 
-The set of $q_\text{jaw}$ jaw factors $\mathbf{F}_\text{jaw} \in \mathbb{R}^{p\times q_\text{jaw}}$ parameterizes motion of the jaw along with concomitant motion of the tongue, lips, and velum.
+The set of $q_\text{jaw}$ jaw factors $\mathbf{F}_\text{jaw} \in \mathbb{R}^{p\times q_\text{jaw}}$ parameterizes motion of the jaw along with concomitant motion of the tongue and lips.
 %
 The set of $q_\text{tongue}$ tongue factors $\mathbf{F}_\text{tongue} \in \mathbb{R}^{p\times q_\text{tongue}}$ parameterizes motion of the tongue that is independent of the jaw. 
 %
 The set of $q_\text{lips}$ lip factors $\mathbf{F}_\text{lips} \in \mathbb{R}^{p\times q_\text{lips}}$ parameterizes motion of the lips that is independent of the jaw.
 %
-The set of $q_\text{velum}$ velum factors $\mathbf{F}_\text{velum} \in \mathbb{R}^{p\times q_\text{velum}}$ parameterizes motion of the velum.
-%
-The full set of factors can be written as the block matrix $\mathbf{F} \in \mathbb{R}^{p\times q}$, where $q=q_\text{jaw}+q_\text{tongue}+q_\text{lips}+q_\text{velum}$. 
+The full set of factors can be written as the block matrix $\mathbf{F} \in \mathbb{R}^{p\times q}$, where $q=q_\text{jaw}+q_\text{tongue}+q_\text{lips}$. 
 % 
 \begin{equation}
 \label{eq:Fblock}
 \mathbf{F} = 
 \left[
-\begin{array}{c|c|c|c}
+\begin{array}{c|c|c}
 \mathbf{F}_\text{jaw} 
 & \mathbf{F}_\text{tongue}
 & \mathbf{F}_\text{lips}
-& \mathbf{F}_\text{velum}
 \end{array}
 \right]
 \end{equation}
 %
-The corresponding set of factor scores can be written as the block matrix $\mathbf{W} \in \mathbb{R}^{p\times q}$, where $q=q_\text{jaw}+q_\text{tongue}+q_\text{lips}+q_\text{velum}$. 
+The corresponding set of factor scores can be written as the block matrix $\mathbf{W} \in \mathbb{R}^{p\times q}$, where $q=q_\text{jaw}+q_\text{tongue}+q_\text{lips}$. 
 % 
 \begin{equation}
 \label{eq:Wblock}
 \mathbf{W} = 
 \left[
-\begin{array}{c|c|c|c}
+\begin{array}{c|c|c}
 \mathbf{W}_\text{jaw} 
 & \mathbf{W}_\text{tongue}
 & \mathbf{W}_\text{lips}
-& \mathbf{W}_\text{velum}
 \end{array}
 \right]
 \end{equation}
 
-Section~\ref{subsec:preliminaries} is a preliminary technical note. Section~\ref{subsec:jawfactors} derives the jaw factors. Section~\ref{subsec:residfactors} derives the tongue, lip, and velum factors. Section~\ref{subsec:weights} derives the factor scores. 
+Section~\ref{subsec:preliminaries} is a preliminary technical note. Section~\ref{subsec:jawfactors} derives the jaw factors. Section~\ref{subsec:residfactors} derives the tongue and lip factors. Section~\ref{subsec:weights} derives the factor scores. 
 
 
 
@@ -448,7 +444,7 @@ If jaw contour vertices are in columns $q_1,q_2,\ldots,q_\ell$ of $\mathbf{X}$, 
 \end{split}
 \end{equation}
 %
-Similarly, the matrices $\mathbf{X}_\text{tongue},\mathbf{X}_\text{lips},\mathbf{X}_\text{velum} \in \mathbb{R}^{n\times 2p}$ focus on the tongue and lip contours, respectively. 
+Similarly, the matrices $\mathbf{X}_\text{tongue},\mathbf{X}_\text{lips}\in \mathbb{R}^{n\times 2p}$ focus on the tongue and lip contours, respectively. 
 % 
 Summing such matrices produces a matrix that corresponds to a set of articulators. For instance, the matrix $\mathbf{X}_{\text{jaw,tongue,lips}} = \mathbf{X}_\text{jaw} + \mathbf{X}_\text{tongue} + \mathbf{X}_\text{lips}$ corresponds to the jaw, tongue, and lips.
 
@@ -501,15 +497,15 @@ The projection $\mathbf{\hat{X}}$ of the data $\mathbf{X}$ on the space $\mathrm
 %
 The null space $\mathrm{Null}(\mathbf{F}_\text{jaw})$ is a $(p-q_\text{jaw})$-dimensional subspace of $\mathbb{R}^{2p}$. 
 % 
-Variance within $\mathrm{Null}(\mathbf{F}_\text{jaw})$ captures velum motion along with the part of tongue and lip motion that is independent of jaw motion. 
+Variance within $\mathrm{Null}(\mathbf{F}_\text{jaw})$ captures the part of tongue and lip motion that is independent of jaw motion. 
 %
-Section~\ref{subsec:residfactors} describes the factors that characterize the variance of the tongue, lips, and velum within $\mathrm{Null} \left( \mathbf{F}_\text{jaw} \right)$. 
+Section~\ref{subsec:residfactors} describes the factors that characterize the variance of the tongue and lips within $\mathrm{Null} \left( \mathbf{F}_\text{jaw} \right)$. 
 
 
 
 
 
-\subsection{Tongue, lip, and velum factors}
+\subsection{Tongue and lip factors}
 \label{subsec:residfactors}
 
 This section describes the procedure for obtaining the factors $\mathbf{F}_\text{tongue}$ that capture the contribution of the tongue to vocal tract shaping  (see the tongue factors in Fig.~\ref{fig:gfa}). 
@@ -551,7 +547,7 @@ The column space $\mathrm{Col}(\mathbf{F}_\text{tongue})$ of $\mathbf{F}_\text{t
 %
 Variance within $\mathrm{Col}(\mathbf{F}_\text{tongue})$ captures tongue contour motion that is not concomitant with jaw motion (see Fig.~\ref{fig:varexpl}, panels b and c). 
 %
-The procedure for deriving lip and velum factors is the same as for the tongue factors except that $\mathbf{X}_\text{lips}$ or $\mathbf{X}_\text{velum}$ is substituted for $\mathbf{X}_\text{tongue}$.
+The procedure for deriving lip factors is the same as for the tongue factors except that $\mathbf{X}_\text{lips}$ is substituted for $\mathbf{X}_\text{tongue}$.
 
 
 
@@ -578,10 +574,10 @@ In image $i$ of the real-time MRI data-set, the vocal tract contours $\mathbf{x}
 
 \includegraphics[width=0.99\linewidth]{FactorsFigure.pdf}
 
-\caption{(color online) Factors obtained for one participant with one jaw factor, four tongue factors, two lip factors, and one velum factor ($q_\text{jaw} = 1$, $q_\text{tongue} = 4$, $q_\text{lip} = 2$, $q_\text{velum} = 1$). 
+\caption{(color online) Factors obtained for one participant with one jaw factor, four tongue factors and two lip factors ($q_\text{jaw} = 1$, $q_\text{tongue} = 4$, $q_\text{lip} = 2$). 
 Each factor characterizes spatial variation in the position and shape of an articulator. 
 The jaw factor captures jaw contour motion and concomitant tongue and lip motion.
-The tongue, lip, and velum factors capture tongue and lip contour motion that is not concomitant with jaw motion. 
+The tongue and lip factors capture tongue and lip contour motion that is not concomitant with jaw motion. 
 The articulator contours in a given real-time magnetic resonance image are parameterized as the linear combinations of the factors. 
 For a given participant, the coefficients of this linear combination change from image to image as the articulators move, while the factors remain constant.}
 \label{fig:gfa}
@@ -808,7 +804,7 @@ The discrete-time signal $\lambda_{\mathcal{U},\ell}[n]$ is the cumulative sum o
 \lambda_{\mathcal{U},\ell} \left[ n \right]
 	= \sum_{k\in \mathcal{U}} \sum_{j=0}^{n} \mathbf{j}_{\ell,\cdot} \mathbf{P}_k \Delta \mathbf{w}_{j,\cdot}
 \end{align}
-The set $\mathcal{U}$ contained the indices of factors corresponding to the target articulator. For example, when the numbers of factors were $q_\text{jaw} = 1$, $q_\text{tongue} = 4$, $q_\text{lip} = 2$, and $q_\text{velum} = 1$, then  $\mathcal{U}=\{1\}$ was the jaw; $\mathcal{U}=\{2,3,4,5\}$ was the tongue; $\mathcal{U}=\{6,7\}$ was the lips; and $\mathcal{U}=\{8\}$ was the velum.
+The set $\mathcal{U}$ contained the indices of factors corresponding to the target articulator. For example, when the numbers of factors were $q_\text{jaw} = 1$, $q_\text{tongue} = 4$, and $q_\text{lip} = 2$, then  $\mathcal{U}=\{1\}$ was the jaw; $\mathcal{U}=\{2,3,4,5\}$ was the tongue; and $\mathcal{U}=\{6,7\}$ was the lips.
 %
 If $N+1$ is the number of real-time MR images acquired during a single utterance, then the integer $n$ starts at $0$ (i.e., the temporal onset of a constriction) and increases to $N$ (i.e., the temporal offset of the subsequent release). 
 %
@@ -1085,7 +1081,7 @@ coronal &
 \SI{40} &
 velar &
 7 &
-\ensuremath{2\times 10^{-11}} \\
+\ensuremath{8.6\times 10^{-12}} \\
 %
 % velar vs. palatal
 %
@@ -1109,7 +1105,7 @@ coronal &
 \SI{28} &
 pharyngeal &
 4 &
-\ensuremath{1.7\times 10^{-4}} \\
+\ensuremath{2\times 10^{-4}} \\
 %
 % pharyngeal vs. palatal
 %
@@ -1142,12 +1138,12 @@ Compared to the coronal place, the percent jaw contribution was
 \SI{40}{\percent} 
 less at the velar place
 ($z=7$, 
-$p=\ensuremath{2\times 10^{-11}}$), and
+$p=\ensuremath{8.6\times 10^{-12}}$), and
 %
 \SI{28}{\percent} 
 less at the pharyngeal place
 ($z=4$, 
-$p=\ensuremath{1.7\times 10^{-4}}$).
+$p=\ensuremath{2\times 10^{-4}}$).
 %
 We infer that the jaw contributed significantly more to constrictions at the coronal place compared to constrictions at the velar and pharyngeal places.
 %
