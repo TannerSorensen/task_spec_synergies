@@ -32,8 +32,8 @@
 
 \begin{document}
 
-<<setup, echo=FALSE, cache=TRUE, message=FALSE, warning=FALSE>>=
-knitr::knit_hooks$set(inline = function(x) { if(!is.numeric(x)){ x }else{ prettyNum(round(x,2), big.mark=",") } })
+<<setup, echo=FALSE, cache=FALSE, message=FALSE, warning=FALSE>>=
+#knitr::knit_hooks$set(inline = function(x) { if(!is.numeric(x)){ x }else{ prettyNum(round(x,2), big.mark=",") } })
 @
 
 \title[Task dependence of articulator synergies]{Task-dependence of articulator synergies}
@@ -62,15 +62,16 @@ knitr::knit_hooks$set(inline = function(x) { if(!is.numeric(x)){ x }else{ pretty
 \begin{abstract}
 In speech production, the motor system organizes articulators such as the jaw, tongue, and lips into synergies whose function is to produce speech sounds by forming constrictions at the phonetic places of articulation.
 %
-The present study tests whether synergies with different places of articulation differ in terms of inter-articulator coordination.
+The present study tests whether synergies for different constriction tasks differ in terms of inter-articulator coordination.
 %
 The test is conducted on utterances \textipa{[ApA]}, \textipa{[AtA]}, \textipa{[AiA]}, and \textipa{[AkA]} with a real-time magnetic resonance imaging biomarker that is computed using a statistical model of the forward kinematics of the vocal tract. 
 %
 The present study is the first to estimate the forward kinematics of the vocal tract from speech production data.
 %
-The study finds that the jaw contributes more to anterior constrictions at the coronal place of articulation than to posterior constrictions at the velar and pharyngeal places of articulation, and that there is substantial inter-speaker variability in jaw, tongue, and lip usage at the bilabial, coronal, and palatal places of articulation. 
+% TODO: is this finding right?
+The study finds that the jaw contributes more to the coronal gesture for \textipa{[t]} than to bilabial, velar, and pharyngeal gestures for \textipa{[p]} \textipa{[k]}, and \textipa{[A]}.
 %
-Differences in inter-articulator coordination at different phonetic places of articulation support the claim that articulator synergies are task-dependent.
+Differences in inter-articulator coordination by constriction task support the claim that articulator synergies are task-dependent.
 \end{abstract}
 
 
@@ -87,9 +88,9 @@ For instance, mechanical perturbations to jaw position during a bilabial constri
 %
 whereas mechanical perturbations to jaw position during a lingual constriction induce compensatory tongue movement with no compensatory lip movement~\citep{kelso1984functionally}. 
 %
-Our previous study on unperturbed speech suggests that healthy adult speakers of American English may use the jaw more for anterior constrictions at the bilabial, coronal, and palatal places of articulation than for posterior constrictions at the velar and pharyngeal places of articulation~\citep{Sorensen+2016}. 
+Our previous study on unperturbed speech suggests that healthy adult speakers of American English may use the jaw more for constrictions at the bilabial, coronal, and palatal places of articulation than for posterior constrictions at the velar and pharyngeal places of articulation~\citep{Sorensen+2016}. 
 %
-Differences in inter-articulator coordination at different places of articulation support the task-dependence of articulator synergies~\citep{latash2008synergy}. 
+Differences in inter-articulator coordination by constriction task support the task-dependence of articulator synergies~\citep{latash2008synergy}. 
 
 The present study investigates the task-dependence of articulator synergies by quantifying the percent contribution of each articulator to narrowing or widening the vocal tract at the synergy's place of articulation. 
 %
@@ -99,7 +100,7 @@ In contrast to studies that manually assign weights to the articulators based on
 
 Advances in magnetic resonance imaging (MRI) have achieved a balance among the competing factors of temporal resolution, spatial resolution, and signal-to-noise ratio that provides a rich source of speech production data for the present study~\citep{scott2014speech}. Real-time MRI pulse sequences and reconstruction techniques allow for the capture and visualization of the motion of the jaw, tongue, and lips with \SI{12}{\milli\second} temporal resolution~\citep{toutios2016advances,lingala2016state}. 
 %
-The present study uses real-time MRI to quantify articulator synergies in terms of the percent contribution of each articulator to constriction tasks at the phonetic places of articulation.
+The present study uses real-time MRI to quantify articulator synergies in terms of the percent contribution of each articulator to producing constrictions.
 %
 The proposed measure of articulator synergies is derived from in vivo MRI as a descriptor of articulator synergies (i.e., a quantitative imaging biomarker, ``an objective characteristic derived from an in vivo image measured on a ratio or interval scale as an indicator of normal biological processes'', \citealt{kessler2015emerging,sullivan2015metrology}). 
 
@@ -132,7 +133,7 @@ The research goals of the present study are
 %
 (ii) to design and evaluate a biomarker of articulator synergies based on the forward kinematics, and
 %
-(iii) to use the articulator synergy biomarker to test the task-dependence of articulator synergies by determining whether the jaw contributes more for anterior constrictions at the bilabial, coronal, and palatal places of articulation than for posterior constrictions at the velar and pharyngeal places of articulation. 
+(iii) to use the articulator synergy biomarker to test the task-dependence of articulator synergies by determining whether the relative contribution of the jaw, tongue, and lips differs by constriction task. 
 
 
 The paper is organized as follows.
@@ -141,7 +142,8 @@ Section~\ref{sec:mri} describes the MRI experiment, scanner sequence, participan
 Sections~\ref{sec:cd} and~\ref{sec:gfa} describe the segmentation of articulator contours in the images and use the segmentation results to estimate constriction task variables and parameters of articulator shape and position, which are related by the forward kinematics of the vocal tract. 
 Section~\ref{sec:forwardkinematicmap} estimates the forward kinematics and evaluates the model through cross-validation. 
 Section~\ref{sec:articulator_synergy_biomarker} defines the articulator synergy biomarker. It evaluates the articulator synergy biomarker with respect to bias and precision. 
-Section~\ref{sec:taskspec} uses the articulator synergy biomarker to test the task-dependence of articulator synergies. 
+Section~\ref{sec:taskspec} tests the effect of constriction task on the articulator synergy biomarker. Confirming this effect shows that inter-articulator coordination differs by constriction task, supporting the task-specificity of articulator synergies. 
+Section~\ref{sec:patterns} investigates differences by participant in the effect of constriction task on the articulator synergy biomarker.
 Sections~\ref{sec:discussion} and~\ref{sec:conclusions} offer discussion and conclusions.
 
 
@@ -792,7 +794,7 @@ Through Equation~\ref{eq:lambda}, these quantities are based on the kinematic re
 
 \includegraphics[width=0.8\linewidth]{BiomarkerFigure.pdf}
 
-\caption{(color online) Quantitative readout of the contributions of the jaw (dark bar) and tongue (light bar) to a constriction at the palatal place during the transition from \textipa{[A]} to \textipa{[i]} and back to \textipa{[A]} in the sequence \textipa{[AiA]}. 
+\caption{(color online) Quantitative readout of the contributions of the jaw (dark bar) and tongue (light bar) to a palatal constriction for \textipa{[i]} during the transition from \textipa{[A]} to \textipa{[i]} and back to \textipa{[A]} in the sequence \textipa{[AiA]}. 
 %
 Time runs left to right.
 %
@@ -859,7 +861,7 @@ The simulation was repeated \SI{15} times, each with a different value of the ja
 \subsection{Precision}
 \label{subsec:repeatability}
 
-This section evaluates the precision of the articulator synergy biomarker. Precision is the agreement between replicate measurements of a vocal tract constriction by the same participant at the same phonetic place of articulation~\citep{kessler2015emerging,sullivan2015metrology}. 
+This section evaluates the precision of the articulator synergy biomarker. Precision is the agreement between replicate measurements of a vocal tract constriction by the same participant for the same constriction task~\citep{kessler2015emerging,sullivan2015metrology}. 
 %
 The same-day test-retest repeatability experiment evaluated the repeatability of the articulator synergy biomarker under variable conditions of MRI operator variability, image analysis variability, and short-term physiological variability. 
 %
@@ -875,7 +877,7 @@ Precision is an important parameter, as it establishes a limit on effect size an
 \raggedright
 \includegraphics[width=\linewidth]{ICCFigure.pdf}
 
-\caption{(color online) Comparison of intraclass correlation coefficients (ICC) for different numbers of jaw factors (color) and for different numbers of tongue and lip factors ($x$-axis) at the bilabial, coronal, palatal, velar, and pharyngeal places of articulation.}
+\caption{(color online) Comparison of intraclass correlation coefficients (ICC) for different numbers of jaw factors (color) and for different numbers of tongue and lip factors ($x$-axis) for the bilabial constriction task of \textipa{[ApA]}, coronal constriction task of \textipa{[AtA]}, palatal constriction task of \textipa{[AiA]}, velar constriction task of \textipa{[AkA]}, and pharyngeal constriction task of the second \textipa{[A]} in \textipa{[AiA]}.}
 \label{fig:icc_all}
 
 \end{figure*}
@@ -990,7 +992,7 @@ Repeatability of the articulator synergy biomarkers ranged from poor to strong o
 %
 % bilabial place
 %
-The bilabial place had
+The bilabial constriction task for \textipa{[p]} had
 \Sexpr{
 ifelse(getICCrating(minICCs[bilabial_idx])==getICCrating(maxICCs[bilabial_idx]),
 getICCrating(maxICCs[bilabial_idx]),
@@ -1004,7 +1006,7 @@ median: \num{\Sexpr{signif(medICCs[bilabial_idx],2)}}).
 %
 % coronal place
 % 
-The coronal place had
+The coronal constriction task for \textipa{[t]} had
 \Sexpr{
 ifelse(getICCrating(minICCs[coronal_idx])==getICCrating(maxICCs[coronal_idx]),
 getICCrating(maxICCs[coronal_idx]),
@@ -1018,7 +1020,7 @@ median: \num{\Sexpr{signif(medICCs[coronal_idx],2)}}).
 %
 % palatal place
 %
-The palatal place had
+The palatal constriction task for \textipa{[i]} had
 \Sexpr{
 ifelse(getICCrating(minICCs[palatal_idx])==getICCrating(maxICCs[palatal_idx]),
 getICCrating(maxICCs[palatal_idx]),
@@ -1032,7 +1034,7 @@ median: \num{\Sexpr{signif(medICCs[palatal_idx],2)}}).
 %
 % velar place
 %
-The velar place had
+The velar constriction task for \textipa{[k]} had
 \Sexpr{
 ifelse(getICCrating(minICCs[velar_idx])==getICCrating(maxICCs[velar_idx]),
 getICCrating(maxICCs[velar_idx]),
@@ -1046,7 +1048,7 @@ median: \num{\Sexpr{signif(medICCs[velar_idx],2)}}).
 %
 % pharyngeal place
 %
-The pharyngeal place had 
+The pharyngeal constriction task for \textipa{[A]} had 
 \Sexpr{
 ifelse(getICCrating(minICCs[pharyngeal_idx])==getICCrating(maxICCs[pharyngeal_idx]),
 getICCrating(maxICCs[pharyngeal_idx]),
@@ -1079,7 +1081,7 @@ tab <- read.csv(file.path("..","..","analysis","mat","bm_tab_f70.csv"))
 if(morphology_dataset==TRUE){
   tab <- subset(tab,is.nan(repetition) & n_jaw==1 & n_tng==6 & n_lip==2)
 }else{
-  tab <- subset(tab,repetition==1 & n_jaw==1 & n_tng==6 & n_lip==2)
+  tab <- subset(tab, n_jaw==1 & n_tng==6 & n_lip==2)
 }
 
 # PERFORM STATISTICAL TEST
@@ -1091,30 +1093,28 @@ tab$participant <- factor(tab$participant)
 # velar as baseline
 contrasts(tab$tv) <- contr.treatment(5, base = 4)
 m_velar <- lmer(bm ~ 1 + tv + (1 + tv | participant), tab, REML=TRUE)
-stat_test <- summary(glht(m_velar,linfct=c("tv1 = 0",
-                              "tv2 = 0",
-                              "tv3 = 0",
-                              "tv1 - tv5 = 0",
-                              "tv2 - tv5 = 0",
-                              "tv3 - tv5 = 0")))
+stat_test <- summary(glht(m_velar,linfct=c("tv1 - tv2 = 0", "tv1 - tv3 = 0", "tv1 = 0", "tv1 - tv5 = 0",
+                                           "tv2 - tv3 = 0", "tv2 = 0", "tv2 - tv5 = 0", 
+                                           "tv3 = 0", "tv3 - tv5 = 0",
+                                           "tv5 = 0")))
 @
 
 
 
-The range of ICC values obtained at the coronal, velar, and pharyngeal places of articulation included some ICC values in the poor to weak range. 
+The range of ICC values obtained for the coronal, velar, and pharyngeal constriction tasks included some ICC values in the poor to weak range. 
 %
-The reason for this may be different for the different places of articulation. 
+The reason for this may be different for the different constriction tasks. 
 %
-At the velar place of articulation, the total variance of the biomarker is small
+For the velar constriction task, the total variance of the biomarker is small
 (inter-quartile range: \SIrange{\Sexpr{signif(100*quantile((with(tab,bm[tv==4])),0.25),2)}}{\Sexpr{signif(100*quantile((with(tab,bm[tv==4])),0.75),2)}}{\percent}). 
 Even if the intra-participant variance is small to begin with, the intra-participant variance makes up a substantial part of the total variance (see the histograms in Fig.~\ref{fig:histograms}). 
 %
-In contrast, at the coronal and pharyngeal places of articulation, the total variance of the biomarker is large 
+In contrast, for the coronal and pharyngeal constriction tasks, the total variance of the biomarker is large 
 (coronal inter-quartile range: \SIrange{\Sexpr{signif(100*quantile((with(tab,bm[tv==2])),0.25),2)}}{\Sexpr{signif(100*quantile((with(tab,bm[tv==2])),0.75),2)}}{\percent};
 pharyngeal inter-quartile range: \SIrange{\Sexpr{signif(100*quantile((with(tab,bm[tv==5])),0.25),2)}}{\Sexpr{signif(100*quantile((with(tab,bm[tv==5])),0.75),2)}}{\percent}),
 suggesting that intra-participant variance is substantial (see the histograms in Fig.~\ref{fig:histograms}). 
 
-Although constrictions at the velar and pharyngeal places may not involve a very great contribution of the jaw, the number of jaw factors nevertheless affects ICC (see panels ``velar place'' and ``pharyngeal place'' of Fig.~\ref{fig:icc_all}). This is due to the fact that using more jaw factors increases the variance of the tongue that is explained by jaw factors (cf. Fig.~\ref{fig:varexpl}, panel b), and some of this variance may reflect the performance of velar and pharyngeal constrictions. 
+Although the velar and pharyngeal constriction tasks may not involve a very great contribution of the jaw, the number of jaw factors nevertheless affects ICC (see panels ``velar'' and ``pharyngeal'' of Fig.~\ref{fig:icc_all}). This is due to the fact that using more jaw factors increases the variance of the tongue that is explained by jaw factors (cf. Fig.~\ref{fig:varexpl}, panel b), and some of this variance may reflect the performance of velar and pharyngeal constrictions. 
 
 
 \begin{figure*}[t]
@@ -1122,7 +1122,7 @@ Although constrictions at the velar and pharyngeal places may not involve a very
 \includegraphics[width=\linewidth]{HistogramsFigure.pdf}
 
 \caption{\label{fig:histograms}(color online) 
-Sample distribution of the articulator synergy biomarker at the bilabial, coronal, palatal, velar, and pharyngeal places of articulation. The biomarker indicates the percent of a constriction that was produced by the jaw.
+Sample distribution of the articulator synergy biomarker for the bilabial, coronal, palatal, velar, and pharyngeal constriction tasks. The biomarker indicates the percent of a constriction that was produced by the jaw.
 A value of \SI{0}{\percent} indicates that lip or tongue motion produced the entire constriction, whereas a value of \SI{100}{\percent} indicates that jaw motion produced the entire constriction. 
 Sample distribution by participant shown with a different color for each participant.}
 
@@ -1134,74 +1134,95 @@ Sample distribution by participant shown with a different color for each partici
 \section{Testing the task-specificity of articulator synergies}
 \label{sec:taskspec}
 
-The present study tested the task-dependence of articulator synergies by determining whether the jaw contributes more for anterior constrictions at the bilabial, coronal, and palatal places of articulation than for posterior constrictions at the velar and pharyngeal places of articulation using a linear mixed effects model fitted with the package lme4~\citep{bates2015fitting} in R~\citep{r2017language}. Specifically, the present study tested the null hypotheses that there is no difference in articulator synergy biomarker values between anterior (i.e., bilabial, coronal, and palatal) and posterior (i.e., velar and pharyngeal) places of articulation.
+The present study tested the task-dependence of articulator synergies by determining whether the relative contribution of the jaw, tongue, and lips differs by constriction task using a linear mixed effects model fitted with the package lme4~\citep{bates2015fitting} in R~\citep{r2017language}. Specifically, the present study tested the null hypotheses that there are no pairwise differences in articulator synergy biomarker values between constriction tasks.
 
-Consider the sample of $n=320$ articulator synergy biomarker values (\num{8} participants $\times$ \num{4} places of articulation $\times$ \num{10} repeated measurements of the articulator synergy biomarker from scan \num{1}). Let $y_{i,j,k,\ell}$ be the biomarker value for place of articulation $i$, participant $j$, and replicate measurement $k$ from scan $\ell$ (i.e., Scan~\num{1} or Scan~\num{2}). The linear mixed effects model of $y_{i,j,k,\ell}$ was 
+Consider the sample of $n=800$ articulator synergy biomarker values (\num{8} participants $\times$ \num{5} constriction tasks $\times$ \num{10} repeated measurements of the articulator synergy biomarker $\times$ \num{2} scans). Let $y_{i,j,k,\ell}$ be the biomarker value for constriction task $i$, participant $j$, and replicate measurement $k$ from scan $\ell$ (i.e., Scan~\num{1} or Scan~\num{2}). The linear mixed effects model of $y_{i,j,k,\ell}$ was 
 %
 \begin{equation}
 \label{eq:lmm}
 y_{i,j,k,\ell} = m + b_i + p_j + q_{j,k} + r_{j,\ell} + c_\ell + e_{i,j,k,\ell},
 \end{equation}
 %
-where $m$ was the baseline mean, $b_i$ was the fixed effect for place of articulation, $c_\ell$ was the fixed effect for scan number, $p_i$ was the random intercept for participant $i$, $q_{j,k}$ was the by-participant random slope for place of articulation, $r_{j,\ell}$ was the by-participant random slope for scan number, and $e_{i,j,k}$ was the intra-participant error. Multiple comparisons were corrected for using Tukey's range test with the package multcomp~\citep{hothorn2008simultaneous} in R~\citep{r2017language}. This section reports adjusted $p$-values. See Table~\ref{tab:stat_results} for results.
+where $m$ was the baseline mean, $b_i$ was the fixed effect for constriction task, $c_\ell$ was the fixed effect for scan number, $p_i$ was the random intercept for participant $i$, $q_{j,k}$ was the by-participant random slope for constriction task, $r_{j,\ell}$ was the by-participant random slope for scan number, and $e_{i,j,k}$ was the intra-participant error. Multiple comparisons were corrected for using Tukey's range test with the package multcomp~\citep{hothorn2008simultaneous} in R~\citep{r2017language}. This section reports adjusted $p$-values. See Table~\ref{tab:stat_results} for results.
 
 \begin{table}
 \centering
-\begin{tabular}{l l l l l}
-treatment & estimate (\%) & reference & $z$ & $p$ \\
+\begin{tabular}{l l l l}
+contrast & estimate (\%) & $z$ & $p$ \\
 \hline
 %
-% velar vs. bilabial
+% bilabial vs. coronal
 %
-bilabial &
-\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv1"],2)}} &
-velar &
-\Sexpr{signif(stat_test$test$tstat["tv1"],2)} &
+bilabial-coronal &
+\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv1 - tv2"],2)}} &
+\Sexpr{signif(stat_test$test$tstat["tv1 - tv2"],2)} &
 \Sexpr{signif(stat_test$test$pvalues[1],2)} \\
 %
-% velar vs. coronal
+% bilabial vs. palatal
 %
-coronal &
-\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv2"],2)}} &
-velar &
-\Sexpr{signif(stat_test$test$tstat["tv2"],2)} &
+bilabial-palatal &
+\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv1 - tv3"],2)}} &
+\Sexpr{signif(stat_test$test$tstat["tv1 - tv3"],2)} &
 \Sexpr{signif(stat_test$test$pvalues[2],2)} \\
 %
-% velar vs. palatal
+% bilabial vs. velar
 %
-palatal &
-\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv3"],2)}} &
-velar &
-\Sexpr{signif(stat_test$test$tstat["tv3"],2)} &
+bilabial-velar &
+\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv1"],2)}} &
+\Sexpr{signif(stat_test$test$tstat["tv1"],2)} &
 \Sexpr{signif(stat_test$test$pvalues[3],2)} \\
 %
-% pharyngeal vs. bilabial
+% bilabial vs. pharyngeal
 %
-bilabial &
+bilabial-pharyngeal &
 \SI{\Sexpr{signif(100*stat_test$test$coefficients["tv1 - tv5"],2)}} &
-pharyngeal &
 \Sexpr{signif(stat_test$test$tstat["tv1 - tv5"],2)} &
 \Sexpr{signif(stat_test$test$pvalues[4],2)} \\
 %
-% pharyngeal vs. coronal
+% coronal vs. palatal
 %
-coronal &
-\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv2 - tv5"],2)}} &
-pharyngeal &
-\Sexpr{signif(stat_test$test$tstat["tv2 - tv5"],2)} &
+coronal-palatal &
+\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv2 - tv3"],2)}} &
+\Sexpr{signif(stat_test$test$tstat["tv2 - tv3"],2)} &
 \Sexpr{signif(stat_test$test$pvalues[5],2)} \\
 %
-% pharyngeal vs. palatal
+% coronal vs. velar
 %
-palatal &
-\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv3 - tv5"],2)}} &
-pharyngeal &
-\Sexpr{signif(stat_test$test$tstat["tv3 - tv5"],2)} &
+coronal-velar &
+\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv2"],2)}} &
+\Sexpr{signif(stat_test$test$tstat["tv2"],2)} &
 \Sexpr{signif(stat_test$test$pvalues[6],2)} \\
-
+%
+% coronal vs. pharyngeal
+%
+coronal-pharyngeal &
+\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv2 - tv5"],2)}} &
+\Sexpr{signif(stat_test$test$tstat["tv2 - tv5"],2)} &
+\Sexpr{signif(stat_test$test$pvalues[7],2)} \\
+%
+% palatal vs. velar
+%
+palatal-velar &
+\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv3"],2)}} &
+\Sexpr{signif(stat_test$test$tstat["tv3"],2)} &
+\Sexpr{signif(stat_test$test$pvalues[8],2)} \\
+%
+% palatal vs. pharyngeal
+%
+palatal-pharyngeal &
+\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv3 - tv5"],2)}} &
+\Sexpr{signif(stat_test$test$tstat["tv3 - tv5"],2)} &
+\Sexpr{signif(stat_test$test$pvalues[9],2)} \\
+%
+% velar vs. pharyngeal
+%
+velar-pharyngeal &
+\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv5"],2)}} &
+\Sexpr{signif(stat_test$test$tstat["tv5"],2)} &
+\Sexpr{signif(stat_test$test$pvalues[10],2)} \\
 \hline
 \end{tabular}
-\caption{Results for statistical tests of the null hypothesis that the difference in articulator synergy biomarker value between treatment and reference place of articulation. Rows indicate separate tests. $p$-values corrected for multiple comparisons with Tukey's range test; adjusted $p$-values reported.}
+\caption{Results for statistical tests of the null hypothesis that the contrast is zero. Rows indicate separate tests. $p$-values corrected for multiple comparisons with Tukey's range test (adjusted $p$-values reported).}
 \label{tab:stat_results}
 \end{table}
 
@@ -1215,54 +1236,81 @@ pharyngeal &
 
 
 
-We reject the null hypothesis that the articulator synergy biomarker does not differ between velar and coronal and between pharyngeal and coronal places of articulation. 
+The coronal constriction had
 %
-Compared to the coronal place, the percent jaw contribution was 
+% note: minus sign is due to the direction of the contrast (i.e., tv1 - tv2 rather than tv2 - tv1)
+\SI{\Sexpr{signif(-100*stat_test$test$coefficients["tv1 - tv2"],2)}}{\percent} 
+larger biomarker values than the bilabial constriction
+($z=\Sexpr{signif(-stat_test$test$tstat["tv1 - tv2"],2)}$, 
+$p=\Sexpr{stat_test$test$pvalues[1]}$),
+%
+\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv2 - tv3"],2)}}{\percent} 
+larger biomarker values than the palatal constriction
+($z=\Sexpr{signif(stat_test$test$tstat["tv2 - tv3"],2)}$, 
+$p=\Sexpr{stat_test$test$pvalues[5]}$),
 %
 \SI{\Sexpr{signif(100*stat_test$test$coefficients["tv2"],2)}}{\percent} 
-less at the velar place
+larger biomarker values than the velar constriction
 ($z=\Sexpr{signif(stat_test$test$tstat["tv2"],2)}$, 
-$p=\Sexpr{signif(stat_test$test$pvalues[2],2)}$), and
+$p=\Sexpr{stat_test$test$pvalues[6]}$),
 %
-\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv2 - tv5"],2)}}{\percent} 
-less at the pharyngeal place
+and \SI{\Sexpr{signif(100*stat_test$test$coefficients["tv2 - tv5"],2)}}{\percent} 
+larger biomarker values than the pharyngeal constriction
 ($z=\Sexpr{signif(stat_test$test$tstat["tv2 - tv5"],2)}$, 
-$p=\Sexpr{signif(stat_test$test$pvalues[5],2)}$).
+$p=\Sexpr{stat_test$test$pvalues[7]}$).
 %
-We infer that the jaw contributed significantly more to constrictions at the coronal place compared to constrictions at the velar and pharyngeal places.
 %
-This indicates that synergies with different places of articulation may differ in terms of inter-articulator coordination.
+%
+In addition to having
+%
+\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv2 - tv3"],2)}}{\percent} 
+smaller biomarker values than the coronal constriction (see immediately above),
+%
+the palatal constriction had
+%
+\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv3"],2)}}{\percent} 
+larger biomarker values than the velar constriction
+($z=\Sexpr{signif(stat_test$test$tstat["tv3"],2)}$, 
+$p=\Sexpr{stat_test$test$pvalues[8]}$)
+%
+and \SI{\Sexpr{signif(100*stat_test$test$coefficients["tv3 - tv5"],2)}}{\percent} 
+larger biomarker values than the pharyngeal constriction
+($z=\Sexpr{signif(stat_test$test$tstat["tv3 - tv5"],2)}$, 
+$p=\Sexpr{stat_test$test$pvalues[9]}$).
+%
+%
+%
+The velar constriction had 
+%
+\SI{\Sexpr{signif(100*stat_test$test$coefficients["tv5"],2)}}{\percent} 
+smaller biomarker values than the pharyngeal constriction
+($z=\Sexpr{signif(stat_test$test$tstat["tv5"],2)}$, 
+$p=\Sexpr{stat_test$test$pvalues[10]}$).
+
+We infer that the jaw contributed significantly more to the coronal constriction than to the bilabial, palatal, velar, and pharyngeal constrictions,
+%
+that the jaw contributed significantly more to the palatal constriction than to the velar and pharyngeal constrictions,
+%
+and that the jaw contributed significantly less to the pharyngeal constriction than to the velar constriction.
+%
+We reject the null hypothesis that the articulator synergy biomarker does not differ by constriction task. 
+%
+Synergies differ in terms of inter-articulator coordination depending on the constriction task.
 
 
 
 
-The sample distribution of the articulator synergy biomarker at the velar place had small dispersion about a distinct peak at \SI{10}{\percent} 
+The sample distribution of the articulator synergy biomarker for the velar constriction task had small dispersion about a distinct peak at \SI{10}{\percent} 
 %
 (median: \SI{\Sexpr{signif(100*median(with(tab,bm[tv==4])),2)}}{\percent}, 
 inter-quartile range: \SIrange{\Sexpr{signif(100*quantile((with(tab,bm[tv==4])),0.25),2)}}{\Sexpr{signif(100*quantile((with(tab,bm[tv==4])),0.75),2)}}{\percent}; see histograms in Fig.~\ref{fig:histograms}).
 %
-The sample distribution of the articulator synergy biomarker at the coronal place had a distinct peak at \SI{60}{\percent}
+The sample distribution of the articulator synergy biomarker for the coronal constriction task had a distinct peak at \SI{60}{\percent}
 %
 (median: \SI{\Sexpr{signif(100*median(with(tab,bm[tv==2])),2)}}{\percent}, 
 inter-quartile range: \SIrange{\Sexpr{signif(100*quantile((with(tab,bm[tv==2])),0.25),2)}}{\Sexpr{signif(100*quantile((with(tab,bm[tv==2])),0.75),2)}}{\percent}; see histograms in Fig.~\ref{fig:histograms}).
 %
-The distinctly peaked sample distributions of the articulator synergy biomarkers at the coronal and velar places likely contributed to the statistically significant coronal-velar and coronal-pharyngeal differences.
-
-
-
-In contrast to the coronal-velar and coronal-pharyngeal comparisons, the biomarker values at the bilabial and palatal places of articulation did not differ significantly from those at the velar and pharyngeal places of articulation. 
-%
-The large dispersion of the biomarker sample distribution at the bilabial place
-%
-(median: \SI{\Sexpr{signif(100*median(with(tab,bm[tv==1])),2)}}{\percent}, 
-inter-quartile range: \SIrange{\Sexpr{signif(100*quantile((with(tab,bm[tv==1])),0.25),2)}}{\Sexpr{signif(100*quantile((with(tab,bm[tv==1])),0.75),2)}}{\percent}), 
-%
-and palatal place
-%
-(median: \SI{\Sexpr{signif(100*median(with(tab,bm[tv==3])),2)}}{\percent}, 
-inter-quartile range: \SIrange{\Sexpr{signif(100*quantile((with(tab,bm[tv==3])),0.25),2)}}{\Sexpr{signif(100*quantile((with(tab,bm[tv==3])),0.75),2)}}{\percent})
-%
-suggests that participants exhibited substantial heterogeneity in biomarker values at these places of articulation. 
+The distinctly peaked sample distributions of the articulator synergy biomarkers for the coronal and velar constriction tasks likely contributed to the statistically significant bilabial-velar, coronal-palatal, coronal-velar, palatal-velar, palatal-pharyngeal, velar-pharyngeal, and coronal-pharyngeal contrasts.
 
 <<<<setup, echo=FALSE, cache=TRUE, message=FALSE, warning=FALSE>>=
 
@@ -1285,9 +1333,9 @@ morphology_dataset <- FALSE
 
 n <- 8*3*(3+1)
 
-b <- matrix(nrow = n, ncol = 6)
-z <- matrix(nrow = n, ncol = 6)
-p <- matrix(nrow = n, ncol = 6)
+b <- matrix(nrow = n, ncol = 10)
+z <- matrix(nrow = n, ncol = 10)
+p <- matrix(nrow = n, ncol = 10)
 jaw <- vector(mode = "numeric", length = n)
 tng <- vector(mode = "numeric", length = n)
 lip <- vector(mode = "numeric", length = n)
@@ -1325,16 +1373,35 @@ for(f_val in seq(from = 20, to = 90, by = 10)){
 
 In order to determine whether the results reported above depended on the choice of a particular number of jaw, tongue, and lip factors or on the choice of a particular neighborhood size for the forward kinematic map estimator, we repeated the statistical analysis with different parameter values (number of jaw factors: 1, 2, 3; number of tongue factors: 4, 6, 8; number of lip factors: 2, 3; neighborhood size: \SIrange{20}{90}{\percent} in \SI{10}{\percent} steps).
 %
-The finding that the articulator synergy biomarker was greater at the coronal place than at the velar place was reproduced with \Sexpr{sum(p[,2] < 0.05)} of \Sexpr{nrow(p)} parameterizations (\SI{\Sexpr{signif(100*sum(p[,2] < 0.05)/nrow(p),2)}}{\percent} of cases).
+The articulator synergy biomarker was greater for the coronal constriction than for the 
 %
-The finding that the articulator synergy biomarker was greater at the coronal place than at the pharyngeal place was reproduced with \Sexpr{sum(p[,5] < 0.05)} of \Sexpr{nrow(p)} parameterizations (\SI{\Sexpr{signif(100*sum(p[,5] < 0.05)/nrow(p),2)}}{\percent} of cases).
+bilabial constriction in \Sexpr{sum(p[,1] < 0.05)}/\Sexpr{nrow(p)} cases 
+(\SI{\Sexpr{signif(100*sum(p[,1] < 0.05)/nrow(p),2)}}{\percent}), 
 %
-We observed that this sensitivity to parameterization was largely due to a lack of reproducibility when using 3 jaw factors. 
+palatal constriction in \Sexpr{sum(p[,5] < 0.05)}/\Sexpr{nrow(p)} cases
+(\SI{\Sexpr{signif(100*sum(p[,5] < 0.05)/nrow(p),2)}}{\percent}), 
+velar constriction in \Sexpr{sum(p[,6] < 0.05)}/\Sexpr{nrow(p)} cases 
+(\SI{\Sexpr{signif(100*sum(p[,6] < 0.05)/nrow(p),2)}}{\percent}), 
+and constriction pharyngeal in \Sexpr{sum(p[,7] < 0.05)}/\Sexpr{nrow(p)} cases
+(\SI{\Sexpr{signif(100*sum(p[,7] < 0.05)/nrow(p),2)}}{\percent}).
 %
-When using only 1 or 2 jaw factors, this number increases to \Sexpr{sum(p[jaw<3,5] < 0.05)} of \Sexpr{nrow(p[jaw<3,])} parameterizations (\SI{\Sexpr{signif(100*sum(p[jaw<3,5] < 0.05)/nrow(p[jaw<3,]),2)}}{\percent} of cases).
+The articulator synergy biomarker was greater for the palatal constriction than for the 
 %
-Overall, these results support the inference that the jaw contributed significantly more to constrictions at the coronal place than to constrictions at the velar and pharyngeal places.
-
+velar constriction in \Sexpr{sum(p[,8] < 0.05)}/\Sexpr{nrow(p)} cases
+(\SI{\Sexpr{signif(100*sum(p[,8] < 0.05)/nrow(p),2)}}{\percent})
+and pharyngeal constriction in \Sexpr{sum(p[,9] < 0.05)}/\Sexpr{nrow(p)} cases
+(\SI{\Sexpr{signif(100*sum(p[,9] < 0.05)/nrow(p),2)}}{\percent}).
+%
+The articulator synergy biomarker was greater for the pharyngeal constriction than for the 
+%
+velar constriction in \Sexpr{sum(p[,10] < 0.05)}/\Sexpr{nrow(p)} cases 
+(\SI{\Sexpr{signif(100*sum(p[,10] < 0.05)/nrow(p),2)}}{\percent}).
+%
+Overall, these results support the inference that the jaw contributed significantly more to the coronal constriction task than to the bilabial and velar constriction tasks,
+%
+that the jaw contributed significantly more to the palatal constriction task than to the velar constriction task.
+%
+However, the coronal-palatal, coronal-pharyngeal, palatal-pharyngeal, and velar-pharyngeal contrasts should be interpreted with caution, since the effect size is smaller than for the more robust effects and the significance of these contrasts depends on parameterization.
 
 
 
@@ -1358,36 +1425,36 @@ a0 <- anova(m_velar,m0)
 @
 
 
-Section~\ref{sec:taskspec} shows an effect of place of articulation on the articulator synergy biomarker values. 
+Section~\ref{sec:taskspec} shows an effect of constriction task on the articulator synergy biomarker values. 
 %
 This section investigates between- and within-participant variability in this effect.
 %
-Between-participant variability is evaluated by testing the significance of by-participant random slopes for place of articulation.
+Between-participant variability is evaluated by testing the significance of by-participant random slopes for constriction task.
 %
-The linear mixed effects model of Section~\ref{sec:taskspec} (cf. Equation~\ref{eq:lmm}) is compared to a reduced model that does not have by-participant random slopes for place of articulation.
+The linear mixed effects model of Section~\ref{sec:taskspec} (cf. Equation~\ref{eq:lmm}) is compared to a reduced model that does not have by-participant random slopes for constriction task.
 %
-The likelihood ratio test indicates that the by-participant random slopes for place of articulation are a significant source of variance ($\chi^2(\Sexpr{a0$`Chi Df`[2]})= \Sexpr{a0$Chisq[2]}; p = \Sexpr{a0$`Pr(>Chisq)`[2]}$).
+The likelihood ratio test indicates that the by-participant random slopes for constriction task are a significant source of variance ($\chi^2(\Sexpr{a0$`Chi Df`[2]})= \Sexpr{a0$Chisq[2]}; p = \Sexpr{a0$`Pr(>Chisq)`[2]}$).
 %
-This indicates by-participant variability in the effect for place of articulation.
+This indicates by-participant variability in the effect for constriction task.
 %
-By-participant variability in the effect for place of articulation is evaluated by determining whether individual participants display similar effects for place of articulation.
+By-participant variability in the effect for constriction task is evaluated by determining whether individual participants display similar effects for constriction task.
 %
-For each participant, the Mann-Whitney U Test identifies all the places of articulation that differ in average biomarker value.
+For each participant, the Mann-Whitney U Test identifies all pairs of constriction tasks that differ in average biomarker value.
 %
-For six of eight participants, the coronal place of articulation has larger biomarker values than the bilabial, palatal, velar, and pharyngeal places of articulation.
+For six of eight participants, the coronal constriction task has larger biomarker values than the bilabial, palatal, velar, and pharyngeal constriction tasks.
 These participants display effects that are consistent with the significant coronal-velar and coronal-pharyngeal contrasts identified with the linear mixed effects model of Section~\ref{sec:taskspec}, but also support 
-Additionally, this pattern suggests that the coronal place of articulation has larger biomarker values than 
+Additionally, this pattern suggests that the coronal constriction task has larger biomarker values than 
 
-Do participants have high variance at some places of articulation but low variance at others, 
-or does a given participant have constant variance across place of articulation?
+Do participants have high variance for some constriction tasks but low variance at others, 
+or does a given participant have constant variance across constriction tasks?
 %
-The present study applies the Fligner-Killeen Test to determine whether different places of articulation have different biomarker variances.
+The present study applies the Fligner-Killeen Test to determine whether different constriction tasks have different biomarker variances.
 %
 TODO: details of test The test is applied to the data of each participant separately.
 %
-The Fligner-Killeen Test is applied to combination of places of articulation to test for differences in variance for each participant separately. 
+The Fligner-Killeen Test is applied to pairs of constriction tasks to test for differences in variance for each participant separately. 
 
-The study performed $(\text{number of participants}) \times ((\text{number of places of articulation})^2 - (\text{number of places of articulation}))/2 = 80$ Mann-Whitney U Tests and the same number of Fligner-Killeen tests for a total of \num{160} statistical tests. 
+The study performed $(\text{number of participants}) \times ((\text{number of constriction tasks})^2 - (\text{number of constriction tasks}))/2 = 80$ Mann-Whitney U Tests and the same number of Fligner-Killeen tests for a total of \num{160} statistical tests. 
 %
 Statistical tests are considered significant at the Bonferroni-corrected significance level $\alpha = 0.05/160$.
 
@@ -1409,9 +1476,9 @@ Statistical tests are considered significant at the Bonferroni-corrected signifi
 
 \subsection{Task specificity of articulator synergies}
 
-The present study demonstrates that speakers use the jaw more to produce constrictions at the coronal place of articulation than to produce constrictions at the velar and pharyngeal places of articulation. 
+The present study demonstrates that speakers use the jaw more for the coronal constriction task than for the velar and pharyngeal constriction tasks. 
 %
-The pattern of jaw, tongue, and lip usage is heterogeneous for the bilabial, coronal, and palatal places of articulation.
+The pattern of jaw, tongue, and lip usage is heterogeneous for the bilabial, coronal, and palatal constriction tasks.
 %
 This supports the idea that different articulator synergies have different patterns of inter-articulator coordination.
 %
@@ -1425,20 +1492,21 @@ This complements the finding that articulator synergies are task-dependent in te
 
 \subsection{Differences in articulator synergies by manner classes}
 
+The effect of constriction type on the articulator synergy biomarker demonstrates that inter-articulator coordination differs depending on the constriction task. Jaw usage varies both by place of articulation (i.e., constriction location) as well as by manner of articulation (i.e., target constriction degree)~\cite{vatikiotis1995analysis}. Both of these sources of variance presumably combine to produce the effect of constriction type reported in this paper. This introduces a confound in interpreting the effect for constriction task, and thus is a limitation of the present study. Future research should focus on how place and manner of articulation interact to determine articulator synergy biomarker values.
 
 
 \subsection{Technical performance}
 
 The proliferation of vocal tract imaging databases~\citep{narayanan2014real,sorensen2017database} and the increasingly complex computational methods for studying the morphological~\citep{lammert2013morphological} and functional~\citep{dawson2016methods} complexities captured therein underscore the importance of evaluating the technical performance of quantitative imaging biomarkers of speech. 
 %
-The articulator synergy biomarker does not have systematic bias. However, precision is weak or poor at the coronal, velar, and pharyngeal places of articulation. 
+The articulator synergy biomarker does not have systematic bias. However, precision is weak or poor at the coronal, velar, and pharyngeal constriction tasks. 
 %
 Since the intra-class correlation coefficient is the ratio of inter-participant variability to total
 variability, which is the sum of intra- and inter-participant variability (cf. Equation~\ref{eq:icc}), low precision may be due to large intra-participant variance, small inter-participant variance, or some combination of the two. 
 %
-For the velar place of articulation, low precision is due to small inter-participant variance (cf. Fig.~\ref{fig:histograms}). 
+For the velar constriction task, low precision is due to small inter-participant variance (cf. Fig.~\ref{fig:histograms}). 
 %
-For the coronal and pharyngeal places, low precision is due to large intra-participant variance.
+For the coronal and pharyngeal constriction tasks, low precision is due to large intra-participant variance.
 %
 Intra-participant variance is unavoidable in voluntary movement due to short-term physiological variability that arises from the way the brain regulates noise in the motor system~\citep{harris1998signal,van2009motor,wu2014temporal}. 
 %
@@ -1468,7 +1536,7 @@ In contrast to studies that manually assigned weights to the articulators based 
 %
 Analysis of synthetic data in Section~\ref{subsec:bias} suggested that the articulator synergy biomarker is a monotonic function of the jaw weight parameter (Fig.~\ref{fig:valfig}, panel a).
 %
-The function will depend on the number of articulator degrees of freedom, the coordinate system for the articulator degrees of freedom, the place of articulation, and the weights of other articulators. Further work is necessary to characterize these sources of variance, but the present study suggests that the articulator synergy biomarker can be mapped to articulator weights, and thus that jaw weight parameters can be estimated from real-time MR images of speech production.
+The function will depend on the number of articulator degrees of freedom, the coordinate system for the articulator degrees of freedom, the constriction task, and the weights of other articulators. Further work is necessary to characterize these sources of variance, but the present study suggests that the articulator synergy biomarker can be mapped to articulator weights, and thus that jaw weight parameters can be estimated from real-time MR images of speech production.
 
 
 
@@ -1499,17 +1567,15 @@ This supports the idea that synergies organize the articulators on a temporary b
 
 
 
-The following are five potential threads of research that build on the results of the present study.
+The following are four potential threads of research that build on the results of the present study.
 %
 First, the present study estimated parameters of vocal tract \textit{kinematics}, not parameters of vocal tract \textit{dynamics}. That is, the parameters have to do with motion, not with the forces that produce the motion. In the Task Dynamics model of speech production, dynamical parameters include gestural parameters (e.g., stiffness, damping, mass) and parameters of inter-gestural coordination (e.g., coupling, blending). Future studies may attempt to estimate these parameters from MRI.
 %
-Second, the present study showed that the articulator synergy biomarker varied depending on the place of articulation. Future studies may evaluate whether the articulator synergy biomarker depends on linguistic context (e.g., phonetic, lexical, syntactic), speech conditions (e.g., speech in noise vs. clean speech, variable speech rate), sociolinguistic factors, sex, anatomy, and age, especially during childhood development.
+Second, the present study showed that the articulator synergy biomarker varied by constriction task. Future studies may evaluate whether the articulator synergy biomarker depends on linguistic context (e.g., phonetic, lexical, syntactic), speech conditions (e.g., speech in noise vs. clean speech, variable speech rate), sociolinguistic factors, sex, anatomy, and age, especially during childhood development.
 %
-Third, jaw usage varies not only by place of articulation, but also by manner of articulation~\cite{vatikiotis1995analysis}. This introduces a potential confound, and thus is a limitation of the present study. Future research should focus on manner differences in articulator synergy biomarker values.
+Third, while the present study focused on jaw-tongue and jaw-lip synergies, the proposed method could be used to study other synergies, such as those between the dorsum and tip of the tongue or between the tongue and velum. Future research studies should investigate these synergies.
 %
-Fourth, while the present study focused on jaw-tongue and jaw-lip synergies, the proposed method could be used to study other synergies, such as those between the dorsum and tip of the tongue or between the tongue and velum. Future research studies should investigate these synergies.
-%
-Fifth, A simplified version of this forward kinematic map from articulators to acoustic formant frequencies is used by the Directions into Velocities of Articulators (DIVA) model of speech production~\cite{guenther1995speech}. By using real-time MRI with simultaneously recorded speech audio, the proposed framework could be extended to estimate this forward kinematic map from data.
+Fourth, A simplified version of this forward kinematic map from articulators to acoustic formant frequencies is used by the Directions into Velocities of Articulators (DIVA) model of speech production~\cite{guenther1995speech}. By using real-time MRI with simultaneously recorded speech audio, the proposed framework could be extended to estimate this forward kinematic map from data.
 
 
 

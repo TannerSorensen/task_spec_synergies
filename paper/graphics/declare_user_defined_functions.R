@@ -82,7 +82,7 @@ get_stats <- function(n_jaw,n_tng,n_lip,f_val,morphology_dataset){
   if(morphology_dataset==TRUE){
     tab <- subset(tab,is.nan(repetition) & n_jaw==jaw_fac & n_tng==tng_fac & n_lip==lip_fac)
   }else{
-    tab <- subset(tab,repetition==1 & n_jaw==jaw_fac & n_tng==tng_fac & n_lip==lip_fac)
+    tab <- subset(tab, n_jaw==jaw_fac & n_tng==tng_fac & n_lip==lip_fac)
   }
   
   # PERFORM STATISTICAL TEST
@@ -94,12 +94,9 @@ get_stats <- function(n_jaw,n_tng,n_lip,f_val,morphology_dataset){
   # velar as baseline
   contrasts(tab$tv) <- contr.treatment(5, base = 4)
   m_velar <- lmer(bm ~ 1 + tv + (1 + tv | participant), tab, REML=TRUE)
-  stat_test <- summary(glht(m_velar,linfct=c("tv1 = 0",
-                                             "tv2 = 0",
-                                             "tv3 = 0",
-                                             "tv1 - tv5 = 0",
-                                             "tv2 - tv5 = 0",
-                                             "tv3 - tv5 = 0")))
+  stat_test <- summary(glht(m_velar,linfct=c("tv1 - tv2 = 0", "tv1 - tv3 = 0", "tv1 = 0", "tv1 - tv5 = 0",
+                                             "tv2 - tv3 = 0", "tv2 = 0", "tv2 - tv5 = 0", 
+                                             "tv3 = 0", "tv3 - tv5 = 0", "tv5 = 0")))
   
   b <- signif(100*stat_test$test$coefficients,2)
   z <- signif(stat_test$test$tstat,2)
