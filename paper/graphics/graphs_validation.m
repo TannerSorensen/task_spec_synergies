@@ -88,7 +88,7 @@ ylabel('measured biomarker')
 xlabel('true biomarker')
 grid on
 hold off
-legend(lgd_lines,{'bilabial place','alveolar place','palatal place','velar place','pharyngeal place'},'Location','NorthWest')%,'pharyngeal place'})
+legend(lgd_lines,{'bilabial','alveolar','palatal','velar','pharyngeal'},'Location','NorthWest')
 print(fullfile(graphics_path,[graph_file_name num2str(2)]),'-dpdf')
 
 
@@ -104,9 +104,9 @@ figure(3)
 set(0,'defaultAxesFontSize',18)
 cm = lines;
 hold on
-plot([0 1],mean(x-y)*ones(1,2),'-k')
-plot([0 1],mean(x-y)+1.96*std(x-y)*ones(1,2),'--k')
-plot([0 1],mean(x-y)-1.96*std(x-y)*ones(1,2),'--k')
+plot([0 1],mean(x-y)*ones(1,2),'-k','LineWidth',2)
+plot([0 1],mean(x-y)+1.96*std(x-y)*ones(1,2),'--k','LineWidth',2)
+plot([0 1],mean(x-y)-1.96*std(x-y)*ones(1,2),'--k','LineWidth',2)
 for tv = 1:5
     subtab = bm_tab(bm_tab.tv == tv,:);
     true_subtab = true_bm_tab(cellfun(@(x) contains(x,tv_names(tv)), true_bm_tab.filename), 2:end);
@@ -127,8 +127,8 @@ xlabel('average')
 grid on
 hold off
 
-text(0.8,mean(x-y)-0.001,sprintf('bias: %.2f%%',100*mean(x-y)))
-text(0.8,mean(x-y)+1.96*std(x-y)+0.001,sprintf('+1.96 SD: %.2f%%',100*(mean(x-y)+1.96*std(x-y))))
-text(0.8,mean(x-y)-1.96*std(x-y)-0.001,sprintf('-1.96 SD: %.2f%%',100*(mean(x-y)-1.96*std(x-y))))
+text(0.65,mean(x-y)-0.002,sprintf('bias: %.2f%%',100*mean(x-y)), 'FontSize', 18)
+text(0.65,mean(x-y)+1.96*std(x-y)+0.0025,sprintf('+1.96 SD: %.2f%%',100*(mean(x-y)+1.96*std(x-y))), 'FontSize', 18)
+text(0.65,mean(x-y)-1.96*std(x-y)-0.0025,sprintf('-1.96 SD: %.2f%%',100*(mean(x-y)-1.96*std(x-y))), 'FontSize', 18)
 
 print(fullfile(graphics_path,[graph_file_name num2str(3)]),'-dpdf')
