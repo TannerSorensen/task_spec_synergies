@@ -1139,6 +1139,7 @@ The present study tested the task-dependence of articulator synergies by determi
 Consider the sample of $n=320$ articulator synergy biomarker values (\num{8} participants $\times$ \num{4} places of articulation $\times$ \num{10} repeated measurements of the articulator synergy biomarker from scan \num{1}). Let $y_{i,j,k,\ell}$ be the biomarker value for place of articulation $i$, participant $j$, and replicate measurement $k$ from scan $\ell$ (i.e., Scan~\num{1} or Scan~\num{2}). The linear mixed effects model of $y_{i,j,k,\ell}$ was 
 %
 \begin{equation}
+\label{eq:lmm}
 y_{i,j,k,\ell} = m + b_i + p_j + q_{j,k} + r_{j,\ell} + c_\ell + e_{i,j,k,\ell},
 \end{equation}
 %
@@ -1342,11 +1343,60 @@ Overall, these results support the inference that the jaw contributed significan
 
 
 
-\section{Patterns of inter- and intra-participant variability}
+\section{Patterns of intra-participant variability}
 \label{sec:patterns}
 
+Notion of consistency.
 
 
+
+<<patterns,echo=FALSE,results='hide',message=FALSE,warning=FALSE>>=
+
+# PERFORM STATISTICAL TEST
+##########################
+
+m_velar <- lmer(bm ~ 1 + tv + (1 + tv | participant), tab, REML=FALSE)
+m0 <- lmer(bm ~ 1 + tv + (1 | participant), tab, REML=FALSE)
+a0 <- anova(m_velar,m0)
+@
+
+
+
+Do participants have large biomarker values at some places of articulation but small biomarker values at others, 
+or does a given participant have on average the same biomarker values across place of articulation?
+%
+The present study tests whether participants differ in the average biomarker value produced at different places of articulation.
+%
+The study compares the linear mixed effects model of Section~\ref{sec:taskspec} (cf. Equation~\ref{eq:lmm}) to a reduced model that drops by-participant random slopes for place of articulation using the likelihood ratio test. 
+%
+The by-participant random slopes for place of articulation is a significant source of variance ($\chi^2(\Sexpr{a0$`Chi Df`[2]})= \Sexpr{a0$Chisq[2]}, p = \Sexpr{a0$`Pr(>Chisq)`[2]}$).
+%
+This indicates that participants differ in the average biomarker value produced at different places of articulation.
+%
+The study applies the Mann-Whitney U Test to identify places of articulation that differ in average biomarker value for each participant.
+For all participants, the biomarker values at the coronal place of articulation are greater on average than those at the bilabial place (cf. Figure~\ref{fig:consistency}).
+For seven of eight participants, the biomarker values at the velar place of articulation are greater on average than those at the bilabial place.
+
+Do participants have high variance at some places of articulation but low variance at others, 
+or does a given participant have constant variance across place of articulation?
+%
+The present study applies the Fligner-Killeen Test to determine whether different places of articulation have different biomarker variances.
+%
+TODO: details of test The test is applied to the data of each participant separately.
+%
+The Fligner-Killeen Test is applied to combination of places of articulation to test for differences in variance for each participant separately. 
+
+The study performed $(\text{number of participants}) \times ((\text{number of places of articulation})^2 - (\text{number of places of articulation}))/2 = 80$ Mann-Whitney U Tests and the same number of Fligner-Killeen tests for a total of \num{160} statistical tests. 
+%
+Statistical tests are considered significant at the Bonferroni-corrected significance level $\alpha = 0.05/160$.
+
+\begin{figure}
+
+\includegraphics[width=\linewidth]{ConsistencyFigure.pdf}
+
+\caption{(color online) }
+\label{fig:consistency}
+\end{figure}
 
 
 
