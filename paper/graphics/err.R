@@ -57,7 +57,7 @@ pdf(file.path(graphics_path,"err_legend.pdf"), width=8, height=8, bg="white")
 cols<-brewer.pal(n=7,name="Set1")
 cols<-c(cols[1:4],cols[7])
 plot.new()
-legend(0,1,c('bilabial place','alveolar place','palatal place','velar place','pharyngeal place'),cols)
+legend(0,1,c('bilabial','alveolar','palatal','velar','pharyngeal'),cols)
 dev.off()
 
 ############
@@ -67,11 +67,11 @@ col_idx <- 1
 
 # direct kinematics error plots
 pctl_tab <- aggregate(bilabial~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
-plot_percentile_range(pctl_tab,stds[,c("participant","bilabial")],col_idx,TRUE,"bilabial place",graphics_path,"")
+plot_percentile_range(pctl_tab,stds[,c("participant","bilabial")],col_idx,TRUE,"bilabial",graphics_path,"")
 
 # differential kinematics error plots
 pctl_tab <- aggregate(bilabial_d~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
-plot_percentile_range(pctl_tab,stds[,c("participant","bilabial_d")],col_idx,TRUE,"bilabial place",graphics_path,"_d")
+plot_percentile_range(pctl_tab,stds[,c("participant","bilabial_d")],col_idx,TRUE,"bilabial",graphics_path,"_d")
 
 ############
 # alveolar
@@ -80,11 +80,11 @@ col_idx <- 2
 
 # direct kinematics error plots
 pctl_tab <- aggregate(alveolar~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
-plot_percentile_range(pctl_tab,stds[,c("participant","alveolar")],col_idx,FALSE,"alveolar place",graphics_path,"")
+plot_percentile_range(pctl_tab,stds[,c("participant","alveolar")],col_idx,FALSE,"alveolar",graphics_path,"")
 
 # differential kinematics error plots
 pctl_tab <- aggregate(alveolar_d~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
-plot_percentile_range(pctl_tab,stds[,c("participant","alveolar_d")],col_idx,FALSE,"alveolar place",graphics_path,"_d")
+plot_percentile_range(pctl_tab,stds[,c("participant","alveolar_d")],col_idx,FALSE,"alveolar",graphics_path,"_d")
 
 ############
 # palatal
@@ -93,11 +93,11 @@ col_idx <- 3
 
 # direct kinematics error plots
 pctl_tab <- aggregate(palatal~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
-plot_percentile_range(pctl_tab,stds[,c("participant","palatal")],col_idx,FALSE,"palatal place",graphics_path,"")
+plot_percentile_range(pctl_tab,stds[,c("participant","palatal")],col_idx,FALSE,"palatal",graphics_path,"")
 
 # differential kinematics error plots
 pctl_tab <- aggregate(palatal_d~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
-plot_percentile_range(pctl_tab,stds[,c("participant","palatal_d")],col_idx,FALSE,"palatal place",graphics_path,"_d")
+plot_percentile_range(pctl_tab,stds[,c("participant","palatal_d")],col_idx,FALSE,"palatal",graphics_path,"_d")
 
 
 ############
@@ -107,11 +107,11 @@ col_idx <- 4
 
 # direct kinematics error plots
 pctl_tab <- aggregate(velar~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
-plot_percentile_range(pctl_tab,stds[,c("participant","velar")],col_idx,FALSE,"velar place",graphics_path,"")
+plot_percentile_range(pctl_tab,stds[,c("participant","velar")],col_idx,FALSE,"velar",graphics_path,"")
 
 # differential kinematics error plots
 pctl_tab <- aggregate(velar_d~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
-plot_percentile_range(pctl_tab,stds[,c("participant","velar_d")],col_idx,FALSE,"velar place",graphics_path,"_d")
+plot_percentile_range(pctl_tab,stds[,c("participant","velar_d")],col_idx,FALSE,"velar",graphics_path,"_d")
 
 
 ############
@@ -121,9 +121,9 @@ col_idx <- 6
 
 # direct kinematics error plots
 pctl_tab <- aggregate(pharyngeal~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
-plot_percentile_range(pctl_tab,stds[,c("participant","pharyngeal")],col_idx,FALSE,"pharyngeal place",graphics_path,"")
+plot_percentile_range(pctl_tab,stds[,c("participant","pharyngeal")],col_idx,FALSE,"pharyngeal",graphics_path,"")
 
 # differential kinematics error plots
 pctl_tab <- aggregate(pharyngeal_d~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
-plot_percentile_range(pctl_tab,stds[,c("participant","pharyngeal_d")],col_idx,FALSE,"pharyngeal place",graphics_path,"_d")
+plot_percentile_range(pctl_tab,stds[,c("participant","pharyngeal_d")],col_idx,FALSE,"pharyngeal",graphics_path,"_d")
 
