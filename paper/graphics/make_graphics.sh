@@ -22,9 +22,10 @@ matlab -nodisplay -nodesktop -r "run graphs_segmentation.m; run graphs_factors.m
 Rscript histograms.R
 Rscript err.R
 Rscript test_retest.R
+Rscript consistency.R
 
 # declare a list of subfolders that contain images
-declare -a subfolders=("cv_errors" "mri" "gfa" "segmentation" "constrictions" "histograms" "icc" "templates" "biomarker" "validation" "gfa_var_expl")
+declare -a subfolders=("cv_errors" "mri" "gfa" "segmentation" "constrictions" "histograms" "icc" "templates" "biomarker" "validation" "gfa_var_expl" "consistency")
 
 # crop all figures
 for subfolder in "${subfolders[@]}"
@@ -47,4 +48,5 @@ pdflatex SegTempFigure.tex
 pdflatex BiomarkerFigure.tex
 pdflatex ValidationFigure.tex
 pdflatex VarExplFigure.tex
+pdflatex ConsistencyFigure.tex
 
