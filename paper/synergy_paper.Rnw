@@ -1346,9 +1346,6 @@ Overall, these results support the inference that the jaw contributed significan
 \section{Patterns of intra-participant variability}
 \label{sec:patterns}
 
-Notion of consistency.
-
-
 
 <<patterns,echo=FALSE,results='hide',message=FALSE,warning=FALSE>>=
 
@@ -1361,21 +1358,25 @@ a0 <- anova(m_velar,m0)
 @
 
 
-
-Do participants have large biomarker values at some places of articulation but small biomarker values at others, 
-or does a given participant have on average the same biomarker values across place of articulation?
+Section~\ref{sec:taskspec} shows an effect of place of articulation on the articulator synergy biomarker values. 
 %
-The present study tests whether participants differ in the average biomarker value produced at different places of articulation.
+This section investigates between- and within-participant variability in this effect.
 %
-The study compares the linear mixed effects model of Section~\ref{sec:taskspec} (cf. Equation~\ref{eq:lmm}) to a reduced model that drops by-participant random slopes for place of articulation using the likelihood ratio test. 
+Between-participant variability is evaluated by testing the significance of by-participant random slopes for place of articulation.
 %
-The by-participant random slopes for place of articulation is a significant source of variance ($\chi^2(\Sexpr{a0$`Chi Df`[2]})= \Sexpr{a0$Chisq[2]}, p = \Sexpr{a0$`Pr(>Chisq)`[2]}$).
+The linear mixed effects model of Section~\ref{sec:taskspec} (cf. Equation~\ref{eq:lmm}) is compared to a reduced model that does not have by-participant random slopes for place of articulation.
 %
-This indicates that participants differ in the average biomarker value produced at different places of articulation.
+The likelihood ratio test indicates that the by-participant random slopes for place of articulation are a significant source of variance ($\chi^2(\Sexpr{a0$`Chi Df`[2]})= \Sexpr{a0$Chisq[2]}; p = \Sexpr{a0$`Pr(>Chisq)`[2]}$).
 %
-The study applies the Mann-Whitney U Test to identify places of articulation that differ in average biomarker value for each participant.
-For all participants, the biomarker values at the coronal place of articulation are greater on average than those at the bilabial place (cf. Figure~\ref{fig:consistency}).
-For seven of eight participants, the biomarker values at the velar place of articulation are greater on average than those at the bilabial place.
+This indicates by-participant variability in the effect for place of articulation.
+%
+By-participant variability in the effect for place of articulation is evaluated by determining whether individual participants display similar effects for place of articulation.
+%
+For each participant, the Mann-Whitney U Test identifies all the places of articulation that differ in average biomarker value.
+%
+For six of eight participants, the coronal place of articulation has larger biomarker values than the bilabial, palatal, velar, and pharyngeal places of articulation.
+These participants display effects that are consistent with the significant coronal-velar and coronal-pharyngeal contrasts identified with the linear mixed effects model of Section~\ref{sec:taskspec}, but also support 
+Additionally, this pattern suggests that the coronal place of articulation has larger biomarker values than 
 
 Do participants have high variance at some places of articulation but low variance at others, 
 or does a given participant have constant variance across place of articulation?
