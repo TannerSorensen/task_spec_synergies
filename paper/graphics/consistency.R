@@ -92,10 +92,11 @@ for (ii in seq(1,length(unique_participant))){
   subtab <- subset(tab,participant==unique_participant[ii])
   
   # main plotting function
-  pirateplot(bm~tv, data = subtab,
+  titl <- paste(substr(unique_participant[ii],1,1), (ii-1) %% 4 + 1, sep="")
+  pirateplot(bm~tv, data = subtab, inf.method = 'ci', inf.disp = 'line',
              ylim = c(0,1), xaxt= "n", yaxt="n", xlab="", ylab="",
              pal=tv_col_vec, theme = 3,
-             main=unique_participant[ii])
+             main=titl)
   
   # place of articulation label
   xlocs <- seq(1,5)
@@ -135,8 +136,8 @@ for (ii in seq(1,length(unique_participant))){
     # separate the line blocks
     lines(c(0.5,6),rep(midline_y,2), lty=2)
     # title the line blocks
-    text(x=0.5,y=2*midline_y/3, labels="mean", srt=90, adj=c(0.5,0.5))
-    text(x=0.5,y=1.5*midline_y, labels="variance", srt=90, adj=c(0.5,0.5))
+    text(x=0.4,y=7*midline_y/12, labels="Mann-Whitney", srt=90, adj=c(0.5,0.5), cex=0.6)
+    text(x=0.4,y=1.5*midline_y, labels="Fligner-Killeen", srt=90, adj=c(0.5,0.5), cex=0.6)
   }else{
     # separate the line blocks
     lines(c(0,6),rep(midline_y,2), lty=2)
@@ -213,7 +214,7 @@ for (ii in seq(1,length(unique_tv))){
     }
     
     if (ii == jj-1){
-      pirateplot(bm~tv*participant, 
+      pirateplot(bm~tv*participant, inf.method = 'ci', inf.disp='line',
                  data = subtab, theme = 3,
                  ylim = c(0,1), xaxt= "n", yaxt="n", 
                  pal=tv_col_vec[c(ii,jj)],
@@ -237,7 +238,7 @@ for (ii in seq(1,length(unique_tv))){
       plot.new()
       text(x=0.5, y=0.5, labels=unique_tv[ii], cex=2, font=2, las=1)
     }else if (ii<jj){
-      pirateplot(bm~tv*participant, 
+      pirateplot(bm~tv*participant, inf.method = 'ci', inf.disp='line',
                  data = subtab, theme = 3,
                  ylim = c(0,1), yaxt = "n", xaxt= "n", ylab="", 
                  pal=tv_col_vec[c(ii,jj)],
