@@ -106,7 +106,7 @@ In the Task Dynamics model of speech production~\citep{saltzman1989dynamical}, t
 %
 In contrast to studies that manually assign weights to the articulators based on theoretical considerations~\citep[for example, see][for an assignment of weights based on articulator mass]{simko2010embodied}, the present study is the first to obtain a quantitative readout of these weights from speech production data. 
 
-Advances in magnetic resonance imaging (MRI) have achieved a balance among the competing factors of temporal resolution, spatial resolution, and signal-to-noise ratio that provides a rich source of speech production data for the present study~\citep{scott2014speech}. Real-time MRI pulse sequences and reconstruction techniques allow for the capture and visualization of the motion of the jaw, tongue, and lips with \SI{12}{\milli\second} temporal resolution~\citep{toutios2016advances,lingala2016state}. 
+Advances in magnetic resonance imaging (MRI) have achieved a balance among the competing factors of temporal resolution, spatial resolution, and signal-to-noise ratio that provides a rich source of speech production data for the present study~\citep{scott2014speech}. Real-time MRI pulse sequences and reconstruction techniques allow for the capture and visualization of the motion of the jaw, tongue, and lips with \SI{12}{\milli\second} temporal resolution~\citep{toutios2016advances,lingala2017fast}. 
 %
 The present study uses real-time MRI to quantify articulator synergies in terms of the percent contribution of each articulator to producing constrictions.
 %
@@ -146,7 +146,7 @@ The research goals of the present study are
 
 The paper is organized as follows.
 %
-Section~\ref{sec:mri} describes the MRI experiment, scanner sequence, participant characteristics, and method for manually annotating the start and end time-points in the real-time MRI. 
+Section~\ref{sec:mri} describes the MRI experiment, scanner sequence, participant characteristics, and method for manually annotating the start and end time-points in the real-time MRI videos. 
 Sections~\ref{sec:cd} and~\ref{sec:gfa} describe the segmentation of articulator contours in the images and use the segmentation results to estimate constriction task variables and parameters of articulator shape and position, which are related by the forward kinematics of the vocal tract. 
 Section~\ref{sec:forwardkinematicmap} estimates the forward kinematics and evaluates the model through cross-validation. 
 Section~\ref{sec:articulator_synergy_biomarker} defines the articulator synergy biomarker. It evaluates the articulator synergy biomarker with respect to bias and precision. 
@@ -162,7 +162,7 @@ Sections~\ref{sec:discussion} and~\ref{sec:conclusions} offer discussion and con
 \subsection{Experiment}
 \label{subsec:experimentdescription}
 
-The data-set included eight (4 male, 4 female) speakers of American English. Five participants were native speakers of American English. None of the participants reported speech pathology or abnormal hearing. Table~\ref{tab:subj2} provides participant characteristics. Each participant took part in one session. The authors explained the nature of the experiment and the protocol to the participant before each scan. The participant lay on the scanner table in a supine position. The head was fixed in place by foam pads inserted between the temple and the receiver coil on the left and right sides of the head. The participant read visually presented text from a paper card taped to the scanner bore in front of the face. The speech corpus included real-time MRI videos of the isolated utterances \textipa{[ApA]}, \textipa{[AtA]}, \textipa{[AkA]}, and \textipa{[AiA]} produced in an unrandomized sequence. Although participants were instructed to produce a low back unrounded vowel \textipa{[A]} and high front unrounded vowel \textipa{[i]}, there was some variability in whether the low vowel was the front \textipa{[a]} or back \textipa{[A]} and in whether or not the high vowel was produced as a glide \textipa{[j]}. Participants produced the sequence of utterances ten times. The authors removed the participant from the scanner for a short break, and then repeated the experiment. After completing the session, the speaker was paid for their participation in the study. The USC Institutional Review Board approved the data collection procedures. 
+The data-set included eight (4 male, 4 female) speakers of American English~\cite{toger2017test}. Five participants were native speakers of American English. None of the participants reported speech pathology or abnormal hearing. Table~\ref{tab:subj2} provides participant characteristics. Each participant took part in one session. The authors explained the nature of the experiment and the protocol to the participant before each scan. The participant lay on the scanner table in a supine position. The head was fixed in place by foam pads inserted between the temple and the receiver coil on the left and right sides of the head. The participant read visually presented text from a paper card taped to the scanner bore in front of the face. The speech corpus included real-time MRI videos of the isolated utterances \textipa{[ApA]}, \textipa{[AtA]}, \textipa{[AkA]}, and \textipa{[AiA]} produced in an unrandomized sequence. Although participants were instructed to produce a low back unrounded vowel \textipa{[A]} and high front unrounded vowel \textipa{[i]}, there was some variability in whether the low vowel was the front \textipa{[a]} or back \textipa{[A]} and in whether or not the high vowel was produced as a glide \textipa{[j]}. Participants produced the sequence of utterances ten times. The authors removed the participant from the scanner for a short break, and then repeated the experiment. After completing the session, the speaker was paid for their participation in the study. The USC Institutional Review Board approved the data collection procedures. 
 
 \begin{table}
 \centering
@@ -220,7 +220,7 @@ The scan plane was manually aligned to the head.
 %
 Images were retrospectively reconstructed to a temporal resolution of \SI{12}{\milli\second} (\SI{6}{\milli\second} TR times two spirals per image, 83 frames per second). 
 %
-Reconstruction was performed using the Berkeley Advanced Reconstruction Toolbox~\citep{uecker2015berkeley}.
+Reconstruction was performed using the Berkeley Advanced Reconstruction Toolbox~\cite{uecker2015berkeley}.
 
 
 
@@ -252,7 +252,7 @@ An algorithm automatically measured constriction task variables at the phonetic 
 %
 As we use the term in this study, a constriction task variable is defined as the shortest distance between opposing structures at a given place of articulation. 
 %
-The opposing structures were the upper and lower lips for [p] (bilabial constriction task variable), tongue and coronal place for [t] (coronal constriction task variable), tongue and palatal place for [i] (palatal constriction task variable), tongue and soft palate for [k] (velar constriction task variable), and tongue and rear pharyngeal wall for [A] (pharyngeal constriction task variable). 
+The opposing structures were the upper and lower lips for \textipa{[p]} (bilabial constriction task variable), tongue and coronal place for \textipa{[t]} (coronal constriction task variable), tongue and palatal place for \textipa{[i]} (palatal constriction task variable), tongue and soft palate for \textipa{[k]} (velar constriction task variable), and tongue and rear pharyngeal wall for \textipa{[A]} (pharyngeal constriction task variable). 
 %
 The contour tracking algorithm automatically identified the upper lip, lower lip, tongue, hard palate, soft palate, and rear pharyngeal wall~\citep{bresch2009region}.  
 %
@@ -558,7 +558,7 @@ For a given participant, the coefficients of this linear combination change from
 
 
 
-\section{Kinematics}
+\section{Forward kinematic map of the vocal tract}
 \label{sec:forwardkinematicmap}
 
 \subsection{Estimation of the direct and differential kinematics}
@@ -832,7 +832,7 @@ The synthetic data-set consisted of vocal tract contours from \SI{40} utterances
 Each utterance started from the open vocal tract posture characteristic of an initial vowel \textipa{[A]}. 
 The utterance consisted of two movements.
 The first movement was the oral constriction for \textipa{[p]}, \textipa{[t]}, \textipa{[k]}, or \textipa{[i]}. 
-The second movement was the pharyngeal constriction for the final vowel \textipa{[A]}~\citep{wood1979radiographic}.
+The second movement was the pharyngeal constriction that returned the vocal tract to the open posture characteristic of the vowel \textipa{[A]}~\citep{wood1979radiographic}.
 
 Following Task Dynamics~\citep{saltzman1989dynamical}, change in the vector $\mathbf{z}$ of constriction task variables evolves according to the following equation for time $t$ in the interval $[t_0, t_0+T)$, where $t_0$ is the start time and $T$ is the duration.
 \begin{equation}
