@@ -71,7 +71,7 @@
 \newcommand\bovermat[2]{%
   \makebox[0pt][l]{$\smash{\overbrace{\phantom{%
     \begin{matrix}#2\end{matrix}}}^{#1}}$}#2}
-    
+
 % participant characteristics table
 \usepackage{multirow,array}
 \newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
@@ -117,10 +117,17 @@ The test is conducted on utterances \textipa{[ApA]}, \textipa{[AtA]}, \textipa{[
 The present study is the first to estimate the forward kinematics of the vocal tract from speech production data.
 %
 % TODO: is this finding right?
-The study finds that the jaw contributes more to the coronal stop in \textipa{[t]} than to bilabial stop, palatal approximation, velar stop, and pharyngeal approximations in \textipa{[p]}, \textipa{[i]}, \textipa{[k]}, and \textipa{[A]}, 
-%that the jaw contributes more to the palatal stop constriction task in \textipa{[i]} than to 
+Using the imaging biomarker, the study finds that the jaw contributes 
+least to the velar stop for \textipa{[k]},
+more to pharyngeal approximation for \textipa{[A]}, 
+still more to palatal approximation for \textipa{[i]},
+and most to the coronal stop for \textipa{[t]}.
 %
-Differences in inter-articulator coordination by constriction task support the claim that articulator synergies are task-dependent.
+Additionally, the jaw contributes more to the coronal stop for \textipa{[t]} than to the bilabial stop for \textipa{[p]}.
+%
+Finally, the study investigates how this pattern of results varies by participant.
+%
+The study identifies differences in inter-articulator coordination by constriction task that support the claim that inter-articulator coordination differs depending on the active articulator synergy.
 \end{abstract}
 
 
@@ -1076,7 +1083,7 @@ contrast & estimate (\%) & $z$ & $p$ \\
 bilabial stop-coronal stop &
 \SI{-32} &
 -6.8 &
-\ensuremath{3.1\times 10^{-10}} \\
+\ensuremath{4.9\times 10^{-11}} \\
 %
 % bilabial vs. palatal
 %
@@ -1104,28 +1111,28 @@ bilabial stop-pharyngeal approximation &
 coronal stop-palatal approximation &
 \SI{18} &
 4 &
-\ensuremath{4.2\times 10^{-4}} \\
+\ensuremath{4.4\times 10^{-4}} \\
 %
 % coronal vs. velar
 %
 coronal stop-velar stop &
 \SI{39} &
 8.5 &
-0 \\
+\ensuremath{1.1\times 10^{-16}} \\
 %
 % coronal vs. pharyngeal
 %
 coronal stop-pharyngeal approximation &
 \SI{28} &
 6.6 &
-\ensuremath{5.2\times 10^{-10}} \\
+\ensuremath{2.4\times 10^{-10}} \\
 %
 % palatal vs. velar
 %
 palatal approximation-velar stop &
 \SI{20} &
 5.2 &
-\ensuremath{1.8\times 10^{-6}} \\
+\ensuremath{2\times 10^{-6}} \\
 %
 % palatal vs. pharyngeal
 %
@@ -1139,7 +1146,7 @@ palatal approximation-pharyngeal approximation &
 pharyngeal approximation-velar stop &
 \SI{11} &
 3.4 &
-0.0049 \\
+0.005 \\
 \hline
 \end{tabular}
 \caption{Results for statistical tests of the null hypothesis that the contrast is zero. Rows indicate separate tests. $p$-values corrected for multiple comparisons with Tukey's range test (adjusted $p$-values reported).}
@@ -1162,22 +1169,22 @@ The coronal stop had
 \SI{32}{\percent} 
 larger biomarker values than the bilabial stop
 ($z=6.8$, 
-$p=\ensuremath{3.1\times 10^{-10}}$),
+$p=\ensuremath{4.9\times 10^{-11}}$),
 %
 \SI{18}{\percent} 
 larger biomarker values than the palatal approximation
 ($z=4$, 
-$p=\ensuremath{4.2\times 10^{-4}}$),
+$p=\ensuremath{4.4\times 10^{-4}}$),
 %
 \SI{39}{\percent} 
 larger biomarker values than the velar stop
 ($z=8.5$, 
-$p=0$),
+$p=\ensuremath{1.1\times 10^{-16}}$),
 %
 and \SI{28}{\percent} 
 larger biomarker values than the pharyngeal approximation
 ($z=6.6$, 
-$p=\ensuremath{5.2\times 10^{-10}}$).
+$p=\ensuremath{2.4\times 10^{-10}}$).
 %
 %
 %
@@ -1191,7 +1198,7 @@ the palatal approximation had
 \SI{20}{\percent} 
 larger biomarker values than the velar stop
 ($z=5.2$, 
-$p=\ensuremath{1.8\times 10^{-6}}$)
+$p=\ensuremath{2\times 10^{-6}}$)
 %
 and \SI{9.1}{\percent} 
 larger biomarker values than the pharyngeal approximation
@@ -1205,7 +1212,7 @@ The velar stop had
 \SI{11}{\percent} 
 smaller biomarker values than the pharyngeal approximation
 ($z=3.4$, 
-$p=0.0049$).
+$p=0.005$).
 
 We infer that the jaw contributed significantly more to the coronal stop than to the bilabial stop, palatal approximation, velar stop, and pharyngeal approximation,
 %
@@ -1268,6 +1275,15 @@ However, the coronal stop-palatal approximation, coronal stop-pharyngeal approxi
 
 
 
+In sum, the present study shows that the jaw contributes 
+least to the velar stop for \textipa{[k]},
+more to pharyngeal approximation for \textipa{[A]}, 
+still more to palatal approximation for \textipa{[i]},
+and most to the coronal stop for \textipa{[t]}.
+Additionally, the jaw contributes more to the coronal stop for \textipa{[t]} than to the bilabial stop for \textipa{[p]}.
+
+
+
 
 
 
@@ -1302,7 +1318,7 @@ The study performed (number of participants) $\times$ ((number of constriction t
 Statistical tests are considered significant at the Bonferroni-corrected significance level $\alpha = 0.05/160$.
 
 
-The results of the Mann-Whitney Tests demonstrate that the pattern of average values across constriction tasks is consistent with the effect for constriction task discovered by the linear mixed effects model (cf. Section~\ref{sec:taskspec}; coronal stop $>$ palatal approximation $>$ \{velar stop, pharyngeal approximation\} and coronal stop $>$ bilabial stop) with only three exceptions: velar stop-pharyngeal approximation constrast of participant m1; palatal approximation-velar stop and palatal approximation-pharyngeal approximation constrasts of m4.
+The results of the Mann-Whitney Tests demonstrate that the pattern of average values across constriction tasks is consistent with the effect for constriction task discovered by the linear mixed effects model (coronal stop $>$ palatal approximation $>$ pharyngeal approximation $>$ velar stop; coronal stop $>$ bilabial stop; cf. Section~\ref{sec:taskspec}) with three exceptions: velar stop-pharyngeal approximation constrast of participant m1; palatal approximation-velar stop and palatal approximation-pharyngeal approximation constrasts of m4.
 Although the participants individually display consistent patterns of average values, the dispersion of the data is large and the sample size within each participant is small. 
 For this reason, the Mann-Whitney U Test fails to reject every null hypotheses the linear mixed effects model analysis rejects using pooled data from all participants.
 
@@ -1328,11 +1344,12 @@ Brackets below each panel indicate pairs of constriction tasks that significantl
 
 \subsection{Task specificity of articulator synergies}
 
-The present study demonstrates that speakers use the jaw more for the coronal stop than for the bilabial stop, palatal approximation, velar stop, and pharyngeal approximation,
-%
-that speakers use the jaw more for the palatal approximation than for the velar stop and pharyngeal approximation,
-%
-and that speakers use the jaw more for the velar stop than for the pharyngeal approximation
+The present study shows that the jaw contributes 
+least to the velar stop for \textipa{[k]},
+more to pharyngeal approximation for \textipa{[A]}, 
+still more to palatal approximation for \textipa{[i]},
+and most to the coronal stop for \textipa{[t]}.
+Additionally, the jaw contributes more to the coronal stop for \textipa{[t]} than to the bilabial stop for \textipa{[p]}.
 %
 This supports the hypothesis that different articulator synergies have different patterns of inter-articulator coordination.
 %
@@ -1412,10 +1429,12 @@ Biomechanical models offer tools for investigating the coordinate system availab
 \section{Conclusions}
 \label{sec:conclusions}
 
-% TODO: double check
-The present study demonstrates that speakers use the jaw more for the coronal stop than for the velar stop and pharyngeal approximation.
-%
-The pattern of jaw, tongue, and lip usage is heterogeneous for bilabial stop and palatal approximation.
+The present study shows that the jaw contributes 
+least to the velar stop for \textipa{[k]},
+more to pharyngeal approximation for \textipa{[A]}, 
+still more to palatal approximation for \textipa{[i]},
+and most to the coronal stop for \textipa{[t]}.
+Additionally, the jaw contributes more to the coronal stop for \textipa{[t]} than to the bilabial stop for \textipa{[p]}.
 %
 This supports the idea that synergies organize the articulators on a temporary basis for achieving motor goals such as vocal tract constrictions, and that the pattern of inter-articulator coordination varies over time as the vocal tract deploys different synergies. 
 
@@ -1430,7 +1449,7 @@ Second, the present study showed that the articulator synergy biomarker varied b
 %
 Third, while the present study focused on jaw-tongue and jaw-lip synergies, the proposed method could be used to study other synergies, such as those between the dorsum and tip of the tongue or between the tongue and velum. Future research studies should investigate these synergies.
 %
-Fourth, A simplified version of this forward kinematic map from articulators to acoustic formant frequencies is used by the Directions into Velocities of Articulators (DIVA) model of speech production~\cite{guenther1995speech}. By using real-time MRI with simultaneously recorded speech audio, the proposed framework could be extended to estimate this forward kinematic map from data.
+Fourth, a simplified version of this forward kinematic map from articulators to acoustic formant frequencies is used by the Directions into Velocities of Articulators (DIVA) model of speech production~\cite{guenther1995speech}. By using real-time MRI with simultaneously recorded speech audio, the proposed framework could be extended to estimate this forward kinematic map from data.
 
 
 
