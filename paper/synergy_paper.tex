@@ -933,7 +933,7 @@ Precision is an important parameter, as it establishes a limit on effect size an
 \raggedright
 \includegraphics[width=\linewidth]{ICCFigure.pdf}
 
-\caption{(color online) Comparison of intraclass correlation coefficients (ICC) for different numbers of jaw factors (color) and for different numbers of tongue and lip factors ($x$-axis) for the bilabial stop (\textipa{[p]}), coronal stop (\textipa{[t]}), palatal approximation (\textipa{[i]}), velar stop (\textipa{[k]}), and pharyngeal approximation (\textipa{[A]}).}
+\caption{(color online) Comparison of intraclass correlation coefficients (ICC) for different numbers of jaw factors (color) and for different numbers of tongue and lip factors ($x$-axis) for the bilabial stop \textipa{[p]}, coronal stop \textipa{[t]}, palatal approximation \textipa{[i]}, velar stop \textipa{[k]}, and pharyngeal approximation \textipa{[A]}.}
 \label{fig:icc_all}
 
 \end{figure*}
@@ -1049,7 +1049,7 @@ Although the velar stop and pharyngeal approximation may not involve a very grea
 \includegraphics[width=\linewidth]{HistogramsFigure.pdf}
 
 \caption{\label{fig:histograms}(color online) 
-Sample distribution of the articulator synergy biomarker for bilabial stop (\textipa{[p]}), coronal stop (\textipa{[t]}), palatal approximation (\textipa{[i]}), velar stop (\textipa{[k]}), and pharyngeal approximation (\textipa{[A]}). The biomarker indicates the percent of a constriction that was produced by the jaw.
+Sample distribution of the articulator synergy biomarker for bilabial stop \textipa{[p]}, coronal stop \textipa{[t]}, palatal approximation \textipa{[i]}, velar stop \textipa{[k]}, and pharyngeal approximation \textipa{[A]}. The biomarker indicates the percent of a constriction that was produced by the jaw.
 A value of \SI{0}{\percent} indicates that lip or tongue motion produced the entire constriction, whereas a value of \SI{100}{\percent} indicates that jaw motion produced the entire constriction. 
 Sample distribution by participant shown with a different color for each participant.}
 
@@ -1083,7 +1083,7 @@ contrast & estimate (\%) & $z$ & $p$ \\
 bilabial stop-coronal stop &
 \SI{-32} &
 -6.8 &
-\ensuremath{4.7\times 10^{-11}} \\
+\ensuremath{6.9\times 10^{-11}} \\
 %
 % bilabial vs. palatal
 %
@@ -1111,28 +1111,28 @@ bilabial stop-pharyngeal approximation &
 coronal stop-palatal approximation &
 \SI{18} &
 4 &
-\ensuremath{4.3\times 10^{-4}} \\
+\ensuremath{4.4\times 10^{-4}} \\
 %
 % coronal vs. velar
 %
 coronal stop-velar stop &
 \SI{39} &
 8.5 &
-0 \\
+\ensuremath{1.1\times 10^{-16}} \\
 %
 % coronal vs. pharyngeal
 %
 coronal stop-pharyngeal approximation &
 \SI{28} &
 6.6 &
-\ensuremath{2.8\times 10^{-10}} \\
+\ensuremath{2.7\times 10^{-10}} \\
 %
 % palatal vs. velar
 %
 palatal approximation-velar stop &
 \SI{20} &
 5.2 &
-\ensuremath{1.6\times 10^{-6}} \\
+\ensuremath{1.8\times 10^{-6}} \\
 %
 % palatal vs. pharyngeal
 %
@@ -1169,22 +1169,22 @@ The coronal stop had
 \SI{32}{\percent} 
 larger biomarker values than the bilabial stop
 ($z=6.8$, 
-$p=\ensuremath{4.7\times 10^{-11}}$),
+$p=\ensuremath{6.9\times 10^{-11}}$),
 %
 \SI{18}{\percent} 
 larger biomarker values than the palatal approximation
 ($z=4$, 
-$p=\ensuremath{4.3\times 10^{-4}}$),
+$p=\ensuremath{4.4\times 10^{-4}}$),
 %
 \SI{39}{\percent} 
 larger biomarker values than the velar stop
 ($z=8.5$, 
-$p=0$),
+$p=\ensuremath{1.1\times 10^{-16}}$),
 %
 and \SI{28}{\percent} 
 larger biomarker values than the pharyngeal approximation
 ($z=6.6$, 
-$p=\ensuremath{2.8\times 10^{-10}}$).
+$p=\ensuremath{2.7\times 10^{-10}}$).
 %
 %
 %
@@ -1198,7 +1198,7 @@ the palatal approximation had
 \SI{20}{\percent} 
 larger biomarker values than the velar stop
 ($z=5.2$, 
-$p=\ensuremath{1.6\times 10^{-6}}$)
+$p=\ensuremath{1.8\times 10^{-6}}$)
 %
 and \SI{9.1}{\percent} 
 larger biomarker values than the pharyngeal approximation
@@ -1352,18 +1352,16 @@ and most to the coronal stop for \textipa{[t]}.
 Additionally, the jaw contributes more to the coronal stop for \textipa{[t]} than to the bilabial stop for \textipa{[p]}.
 %
 This supports the hypothesis that different articulator synergies have different patterns of inter-articulator coordination.
-%
+
+
+The effect of constriction type on the articulator synergy biomarker demonstrates that inter-articulator coordination differs depending on the constriction task. Jaw usage varies by place of articulation (i.e., constriction location), by active articulator (i.e., end-effector), and by manner of articulation (i.e., target constriction degree)~\cite{vatikiotis1995analysis}. Both of these sources of variance presumably combine to produce the effect of constriction type reported in this paper. This introduces a confound in interpreting the effect for constriction task, and thus is a limitation of the present study. Future research should focus on how place and manner of articulation interact to determine articulator synergy biomarker values.
+
+
 If synergies organize the articulators on a temporary basis for achieving motor goals such as vocal tract constrictions, as proposed in theories of motor control~\citep{turvey1977preliminaries, saltzman1987skilled}, theories of phonological organization~\citep{browman1986towards, browman1989articulatory}, and robotic systems~\citep{herbort2010sure}, then the pattern of inter-articulator coordination varies over time as the vocal tract deploys different synergies. 
 %
 The articulator synergy biomarker provides the means to characterize this time-varying pattern of inter-articulator coordination in terms of the percent contribution of each articulator to changing the constriction task variable at the synergy's place of articulation. 
 %
 This complements the finding that articulator synergies are task-dependent in terms of inter-articulator coupling~\citep{lancia2018coupling}, inter-articulator correlation~\citep{jackson2009statistical}, and response to mechanical perturbation of articulator positions~\citep{kelso1984functionally}.
-
-
-
-\subsection{Differences in articulator synergies by manner classes}
-
-The effect of constriction type on the articulator synergy biomarker demonstrates that inter-articulator coordination differs depending on the constriction task. Jaw usage varies both by place of articulation (i.e., constriction location) as well as by manner of articulation (i.e., target constriction degree)~\cite{vatikiotis1995analysis}. Both of these sources of variance presumably combine to produce the effect of constriction type reported in this paper. This introduces a confound in interpreting the effect for constriction task, and thus is a limitation of the present study. Future research should focus on how place and manner of articulation interact to determine articulator synergy biomarker values.
 
 
 \subsection{Technical performance}
@@ -1411,6 +1409,24 @@ The function will depend on the number of articulator degrees of freedom, the co
 
 
 
+
+\subsection{Decomposing the tongue into multiple articulators}
+
+For coronal stop \textipa{[t]}, palatal approximation \textipa{[i]}, velar stop \textipa{[k]}, and pharyngeal approximation \textipa{[A]} constriction tasks,
+the articulator synergy indicates the relative contribution of the jaw and tongue.
+%
+For example, a biomarker value of \SI{60}{\percent} indicates a jaw contribution of  \SI{60}{\percent}. The remaining \SI{40}{\percent} is understood to come from the tongue.
+%
+The present study considers the contribution of the tongue in aggregate and does not attribute to its contribution to subparts such as tongue body and tongue tip.
+%
+An reasonable extension of the articulator synergy biomarker would be to consider not simply a binary distinction between jaw and tongue, but an ternary distinction among jaw, tongue body, and tongue tip or even a quaternary distinction among jaw, tongue root, tongue dorsum, and tongue tip.
+%
+This section provides a preliminary indication of how this is possible within the framework presented in the present study.
+
+TODO: provide sketch here
+
+
+Finer decomposition of the tongue into subparts promises to provide further insight into jaw-tongue coordination in synergies.
 
 
 
