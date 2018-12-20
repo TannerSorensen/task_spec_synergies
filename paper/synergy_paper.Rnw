@@ -1568,10 +1568,35 @@ An reasonable extension of the articulator synergy biomarker would be to conside
 %
 This section provides a preliminary indication of how this is possible within the framework presented in the present study.
 
-TODO: provide sketch here
 
 
-Finer decomposition of the tongue into subparts promises to provide further insight into jaw-tongue coordination in synergies.
+The method by which Section~\ref{sec:gfa} obtained jaw factor(s) offers a recipe for obtaining factors that are associated with the motion of a subset of data-points. 
+First, we obtain the jaw factors (Figure~\ref{fig:extensionsfigure}, Panel B) as in Section~\ref{sec:gfa}.
+The null space of the jaw factors captures the part of tongue and lip motion that is independent of jaw motion. 
+
+Second, we project the data matrix on the null space of the jaw factors as in Section~\ref{sec:gfa}. This is the contour motion that is independent of the jaw.
+Rather than subject the whole tongue contour to principal components analysis as in Section~\ref{sec:gfa}, we perform principal components analysis only on the tongue body contour vertices.
+The tongue body factors (Figure~\ref{fig:extensionsfigure}, Panels C and D) are the vectors of covariances between the z-scored tongue body principal component scores and the tongue body and tongue tip contour vertices.
+The null space of the set of jaw and tongue body factors captures the part of tongue tip motion that is independent of jaw and tongue body motion.
+
+Third, we project the data matrix on the null space of the jaw and tongue body factors. This is the contour motion that is independent of the jaw and tongue body.
+We perform principal components analysis on the tongue tip contour vertices.
+The tongue tip factors (Figure~\ref{fig:extensionsfigure}, Panel E) are the vectors of covariances between the z-scored tongue tip principal component scores and the tongue tip contour vertices.
+The null space of the set of jaw, tongue body, and tongue tip factors captures residual variance that is independent of jaw, tongue body, and tongue tip motion.
+
+Whereas Section~\ref{sec:gfa} extracts all tongue factors from the null space of the jaw factors, the procedure described above extracts tongue body factors from the null space of jaw factors and then extracts tongue tip factors from the null space of the jaw and tongue body factors.
+This procedure offers a systematic way to decompose the tongue into subparts that form a kinematic chain~\cite{craig2005introduction}. Future work that pursues this approach will provide greater detail in the analysis of jaw-tongue coordination in synergies.
+
+\begin{figure}
+
+\includegraphics[width=\linewidth]{ExtensionsFigure.pdf}
+
+\caption{(color online) {\bf a.} Operational definition of jaw, tongue body, and tongue tip contours.
+{\bf b-e.} Mean vocal tract contour (black) with jaw, tongue body ($\times$\num{2}), and tongue tip factors overlaid (red contour: +\num{2} S.D.; blue: -\num{2} S.D.).}
+\label{fig:extensionsfigure}
+\end{figure}
+
+
 
 
 

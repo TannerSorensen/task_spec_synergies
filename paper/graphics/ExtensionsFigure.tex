@@ -1,0 +1,39 @@
+\documentclass[varwidth=10in]{standalone}
+
+\usepackage{stackengine}
+
+\usepackage{graphicx}
+\graphicspath{{extensions/}}
+
+\usepackage{stackengine}
+
+% for white font in subfigure captions
+\usepackage{xcolor}
+
+\standaloneconfig{crop=true}
+
+% sans serif and font size
+\renewcommand{\familydefault}{\sfdefault}
+\newcommand{\doglobally}[1]{{\globaldefs=1#1}}
+
+
+\begin{document}
+
+\raggedright
+
+%\doglobally\large
+
+\begin{tabular}{c c c c c}
+\stackinset{l}{0pt}{t}{0.0\linewidth}{\hspace{0.5cm}{\bf (a)}}{%
+\includegraphics[width=0.15\linewidth]{legend}}
+\stackinset{l}{0pt}{t}{0.0\linewidth}{\hspace{0.2cm}{\bf (b)} \small jaw}{%
+\includegraphics[width=0.15\linewidth]{factor_1}} &
+\stackinset{l}{0pt}{t}{0.0\linewidth}{\hspace{0.2cm}{\bf (c)} \small tongue body 1}{%
+\includegraphics[width=0.15\linewidth]{factor_2}} &
+\stackinset{l}{0pt}{t}{0.0\linewidth}{\hspace{0.2cm}{\bf (d)} \small tongue body 2}{%
+\includegraphics[width=0.15\linewidth]{factor_3}} &
+\stackinset{l}{0pt}{t}{0.0\linewidth}{\hspace{0.2cm}{\bf (e)} \small tongue tip}{%
+\includegraphics[width=0.15\linewidth]{factor_4}}
+\end{tabular}
+
+\end{document}
