@@ -1463,9 +1463,9 @@ The study performed (number of participants) $\times$ ((number of constriction t
 Statistical tests are considered significant at the Bonferroni-corrected significance level $\alpha = 0.05/160$.
 
 
-The results of the Mann-Whitney Tests demonstrate that the pattern of average values across constriction tasks is consistent with the effect for constriction task discovered by the linear mixed effects model (coronal stop $>$ palatal approximation $>$ pharyngeal approximation $>$ velar stop; coronal stop $>$ bilabial stop; cf. Section~\ref{sec:taskspec}) with three exceptions: velar stop-pharyngeal approximation constrast of participant m1; palatal approximation-velar stop and palatal approximation-pharyngeal approximation constrasts of m4.
-Although the participants individually display consistent patterns of average values, the dispersion of the data is large and the sample size within each participant is small. 
-For this reason, the Mann-Whitney U Test fails to reject every null hypotheses the linear mixed effects model analysis rejects using pooled data from all participants.
+The results of the Mann-Whitney Tests demonstrate that the pattern of average values across constriction tasks is consistent with the effect for constriction task discovered by the linear mixed effects model (coronal stop $>$ palatal approximation $>$ pharyngeal approximation $>$ velar stop; and coronal stop $>$ bilabial stop; cf. Section~\ref{sec:taskspec}) with three exceptions: velar stop-pharyngeal approximation constrast of participant m1; palatal approximation-velar stop and palatal approximation-pharyngeal approximation constrasts of m4.
+Although the participants individually display consistent patterns of average values, the dispersion of the data is large and the sample size within each participant is small.
+For this reason, the Mann-Whitney U Test does not reject all the null hypotheses.
 
 The results of the Fligner-Killeen Tests demonstrate that participants can display high biomarker variance for some constriction tasks but low variance at others. However, fewer Fligner-Killeen Tests reject the null hypothesis than do the Mann-Whitney U Tests. This indicates that fewer variances differ by constriction task than do the average values.
 
@@ -1562,15 +1562,15 @@ the articulator synergy indicates the relative contribution of the jaw and tongu
 %
 For example, a biomarker value of \SI{60}{\percent} indicates a jaw contribution of  \SI{60}{\percent}. The remaining \SI{40}{\percent} is understood to come from the tongue.
 %
-The present study considers the contribution of the tongue in aggregate and does not attribute to its contribution to subparts such as tongue body and tongue tip.
+The present study considers the contribution of the tongue in aggregate and does not decompose its contribution into subparts such as tongue body and tongue tip.
 %
-An reasonable extension of the articulator synergy biomarker would be to consider not simply a binary distinction between jaw and tongue, but an ternary distinction among jaw, tongue body, and tongue tip or even a quaternary distinction among jaw, tongue root, tongue dorsum, and tongue tip.
+An extension of the articulator synergy biomarker would be to consider not simply a binary distinction between jaw and tongue, but an ternary distinction among jaw, tongue body, and tongue tip or even a quaternary distinction among jaw, tongue root, tongue dorsum, and tongue tip.
 %
 This section provides a preliminary indication of how this is possible within the framework presented in the present study.
 
 
 
-The method by which Section~\ref{sec:gfa} obtained jaw factor(s) offers a recipe for obtaining factors that are associated with the motion of a subset of data-points. 
+The method by which Section~\ref{sec:gfa} obtained jaw factors offers a recipe for obtaining factors that are associated with the motion of a subset of data-points. 
 First, we obtain the jaw factors (Figure~\ref{fig:extensionsfigure}, Panel B) as in Section~\ref{sec:gfa}.
 The null space of the jaw factors captures the part of tongue and lip motion that is independent of jaw motion. 
 
@@ -1635,7 +1635,7 @@ Second, the present study showed that the articulator synergy biomarker varied b
 %
 Third, while the present study focused on jaw-tongue and jaw-lip synergies, the proposed method could be used to study other synergies, such as those between the dorsum and tip of the tongue or between the tongue and velum. Future research studies should investigate these synergies.
 %
-Fourth, a simplified version of this forward kinematic map from articulators to acoustic formant frequencies is used by the Directions into Velocities of Articulators (DIVA) model of speech production~\cite{guenther1995speech}. By using real-time MRI with simultaneously recorded speech audio, the proposed framework could be extended to estimate this forward kinematic map from data.
+Fourth, a forward kinematic map from articulators to acoustic formant frequencies is used by the Directions into Velocities of Articulators (DIVA) model of speech production~\cite{guenther1995speech}. By using real-time MRI with simultaneously recorded speech audio, the proposed framework could be extended to estimate this forward kinematic map from data.
 
 
 
