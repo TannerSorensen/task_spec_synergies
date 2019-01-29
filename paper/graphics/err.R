@@ -57,7 +57,7 @@ pdf(file.path(graphics_path,"err_legend.pdf"), width=8, height=8, bg="white")
 cols<-brewer.pal(n=7,name="Set1")
 cols<-c(cols[1:4],cols[7])
 plot.new()
-legend(0,1,c('bilabial','alveolar','palatal','velar','pharyngeal'),cols)
+legend(0,1,c('bilabial','coronal','palatal','velar','pharyngeal'),cols)
 dev.off()
 
 ############
@@ -74,17 +74,17 @@ pctl_tab <- aggregate(bilabial_d~ f, tab, function(x){quantile(abs(x), probs = c
 plot_percentile_range(pctl_tab,stds[,c("participant","bilabial_d")],col_idx,TRUE,"bilabial",graphics_path,"_d")
 
 ############
-# alveolar
+# coronal
 ############
 col_idx <- 2
 
 # direct kinematics error plots
 pctl_tab <- aggregate(alveolar~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
-plot_percentile_range(pctl_tab,stds[,c("participant","alveolar")],col_idx,FALSE,"alveolar",graphics_path,"")
+plot_percentile_range(pctl_tab,stds[,c("participant","alveolar")],col_idx,FALSE,"coronal",graphics_path,"")
 
 # differential kinematics error plots
 pctl_tab <- aggregate(alveolar_d~ f, tab, function(x){quantile(abs(x), probs = c(0.10,0.50,0.90))})
-plot_percentile_range(pctl_tab,stds[,c("participant","alveolar_d")],col_idx,FALSE,"alveolar",graphics_path,"_d")
+plot_percentile_range(pctl_tab,stds[,c("participant","alveolar_d")],col_idx,FALSE,"coronal",graphics_path,"_d")
 
 ############
 # palatal

@@ -32,7 +32,7 @@ n_participants <- length(participants)
 # PRINT HISTOGRAMS
 ##################
 
-tv_loc <- c("bilabial","alveolar","palatal","velar","pharyngeal")
+tv_loc <- c("bilabial","coronal","palatal","velar","pharyngeal")
 
 colrs <- rainbow(n_participants)
 spacing <- 3.5

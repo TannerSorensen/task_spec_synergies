@@ -422,7 +422,7 @@ Summing such matrices produces a matrix that corresponds to a set of articulator
 
 We first obtained the factors $\mathbf{F}_\text{jaw}$ that capture the contribution of the jaw to vocal tract shaping (see the jaw factor in Fig.~\ref{fig:gfa}). 
 % 
-We performed principal components analysis of the jaw (i.e., mandible and chin, cf. Fig.~\ref{fig:segtemp}) contour vertices through eigendecomposition of the covariance matrix $\boldsymbol{\Sigma}_\text{jaw} = \mathbf{X}_\text{jaw}^\intercal \mathbf{X}_\text{jaw}/(n-1)$ into an orthogonal matrix $\mathbf{Q}_\text{jaw} \in \mathbb{R}^{2p\times q_\text{jaw}}$ whose columns are the principal axes of $\mathbf{X}_\text{jaw}$ and a diagonal matrix $\boldsymbol{\Lambda}_\text{jaw} \in \mathbb{R}^{q_\text{jaw} \times q_\text{jaw}}$ whose diagonal entries are the variances of $\mathbf{X}_\text{jaw}$ on the principal axes.
+We performed principal component analysis of the jaw (i.e., mandible and chin, cf. Fig.~\ref{fig:segtemp}) contour vertices through eigendecomposition of the covariance matrix $\boldsymbol{\Sigma}_\text{jaw} = \mathbf{X}_\text{jaw}^\intercal \mathbf{X}_\text{jaw}/(n-1)$ into an orthogonal matrix $\mathbf{Q}_\text{jaw} \in \mathbb{R}^{2p\times q_\text{jaw}}$ whose columns are the principal axes of $\mathbf{X}_\text{jaw}$ and a diagonal matrix $\boldsymbol{\Lambda}_\text{jaw} \in \mathbb{R}^{q_\text{jaw} \times q_\text{jaw}}$ whose diagonal entries are the variances of $\mathbf{X}_\text{jaw}$ on the principal axes.
 % 
 \begin{equation}
 \boldsymbol{\Sigma}_\text{jaw} = \mathbf{Q}_\text{jaw}\boldsymbol{\Lambda}_\text{jaw} \mathbf{Q}_\text{jaw}^{-1}
@@ -491,7 +491,7 @@ Specifically, $\mathbf{\tilde{X}}$ is independent of the jaw in the sense that i
 
 
 
-We performed principal components analysis of the tongue contour vertices through eigendecomposition of the covariance matrix $\boldsymbol{\tilde{\Sigma}}_\text{tongue} = \mathbf{\tilde{X}}_\text{tongue}^\intercal \mathbf{\tilde{X}}_\text{tongue}/(n-1)$ into an orthogonal matrix $\mathbf{Q}_\text{tongue}$ whose columns are the principal axes of $\mathbf{\tilde{X}}_\text{tongue}$ and a diagonal matrix $\boldsymbol{\Lambda}_\text{tongue}$ whose diagonal entries are the variances of $\mathbf{\tilde{X}}_\text{tongue}$ on the principal axes.
+We performed principal component analysis of the tongue contour vertices through eigendecomposition of the covariance matrix $\boldsymbol{\tilde{\Sigma}}_\text{tongue} = \mathbf{\tilde{X}}_\text{tongue}^\intercal \mathbf{\tilde{X}}_\text{tongue}/(n-1)$ into an orthogonal matrix $\mathbf{Q}_\text{tongue}$ whose columns are the principal axes of $\mathbf{\tilde{X}}_\text{tongue}$ and a diagonal matrix $\boldsymbol{\Lambda}_\text{tongue}$ whose diagonal entries are the variances of $\mathbf{\tilde{X}}_\text{tongue}$ on the principal axes.
 % 
 \begin{equation}
 \boldsymbol{\tilde{\Sigma}}_\text{tongue} = \mathbf{Q}_\text{tongue} \boldsymbol{\Lambda}_\text{tongue} \mathbf{Q}_\text{tongue}^{-1}
@@ -522,7 +522,7 @@ The procedure for deriving lip and velum factors is the same as for the tongue f
 
 According to Equation~\ref{eq:linearcombo}, the data matrix $\mathbf{X}$ is parameterized as the matrix product $\mathbf{W}\mathbf{F}^\intercal$. 
 %
-Sections~\ref{subsec:jawfactors} and~\ref{subsec:residfactors} specified the factors $\mathbf{F}$. 
+Sections~\ref{subsec:jawfactors} and~\ref{subsec:residfactors} specify the factors $\mathbf{F}$. 
 %
 This section derives the factor scores $\mathbf{W}$ from the factors $\mathbf{F}$ and the data matrix $\mathbf{X}$. 
 %
@@ -641,9 +641,9 @@ The expression for the estimator of the forward kinematic map in the neighborhoo
 \label{eq:lsqestimator}
 \mathbf{\hat{G}} (\mathbf{w})
 =
-\left( \mathbf{W}^\intercal \mathbf{C}(\mathbf{w}) \mathbf{W} \right)^{-1} \mathbf{X}^\intercal \mathbf{C}(\mathbf{w}) \mathbf{Z}
+\left( \mathbf{W}^\intercal \mathbf{C}(\mathbf{w}) \mathbf{W} \right)^{-1} \mathbf{W}^\intercal \mathbf{C}(\mathbf{w}) \mathbf{Z}
 \end{equation}
-This estimator is a modified version of the standard linear regression estimator $\left( \mathbf{W}^\intercal \mathbf{W} \right)^{-1} \mathbf{X}^\intercal \mathbf{Z}$ in which data-points close to $\mathbf{w}$ are assigned greater weight by the matrix $\mathbf{C}$. This results in a forward kinematic map whose form differs depending on where it is evaluated in the space of factor scores.
+This estimator is a modified version of the standard linear regression estimator $\left( \mathbf{W}^\intercal \mathbf{W} \right)^{-1} \mathbf{W}^\intercal \mathbf{Z}$ in which data-points close to $\mathbf{w}$ are assigned greater weight by the matrix $\mathbf{C}$. This results in a forward kinematic map whose form differs depending on where it is evaluated in the space of factor scores.
 
 
 
@@ -696,7 +696,7 @@ The results reported in this section were obtained with one jaw factor, four ton
 
 
 
-The median error of the forward kinematic map was smaller than the \SI{2.4}{\milli\meter} in-plane spatial resolution of the real-time MRI pulse sequence when \SIrange{20}{90}{\percent} training data-points were in the neighborhood (i.e., for all $f\in \left[ 0.2, 0.9\right]$; see Fig.~\ref{fig:cverrors}). The median error was smaller than the standard deviation of the observed constriction task variables for all participants and for all neighborhood sizes, except for the pharyngeal place with the largest neighborhood size of \SI{90}{\percent}.
+The median error of the forward kinematic map was smaller than the \SI{2.4}{\milli\meter} in-plane spatial resolution of the real-time MRI pulse sequence when \SIrange{20}{90}{\percent} training data-points were in the neighborhood (i.e., for all $f\in \left[ 0.2, 0.9\right]$; see Fig.~\ref{fig:cverrors}). The median error was smaller than the standard deviation of the observed constriction task variables for all participants and for all neighborhood sizes.
 
 
 The median error of the jacobian matrix was smaller than the \SI{2.4}{\milli\meter} in-plane spatial resolution of the real-time MRI pulse sequence when \SIrange{20}{90}{\percent} training data-points were in the neighborhood (i.e., for all $f\in \left[ 0.2, 0.9\right]$; see Fig.~\ref{fig:cverrors}).
@@ -707,7 +707,7 @@ The reason for this is that error for the jacobian matrix was small, but the fra
 
 In sum, the error of the forward kinematic map is small enough to reliably quantify speech behavior for the purpose of the present study.
 % 
-Whether the error of the jacobian matrix was small enough to reliably quantify speech behavior was quantified through the bias and precision of the articulator synergy biomarker, a topic taken up in the next section. 
+Whether the error of the jacobian matrix is small enough to reliably quantify speech behavior was quantified through the bias and precision of the articulator synergy biomarker, a topic taken up in the next section. 
 
 \begin{figure*}
 \raggedright
@@ -730,7 +730,7 @@ The standard deviation of observed (frame-to-frame finite differences in) constr
 
 \subsection{Biomarker definition}
 
-In the neighborhood of $\mathbf{w}(t)$, the jacobian $\mathbf{J}(\mathbf{w}(t))$ of the forward kinematic map provided the following relation between change $\mathbf{\dot{z}}(t)$ in constriction task variables and change $\mathbf{\dot{w}}(t)$ in articulator shape and position.
+In the neighborhood of $\mathbf{w}(t)$, the jacobian $\mathbf{J}(\mathbf{w}(t))$ of the forward kinematic map provides the following relation between change $\mathbf{\dot{z}}(t)$ in constriction task variables and change $\mathbf{\dot{w}}(t)$ in articulator shape and position.
 %
 \begin{align}
 \label{eq:biomarkerderivationcontinuoustime}
@@ -769,7 +769,7 @@ The discrete-time signal $\lambda_{\mathcal{U},\ell}[n]$ is the cumulative sum o
 \lambda_{\mathcal{U},\ell} \left[ n \right]
 	= \sum_{k\in \mathcal{U}} \sum_{j=0}^{n} \mathbf{j}_{\ell,\cdot} \mathbf{P}_k \Delta \mathbf{w}_{j,\cdot}
 \end{align}
-The set $\mathcal{U}$ contained the indices of factors corresponding to the target articulator. For example, when the numbers of factors were $q_\text{jaw} = 1$, $q_\text{tongue} = 4$, $q_\text{lip} = 2$, and $q_\text{velum} = 1$, then  $\mathcal{U}=\{1\}$ was the jaw; $\mathcal{U}=\{2,3,4,5\}$ was the tongue; $\mathcal{U}=\{6,7\}$ was the lips; and $\mathcal{U}=\{8\}$ was the velum.
+The set $\mathcal{U}$ contains the indices of factors corresponding to the target articulator. For example, when the numbers of factors are $q_\text{jaw} = 1$, $q_\text{tongue} = 4$, $q_\text{lip} = 2$, and $q_\text{velum} = 1$, then  $\mathcal{U}=\{1\}$ is the jaw; $\mathcal{U}=\{2,3,4,5\}$ is the tongue; $\mathcal{U}=\{6,7\}$ is the lips; and $\mathcal{U}=\{8\}$ is the velum.
 %
 If $N+1$ is the number of real-time MR images acquired during a single utterance, then the integer $n$ starts at $0$ (i.e., the temporal onset of a constriction) and increases to $N$ (i.e., the temporal offset of the subsequent release). 
 %
@@ -779,12 +779,12 @@ As $n$ increases from the onset $0$ of a constriction to the offset $N$ of the s
 
 Let $\mathcal{J}$ be the set of jaw factor indices and let $\mathcal{E}$ be the set of lip or tongue factor indices. Specifically, the set $\mathcal{E}$ contains lip factor indices for the bilabial place of articulation and contains tongue factor indices for the coronal, palatal, velar, and pharyngeal places of articulation. 
 %
-We defined the articulator synergy biomarker $\nu_\ell$ for place of articulation $\ell$ as the range of $\lambda_{\mathcal{J},\ell} [ n ]$ divided by the range of $\lambda_{\mathcal{J},\ell} [ n ] + \lambda_{\mathcal{E},\ell} [ n ]$
+We define the articulator synergy biomarker $\nu_\ell$ for place of articulation $\ell$ as the range of $\lambda_{\mathcal{J},\ell} [ n ]$ divided by the range of $\lambda_{\mathcal{J},\ell} [ n ] + \lambda_{\mathcal{E},\ell} [ n ]$
 over all samples $n \in \{0, 1, 2, \ldots, N\}$.
 %
-Range was computed as the difference between the 90th percentile $P_{90}$ and 10th percentile $P_{10}$. 
+Range is computed as the difference between the 90th percentile $P_{90}$ and 10th percentile $P_{10}$. 
 %
-Thus, the articulator synergy biomarker $\nu_\ell$ was the following percentage.
+Thus, the articulator synergy biomarker $\nu_\ell$ is the following percentage.
 \begin{equation}
 \label{eq:nu}
 \nu_\ell
@@ -874,24 +874,15 @@ The simulation was repeated \SI{15} times, each with a different value of the ja
 
 This section evaluates the precision of the articulator synergy biomarker. Precision is the agreement between replicate measurements of a vocal tract constriction by the same participant for the same constriction task~\citep{kessler2015emerging,sullivan2015metrology}. 
 %
-The same-day test-retest repeatability experiment evaluated the repeatability of the articulator synergy biomarker under variable conditions of MRI operator variability, image analysis variability, and short-term physiological variability. 
+The same-day test-retest repeatability experiment evaluated the repeatability of the articulator synergy biomarker under variable conditions of MRI operator variability, image analysis variability, and short-term physiological variability~\cite{toger2017test}. 
 %
-MRI operator variability included subject positioning within the scanner bore and scan plane localization. 
+MRI operator variability includes subject positioning within the scanner bore and scan plane localization. 
 %
-Image analysis variability included variability in the manual step of time-point annotation and in the manual initialization of the segmentation algorithm. 
+Image analysis variability includes variability in the manual step of time-point annotation and in the manual initialization of the segmentation algorithm. 
 %
-Short-term physiological variability included same-day scan-to-scan variability in speech motor control. 
+Short-term physiological variability includes same-day scan-to-scan variability in speech motor control. 
 %
 Precision is an important parameter, as it establishes a limit on effect size and group differences that the method can resolve.
-
-\begin{figure*}[t]
-\raggedright
-\includegraphics[width=\linewidth]{ICCFigure.pdf}
-
-\caption{(color online) Comparison of intraclass correlation coefficients (ICC) for different numbers of jaw factors (color) and for different numbers of tongue and lip factors ($x$-axis) for the bilabial stop \textipa{[p]}, coronal stop \textipa{[t]}, palatal approximation \textipa{[i]}, velar stop \textipa{[k]}, and pharyngeal approximation \textipa{[A]}.}
-\label{fig:icc_all}
-
-\end{figure*}
 
 Study participants repeated the MRI experiment for a total of two MRI scans. Agreement between Scan~\num{1} and Scan~\num{2} was quantified using the intraclass correlation coefficient (ICC). The ICC is a quantitative measure of test-retest repeatability for articulator synergy biomarkers. 
 The ICC is the ratio of inter-participant variability to total variability. The greater the inter-participant variability compared to total variability, the greater the reliability, because random error is smaller relative to the variance of the articulator synergy biomarker between experiment participants. 
@@ -927,6 +918,17 @@ We investigated how varying the number of factors and the neighborhood size affe
 The reason that the present study investigated parameters of the statistical analysis and did not investigate parameters of image acquisition and reconstruction was that the statistical analysis directly related to the novel proposal of the present study, namely, estimating the forward kinematic map from MRI. Image acquisition and reconstruction was only indirectly related to this aim. 
 %
 Nevertheless, repeatability will depend on imaging parameters, and if different imaging parameters are used for future studies on the articulator synergy biomarker, the repeatability of the biomarker should be evaluated before drawing scientific conclusions. 
+
+
+\begin{figure*}[t]
+\raggedright
+\includegraphics[width=\linewidth]{ICCFigure.pdf}
+
+\caption{(color online) Comparison of intraclass correlation coefficients (ICC) for different numbers of jaw factors (color) and for different numbers of tongue and lip factors ($x$-axis) for the bilabial stop \textipa{[p]}, coronal stop \textipa{[t]}, palatal approximation \textipa{[i]}, velar stop \textipa{[k]}, and pharyngeal approximation \textipa{[A]}.}
+\label{fig:icc_all}
+
+\end{figure*}
+
 
 Fig.~\ref{fig:icc_all} shows the repeatability of the articulator synergy biomarker for different numbers of jaw, tongue, and lip factors. 
 %
@@ -1147,14 +1149,14 @@ Sample distribution by participant shown with a different color for each partici
 
 The present study tested the task-dependence of articulator synergies by determining whether the relative contribution of the jaw, tongue, and lips differs by constriction task using a linear mixed effects model fitted with the package lme4~\citep{bates2015fitting} in R~\citep{r2017language}. Specifically, the present study tested the null hypotheses that there are no pairwise differences in articulator synergy biomarker values between constriction tasks.
 
-Consider the sample of $n=800$ articulator synergy biomarker values (\num{8} participants $\times$ \num{5} constriction tasks $\times$ \num{10} repeated measurements of the articulator synergy biomarker $\times$ \num{2} scans). Let $y_{i,j,k,\ell}$ be the biomarker value for constriction task $i$, participant $j$, and replicate measurement $k$ from scan $\ell$ (i.e., Scan~\num{1} or Scan~\num{2}). The linear mixed effects model of $y_{i,j,k,\ell}$ was 
+Consider the sample of $n=800$ articulator synergy biomarker values (\num{8} participants $\times$ \num{5} constriction tasks $\times$ \num{10} repeated measurements of the articulator synergy biomarker $\times$ \num{2} scans). Let $y_{i,j,k,\ell}$ be the biomarker value for constriction task $i$, participant $j$, and replicate measurement $k$ from scan $\ell$ (i.e., Scan~\num{1} or Scan~\num{2}). The linear mixed effects model of $y_{i,j,k,\ell}$ is 
 %
 \begin{equation}
 \label{eq:lmm}
-y_{i,j,k,\ell} = m + b_i + p_j + q_{j,k} + r_{j,\ell} + c_\ell + e_{i,j,k,\ell},
+y_{i,j,k,\ell} = m + b_i + p_j + c_\ell + q_{i,j} + r_{j,\ell} + e_{i,j,k,\ell},
 \end{equation}
 %
-where $m$ was the baseline mean, $b_i$ was the fixed effect for constriction task, $c_\ell$ was the fixed effect for scan number, $p_i$ was the random intercept for participant $i$, $q_{j,k}$ was the by-participant random slope for constriction task, $r_{j,\ell}$ was the by-participant random slope for scan number, and $e_{i,j,k}$ was the intra-participant error. Multiple comparisons were corrected for using Tukey's range test with the package multcomp~\citep{hothorn2008simultaneous} in R~\citep{r2017language}. This section reports adjusted $p$-values. See Table~\ref{tab:stat_results} for results.
+where $m$ is the baseline mean, $b_i$ is the fixed effect for constriction task, $p_i$ is the random intercept for participant $i$, $c_\ell$ is the fixed effect for scan number, $q_{i,j}$ is the by-participant random slope for constriction task, $r_{j,\ell}$ is the by-participant random slope for scan number, and $e_{i,j,k,\ell}$ is the intra-participant error. Multiple comparisons are corrected for using Tukey's range test with the package multcomp~\citep{hothorn2008simultaneous} in R~\citep{r2017language}. This section reports adjusted $p$-values. See Table~\ref{tab:stat_results} for results.
 
 \begin{table}
 \centering
@@ -1306,7 +1308,15 @@ and that the jaw contributed significantly less to the pharyngeal approximation 
 %
 We reject the null hypothesis that the articulator synergy biomarker does not differ by constriction task. 
 %
-Synergies differ in terms of inter-articulator coordination depending on the constriction task.
+Synergies differ in terms of inter-articulator coordination depending on the constriction task (see Fig.~\ref{fig:task_spec_summary} for summary).
+
+
+\begin{figure}
+\includegraphics[width=\linewidth]{task_spec_summary.png}
+
+\caption{(color online) Synergies differ in terms of inter-articulator coordination depending on the constriction task. Constriction tasks are ordered from top to bottom in terms of jaw usage. Vertical lines indicate a statistically significant contrast. Compare with numeric results in Table~\ref{tab:stat_results}.}
+\label{fig:task_spec_summary}
+\end{figure}
 
 
 
@@ -1421,7 +1431,7 @@ least to the velar stop for \textipa{[k]},
 more to pharyngeal approximation for \textipa{[A]}, 
 still more to palatal approximation for \textipa{[i]},
 and most to the coronal stop for \textipa{[t]}.
-Additionally, the jaw contributes more to the coronal stop for \textipa{[t]} than to the bilabial stop for \textipa{[p]}.
+Additionally, the jaw contributes more to the coronal stop for \textipa{[t]} than to the bilabial stop for \textipa{[p]} (see Fig.~\ref{fig:task_spec_summary}).
 
 
 
@@ -1460,7 +1470,7 @@ This indicates variability by participant in the effect for constriction task.
 By-participant variability in the effect for constriction task is further characterized by determining whether individual participants display similar effects for constriction task (i.e., same pattern of average values) and similar variances across constriction tasks.
 %
 For each participant, the Mann-Whitney U Test identifies all pairs of constriction tasks that differ in average biomarker value,
-and the Fligner-Killeen Test identifies all pairs of constriction tasks that differ in biomarker variance (see Figure~\ref{fig:consistency}).
+and the Fligner-Killeen Test identifies all pairs of constriction tasks that differ in biomarker variance (see Fig.~\ref{fig:consistency}).
 %
 The study performed (number of participants) $\times$ ((number of constriction tasks)\textsuperscript{2} - (number of constriction tasks))/2 $=$ \num{80} Mann-Whitney U Tests and the same number of Fligner-Killeen tests for a total of \num{160} statistical tests. 
 %
@@ -1575,17 +1585,17 @@ This section provides a preliminary indication of how this is possible within th
 
 
 The method by which Section~\ref{sec:gfa} obtained jaw factors offers a recipe for obtaining factors that are associated with the motion of a subset of data-points. 
-First, we obtain the jaw factors (Figure~\ref{fig:extensionsfigure}, Panel B) as in Section~\ref{sec:gfa}.
+First, we obtain the jaw factors (Fig.~\ref{fig:extensionsfigure}, Panel B) as in Section~\ref{sec:gfa}.
 The null space of the jaw factors captures the part of tongue and lip motion that is independent of jaw motion. 
 
 Second, we project the data matrix on the null space of the jaw factors as in Section~\ref{sec:gfa}. This is the contour motion that is independent of the jaw.
-Rather than subject the whole tongue contour to principal components analysis as in Section~\ref{sec:gfa}, we perform principal components analysis only on the tongue body contour vertices.
-The tongue body factors (Figure~\ref{fig:extensionsfigure}, Panels C and D) are the vectors of covariances between the z-scored tongue body principal component scores and the tongue body and tongue tip contour vertices.
+Rather than subject the whole tongue contour to principal component analysis as in Section~\ref{sec:gfa}, we perform principal component analysis only on the tongue body contour vertices.
+The tongue body factors (Fig.~\ref{fig:extensionsfigure}, Panels C and D) are the vectors of covariances between the z-scored tongue body principal component scores and the tongue body and tongue tip contour vertices.
 The null space of the set of jaw and tongue body factors captures the part of tongue tip motion that is independent of jaw and tongue body motion.
 
 Third, we project the data matrix on the null space of the jaw and tongue body factors. This is the contour motion that is independent of the jaw and tongue body.
-We perform principal components analysis on the tongue tip contour vertices.
-The tongue tip factors (Figure~\ref{fig:extensionsfigure}, Panel E) are the vectors of covariances between the z-scored tongue tip principal component scores and the tongue tip contour vertices.
+We perform principal component analysis on the tongue tip contour vertices.
+The tongue tip factors (Fig.~\ref{fig:extensionsfigure}, Panel E) are the vectors of covariances between the z-scored tongue tip principal component scores and the tongue tip contour vertices.
 The null space of the set of jaw, tongue body, and tongue tip factors captures residual variance that is independent of jaw, tongue body, and tongue tip motion.
 
 Whereas Section~\ref{sec:gfa} extracts all tongue factors from the null space of the jaw factors, the procedure described above extracts tongue body factors from the null space of jaw factors and then extracts tongue tip factors from the null space of the jaw and tongue body factors.
@@ -1606,7 +1616,7 @@ This procedure offers a systematic way to decompose the tongue into subparts tha
 
 \subsection{Forward kinematics and the nervous system}
 
-The nervous system has an internal model of the forward kinematics~\citep{shadmehr2010error}. This model encodes the expected result of motor commands in terms of expected sensory consequences (proprioceptive and auditory consequences in the case of speech). 
+The nervous system has an internal model of the forward kinematics~\citep{shadmehr2010error, guenther2016neural}. This model encodes the expected result of motor commands in terms of expected sensory consequences (proprioceptive and auditory consequences in the case of speech). 
 %
 Both the forward kinematics of the vocal tract and the nervous system's internal model of the forward kinematics are important components of a computational model of motor control  (for a theoretical model of speech motor control that cleanly distinguishes these components, see \citealt{Ramanarayanan+2016}; cf. ``forward kinematics'' and ``model of forward kinematics'' blocks; see also \citealt{houde2011speech,todorov2002optimal}). Although the present study estimates the forward kinematics, it does not characterize the nervous system's internal model of the forward kinematics. While both relate the articulator degrees of freedom to task variables, the coordinate system that represents the articulator degrees of freedom in the nervous system may differ from the coordinate system of the present study. That is, the nervous system may represent the articulator degrees of freedom differently than with jaw, tongue, and lip factors. If the coordinate system for the nervous control of vocal tract movement were known, insight into motor variability, motor equivalence, and redundancy could be gleaned from analysis of the forward kinematic map using the uncontrolled manifold approach~\cite{scholz1999uncontrolled}. However, the results of such studies are inconclusive without knowledge of the coordinate system used in the nervous system~\cite{sternad2010coordinate}. Knowledge of the coordinate system could potentially be obtained through detailed modeling of the innervation of head and neck muscles. Indeed, physiological knowledge guides the choice of coordinate system for analysis of the uncontrolled manifold in human upper limb movement (cf. argument of~\citealt{scholz2014use}, \S~7.1, Point~3).
 Biomechanical models offer tools for investigating the coordinate system available to the nervous system for producing vocal tract movements~\cite{lloyd2012artisynth}. \citet{Szabados+2016} used a biomechanical model to investigate motor equivalence using the uncontrolled manifold approach. Future work should investigate whether MRI can be used to model the nervous system's internal model of the forward kinematics of the vocal tract. 

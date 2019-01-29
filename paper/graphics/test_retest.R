@@ -31,7 +31,7 @@ dir.create(graphics_path, showWarnings = FALSE)
 jaw_fac <- c(1,2,3)
 tng_fac <- c(4,6,8)
 lip_fac <- c(2,3)
-tv_loc <- c("bilabial","alveolar","palatal","velar","pharyngeal")
+tv_loc <- c("bilabial","coronal","palatal","velar","pharyngeal")
 font_scale <- 3
 cols<-brewer.pal(n=3,name="Set1")
 

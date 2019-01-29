@@ -148,9 +148,9 @@ Localization of the midsagittal scan plane was performed using RTHawk (HeartVist
 \section{Cross-validation of the direct and differential kinematics}
 \label{sec:crossvalidation}
 
-For the forward kinematic map, the median error and the 95\textsuperscript{th} percentile of the error was smaller than the \SI{2.9}{\milli\meter} in-plane spatial resolution of the real-time MRI pulse sequence when \SIrange{5}{95}{\percent} of training data-points were in the neighborhood (i.e., for all $f\in \left[ 0.05, 0.95\right]$; see Fig.~\ref{fig:cverrors}). 
+For the forward kinematic map, the median error and the 90\textsuperscript{th} percentile of the error was smaller than the \SI{2.9}{\milli\meter} in-plane spatial resolution of the real-time MRI pulse sequence when \SIrange{20}{95}{\percent} of training data-points were in the neighborhood (i.e., for all $f\in \left[ 0.2, 0.95\right]$; see Fig.~\ref{fig:cverrors}). 
 
-For the jacobian matrix, the median error was smaller than the \SI{2.9}{\milli\meter} in-plane spatial resolution of the real-time MRI pulse sequence when \SIrange{5}{95}{\percent} of training data-points were in the neighborhood (i.e., for all $f\in \left[ 0.05, 0.95\right]$; see Fig.~\ref{fig:cverrors}). However, when very few training data-points were in the neighborhood (i.e., for $f=0.05$), the 95\textsuperscript{th} percentile of the error distribution exceeded the \SI{2.9}{\milli\meter} in-plane spatial resolution. 
+For the jacobian matrix, the median error was smaller than the \SI{2.9}{\milli\meter} in-plane spatial resolution of the real-time MRI pulse sequence when \SIrange{20}{95}{\percent} of training data-points were in the neighborhood (i.e., for all $f\in \left[ 0.2, 0.95\right]$; see Fig.~\ref{fig:cverrors}). However, when very few training data-points were in the neighborhood (i.e., for $f=0.2$), the 90\textsuperscript{th} percentile of the error distribution exceeded the \SI{2.9}{\milli\meter} in-plane spatial resolution. 
 
 \begin{figure*}
 \raggedright
@@ -166,16 +166,6 @@ The standard deviation of observed (frame-to-frame finite differences in) constr
 
 
 
-\begin{figure*}
-
-\includegraphics[width=\textwidth]{SuppPub2_HistogramFigure.pdf}
-
-\caption{\label{fig:histograms}
-Sample distribution of the articulator synergy biomarker at the bilabial, alveolar, palatal, velar, and pharyngeal places of articulation. The biomarker indicates the percent of a constriction that was produced by the jaw.
-A value of \SI{0}{\percent} indicates that lip or tongue motion produced the entire constriction, whereas a value of \SI{100}{\percent} indicates that jaw motion produced the entire constriction. 
-Sample distribution by participant shown with a different color for each participant.}
-
-\end{figure*}
 
 
 
@@ -190,97 +180,99 @@ Sample distribution by participant shown with a different color for each partici
 \section{Testing the task-specificity of articulator synergies}
 \label{sec:taskdependence}
 
-Table~\ref{tab:stat_results} displays the results of all statistical tests. Compare to Table~I of the primary study.
+Table~\ref{tab:stat_results} reports the results of the statistical tests. Compare to Table~II of the primary study. The results of the replication study agree with those of the main study, except for the palatal approximation-pharyngeal approximation contrast and pharyngeal approximation-velar stop contrast. In the primary study, these two contrasts were significant. In the replication, they are not.
 
-\begin{table}
+\begin{table*}
 \centering
-\begin{tabular}{l l l l l}
-treatment & estimate (\%) & reference & $z$ & $p$ \\
+\begin{tabular}{l l l l}
+contrast & estimate (\%) & $z$ & $p$ \\
 \hline
 %
-% velar vs. bilabial
+% bilabial vs. coronal
 %
-bilabial &
+bilabial stop-coronal stop &
+\SI{-38} &
+-6.1 &
+\ensuremath{5.5\times 10^{-9}} \\
+%
+% bilabial vs. palatal
+%
+bilabial stop-palatal approximation &
+\SI{-19} &
+-2.3 &
+0.14 \\
+%
+% bilabial vs. velar
+%
+bilabial stop-velar stop &
 \SI{3.8} &
-velar &
 0.57 &
-0.96 \\
+0.97 \\
 %
-% velar vs. alveolar
+% bilabial vs. pharyngeal
 %
-alveolar &
-\SI{42} &
-velar &
-6 &
-\ensuremath{6.1\times 10^{-9}} \\
-%
-% velar vs. palatal
-%
-palatal &
-\SI{23} &
-velar &
-4.3 &
-\ensuremath{8.4\times 10^{-5}} \\
-%
-% pharyngeal vs. bilabial
-%
-bilabial &
+bilabial stop-pharyngeal approximation &
 \SI{-9.3} &
-pharyngeal &
 -1.2 &
-0.67 \\
+0.74 \\
 %
-% pharyngeal vs. alveolar
+% coronal vs. palatal
 %
-alveolar &
+coronal stop-palatal approximation &
+\SI{19} &
+3.1 &
+0.015 \\
+%
+% coronal vs. velar
+%
+coronal stop-velar stop &
+\SI{42} &
+6 &
+\ensuremath{10^{-8}} \\
+%
+% coronal vs. pharyngeal
+%
+coronal stop-pharyngeal approximation &
 \SI{29} &
-pharyngeal &
 4.3 &
-\ensuremath{5.3\times 10^{-5}} \\
+\ensuremath{1.4\times 10^{-4}} \\
 %
-% pharyngeal vs. palatal
+% palatal vs. velar
 %
-palatal &
+palatal approximation-velar stop &
+\SI{23} &
+4.3 &
+\ensuremath{1.7\times 10^{-4}} \\
+%
+% palatal vs. pharyngeal
+%
+palatal approximation-pharyngeal approximation &
 \SI{10} &
-pharyngeal &
 2.7 &
-0.039 \\
-
+0.053 \\
+%
+% pharyngeal vs. velar
+%
+pharyngeal approximation-velar stop &
+\SI{13} &
+2.4 &
+0.093 \\
 \hline
 \end{tabular}
-\caption{Results for statistical tests of the null hypothesis that the difference in articulator synergy biomarker value between treatment and reference place of articulation. Rows indicate separate tests. $p$-values corrected for multiple comparisons with Tukey's range test; adjusted $p$-values reported.}
+\caption{Results for statistical tests of the null hypothesis that the contrast is zero. Rows indicate separate tests. $p$-values corrected for multiple comparisons with Tukey's range test (adjusted $p$-values reported).}
 \label{tab:stat_results}
-\end{table}
+\end{table*}
 
+\begin{figure*}
 
-We reject the null hypothesis that the articulator synergy biomarker does not differ between velar and alveolar and between pharyngeal and alveolar places of articulation. 
-%
-We infer that the jaw contributed significantly more to constrictions at the alveolar place compared to constrictions at the velar and pharyngeal places.
-%
-This indicates that synergies with different places of articulation may differ in terms of inter-articulator coordination.
+\includegraphics[width=\textwidth]{SuppPub2_HistogramFigure.pdf}
 
+\caption{\label{fig:histograms}
+Sample distribution of the articulator synergy biomarker at the bilabial, alveolar, palatal, velar, and pharyngeal places of articulation. The biomarker indicates the percent of a constriction that was produced by the jaw.
+A value of \SI{0}{\percent} indicates that lip or tongue motion produced the entire constriction, whereas a value of \SI{100}{\percent} indicates that jaw motion produced the entire constriction. 
+Sample distribution by participant shown with a different color for each participant.}
 
-
-
-The sample distribution of the articulator synergy biomarker at the velar place had small dispersion about a distinct peak at \SI{10}{\percent} 
-%
-(median: \SI{12}{\percent}, 
-inter-quartile range: \SIrange{6.3}{27}{\percent}; see histograms in Fig.~\ref{fig:histograms}).
-%
-The distinctly peaked sample distributions of the articulator synergy biomarkers at the velar place likely contributed to the statistically significant alveolar-velar and palatal-velar differences.
-
-Unlike in the primary study, the alveolar biomarkers lacked a distinct peak at \SI{60}{\percent}
-%
-(median: \SI{57}{\percent}, 
-inter-quartile range: \SIrange{49}{78}{\percent}; see histograms in Fig.~\ref{fig:histograms}).
-%
-Nevertheless, the alveolar-velar and alveolar-pharyngeal differences were significant.
-
-This replication study found significant palatal-velar and palatal-pharyngeal differences. Although the effect estimates in the primary study were similar, these effects were not significant in the primary study. 
-
-
-
-
+\end{figure*}
 
 
 \bibliography{mybib.bib}

@@ -3,7 +3,7 @@ graph_file_name = 'validation_graphic';
 if ~exist(graphics_path,'dir')
     mkdir(graphics_path)
 end
-tv_names = {'bilabial','alveolar','palatal','velar','pharyngeal'};
+tv_names = {'bilabial','coronal','palatal','velar','pharyngeal'};
 
 real_participant_name = 'm5_rep1';
 contour_data_filename = 'contour_data_jaw1_tng4_lip2_vel1_lar2_f100.mat';
@@ -52,7 +52,7 @@ plot([10e-4 10e2],[0 0],'--k')
 grid on
 axis square
 hold off
-legend(lgd_lines,{'bilabial','alveolar','palatal','velar','pharyngeal'})
+legend(lgd_lines,{'bilabial','coronal','palatal','velar','pharyngeal'})
 print(fullfile(graphics_path,[graph_file_name num2str(1)]),'-dpdf')
 
 
@@ -88,7 +88,7 @@ ylabel('measured biomarker')
 xlabel('true biomarker')
 grid on
 hold off
-legend(lgd_lines,{'bilabial','alveolar','palatal','velar','pharyngeal'},'Location','NorthWest')
+legend(lgd_lines,{'bilabial','coronal','palatal','velar','pharyngeal'},'Location','NorthWest')
 print(fullfile(graphics_path,[graph_file_name num2str(2)]),'-dpdf')
 
 

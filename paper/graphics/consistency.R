@@ -284,7 +284,7 @@ dev.off()
 #     abline(h=seq(0,0.3,0.05), col="gray", lwd=2)
 #     lines(a0$tv+jit[k], a0$bm, col=tv_col_vec[k], type="o", pch=16, cex=2, lwd=4)
 #     axis(1, at=seq(1,5,1), cex.axis=1.5,
-#          labels=c("bilabial", "alveolar", "palatal", "velar", "pharyngeal"))
+#          labels=c("bilabial", "coronal", "palatal", "velar", "pharyngeal"))
 #     axis(2, at=seq(0,0.3,0.05), cex.axis=1.5, las=1,
 #          labels=paste(100*seq(0,0.3,0.05),"%", sep=""))
 #   }else{
@@ -309,7 +309,7 @@ dev.off()
 #     abline(h=seq(0,1,0.1), col="gray", lwd=2)
 #     lines(a0$tv+jit[k], a0$bm, col=tv_col_vec[k], type="o", pch=16, cex=2, lwd=4)
 #     axis(1, at=seq(1,5,1), cex.axis=1.5,
-#          labels=c("bilabial", "alveolar", "palatal", "velar", "pharyngeal"))
+#          labels=c("bilabial", "coronal", "palatal", "velar", "pharyngeal"))
 #     axis(2, at=seq(0,1,0.1), cex.axis=1.5, las=1,
 #          labels=paste(100*seq(0,1,0.1),"%", sep=""))
 #   }else{
