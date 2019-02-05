@@ -90,13 +90,13 @@ std_weights = std(contour_data.weights);
 for j=1:size(contour_data.U_gfa,2)  % component under examination
     parameters=zeros(1,size(std_weights,2));
     parameters(j)=-2*std_weights(j);
-    plot_from_xy(weights_to_vtshape(parameters, mean_vt_shape, contour_data.U_gfa, 'sorensen2018'),sections_id(1,:),'b'); hold on
+    plot_from_xy(weights_to_vtshape(parameters, mean_vt_shape, contour_data.U_gfa, 'sorensen2018'),contour_data.sections_id(1,:),'b'); hold on
     
     parameters=zeros(1,size(std_weights,2));
     parameters(j)=2*std_weights(j);
-    plot_from_xy(weights_to_vtshape(parameters, mean_vt_shape, contour_data.U_gfa, 'sorensen2018'),sections_id(1,:),'r'); 
+    plot_from_xy(weights_to_vtshape(parameters, mean_vt_shape, contour_data.U_gfa, 'sorensen2018'),contour_data.sections_id(1,:),'r'); 
     
-    plot_from_xy(mean(D),sections_id(1,:),'k'); hold off
+    plot_from_xy(mean(D),contour_data.sections_id(1,:),'k'); hold off
         
     axis([-40 20 -30 30]); axis off;
 
@@ -107,20 +107,20 @@ end
 
 %% Plot parcellation into jaw, tongue body, and tongue tip
 colr = hex2rgb({'#E41A1C','#377EB8','#4DAF4A','#984EA3','#FF7F00','#A65628'});
-plot_from_xy(mean_vt_shape,sections_id(1,:),'k'); hold on
+plot_from_xy(mean_vt_shape,contour_data.sections_id(1,:),'k'); hold on
 xy = mean_vt_shape(1,[jaw_idx jaw_idx]);
 plot(xy(1:end/2),xy(end/2+1:end),'Color',colr(1,:),'LineWidth',4)
 
 tongue_body_idx = 1:23;
-xy = mean_vt_shape(1,[ismember(1:length(sections_id), tongue_body_idx), ismember(1:length(sections_id), tongue_body_idx)]);
+xy = mean_vt_shape(1,[ismember(1:length(contour_data.sections_id), tongue_body_idx), ismember(1:length(contour_data.sections_id), tongue_body_idx)]);
 plot(xy(1:end/2),xy(end/2+1:end),'Color',colr(2,:),'LineWidth',4)
 
 tongue_body_idx = 28:30;
-xy = mean_vt_shape(1,[ismember(1:length(sections_id), tongue_body_idx), ismember(1:length(sections_id), tongue_body_idx)]);
+xy = mean_vt_shape(1,[ismember(1:length(contour_data.sections_id), tongue_body_idx), ismember(1:length(contour_data.sections_id), tongue_body_idx)]);
 plot(xy(1:end/2),xy(end/2+1:end),'Color',colr(2,:),'LineWidth',4)
 
 tongue_tip_idx = 23:28;
-xy = mean_vt_shape(1,[ismember(1:length(sections_id), tongue_tip_idx), ismember(1:length(sections_id), tongue_tip_idx)]);
+xy = mean_vt_shape(1,[ismember(1:length(contour_data.sections_id), tongue_tip_idx), ismember(1:length(contour_data.sections_id), tongue_tip_idx)]);
 plot(xy(1:end/2),xy(end/2+1:end),'Color',colr(3,:),'LineWidth',4)
 
 h = zeros(3, 1);

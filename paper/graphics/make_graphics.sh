@@ -16,7 +16,13 @@ mv -f data/realtimeMRI realtimeMRI
 mv -f data/templates templates
 
 # make MATLAB graphics
-matlab -nodisplay -nodesktop -r "run graphs_segmentation.m; run graphs_factors.m; run graphs_biomarker.m; run graphs_validation; run graphs_gfa_var_expl.m; run graphs_templates.m; exit"
+matlab -nodisplay -nodesktop -r "run graphs_segmentation.m; exit"
+matlab -nodisplay -nodesktop -r "run graphs_factors.m; exit"
+matlab -nodisplay -nodesktop -r "run graphs_biomarker.m; exit"
+matlab -nodisplay -nodesktop -r "run graphs_validation.m; exit"
+matlab -nodisplay -nodesktop -r "run graphs_gfa_var_expl.m; exit"
+matlab -nodisplay -nodesktop -r "run graphs_templates.m; exit"
+matlab -nodisplay -nodesktop -r "run graphs_extensions.m; exit"
 
 # make R graphics
 Rscript histograms.R
@@ -25,7 +31,7 @@ Rscript test_retest.R
 Rscript consistency.R
 
 # declare a list of subfolders that contain images
-declare -a subfolders=("cv_errors" "mri" "gfa" "segmentation" "constrictions" "histograms" "icc" "templates" "biomarker" "validation" "gfa_var_expl" "consistency")
+declare -a subfolders=("cv_errors" "mri" "gfa" "segmentation" "constrictions" "histograms" "icc" "templates" "biomarker" "validation" "gfa_var_expl" "consistency" "extensions")
 
 # crop all figures
 for subfolder in "${subfolders[@]}"
@@ -49,4 +55,4 @@ pdflatex BiomarkerFigure.tex
 pdflatex ValidationFigure.tex
 pdflatex VarExplFigure.tex
 pdflatex ConsistencyFigure.tex
-
+pdflatex ExtensionsFigure.tex
