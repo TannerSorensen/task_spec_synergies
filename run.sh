@@ -30,13 +30,4 @@ cd ..
 # make supplementary materials
 cd supplementary_materials_01
 ./make_supppub1.sh
-cd ../supplementary_materials_02
-,/make_supppub2.sh
-cd ../supplementary_materials_03
-./make_supppub3.sh
-cd ../supplementary_materials_04
-./make_supppub4.sh
-cd ../supplementary_materials_05
-./make_supppub5.sh
-cd ..
 

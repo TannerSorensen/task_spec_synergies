@@ -1656,7 +1656,7 @@ Fourth, a forward kinematic map from articulators to acoustic formant frequencie
 
 \section{Reproducibility and replication}
 
-The scripts required to reproduce the present study are available as supplementary material.\footnote{The supplementary material required to reproduce the present study is available at [URL will be inserted by AIP].}
+The scripts required to reproduce the present study are available at \url{https://github.com/TannerSorensen/task_spec_synergies}.
 %
 The MRI data-set is available at \url{http://sail.usc.edu/span/test-retest/} for free use by the research community~\citep[see][]{toger2017test}.
 %

@@ -1,3 +1,13 @@
 #!/usr/bin/env bash
+cd graphics
+Rscript err.R
+Rscript histograms.R
+pdflatex SuppPub2_ErrorFigure.tex
+pdflatex SuppPub2_HistogramFigure.tex
+cd ..
 
-wget -O SuppPub1.zip https://github.com/TannerSorensen/task_spec_synergies/archive/master.zip
+Rscript -e "library(knitr); knit('SuppPub2.Rnw')"
+pdflatex SuppPub2.tex
+bibtex SuppPub2.aux
+pdflatex SuppPub2.tex
+pdflatex SuppPub2.tex
