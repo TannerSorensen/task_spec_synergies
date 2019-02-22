@@ -2,12 +2,12 @@
 cd graphics
 Rscript err.R
 Rscript histograms.R
-pdflatex SuppPub2_ErrorFigure.tex
-pdflatex SuppPub2_HistogramFigure.tex
+pdflatex SuppPub1_ErrorFigure.tex
+pdflatex SuppPub1_HistogramFigure.tex
 cd ..
 
-Rscript -e "library(knitr); knit('SuppPub2.Rnw')"
-pdflatex SuppPub2.tex
-bibtex SuppPub2.aux
-pdflatex SuppPub2.tex
-pdflatex SuppPub2.tex
+Rscript -e "library(knitr); knit('SuppPub1.Rnw')"
+pdflatex SuppPub1.tex
+bibtex SuppPub1.aux
+pdflatex SuppPub1.tex
+pdflatex SuppPub1.tex
