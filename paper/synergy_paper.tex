@@ -334,9 +334,9 @@ Fig.~\ref{fig:constrictions} illustrates the constriction task variable measurem
 \subsection{Objective of the guided factor analysis}
 \label{subsec:objectivesoftheguidedfactoranalysis}
 
-The guided factor analysis of the present study was motivated by the analysis of~\citet{maeda1990compensatory}, which extracts factors of the jaw, tongue, and lip articulators (\citeauthor{maeda1990compensatory}’s ``elementary articulators’’) and factor scores that parameterize how the position and shape of these articulators change over time (\citeauthor{maeda1990compensatory}’s ``elementary gestures’’). In this framework, vocal tract movements are the sum of a few elementary gestures, which are factors in our analysis. 
+The guided factor analysis of the present study is based on the approach of~\citet{toutios2015factor} and motivated by the analysis of~\citet{maeda1990compensatory}, which extracts factors of the jaw, tongue, and lip articulators (\citeauthor{maeda1990compensatory}’s ``elementary articulators’’) and factor scores that parameterize how the position and shape of these articulators change over time (\citeauthor{maeda1990compensatory}’s ``elementary gestures’’). In this framework, vocal tract movements are the sum of a few elementary gestures, which are factors in our analysis. 
 
-The objective of the guided factor analysis was to parameterize the vocal tract contours $\mathbf{X} \in \mathbb{R}^{n\times 2p}$, where $n$ is the number of images and $p$ is the number of contour vertices, as the linear combination of factors $\mathbf{f}_1, \mathbf{f}_2, \ldots, \mathbf{f}_q \in \mathbb{R}^{2p}$ such that each factor characterizes spatial variation in the position and shape of an articulator (specifically, the jaw, tongue, lips). 
+The objective of the guided factor analysis was to parameterize the vocal tract contours $\mathbf{X} \in \mathbb{R}^{n\times 2p}$, where $n$ is the number of images and $p$ is the number of contour vertices, as the linear combination of factors $\mathbf{f}_1, \mathbf{f}_2, \ldots, \mathbf{f}_q \in \mathbb{R}^{2p}$ such that each factor characterizes spatial variation in the position and shape of an articulator (specifically, the jaw, tongue, lips, and velum). 
 %
 Prior to the factor analysis, the vocal tract contours $\mathbf{X}$ were centered on zero.
 %
@@ -369,15 +369,15 @@ Thus, the contour vertices $\mathbf{x}_{i,\cdot}$ for the $i$th image of the rea
 The motion of the tongue and lips systematically co-occurs with motion of the jaw due to mechanical constraints and regularities in motor commands. For this reason, we seek a factor that corresponds to the motion of the jaw along with the concomitant motion of the tongue and lips.
 
 
-The set of $q_\text{jaw}$ jaw factors $\mathbf{F}_\text{jaw} \in \mathbb{R}^{p\times q_\text{jaw}}$ parameterizes motion of the jaw along with concomitant motion of the tongue, lips, and velum.
+The set of $q_\text{jaw}$ jaw factors $\mathbf{F}_\text{jaw} \in \mathbb{R}^{2p\times q_\text{jaw}}$ parameterizes motion of the jaw along with concomitant motion of the tongue, lips, and velum.
 %
-The set of $q_\text{tongue}$ tongue factors $\mathbf{F}_\text{tongue} \in \mathbb{R}^{p\times q_\text{tongue}}$ parameterizes motion of the tongue that is independent of the jaw. 
+The set of $q_\text{tongue}$ tongue factors $\mathbf{F}_\text{tongue} \in \mathbb{R}^{2p\times q_\text{tongue}}$ parameterizes motion of the tongue that is independent of the jaw. 
 %
-The set of $q_\text{lips}$ lip factors $\mathbf{F}_\text{lips} \in \mathbb{R}^{p\times q_\text{lips}}$ parameterizes motion of the lips that is independent of the jaw.
+The set of $q_\text{lips}$ lip factors $\mathbf{F}_\text{lips} \in \mathbb{R}^{2p\times q_\text{lips}}$ parameterizes motion of the lips that is independent of the jaw.
 %
-The set of $q_\text{velum}$ velum factors $\mathbf{F}_\text{velum} \in \mathbb{R}^{p\times q_\text{velum}}$ parameterizes motion of the velum.
+The set of $q_\text{velum}$ velum factors $\mathbf{F}_\text{velum} \in \mathbb{R}^{2p\times q_\text{velum}}$ parameterizes motion of the velum.
 %
-The full set of factors can be written as the block matrix $\mathbf{F} \in \mathbb{R}^{p\times q}$, where $q=q_\text{jaw}+q_\text{tongue}+q_\text{lips}+q_\text{velum}$. 
+The full set of factors can be written as the block matrix $\mathbf{F} \in \mathbb{R}^{2p\times q}$, where $q=q_\text{jaw}+q_\text{tongue}+q_\text{lips}+q_\text{velum}$. 
 % 
 \begin{equation}
 \label{eq:Fblock}
@@ -392,7 +392,7 @@ The full set of factors can be written as the block matrix $\mathbf{F} \in \math
 \right]
 \end{equation}
 %
-The corresponding set of factor scores can be written as the block matrix $\mathbf{W} \in \mathbb{R}^{p\times q}$, where $q=q_\text{jaw}+q_\text{tongue}+q_\text{lips}+q_\text{velum}$. 
+The corresponding set of factor scores can be written as the block matrix $\mathbf{W} \in \mathbb{R}^{n\times q}$, where $n$ is the number of MR images in the data-set and $q=q_\text{jaw}+q_\text{tongue}+q_\text{lips}+q_\text{velum}$. 
 % 
 \begin{equation}
 \label{eq:Wblock}
@@ -508,11 +508,11 @@ The projection $\mathbf{\hat{X}}$ of the data $\mathbf{X}$ on the space $\mathrm
   \mathbf{F}_\text{jaw}^+ 
 \end{equation}
 %
-The null space $\mathrm{Null}(\mathbf{F}_\text{jaw})$ is a $(p-q_\text{jaw})$-dimensional subspace of $\mathbb{R}^{2p}$. 
+The null space $\mathrm{Null}(\mathbf{F}_\text{jaw}^\intercal)$ is a $(p-q_\text{jaw})$-dimensional subspace of $\mathbb{R}^{2p}$. 
 % 
-Variance within $\mathrm{Null}(\mathbf{F}_\text{jaw})$ captures velum motion along with the part of tongue and lip motion that is independent of jaw motion. 
+Variance within $\mathrm{Null}(\mathbf{F}_\text{jaw}^\intercal)$ captures velum motion along with the part of tongue and lip motion that is independent of jaw motion. 
 %
-Section~\ref{subsec:residfactors} describes the factors that characterize the variance of the tongue, lips, and velum within $\mathrm{Null} \left( \mathbf{F}_\text{jaw} \right)$. 
+Section~\ref{subsec:residfactors} describes the factors that characterize the variance of the tongue, lips, and velum within $\mathrm{Null} \left( \mathbf{F}_\text{jaw}^\intercal \right)$. 
 
 
 
@@ -523,7 +523,7 @@ Section~\ref{subsec:residfactors} describes the factors that characterize the va
 
 This section describes the procedure for obtaining the factors $\mathbf{F}_\text{tongue}$ that capture the contribution of the tongue to vocal tract shaping  (see the tongue factors in Fig.~\ref{fig:gfa}). 
 % 
-The projection $\mathbf{\tilde{X}}$ of the data matrix $\mathbf{X}$ on the space $\mathrm{Null}(\mathbf{F}_\text{jaw})$ is the contour vertex motion that is independent of the jaw.
+The projection $\mathbf{\tilde{X}}$ of the data matrix $\mathbf{X}$ on the space $\mathrm{Null}(\mathbf{F}_\text{jaw}^\intercal)$ is the contour vertex motion that is independent of the jaw.
 %
 \begin{align} \label{eq:XXX}
 \mathbf{\tilde{X}} 
@@ -1077,7 +1077,7 @@ y_{i,j,k,\ell} = m + b_i + p_j + c_\ell + q_{i,j} + r_{j,\ell} + e_{i,j,k,\ell},
 %
 where $m$ is the baseline mean, $b_i$ is the fixed effect for constriction task, $p_i$ is the random intercept for participant $i$, $c_\ell$ is the fixed effect for scan number, $q_{i,j}$ is the by-participant random slope for constriction task, $r_{j,\ell}$ is the by-participant random slope for scan number, and $e_{i,j,k,\ell}$ is the intra-participant error. Multiple comparisons are corrected for using Tukey's range test with the package multcomp~\citep{hothorn2008simultaneous} in R~\citep{r2017language}. This section reports adjusted $p$-values. See Table~\ref{tab:stat_results} for results.
 
-\begin{table}
+\begin{table*}
 \centering
 \begin{tabular}{l l l l}
 contrast & estimate (\%) & $z$ & $p$ \\
@@ -1088,7 +1088,7 @@ contrast & estimate (\%) & $z$ & $p$ \\
 bilabial stop-coronal stop &
 \SI{-32} &
 -6.8 &
-\ensuremath{4.3\times 10^{-11}} \\
+\ensuremath{7.4\times 10^{-11}} \\
 %
 % bilabial vs. palatal
 %
@@ -1116,35 +1116,35 @@ bilabial stop-pharyngeal approximation &
 coronal stop-palatal approximation &
 \SI{18} &
 4 &
-\ensuremath{4.5\times 10^{-4}} \\
+\ensuremath{4.3\times 10^{-4}} \\
 %
 % coronal vs. velar
 %
 coronal stop-velar stop &
 \SI{39} &
 8.5 &
-\ensuremath{1.1\times 10^{-16}} \\
+0 \\
 %
 % coronal vs. pharyngeal
 %
 coronal stop-pharyngeal approximation &
 \SI{28} &
 6.6 &
-\ensuremath{3.9\times 10^{-10}} \\
+\ensuremath{2\times 10^{-9}} \\
 %
 % palatal vs. velar
 %
 palatal approximation-velar stop &
 \SI{20} &
 5.2 &
-\ensuremath{1.8\times 10^{-6}} \\
+\ensuremath{1.7\times 10^{-6}} \\
 %
 % palatal vs. pharyngeal
 %
 palatal approximation-pharyngeal approximation &
 \SI{9.1} &
 3.5 &
-0.0042 \\
+0.0043 \\
 %
 % pharyngeal vs. velar
 %
@@ -1156,7 +1156,7 @@ pharyngeal approximation-velar stop &
 \end{tabular}
 \caption{Results for statistical tests of the null hypothesis that the contrast is zero. Rows indicate separate tests. $p$-values corrected for multiple comparisons with Tukey's range test (adjusted $p$-values reported).}
 \label{tab:stat_results}
-\end{table}
+\end{table*}
 
 
 
@@ -1174,22 +1174,22 @@ The coronal stop had
 \SI{32}{\percent} 
 larger biomarker values than the bilabial stop
 ($z=6.8$, 
-$p=\ensuremath{4.3\times 10^{-11}}$),
+$p=\ensuremath{7.4\times 10^{-11}}$),
 %
 \SI{18}{\percent} 
 larger biomarker values than the palatal approximation
 ($z=4$, 
-$p=\ensuremath{4.5\times 10^{-4}}$),
+$p=\ensuremath{4.3\times 10^{-4}}$),
 %
 \SI{39}{\percent} 
 larger biomarker values than the velar stop
 ($z=8.5$, 
-$p=\ensuremath{1.1\times 10^{-16}}$),
+$p=0$),
 %
 and \SI{28}{\percent} 
 larger biomarker values than the pharyngeal approximation
 ($z=6.6$, 
-$p=\ensuremath{3.9\times 10^{-10}}$).
+$p=\ensuremath{2\times 10^{-9}}$).
 %
 %
 %
@@ -1203,12 +1203,12 @@ the palatal approximation had
 \SI{20}{\percent} 
 larger biomarker values than the velar stop
 ($z=5.2$, 
-$p=\ensuremath{1.8\times 10^{-6}}$)
+$p=\ensuremath{1.7\times 10^{-6}}$)
 %
 and \SI{9.1}{\percent} 
 larger biomarker values than the pharyngeal approximation
 ($z=3.5$, 
-$p=0.0042$).
+$p=0.0043$).
 %
 %
 %
@@ -1337,7 +1337,7 @@ For this reason, the Mann-Whitney U Test does not reject all the null hypotheses
 
 The results of the Fligner-Killeen Tests demonstrate that participants can display high biomarker variance for some constriction tasks but low variance at others. However, fewer Fligner-Killeen Tests reject the null hypothesis than do the Mann-Whitney U Tests. This indicates that fewer variances differ by constriction task than do the average values.
 
-\begin{figure}
+\begin{figure*}
 
 \includegraphics[width=\linewidth]{ConsistencyFigure.pdf}
 
@@ -1345,7 +1345,7 @@ The results of the Fligner-Killeen Tests demonstrate that participants can displ
 %
 Brackets below each panel indicate pairs of constriction tasks that significantly differ in average value (Mann-Whitney Test) or variance (Fligner-Killeen Test). $p$-values corrected for multiple comparisons with the Bonferroni method. Adjusted $p$-values used to determine significance.}
 \label{fig:consistency}
-\end{figure}
+\end{figure*}
 
 
 
@@ -1440,19 +1440,19 @@ This section provides a preliminary indication of how this is possible within th
 
 The method by which Section~\ref{sec:gfa} obtained jaw factors offers a recipe for obtaining factors that are associated with the motion of a subset of data-points. 
 First, we obtain the jaw factors (Fig.~\ref{fig:extensionsfigure}, Panel B) as in Section~\ref{sec:gfa}.
-The null space of the jaw factors captures the part of tongue and lip motion that is independent of jaw motion. 
+The null space of the transposed jaw factors captures the part of tongue and lip motion that is independent of jaw motion. 
 
-Second, we project the data matrix on the null space of the jaw factors as in Section~\ref{sec:gfa}. This is the contour motion that is independent of the jaw.
+Second, we project the data matrix on the null space of the transposed jaw factors as in Section~\ref{sec:gfa}. This is the contour motion that is independent of the jaw.
 Rather than subject the whole tongue contour to principal component analysis as in Section~\ref{sec:gfa}, we perform principal component analysis only on the tongue body contour vertices.
 The tongue body factors (Fig.~\ref{fig:extensionsfigure}, Panels C and D) are the vectors of covariances between the z-scored tongue body principal component scores and the tongue body and tongue tip contour vertices.
-The null space of the set of jaw and tongue body factors captures the part of tongue tip motion that is independent of jaw and tongue body motion.
+The null space of the transposed set of jaw and tongue body factors captures the part of tongue tip motion that is independent of jaw and tongue body motion.
 
-Third, we project the data matrix on the null space of the jaw and tongue body factors. This is the contour motion that is independent of the jaw and tongue body.
+Third, we project the data matrix on the null space of the transposed jaw and tongue body factors. This is the contour motion that is independent of the jaw and tongue body.
 We perform principal component analysis on the tongue tip contour vertices.
 The tongue tip factors (Fig.~\ref{fig:extensionsfigure}, Panel E) are the vectors of covariances between the z-scored tongue tip principal component scores and the tongue tip contour vertices.
-The null space of the set of jaw, tongue body, and tongue tip factors captures residual variance that is independent of jaw, tongue body, and tongue tip motion.
+The null space of the transposed set of jaw, tongue body, and tongue tip factors captures residual variance that is independent of jaw, tongue body, and tongue tip motion.
 
-Whereas Section~\ref{sec:gfa} extracts all tongue factors from the null space of the jaw factors, the procedure described above extracts tongue body factors from the null space of jaw factors and then extracts tongue tip factors from the null space of the jaw and tongue body factors.
+Whereas Section~\ref{sec:gfa} extracts all tongue factors from the null space of the transposed jaw factors, the procedure described above extracts tongue body factors from the null space of the transposed jaw factors and then extracts tongue tip factors from the null space of the transposed jaw and tongue body factors.
 This procedure offers a systematic way to decompose the tongue into subparts that form a kinematic chain~\cite{craig2005introduction}. Future work that pursues this approach will provide greater detail in the analysis of jaw-tongue coordination in synergies.
 
 \begin{figure}
@@ -1520,447 +1520,6 @@ A replication of the present study was performed using the USC Speech and Vocal 
 
 The authors acknowledge funding through NIH grant R01DC007124, NIH grant T32DC009975, and NSF grant 1514544. The content of this paper is solely the responsibility of the authors and does not necessarily represent the official views of the NIH or NSF.
 
-%\bibliography{mybib.bib}
-
-\begin{thebibliography}{49}
-\def\enquote#1{``#1,''}
-\def\plainquote#1{``#1''}
-\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
-\providecommand{\dourl}[1]{\href{http://#1}{\nolinkurl{#1}}}
-\providecommand{\bibinfo}[2]{#2}
-\providecommand{\noopsort}[1]{}
-\providecommand{\switchargs}[2]{#2#1}
-  \def\eatspace #1{#1}
-\providecommand{\dodoi}[1]{doi: \href{http://dx.doi.org/#1}{\nolinkurl{#1}}}
-
-\bibitem[{Bates \emph{et~al.}(2015)Bates, M{\"a}chler, Bolker, and
-  Walker}]{bates2015fitting}
-\bibinfo{author}{Bates, D.}, \bibinfo{author}{M{\"a}chler, M.},
-  \bibinfo{author}{Bolker, B.},  and \bibinfo{author}{Walker, S.}
-  (\textbf{\bibinfo{year}{2015}}). \enquote{\bibinfo{title}{Fitting linear
-  mixed-effects models using {lme4}}} \bibinfo{journal}{Journal of Statistical
-  Software} \textbf{67}(1), \bibinfo{pages}{1--48},
-  \dodoi{10.18637/jss.v067.i01}.
-
-\bibitem[{Bresch and Narayanan(2009)}]{bresch2009region}
-\bibinfo{author}{Bresch, E.},  and \bibinfo{author}{Narayanan, S.}
-  (\textbf{\bibinfo{year}{2009}}). \enquote{\bibinfo{title}{Region segmentation
-  in the frequency domain applied to upper airway real-time magnetic resonance
-  images}} \bibinfo{journal}{IEEE Transactions on Medical Imaging}
-  \textbf{28}(3), \bibinfo{pages}{323--338}, \dodoi{10.1109/TMI.2008.928920}.
-
-\bibitem[{Browman and Goldstein(1989)}]{browman1989articulatory}
-\bibinfo{author}{Browman, C.~P.},  and \bibinfo{author}{Goldstein, L.}
-  (\textbf{\bibinfo{year}{1989}}). \enquote{\bibinfo{title}{Articulatory
-  gestures as phonological units}} \bibinfo{journal}{Phonology} \textbf{6}(2),
-  \bibinfo{pages}{201--251}, \dodoi{10.1017/S0952675700001019}.
-
-\bibitem[{Browman and Goldstein(1986)}]{browman1986towards}
-\bibinfo{author}{Browman, C.~P.},  and \bibinfo{author}{Goldstein, L.~M.}
-  (\textbf{\bibinfo{year}{1986}}). \enquote{\bibinfo{title}{Towards an
-  articulatory phonology}} \bibinfo{journal}{Phonology} \textbf{3},
-  \bibinfo{pages}{219--252}, \dodoi{10.1017/S0952675700000658}.
-
-\bibitem[{Craig(2005)}]{craig2005introduction}
-\bibinfo{author}{Craig, J.~J.} (\textbf{\bibinfo{year}{2005}}).
-  \emph{\bibinfo{title}{Introduction to Robotics: Mechanics and Control}},
-  \bibinfo{volume}{\textbf{3}}, \bibinfo{edition}{3} ed.
-  (\bibinfo{publisher}{Pearson/Prentice Hall}, \bibinfo{address}{Upper Saddle
-  River, NJ}), \bibinfo{note}{{ISBN} 0-201543-61-3}.
-
-\bibitem[{Dawson \emph{et~al.}(2016)Dawson, Tiede, and
-  Whalen}]{dawson2016methods}
-\bibinfo{author}{Dawson, K.~M.}, \bibinfo{author}{Tiede, M.~K.},  and
-  \bibinfo{author}{Whalen, D.~H.} (\textbf{\bibinfo{year}{2016}}).
-  \enquote{\bibinfo{title}{Methods for quantifying tongue shape and complexity
-  using ultrasound imaging}} \bibinfo{journal}{Clinical Linguistics \&
-  Phonetics} \textbf{30}(3--5), \bibinfo{pages}{328--344},
-  \dodoi{10.3109/02699206.2015.1099164}.
-
-\bibitem[{Guenther(1995)}]{guenther1995speech}
-\bibinfo{author}{Guenther, F.~H.} (\textbf{\bibinfo{year}{1995}}).
-  \enquote{\bibinfo{title}{Speech sound acquisition, coarticulation, and rate
-  effects in a neural network model of speech production.}}
-  \bibinfo{journal}{Psychological review} \textbf{102}(3),
-  \bibinfo{pages}{594}, \dodoi{10.1037/0033-295X.102.3.594}.
-
-\bibitem[{Guenther(2016)}]{guenther2016neural}
-\bibinfo{author}{Guenther, F.~H.} (\textbf{\bibinfo{year}{2016}}).
-  \emph{\bibinfo{title}{Neural Control of Speech}}, \bibinfo{edition}{1} ed.
-  (\bibinfo{publisher}{MIT Press}, \bibinfo{address}{Cambridge, MA}).
-
-\bibitem[{Harris and Wolpert(1998)}]{harris1998signal}
-\bibinfo{author}{Harris, C.~M.},  and \bibinfo{author}{Wolpert, D.~M.}
-  (\textbf{\bibinfo{year}{1998}}). \enquote{\bibinfo{title}{Signal-dependent
-  noise determines motor planning}} \bibinfo{journal}{Nature} \textbf{394},
-  \bibinfo{pages}{780--784}, \dodoi{10.1038/29528}.
-
-\bibitem[{Herbort \emph{et~al.}(2010)Herbort, Butz, and
-  Pedersen}]{herbort2010sure}
-\bibinfo{author}{Herbort, O.}, \bibinfo{author}{Butz, M.~V.},  and
-  \bibinfo{author}{Pedersen, G.} (\textbf{\bibinfo{year}{2010}}).
-  \enquote{\bibinfo{title}{The {SURE\_REACH} model for motor learning and
-  control of a redundant arm: From modeling human behavior to applications in
-  robotics}} in \emph{\bibinfo{booktitle}{From Motor Learning to Interaction
-  Learning in Robots}}, edited by \bibinfo{editor}{O.~Sigaud} and
-  \bibinfo{editor}{J.~Peters}, \bibinfo{volume}{\textbf{264}} of
-  \emph{\bibinfo{series}{Studies in Computational Intelligence}},
-  \bibinfo{edition}{1} ed. (\bibinfo{publisher}{Springer Verlag},
-  \bibinfo{address}{Berlin, Heidelberg}), Chap.~\bibinfo{chapter}{5}, pp.
-  \bibinfo{pages}{85--106}, \bibinfo{note}{{ISBN} 978-3-642-05180-7}.
-
-\bibitem[{Hothorn \emph{et~al.}(2008)Hothorn, Bretz, and
-  Westfall}]{hothorn2008simultaneous}
-\bibinfo{author}{Hothorn, T.}, \bibinfo{author}{Bretz, F.},  and
-  \bibinfo{author}{Westfall, P.} (\textbf{\bibinfo{year}{2008}}).
-  \enquote{\bibinfo{title}{Simultaneous inference in general parametric
-  models}} \bibinfo{journal}{Biometrical Journal} \textbf{50}(3),
-  \bibinfo{pages}{346--363}, \dodoi{10.1002/bimj.200810425}.
-
-\bibitem[{Houde and Nagarajan(2011)}]{houde2011speech}
-\bibinfo{author}{Houde, J.~F.},  and \bibinfo{author}{Nagarajan, S.~S.}
-  (\textbf{\bibinfo{year}{2011}}). \enquote{\bibinfo{title}{Speech production
-  as state feedback control}} \bibinfo{journal}{Frontiers in Human
-  Neuroscience} \textbf{5}, \bibinfo{pages}{1--14},
-  \dodoi{10.3389/fnhum.2011.00082}.
-
-\bibitem[{Jackson and Singampalli(2009)}]{jackson2009statistical}
-\bibinfo{author}{Jackson, P.~J.},  and \bibinfo{author}{Singampalli, V.~D.}
-  (\textbf{\bibinfo{year}{2009}}). \enquote{\bibinfo{title}{Statistical
-  identification of articulation constraints in the production of speech}}
-  \bibinfo{journal}{Speech Communication} \textbf{51}(8),
-  \bibinfo{pages}{695--710}, \dodoi{10.1016/j.specom.2009.03.007}.
-
-\bibitem[{Kelso \emph{et~al.}(1984)Kelso, Tuller, Vatikiotis-Bateson, and
-  Fowler}]{kelso1984functionally}
-\bibinfo{author}{Kelso, J.~S.}, \bibinfo{author}{Tuller, B.},
-  \bibinfo{author}{Vatikiotis-Bateson, E.},  and \bibinfo{author}{Fowler,
-  C.~A.} (\textbf{\bibinfo{year}{1984}}). \enquote{\bibinfo{title}{Functionally
-  specific articulatory cooperation following jaw perturbations during speech:
-  Evidence for coordinative structures}} \bibinfo{journal}{Journal of
-  Experimental Psychology: Human Perception and Performance} \textbf{10}(6),
-  \bibinfo{pages}{812--832}, \dodoi{10.1037/0096-1523.10.6.812}.
-
-\bibitem[{Kessler \emph{et~al.}(2015)Kessler, Barnhart, Buckler, Choudhury,
-  Kondratovich, Toledano, Guimaraes, Filice, Zhang, Sullivan, and {QIBA
-  Terminology Working Group}}]{kessler2015emerging}
-\bibinfo{author}{Kessler, L.~G.}, \bibinfo{author}{Barnhart, H.~X.},
-  \bibinfo{author}{Buckler, A.~J.}, \bibinfo{author}{Choudhury, K.~R.},
-  \bibinfo{author}{Kondratovich, M.~V.}, \bibinfo{author}{Toledano, A.},
-  \bibinfo{author}{Guimaraes, A.~R.}, \bibinfo{author}{Filice, R.},
-  \bibinfo{author}{Zhang, Z.}, \bibinfo{author}{Sullivan, D.~C.},  and
-  \bibinfo{author}{{QIBA Terminology Working Group}}
-  (\textbf{\bibinfo{year}{2015}}). \enquote{\bibinfo{title}{The emerging
-  science of quantitative imaging biomarkers: Terminology and definitions for
-  scientific studies and regulatory submissions}} \bibinfo{journal}{Statistical
-  Methods in Medical Research} \textbf{24}(1), \bibinfo{pages}{9--26},
-  \dodoi{10.1177\%2F0962280214537333}.
-
-\bibitem[{Lammert \emph{et~al.}(2013{\natexlab{a}})Lammert, Goldstein,
-  Narayanan, and Iskarous}]{lammert2013statistical}
-\bibinfo{author}{Lammert, A.}, \bibinfo{author}{Goldstein, L.},
-  \bibinfo{author}{Narayanan, S.},  and \bibinfo{author}{Iskarous, K.}
-  (\textbf{\bibinfo{year}{2013}}{\natexlab{a}}).
-  \enquote{\bibinfo{title}{Statistical methods for estimation of direct and
-  differential kinematics of the vocal tract}} \bibinfo{journal}{Speech
-  Communication} \textbf{55}(1), \bibinfo{pages}{147--161},
-  \dodoi{10.1016/j.specom.2012.08.001}.
-
-\bibitem[{Lammert \emph{et~al.}(2013{\natexlab{b}})Lammert, Proctor, and
-  Narayanan}]{lammert2013morphological}
-\bibinfo{author}{Lammert, A.}, \bibinfo{author}{Proctor, M.},  and
-  \bibinfo{author}{Narayanan, S.~S.}
-  (\textbf{\bibinfo{year}{2013}}{\natexlab{b}}).
-  \enquote{\bibinfo{title}{Morphological variation in the adult hard palate and
-  posterior pharyngeal wall}} \bibinfo{journal}{Journal of Speech, Language,
-  and Hearing Research} \textbf{56}(2), \bibinfo{pages}{521--530},
-  \dodoi{10.1044/1092-4388(2012/12-0059)}.
-
-\bibitem[{Lancia and Rosenbaum(2018)}]{lancia2018coupling}
-\bibinfo{author}{Lancia, L.},  and \bibinfo{author}{Rosenbaum, B.}
-  (\textbf{\bibinfo{year}{2018}}). \enquote{\bibinfo{title}{Coupling relations
-  underlying the production of speech articulator movements and their
-  invariance to speech rate}} \bibinfo{journal}{Biological Cybernetics}
-  \bibinfo{pages}{253--276}, \dodoi{10.1007/s00422-018-0749-y}.
-
-\bibitem[{Latash(2008)}]{latash2008synergy}
-\bibinfo{author}{Latash, M.~L.} (\textbf{\bibinfo{year}{2008}}).
-  \emph{\bibinfo{title}{Synergy}} (\bibinfo{publisher}{Oxford University
-  Press}), \bibinfo{note}{{ISBN} 0-195333-16-0}.
-
-\bibitem[{LeBreton and Senter(2008)}]{lebreton2007answers}
-\bibinfo{author}{LeBreton, J.~M.},  and \bibinfo{author}{Senter, J.~L.}
-  (\textbf{\bibinfo{year}{2008}}). \enquote{\bibinfo{title}{Answers to 20
-  questions about interrater reliability and interrater agreement}}
-  \bibinfo{journal}{Organizational Research Methods} \textbf{11}(4),
-  \bibinfo{pages}{815--852}, \dodoi{10.1177\%2F1094428106296642}.
-
-\bibitem[{Lingala \emph{et~al.}(2017)Lingala, Zhu, Kim, Toutios, Narayanan, and
-  Nayak}]{lingala2017fast}
-\bibinfo{author}{Lingala, S.~G.}, \bibinfo{author}{Zhu, Y.},
-  \bibinfo{author}{Kim, Y.-C.}, \bibinfo{author}{Toutios, A.},
-  \bibinfo{author}{Narayanan, S.},  and \bibinfo{author}{Nayak, K.~S.}
-  (\textbf{\bibinfo{year}{2017}}). \enquote{\bibinfo{title}{A fast and flexible
-  mri system for the study of dynamic vocal tract shaping}}
-  \bibinfo{journal}{Magnetic resonance in medicine} \textbf{77}(1),
-  \bibinfo{pages}{112--125}.
-
-\bibitem[{Lloyd \emph{et~al.}(2012)Lloyd, Stavness, and
-  Fels}]{lloyd2012artisynth}
-\bibinfo{author}{Lloyd, J.~E.}, \bibinfo{author}{Stavness, I.},  and
-  \bibinfo{author}{Fels, S.} (\textbf{\bibinfo{year}{2012}}).
-  \enquote{\bibinfo{title}{Artisynth: A fast interactive biomechanical modeling
-  toolkit combining multibody and finite element simulation}} in
-  \emph{\bibinfo{booktitle}{Soft tissue biomechanical modeling for computer
-  assisted surgery}} (\bibinfo{publisher}{Springer Verlag},
-  \bibinfo{address}{Berlin, Heidelberg}), pp. \bibinfo{pages}{355--394},
-  \dodoi{10.1007/8415_2012_126}.
-
-\bibitem[{Maeda(1990)}]{maeda1990compensatory}
-\bibinfo{author}{Maeda, S.} (\textbf{\bibinfo{year}{1990}}).
-  \enquote{\bibinfo{title}{Compensatory articulation during speech: Evidence
-  from the analysis and synthesis of vocal-tract shapes using an articulatory
-  model}} in \emph{\bibinfo{booktitle}{Speech Production and Speech Modelling}}
-  (\bibinfo{publisher}{Springer Verlag}, \bibinfo{address}{Berlin,
-  Heidelberg}), pp. \bibinfo{pages}{131--149},
-  \dodoi{10.1007/978-94-009-2037-8_6}.
-
-\bibitem[{McGowan and Berger(2009)}]{mcgowan2009acoustic}
-\bibinfo{author}{McGowan, R.~S.},  and \bibinfo{author}{Berger, M.~A.}
-  (\textbf{\bibinfo{year}{2009}}).
-  \enquote{\bibinfo{title}{Acoustic-articulatory mapping in vowels by locally
-  weighted regression}} \bibinfo{journal}{The Journal of the Acoustical Society
-  of America} \textbf{126}(4), \bibinfo{pages}{2011--2032},
-  \dodoi{10.1121/1.3184581}.
-
-\bibitem[{Narayanan \emph{et~al.}(2014)Narayanan, Toutios, Ramanarayanan,
-  Lammert, Kim, Lee, Nayak, Kim, Zhu, Goldstein, Byrd, Bresch, Ghosh,
-  Katsamanis, and Proctor}]{narayanan2014real}
-\bibinfo{author}{Narayanan, S.}, \bibinfo{author}{Toutios, A.},
-  \bibinfo{author}{Ramanarayanan, V.}, \bibinfo{author}{Lammert, A.},
-  \bibinfo{author}{Kim, J.}, \bibinfo{author}{Lee, S.}, \bibinfo{author}{Nayak,
-  K.}, \bibinfo{author}{Kim, Y.-C.}, \bibinfo{author}{Zhu, Y.},
-  \bibinfo{author}{Goldstein, L.}, \bibinfo{author}{Byrd, D.},
-  \bibinfo{author}{Bresch, E.}, \bibinfo{author}{Ghosh, P.},
-  \bibinfo{author}{Katsamanis, A.},  and \bibinfo{author}{Proctor, M.}
-  (\textbf{\bibinfo{year}{2014}}). \enquote{\bibinfo{title}{Real-time magnetic
-  resonance imaging and electromagnetic articulography database for speech
-  production research {(TC)}}} \bibinfo{journal}{The Journal of the Acoustical
-  Society of America} \textbf{136}(3), \bibinfo{pages}{1307--1311},
-  \dodoi{10.1121/1.4890284}.
-
-\bibitem[{{R Development Core Team}(2008)}]{r2017language}
-\bibinfo{author}{{R Development Core Team}} (\textbf{\bibinfo{year}{2008}}).
-  \emph{\bibinfo{title}{R: A language and environment for statistical
-  computing}}, \bibinfo{organization}{R Foundation for Statistical Computing},
-  \bibinfo{address}{Vienna, Austria}, \dourl{www.R-project.org},
-  \bibinfo{note}{{ISBN} 3-900051-07-0}.
-
-\bibitem[{Ramanarayanan \emph{et~al.}(2016)Ramanarayanan, Parrell, Goldstein,
-  Nagarajan, and Houde}]{Ramanarayanan+2016}
-\bibinfo{author}{Ramanarayanan, V.}, \bibinfo{author}{Parrell, B.},
-  \bibinfo{author}{Goldstein, L.}, \bibinfo{author}{Nagarajan, S.},  and
-  \bibinfo{author}{Houde, J.} (\textbf{\bibinfo{year}{2016}}).
-  \enquote{\bibinfo{title}{A new model of speech motor control based on task
-  dynamics and state feedback}} in \emph{\bibinfo{booktitle}{Interspeech
-  2016}}, pp. \bibinfo{pages}{3564--3568},
-  \dodoi{10.21437/Interspeech.2016-1499}.
-
-\bibitem[{Saltzman and Kelso(1987)}]{saltzman1987skilled}
-\bibinfo{author}{Saltzman, E.},  and \bibinfo{author}{Kelso, J. A.~S.}
-  (\textbf{\bibinfo{year}{1987}}). \enquote{\bibinfo{title}{Skilled actions: A
-  task-dynamic approach}} \bibinfo{journal}{Psychological Review}
-  \textbf{94}(1), \bibinfo{pages}{84--106}, \dodoi{10.1037/0033-295X.94.1.84}.
-
-\bibitem[{Saltzman and Munhall(1989)}]{saltzman1989dynamical}
-\bibinfo{author}{Saltzman, E.~L.},  and \bibinfo{author}{Munhall, K.~G.}
-  (\textbf{\bibinfo{year}{1989}}). \enquote{\bibinfo{title}{A dynamical
-  approach to gestural patterning in speech production}}
-  \bibinfo{journal}{Ecological Psychology} \textbf{1}(4),
-  \bibinfo{pages}{333--382}, \dodoi{10.1207/s15326969eco0104_2}.
-
-\bibitem[{Scholz and Sch{\"o}ner(1999)}]{scholz1999uncontrolled}
-\bibinfo{author}{Scholz, J.~P.},  and \bibinfo{author}{Sch{\"o}ner, G.}
-  (\textbf{\bibinfo{year}{1999}}). \enquote{\bibinfo{title}{The uncontrolled
-  manifold concept: identifying control variables for a functional task}}
-  \bibinfo{journal}{Experimental Brain Research} \textbf{126}(3),
-  \bibinfo{pages}{289--306}, \dodoi{10.1007/s002210050738}.
-
-\bibitem[{Scholz and Sch{\"o}ner(2014)}]{scholz2014use}
-\bibinfo{author}{Scholz, J.~P.},  and \bibinfo{author}{Sch{\"o}ner, G.}
-  (\textbf{\bibinfo{year}{2014}}). \enquote{\bibinfo{title}{Use of the
-  uncontrolled manifold ({UCM}) approach to understand motor variability, motor
-  equivalence, and self-motion}} in \emph{\bibinfo{booktitle}{Progress in Motor
-  Control}}, edited by \bibinfo{editor}{M.~Levin},
-  \bibinfo{volume}{\textbf{826}} of \emph{\bibinfo{series}{Advances in
-  Experimental Medicine and Biology}} (\bibinfo{publisher}{Springer Verlag},
-  \bibinfo{address}{Berlin, Heidelberg}), pp. \bibinfo{pages}{91--100},
-  \dodoi{10.1007/978-1-4939-1338-1_7}.
-
-\bibitem[{Scott \emph{et~al.}(2014)Scott, Wylezinska, Birch, and
-  Miquel}]{scott2014speech}
-\bibinfo{author}{Scott, A.~D.}, \bibinfo{author}{Wylezinska, M.},
-  \bibinfo{author}{Birch, M.~J.},  and \bibinfo{author}{Miquel, M.~E.}
-  (\textbf{\bibinfo{year}{2014}}). \enquote{\bibinfo{title}{Speech {MRI}:
-  Morphology and function}} \bibinfo{journal}{Physica Medica: European Journal
-  of Medical Physics} \textbf{30}(6), \bibinfo{pages}{604--618},
-  \dodoi{10.1016/j.ejmp.2014.05.001}.
-
-\bibitem[{Shadmehr \emph{et~al.}(2010)Shadmehr, Smith, and
-  Krakauer}]{shadmehr2010error}
-\bibinfo{author}{Shadmehr, R.}, \bibinfo{author}{Smith, M.~A.},  and
-  \bibinfo{author}{Krakauer, J.~W.} (\textbf{\bibinfo{year}{2010}}).
-  \enquote{\bibinfo{title}{Error correction, sensory prediction, and adaptation
-  in motor control}} \bibinfo{journal}{Annual Review of Neuroscience}
-  \textbf{33}, \bibinfo{pages}{89--108},
-  \dodoi{10.1146/annurev-neuro-060909-153135}.
-
-\bibitem[{Simko and Cummins(2010)}]{simko2010embodied}
-\bibinfo{author}{Simko, J.},  and \bibinfo{author}{Cummins, F.}
-  (\textbf{\bibinfo{year}{2010}}). \enquote{\bibinfo{title}{Embodied task
-  dynamics}} \bibinfo{journal}{Psychological Review} \textbf{117}(4),
-  \bibinfo{pages}{1229--1246}, \dodoi{10.1037/a0020490}.
-
-\bibitem[{Sorensen \emph{et~al.}(2017)Sorensen, Skordilis, Toutios, Kim, Zhu,
-  Kim, Lammert, Ramanarayanan, Goldstein, Byrd, Nayak, and
-  Narayanan}]{sorensen2017database}
-\bibinfo{author}{Sorensen, T.}, \bibinfo{author}{Skordilis, Z.},
-  \bibinfo{author}{Toutios, A.}, \bibinfo{author}{Kim, Y.-C.},
-  \bibinfo{author}{Zhu, Y.}, \bibinfo{author}{Kim, J.},
-  \bibinfo{author}{Lammert, A.}, \bibinfo{author}{Ramanarayanan, V.},
-  \bibinfo{author}{Goldstein, L.}, \bibinfo{author}{Byrd, D.},
-  \bibinfo{author}{Nayak, K.},  and \bibinfo{author}{Narayanan, S.}
-  (\textbf{\bibinfo{year}{2017}}). \enquote{\bibinfo{title}{Database of
-  volumetric and real-time vocal tract {MRI} for speech science}} in
-  \emph{\bibinfo{booktitle}{Interspeech 2017}}, pp. \bibinfo{pages}{645--649},
-  \dodoi{10.21437/Interspeech.2017-608}.
-
-\bibitem[{Sorensen \emph{et~al.}(2016)Sorensen, Toutios, Goldstein, and
-  Narayanan}]{Sorensen+2016}
-\bibinfo{author}{Sorensen, T.}, \bibinfo{author}{Toutios, A.},
-  \bibinfo{author}{Goldstein, L.},  and \bibinfo{author}{Narayanan, S.~S.}
-  (\textbf{\bibinfo{year}{2016}}). \enquote{\bibinfo{title}{Characterizing
-  vocal tract dynamics across speakers using real-time {MRI}}} in
-  \emph{\bibinfo{booktitle}{Interspeech 2016}}, pp. \bibinfo{pages}{465--469},
-  \dodoi{10.21437/Interspeech.2016-583}.
-
-\bibitem[{Sternad \emph{et~al.}(2010)Sternad, Park, M{\"u}ller, and
-  Hogan}]{sternad2010coordinate}
-\bibinfo{author}{Sternad, D.}, \bibinfo{author}{Park, S.-W.},
-  \bibinfo{author}{M{\"u}ller, H.},  and \bibinfo{author}{Hogan, N.}
-  (\textbf{\bibinfo{year}{2010}}). \enquote{\bibinfo{title}{Coordinate
-  dependence of variability analysis}} \bibinfo{journal}{PLoS Computational
-  Biology} \textbf{6}(4), \bibinfo{pages}{e1000751},
-  \dodoi{10.1371/journal.pcbi.1000751}.
-
-\bibitem[{Sullivan \emph{et~al.}(2015)Sullivan, Obuchowski, Kessler, Raunig,
-  Gatsonis, Huang, Kondratovich, McShane, Reeves, Barboriak, Guimaraes, and
-  Wahl}]{sullivan2015metrology}
-\bibinfo{author}{Sullivan, D.~C.}, \bibinfo{author}{Obuchowski, N.~A.},
-  \bibinfo{author}{Kessler, L.~G.}, \bibinfo{author}{Raunig, D.~L.},
-  \bibinfo{author}{Gatsonis, C.}, \bibinfo{author}{Huang, E.~P.},
-  \bibinfo{author}{Kondratovich, M.}, \bibinfo{author}{McShane, L.~M.},
-  \bibinfo{author}{Reeves, A.~P.}, \bibinfo{author}{Barboriak, D.~P.},
-  \bibinfo{author}{Guimaraes, A.~R.},  and \bibinfo{author}{Wahl, R.~L.}
-  (\textbf{\bibinfo{year}{2015}}). \enquote{\bibinfo{title}{Metrology standards
-  for quantitative imaging biomarkers}} \bibinfo{journal}{Radiology}
-  \textbf{277}(3), \bibinfo{pages}{813--825},
-  \dodoi{10.1148/radiol.2015142202}.
-
-\bibitem[{Szabados and Perrier(2016)}]{Szabados+2016}
-\bibinfo{author}{Szabados, A.},  and \bibinfo{author}{Perrier, P.}
-  (\textbf{\bibinfo{year}{2016}}). \enquote{\bibinfo{title}{Uncontrolled
-  manifolds in vowel production: Assessment with a biomechanical model of the
-  tongue}} in \emph{\bibinfo{booktitle}{Interspeech 2016}}, pp.
-  \bibinfo{pages}{3579--3583}, \dodoi{10.21437/Interspeech.2016-1579}.
-
-\bibitem[{Todorov and Jordan(2002)}]{todorov2002optimal}
-\bibinfo{author}{Todorov, E.},  and \bibinfo{author}{Jordan, M.~I.}
-  (\textbf{\bibinfo{year}{2002}}). \enquote{\bibinfo{title}{Optimal feedback
-  control as a theory of motor coordination}} \bibinfo{journal}{Nature
-  Neuroscience} \textbf{5}(11), \bibinfo{pages}{1226--1235},
-  \dodoi{10.1038/nn963}.
-
-\bibitem[{T{\"o}ger \emph{et~al.}(2017)T{\"o}ger, Sorensen, Somandepalli,
-  Toutios, Lingala, Narayanan, and Nayak}]{toger2017test}
-\bibinfo{author}{T{\"o}ger, J.}, \bibinfo{author}{Sorensen, T.},
-  \bibinfo{author}{Somandepalli, K.}, \bibinfo{author}{Toutios, A.},
-  \bibinfo{author}{Lingala, S.~G.}, \bibinfo{author}{Narayanan, S.},  and
-  \bibinfo{author}{Nayak, K.} (\textbf{\bibinfo{year}{2017}}).
-  \enquote{\bibinfo{title}{Test--retest repeatability of human speech
-  biomarkers from static and real-time dynamic magnetic resonance imaging}}
-  \bibinfo{journal}{The Journal of the Acoustical Society of America}
-  \textbf{141}(5), \bibinfo{pages}{3323--3336}, \dodoi{10.1121/1.4983081}.
-
-\bibitem[{Toutios and Narayanan(2015)}]{toutios2015factor}
-\bibinfo{author}{Toutios, A.},  and \bibinfo{author}{Narayanan, S.~S.}
-  (\textbf{\bibinfo{year}{2015}}). \enquote{\bibinfo{title}{Factor analysis of
-  vocal tract outlines derived from real-time magnetic resonance imaging data}}
-  in \emph{\bibinfo{booktitle}{International Congress of Phonetic Sciences
-  (ICPhS)}},
-  \dourl{www.internationalphoneticassociation.org/icphs-proceedings/ICPhS2015/Papers/ICPHS0514.pdf}.
-
-\bibitem[{Toutios and Narayanan(2016)}]{toutios2016advances}
-\bibinfo{author}{Toutios, A.},  and \bibinfo{author}{Narayanan, S.~S.}
-  (\textbf{\bibinfo{year}{2016}}). \enquote{\bibinfo{title}{Advances in
-  real-time magnetic resonance imaging of the vocal tract for speech science
-  and technology research}} \bibinfo{journal}{APSIPA Transactions on Signal and
-  Information Processing} \textbf{5}, \bibinfo{pages}{e6},
-  \dodoi{10.1017/ATSIP.2016.5}.
-
-\bibitem[{Turvey(1977)}]{turvey1977preliminaries}
-\bibinfo{author}{Turvey, M.~T.} (\textbf{\bibinfo{year}{1977}}).
-  \enquote{\bibinfo{title}{Preliminaries to a theory of action with reference
-  to vision}} in \emph{\bibinfo{booktitle}{Perceiving, Acting and Knowing:
-  Towards an Ecological Psychology}}, edited by \bibinfo{editor}{R.~Shaw} and
-  \bibinfo{editor}{J.~Bransford} (\bibinfo{publisher}{Routledge Taylor \&
-  Francis Group}, \bibinfo{address}{London, New York}), pp.
-  \bibinfo{pages}{211--266},
-  \dourl{www.haskins.yale.edu/sr/sr041/SR041_01.pdf}, \bibinfo{note}{{ISBN}
-  978-1-138-68824-7}.
-
-\bibitem[{Uecker \emph{et~al.}(2015)Uecker, Ong, Tamir, Bahri, Virtue, Cheng,
-  Zhang, and Lustig}]{uecker2015berkeley}
-\bibinfo{author}{Uecker, M.}, \bibinfo{author}{Ong, F.},
-  \bibinfo{author}{Tamir, J.~I.}, \bibinfo{author}{Bahri, D.},
-  \bibinfo{author}{Virtue, P.}, \bibinfo{author}{Cheng, J.~Y.},
-  \bibinfo{author}{Zhang, T.},  and \bibinfo{author}{Lustig, M.}
-  (\textbf{\bibinfo{year}{2015}}). \enquote{\bibinfo{title}{Berkeley advanced
-  reconstruction toolbox}} in \emph{\bibinfo{booktitle}{Proceedings of the 23rd
-  Annual Meeting of the International Society for Magnetic Resonance in
-  Medicine}}, \bibinfo{publisher}{International Society for Magnetic Resonance
-  in Medicine},
-  \dourl{www.internationalphoneticassociation.org/icphs-proceedings/ICPhS2015/Papers/ICPHS0514.pdf}.
-
-\bibitem[{van Beers(2009)}]{van2009motor}
-\bibinfo{author}{van Beers, R.~J.} (\textbf{\bibinfo{year}{2009}}).
-  \enquote{\bibinfo{title}{Motor learning is optimally tuned to the properties
-  of motor noise}} \bibinfo{journal}{Neuron} \textbf{63}(3),
-  \bibinfo{pages}{406--417}, \dodoi{10.1016/j.neuron.2009.06.025}.
-
-\bibitem[{Vatikiotis-Bateson and Ostry(1995)}]{vatikiotis1995analysis}
-\bibinfo{author}{Vatikiotis-Bateson, E.},  and \bibinfo{author}{Ostry, D.~J.}
-  (\textbf{\bibinfo{year}{1995}}). \enquote{\bibinfo{title}{An analysis of the
-  dimensionality of jaw motion in speech}} \bibinfo{journal}{Journal of
-  Phonetics} \textbf{23}(1-2), \bibinfo{pages}{101--117},
-  \dodoi{10.1016/S0095-4470(95)80035-2}.
-
-\bibitem[{Wood(1979)}]{wood1979radiographic}
-\bibinfo{author}{Wood, S.} (\textbf{\bibinfo{year}{1979}}).
-  \enquote{\bibinfo{title}{A radiographic analysis of constriction location for
-  vowels}} \bibinfo{journal}{Journal of Phonetics} \textbf{7},
-  \bibinfo{pages}{25--43}.
-
-\bibitem[{Wu \emph{et~al.}(2014)Wu, Miyamoto, Castro, {\"O}lveczky, and
-  Smith}]{wu2014temporal}
-\bibinfo{author}{Wu, H.~G.}, \bibinfo{author}{Miyamoto, Y.~R.},
-  \bibinfo{author}{Castro, L. N.~G.}, \bibinfo{author}{{\"O}lveczky, B.~P.},
-  and \bibinfo{author}{Smith, M.~A.} (\textbf{\bibinfo{year}{2014}}).
-  \enquote{\bibinfo{title}{Temporal structure of motor variability is
-  dynamically regulated and predicts motor learning ability}}
-  \bibinfo{journal}{Nature Neuroscience} \textbf{17}(2),
-  \bibinfo{pages}{312--321}, \dodoi{10.1038/nn.3616}.
-
-\end{thebibliography}
+\bibliography{mybib.bib}
 
 \end{document}

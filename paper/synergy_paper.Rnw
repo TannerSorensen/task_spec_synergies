@@ -286,9 +286,9 @@ Fig.~\ref{fig:constrictions} illustrates the constriction task variable measurem
 \subsection{Objective of the guided factor analysis}
 \label{subsec:objectivesoftheguidedfactoranalysis}
 
-The guided factor analysis of the present study was motivated by the analysis of~\citet{maeda1990compensatory}, which extracts factors of the jaw, tongue, and lip articulators (\citeauthor{maeda1990compensatory}’s ``elementary articulators’’) and factor scores that parameterize how the position and shape of these articulators change over time (\citeauthor{maeda1990compensatory}’s ``elementary gestures’’). In this framework, vocal tract movements are the sum of a few elementary gestures, which are factors in our analysis. 
+The guided factor analysis of the present study is based on the approach of~\citet{toutios2015factor} and motivated by the analysis of~\citet{maeda1990compensatory}, which extracts factors of the jaw, tongue, and lip articulators (\citeauthor{maeda1990compensatory}’s ``elementary articulators’’) and factor scores that parameterize how the position and shape of these articulators change over time (\citeauthor{maeda1990compensatory}’s ``elementary gestures’’). In this framework, vocal tract movements are the sum of a few elementary gestures, which are factors in our analysis. 
 
-The objective of the guided factor analysis was to parameterize the vocal tract contours $\mathbf{X} \in \mathbb{R}^{n\times 2p}$, where $n$ is the number of images and $p$ is the number of contour vertices, as the linear combination of factors $\mathbf{f}_1, \mathbf{f}_2, \ldots, \mathbf{f}_q \in \mathbb{R}^{2p}$ such that each factor characterizes spatial variation in the position and shape of an articulator (specifically, the jaw, tongue, lips). 
+The objective of the guided factor analysis was to parameterize the vocal tract contours $\mathbf{X} \in \mathbb{R}^{n\times 2p}$, where $n$ is the number of images and $p$ is the number of contour vertices, as the linear combination of factors $\mathbf{f}_1, \mathbf{f}_2, \ldots, \mathbf{f}_q \in \mathbb{R}^{2p}$ such that each factor characterizes spatial variation in the position and shape of an articulator (specifically, the jaw, tongue, lips, and velum). 
 %
 Prior to the factor analysis, the vocal tract contours $\mathbf{X}$ were centered on zero.
 %
@@ -321,15 +321,15 @@ Thus, the contour vertices $\mathbf{x}_{i,\cdot}$ for the $i$th image of the rea
 The motion of the tongue and lips systematically co-occurs with motion of the jaw due to mechanical constraints and regularities in motor commands. For this reason, we seek a factor that corresponds to the motion of the jaw along with the concomitant motion of the tongue and lips.
 
 
-The set of $q_\text{jaw}$ jaw factors $\mathbf{F}_\text{jaw} \in \mathbb{R}^{p\times q_\text{jaw}}$ parameterizes motion of the jaw along with concomitant motion of the tongue, lips, and velum.
+The set of $q_\text{jaw}$ jaw factors $\mathbf{F}_\text{jaw} \in \mathbb{R}^{2p\times q_\text{jaw}}$ parameterizes motion of the jaw along with concomitant motion of the tongue, lips, and velum.
 %
-The set of $q_\text{tongue}$ tongue factors $\mathbf{F}_\text{tongue} \in \mathbb{R}^{p\times q_\text{tongue}}$ parameterizes motion of the tongue that is independent of the jaw. 
+The set of $q_\text{tongue}$ tongue factors $\mathbf{F}_\text{tongue} \in \mathbb{R}^{2p\times q_\text{tongue}}$ parameterizes motion of the tongue that is independent of the jaw. 
 %
-The set of $q_\text{lips}$ lip factors $\mathbf{F}_\text{lips} \in \mathbb{R}^{p\times q_\text{lips}}$ parameterizes motion of the lips that is independent of the jaw.
+The set of $q_\text{lips}$ lip factors $\mathbf{F}_\text{lips} \in \mathbb{R}^{2p\times q_\text{lips}}$ parameterizes motion of the lips that is independent of the jaw.
 %
-The set of $q_\text{velum}$ velum factors $\mathbf{F}_\text{velum} \in \mathbb{R}^{p\times q_\text{velum}}$ parameterizes motion of the velum.
+The set of $q_\text{velum}$ velum factors $\mathbf{F}_\text{velum} \in \mathbb{R}^{2p\times q_\text{velum}}$ parameterizes motion of the velum.
 %
-The full set of factors can be written as the block matrix $\mathbf{F} \in \mathbb{R}^{p\times q}$, where $q=q_\text{jaw}+q_\text{tongue}+q_\text{lips}+q_\text{velum}$. 
+The full set of factors can be written as the block matrix $\mathbf{F} \in \mathbb{R}^{2p\times q}$, where $q=q_\text{jaw}+q_\text{tongue}+q_\text{lips}+q_\text{velum}$. 
 % 
 \begin{equation}
 \label{eq:Fblock}
@@ -344,7 +344,7 @@ The full set of factors can be written as the block matrix $\mathbf{F} \in \math
 \right]
 \end{equation}
 %
-The corresponding set of factor scores can be written as the block matrix $\mathbf{W} \in \mathbb{R}^{p\times q}$, where $q=q_\text{jaw}+q_\text{tongue}+q_\text{lips}+q_\text{velum}$. 
+The corresponding set of factor scores can be written as the block matrix $\mathbf{W} \in \mathbb{R}^{n\times q}$, where $n$ is the number of MR images in the data-set and $q=q_\text{jaw}+q_\text{tongue}+q_\text{lips}+q_\text{velum}$. 
 % 
 \begin{equation}
 \label{eq:Wblock}
@@ -460,11 +460,11 @@ The projection $\mathbf{\hat{X}}$ of the data $\mathbf{X}$ on the space $\mathrm
   \mathbf{F}_\text{jaw}^+ 
 \end{equation}
 %
-The null space $\mathrm{Null}(\mathbf{F}_\text{jaw})$ is a $(p-q_\text{jaw})$-dimensional subspace of $\mathbb{R}^{2p}$. 
+The null space $\mathrm{Null}(\mathbf{F}_\text{jaw}^\intercal)$ is a $(p-q_\text{jaw})$-dimensional subspace of $\mathbb{R}^{2p}$. 
 % 
-Variance within $\mathrm{Null}(\mathbf{F}_\text{jaw})$ captures velum motion along with the part of tongue and lip motion that is independent of jaw motion. 
+Variance within $\mathrm{Null}(\mathbf{F}_\text{jaw}^\intercal)$ captures velum motion along with the part of tongue and lip motion that is independent of jaw motion. 
 %
-Section~\ref{subsec:residfactors} describes the factors that characterize the variance of the tongue, lips, and velum within $\mathrm{Null} \left( \mathbf{F}_\text{jaw} \right)$. 
+Section~\ref{subsec:residfactors} describes the factors that characterize the variance of the tongue, lips, and velum within $\mathrm{Null} \left( \mathbf{F}_\text{jaw}^\intercal \right)$. 
 
 
 
@@ -475,7 +475,7 @@ Section~\ref{subsec:residfactors} describes the factors that characterize the va
 
 This section describes the procedure for obtaining the factors $\mathbf{F}_\text{tongue}$ that capture the contribution of the tongue to vocal tract shaping  (see the tongue factors in Fig.~\ref{fig:gfa}). 
 % 
-The projection $\mathbf{\tilde{X}}$ of the data matrix $\mathbf{X}$ on the space $\mathrm{Null}(\mathbf{F}_\text{jaw})$ is the contour vertex motion that is independent of the jaw.
+The projection $\mathbf{\tilde{X}}$ of the data matrix $\mathbf{X}$ on the space $\mathrm{Null}(\mathbf{F}_\text{jaw}^\intercal)$ is the contour vertex motion that is independent of the jaw.
 %
 \begin{align} \label{eq:XXX}
 \mathbf{\tilde{X}} 
@@ -1158,7 +1158,7 @@ y_{i,j,k,\ell} = m + b_i + p_j + c_\ell + q_{i,j} + r_{j,\ell} + e_{i,j,k,\ell},
 %
 where $m$ is the baseline mean, $b_i$ is the fixed effect for constriction task, $p_i$ is the random intercept for participant $i$, $c_\ell$ is the fixed effect for scan number, $q_{i,j}$ is the by-participant random slope for constriction task, $r_{j,\ell}$ is the by-participant random slope for scan number, and $e_{i,j,k,\ell}$ is the intra-participant error. Multiple comparisons are corrected for using Tukey's range test with the package multcomp~\citep{hothorn2008simultaneous} in R~\citep{r2017language}. This section reports adjusted $p$-values. See Table~\ref{tab:stat_results} for results.
 
-\begin{table}
+\begin{table*}
 \centering
 \begin{tabular}{l l l l}
 contrast & estimate (\%) & $z$ & $p$ \\
@@ -1237,7 +1237,7 @@ pharyngeal approximation-velar stop &
 \end{tabular}
 \caption{Results for statistical tests of the null hypothesis that the contrast is zero. Rows indicate separate tests. $p$-values corrected for multiple comparisons with Tukey's range test (adjusted $p$-values reported).}
 \label{tab:stat_results}
-\end{table}
+\end{table*}
 
 
 
@@ -1483,7 +1483,7 @@ For this reason, the Mann-Whitney U Test does not reject all the null hypotheses
 
 The results of the Fligner-Killeen Tests demonstrate that participants can display high biomarker variance for some constriction tasks but low variance at others. However, fewer Fligner-Killeen Tests reject the null hypothesis than do the Mann-Whitney U Tests. This indicates that fewer variances differ by constriction task than do the average values.
 
-\begin{figure}
+\begin{figure*}
 
 \includegraphics[width=\linewidth]{ConsistencyFigure.pdf}
 
@@ -1491,7 +1491,7 @@ The results of the Fligner-Killeen Tests demonstrate that participants can displ
 %
 Brackets below each panel indicate pairs of constriction tasks that significantly differ in average value (Mann-Whitney Test) or variance (Fligner-Killeen Test). $p$-values corrected for multiple comparisons with the Bonferroni method. Adjusted $p$-values used to determine significance.}
 \label{fig:consistency}
-\end{figure}
+\end{figure*}
 
 
 
@@ -1586,19 +1586,19 @@ This section provides a preliminary indication of how this is possible within th
 
 The method by which Section~\ref{sec:gfa} obtained jaw factors offers a recipe for obtaining factors that are associated with the motion of a subset of data-points. 
 First, we obtain the jaw factors (Fig.~\ref{fig:extensionsfigure}, Panel B) as in Section~\ref{sec:gfa}.
-The null space of the jaw factors captures the part of tongue and lip motion that is independent of jaw motion. 
+The null space of the transposed jaw factors captures the part of tongue and lip motion that is independent of jaw motion. 
 
-Second, we project the data matrix on the null space of the jaw factors as in Section~\ref{sec:gfa}. This is the contour motion that is independent of the jaw.
+Second, we project the data matrix on the null space of the transposed jaw factors as in Section~\ref{sec:gfa}. This is the contour motion that is independent of the jaw.
 Rather than subject the whole tongue contour to principal component analysis as in Section~\ref{sec:gfa}, we perform principal component analysis only on the tongue body contour vertices.
 The tongue body factors (Fig.~\ref{fig:extensionsfigure}, Panels C and D) are the vectors of covariances between the z-scored tongue body principal component scores and the tongue body and tongue tip contour vertices.
-The null space of the set of jaw and tongue body factors captures the part of tongue tip motion that is independent of jaw and tongue body motion.
+The null space of the transposed set of jaw and tongue body factors captures the part of tongue tip motion that is independent of jaw and tongue body motion.
 
-Third, we project the data matrix on the null space of the jaw and tongue body factors. This is the contour motion that is independent of the jaw and tongue body.
+Third, we project the data matrix on the null space of the transposed jaw and tongue body factors. This is the contour motion that is independent of the jaw and tongue body.
 We perform principal component analysis on the tongue tip contour vertices.
 The tongue tip factors (Fig.~\ref{fig:extensionsfigure}, Panel E) are the vectors of covariances between the z-scored tongue tip principal component scores and the tongue tip contour vertices.
-The null space of the set of jaw, tongue body, and tongue tip factors captures residual variance that is independent of jaw, tongue body, and tongue tip motion.
+The null space of the transposed set of jaw, tongue body, and tongue tip factors captures residual variance that is independent of jaw, tongue body, and tongue tip motion.
 
-Whereas Section~\ref{sec:gfa} extracts all tongue factors from the null space of the jaw factors, the procedure described above extracts tongue body factors from the null space of jaw factors and then extracts tongue tip factors from the null space of the jaw and tongue body factors.
+Whereas Section~\ref{sec:gfa} extracts all tongue factors from the null space of the transposed jaw factors, the procedure described above extracts tongue body factors from the null space of the transposed jaw factors and then extracts tongue tip factors from the null space of the transposed jaw and tongue body factors.
 This procedure offers a systematic way to decompose the tongue into subparts that form a kinematic chain~\cite{craig2005introduction}. Future work that pursues this approach will provide greater detail in the analysis of jaw-tongue coordination in synergies.
 
 \begin{figure}
